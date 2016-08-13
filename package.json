@@ -59,6 +59,7 @@
     "karma-coverage": "^1.0.0",
     "karma-jasmine": "0.3.8",
     "protractor": "3.3.0",
+    "sass-module-importer": "^1.2.1",
     "ts-node": "1.2.1",
     "tslint": "3.14.0",
     "typescript": "^2.0.0"
