@@ -1,4 +1,5 @@
-@import 'app.theme';
+@import 'app.theme',
+'./material/elevation';
 
 [color='primary'] {
 	background-color: md-color($md-primary);
