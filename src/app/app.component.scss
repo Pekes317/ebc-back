@@ -1,1 +1,7 @@
 @import './theme/app.material';
+
+.navbar {
+	width: 100vw;
+	transform: translate(-.55rem, -.5rem);
+	@include md-elevation(3);
+}
