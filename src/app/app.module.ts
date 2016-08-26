@@ -3,11 +3,10 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { MaterialModule } from './md.module';
 import { AppComponent } from './app.component';
-import { NavbarComponent } from './navbar';
 
 @NgModule({
   imports: [ BrowserModule, MaterialModule ],
-  declarations: [ AppComponent, NavbarComponent ],
+  declarations: [ AppComponent ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }
