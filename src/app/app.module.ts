@@ -3,11 +3,12 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { MaterialModule } from './md.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home';
+import { appRoutingProviders, routing } from './app.routing';
 
 @NgModule({
-  imports: [ BrowserModule, MaterialModule ],
-  declarations: [ AppComponent, HomeComponent ],
+  imports: [ BrowserModule, MaterialModule, routing ],
+  declarations: [ AppComponent ],
+  providers: [ appRoutingProviders ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }
