@@ -17,9 +17,10 @@
 		text-align: center;
 		margin-top: 1.75rem;
 	
+	
 		.logo {
 			display: inline-block;
-			max-width: 10vw;
+			max-width: 20vmin;
 	
 			img {
 				@include img;
@@ -28,11 +29,12 @@
 	
 		.badges {
 			background-color: transparent;
+			margin-top: 1.5rem;
+		  padding-bottom: 1rem;
 
 			img {
 				@include img;
-				max-width: 10vw;
-				min-width: 75px;
+				max-width: 15vmin;
 			}
 		}
 	}
