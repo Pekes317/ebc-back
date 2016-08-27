@@ -1,0 +1,39 @@
+@import '../theme/app.theme';
+
+@mixin img {
+	display: inline-block;
+	width: 100%;
+	height: auto;
+	vertical-align: middle;
+}
+
+.home {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	
+	.body {
+		text-align: center;
+		margin-top: 1.75rem;
+	
+		.logo {
+			display: inline-block;
+			max-width: 10vw;
+	
+			img {
+				@include img;
+			}
+		}
+	
+		.badges {
+			background-color: transparent;
+
+			img {
+				@include img;
+				max-width: 10vw;
+				min-width: 75px;
+			}
+		}
+	}
+}
