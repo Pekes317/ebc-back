@@ -18,7 +18,7 @@
 	z-index: 0;
 	
 	h1 {
-		color: rgba(255, 255, 255, 1);
+		color: map-get($md-grey, 0);
 		text-align: center;
 	}
 	
@@ -34,11 +34,9 @@
 }
 
 .appLinks {
-	background-color: rgba(255, 255, 255, 1);
 	text-align: center;
 
 	.badges {
-		background-color: transparent;
 		margin-top: 1.5rem;
 		padding-bottom: 1rem;
 	
@@ -55,16 +53,13 @@
 
 	.legal {
 		display: inline-flex;
-		flex: 0 0 auto;
-		justify-content: space-around;
-		margin-top: 1.5rem;
-		width: 75vw;
-		
-
-		P {
-			font-size: .7rem;
-			text-align: left;
-			width: 33%;
-		}
+		justify-content: center;
+		background-color: map-get($md-blue-grey, 50);
+		padding: .7rem;
+		box-sizing: border-box;
+		margin-top: 2rem;
+		width: 50vw;
+		font-size: .7rem;
+		text-align: left;
 	}
 }

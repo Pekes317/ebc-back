@@ -5,3 +5,12 @@
 	transform: translate(-.55rem, -.5rem);
 	@include md-elevation(3);
 }
+
+.foot {
+	position: fixed;
+	bottom: 0;
+	transform: translateX(-.55rem);
+	font-size: .8rem;
+	background-color: map-get($md-grey,50);
+	color: map-get($md-grey, 500);
+}
