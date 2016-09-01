@@ -14,3 +14,7 @@
 	background-color: map-get($md-grey,50);
 	color: map-get($md-grey, 500);
 }
+
+.space-align {
+	flex: 1 1 auto;
+}

@@ -24,7 +24,6 @@ import { MdMenuModule } from '@angular2-material/menu/menu';
 import { RtlModule } from '@angular2-material/core/rtl/dir';
 import { MdLiveAnnouncer } from '@angular2-material/core/a11y/live-announcer';
 
-
 const MATERIAL_MODULES = [
   MdButtonModule,
   MdButtonToggleModule,
@@ -48,13 +47,12 @@ const MATERIAL_MODULES = [
   MdTooltipModule,
   OverlayModule,
   PortalModule,
-  RtlModule
+  RtlModule,
 ];
 
 @NgModule({
   imports: [
-    MATERIAL_MODULES
-    /* MdButtonModule,
+    MdButtonModule,
     MdCardModule,
     MdCheckboxModule,
     MdGridListModule,
@@ -78,7 +76,7 @@ const MATERIAL_MODULES = [
     MdMenuModule.forRoot(),
     MdRadioModule.forRoot(),
     MdTooltipModule.forRoot(),
-    OverlayModule.forRoot() */
+    OverlayModule.forRoot(),
   ],
   exports: MATERIAL_MODULES,
   providers: [MdLiveAnnouncer]
@@ -88,7 +86,7 @@ export class MaterialRootModule { }
 
 @NgModule({
   imports: MATERIAL_MODULES,
-  exports: MATERIAL_MODULES
+  exports: MATERIAL_MODULES,
 })
 export class MaterialModule {
   static forRoot(): ModuleWithProviders {
