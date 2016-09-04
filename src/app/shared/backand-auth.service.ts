@@ -77,7 +77,7 @@ export class BackandAuthService {
     let creds = JSON.stringify({
       email: email,
       appName: this.config.appName
-    );
+    });
     let header = new Headers();
     header.append('SignUpToken', this.config.signUpToken);
     
