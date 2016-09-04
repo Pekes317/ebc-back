@@ -1,12 +1,15 @@
 import { ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
+import { TitleResolve } from './app.title.resolve';
 import { HomeComponent } from './home';
-import { BackComponent } from './back';
 
 const appRoutes: Routes = [
-	{ path: '', component: HomeComponent, data: { title: 'Home' } },
-	{ path: 'back-office', component: BackComponent, data: { title: 'Back Office'} }
+	{
+		path: '', component: HomeComponent, data: { title: 'Home' }, resolve: {
+			title: TitleResolve
+		}
+	}
 ];
 
 export const appRoutingProviders: any[] = [
