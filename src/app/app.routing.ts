@@ -13,7 +13,7 @@ const appRoutes: Routes = [
 ];
 
 export const appRoutingProviders: any[] = [
-
+	TitleResolve
 ];
 
 export const routing: ModuleWithProviders = RouterModule.forRoot(appRoutes);
