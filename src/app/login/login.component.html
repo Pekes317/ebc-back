@@ -1,0 +1,16 @@
+<div class="login">
+  <md-card>
+    <md-card-title class="title">
+      Login
+    </md-card-title>
+    <form [formGroup]="loginForm" (ngSubmit)="logIn(loginForm)">
+      <md-card-content class="fields">
+        <md-input class="field" type="email" dividerColor="primary" placeholder="Your UserName/Email" formControlName="username"></md-input>
+        <md-input class="field" type="password" dividerColor="primary" placeholder="Your Password" formControlName="password"></md-input>
+      </md-card-content>
+      <md-actions>
+        <button md-raised-button color="primary" type="submit">Login</button>
+      </md-actions>
+    </form>
+  </md-card>
+</div>

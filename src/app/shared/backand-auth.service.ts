@@ -36,6 +36,7 @@ export class BackandAuthService {
     this.config.authToken = { header_name: '', header_value: '' };
     localStorage.removeItem('auth_token');
     localStorage.removeItem('username');
+    localStorage.removeItem('role');
   }
 
   public currentUser() {
@@ -125,6 +126,7 @@ export class BackandAuthService {
 
   private getToken(res) {
     console.log(res);
+    localStorage.setItem('role', res.json().role);
     return res.json().access_token;
   }
 

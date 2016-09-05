@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
+import { BackandAuthService } from './shared';
+
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -8,12 +10,17 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
 
-  constructor(private router: Router) {
+  constructor(private backAuth: BackandAuthService, private router: Router) {
 
   }
 
   toHome() {
+    this.backAuth.clearAuthToken();
     this.router.navigate(['']);
+  }
+
+  toLogin() {
+    this.router.navigate(['login']);
   }
 
   toOffice() {

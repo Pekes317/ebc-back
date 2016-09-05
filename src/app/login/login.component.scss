@@ -1,0 +1,12 @@
+@import '../theme/app.material';
+.login {
+	
+	.title {
+		color: md-color($md-accent);
+	}
+
+	.fields {
+		display: flex;
+		flex-direction: column;
+	}
+}
