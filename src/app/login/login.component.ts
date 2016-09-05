@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 import { BackandAuthService } from '../shared';
 
@@ -13,7 +14,7 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   password: FormControl = new FormControl('', Validators.required);
 
-  constructor(private backAuth: BackandAuthService) {
+  constructor(private backAuth: BackandAuthService, private router: Router) {
     this.loginForm = new FormGroup({
       username: this.email,
       password: this.password
@@ -27,7 +28,13 @@ export class LoginComponent implements OnInit {
     let creds = form.value
     this.backAuth.getAuthToken(creds.username, creds.password)
       .subscribe(
-        data => form.reset('')
-      );
+      data => {
+        if (!this.backAuth.redirectUrl) {
+          console.log('not nav');
+        } else {
+          this.router.navigate([this.backAuth.redirectUrl]);
+          this.backAuth.redirectUrl = undefined;
+        }
+      });
   }
 }

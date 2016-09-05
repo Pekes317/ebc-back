@@ -6,6 +6,7 @@ import { BackandConfigService } from './backand-config.service';
 
 @Injectable()
 export class BackandAuthService {
+  redirectUrl: string;
 
   constructor(private config: BackandConfigService, private http: Http) { }
 

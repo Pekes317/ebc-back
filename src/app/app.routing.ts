@@ -1,7 +1,7 @@
 import { ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { TitleResolve } from './shared';
+import { AuthGuard, TitleResolve } from './shared';
 import { HomeComponent } from './home';
 import { LoginComponent } from './login';
 
@@ -11,6 +11,7 @@ const appRoutes: Routes = [
 ];
 
 export const appRoutingProviders: any[] = [
+	AuthGuard,
 	TitleResolve
 ];
 
