@@ -28,12 +28,13 @@ export class LoginComponent implements OnInit {
     let creds = form.value
     this.backAuth.getAuthToken(creds.username, creds.password)
       .subscribe(
-      data => {
+      data => { 
+        this.loginForm.reset();
         if (!this.backAuth.redirectUrl) {
           console.log('not nav');
         } else {
           this.router.navigate([this.backAuth.redirectUrl]);
-          this.backAuth.redirectUrl = undefined;
+          this.backAuth.redirectUrl = undefined;     
         }
       });
   }

@@ -17,7 +17,7 @@ export class BackandAuthService {
       newPassword: newPassword
     });
 
-    var $obs = this.http.post(url, creds, {
+    let $obs = this.http.post(url, creds, {
       headers: this.config.authHeader
     }).map(res => res);
 
@@ -36,8 +36,7 @@ export class BackandAuthService {
   public clearAuthToken() {
     this.config.authToken = { header_name: '', header_value: '' };
     localStorage.removeItem('auth_token');
-    localStorage.removeItem('username');
-    localStorage.removeItem('role');
+    localStorage.removeItem('tokenData');
   }
 
   public currentUser() {
@@ -56,15 +55,43 @@ export class BackandAuthService {
     let header = new Headers();
 
     header.append('Content-Type', 'application/x-www-form-urlencoded');
-    
-    var $obs = this.http.post(url, creds, {
+
+    let $obs = this.http.post(url, creds, {
       headers: header
     }).map(res => this.getToken(res));
 
     $obs.subscribe(
       data => {
-        this.setTokenHeader(data)
-        localStorage.setItem('username', username);
+        this.setTokenHeader(data);
+      },
+      err => {
+        console.log(err);
+      },
+      () => console.log('Finish Auth'));
+
+    return $obs;
+  }
+
+  public refreshToken() {
+    let tokenData = JSON.parse(localStorage.getItem('tokenData'));
+    let creds = `username=${tokenData.username}` +
+      `&refreshToken=${tokenData.refresh_token}` +
+      `&appName=${tokenData.appName}` +
+      `&grant_type=password`;
+    console.log(creds);
+    let url = this.config.apiUrl + this.config.urls.token;
+    let header = new Headers();
+    this.clearAuthToken();
+    header.append('Content-Type', 'application/x-www-form-urlencoded');
+
+    let $obs = this.http.post(url, creds, {
+      headers: header
+    }).map(res => this.getToken(res));
+
+    $obs.subscribe(
+      data => {
+        console.log(data);
+        this.setTokenHeader(data);
       },
       err => {
         console.log(err);
@@ -82,10 +109,10 @@ export class BackandAuthService {
     });
     let header = new Headers();
     header.append('SignUpToken', this.config.signUpToken);
-    
-    var $obs = this.http.post(url, creds, {
-        headers: header
-      }).map(res => res);
+
+    let $obs = this.http.post(url, creds, {
+      headers: header
+    }).map(res => res);
 
     $obs.subscribe(
       data => {
@@ -104,8 +131,8 @@ export class BackandAuthService {
     let creds = JSON.stringify(data);
     let header = new Headers();
     header.append('SignUpToken', this.config.signUpToken);
-    
-    var $obs = this.http.post(url, creds, {
+
+    let $obs = this.http.post(url, creds, {
       headers: header
     });
 
@@ -127,7 +154,7 @@ export class BackandAuthService {
 
   private getToken(res) {
     console.log(res);
-    localStorage.setItem('role', res.json().role);
+    localStorage.setItem('tokenData', JSON.stringify(res.json()));
     return res.json().access_token;
   }
 
