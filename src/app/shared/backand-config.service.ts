@@ -26,6 +26,10 @@ export class BackandConfigService {
   username: string;
 
   constructor() {
+    
+  }
+
+  authCheck() {
     let storedToken = localStorage.getItem('auth_token');
 
     if (storedToken) {
@@ -33,7 +37,7 @@ export class BackandConfigService {
       this.authType = this.authToken.header_name == 'Anonymous' ? 'Anonymous' : 'Token';
       this.authStatus = 'OK';
       if (this.authType == 'Token') {
-        this.username = localStorage.getItem('username');
+        this.username = JSON.parse(localStorage.getItem('tokenData')).username;
       }
     } else {
       this.authToken = { header_name: '', header_value: '' };

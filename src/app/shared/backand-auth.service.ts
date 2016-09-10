@@ -1,4 +1,3 @@
-import 'rxjs/Rx';
 import { Http, Headers } from '@angular/http';
 import { Injectable } from '@angular/core';
 
@@ -26,7 +25,7 @@ export class BackandAuthService {
         console.log(data);
       },
       err => {
-        console.log(err);
+        console.error(err);
       },
       () => console.log('Finish Change Password'));
 
@@ -65,7 +64,7 @@ export class BackandAuthService {
         this.setTokenHeader(data);
       },
       err => {
-        console.log(err);
+        console.error(err);
       },
       () => console.log('Finish Auth'));
 
@@ -81,7 +80,7 @@ export class BackandAuthService {
     console.log(creds);
     let url = this.config.apiUrl + this.config.urls.token;
     let header = new Headers();
-    this.clearAuthToken();
+
     header.append('Content-Type', 'application/x-www-form-urlencoded');
 
     let $obs = this.http.post(url, creds, {
@@ -90,11 +89,10 @@ export class BackandAuthService {
 
     $obs.subscribe(
       data => {
-        console.log(data);
         this.setTokenHeader(data);
       },
       err => {
-        console.log(err);
+        console.error(err);
       },
       () => console.log('Finish Auth'));
 
@@ -119,7 +117,7 @@ export class BackandAuthService {
         console.log(data);
       },
       err => {
-        console.log(err);
+        console.error(err);
       },
       () => console.log('Finish Request Reset Password'));
 
@@ -141,7 +139,7 @@ export class BackandAuthService {
         console.log(data);
       },
       err => {
-        console.log(err);
+        console.error(err);
       },
       () => console.log('Finish Sign Up'));
 
@@ -152,6 +150,9 @@ export class BackandAuthService {
     this.setAnonymousHeader();
   }
 
+  private checkErrors(err) {
+
+  }
   private getToken(res) {
     console.log(res);
     localStorage.setItem('tokenData', JSON.stringify(res.json()));
@@ -176,5 +177,6 @@ export class BackandAuthService {
 
   private storeAuthToken(token) {
     localStorage.setItem('auth_token', JSON.stringify(token));
+    this.config.authCheck();
   }
 }

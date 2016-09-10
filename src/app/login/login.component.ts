@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-
 import { BackandAuthService } from '../shared';
 
 @Component({
@@ -28,14 +27,21 @@ export class LoginComponent implements OnInit {
     let creds = form.value
     this.backAuth.getAuthToken(creds.username, creds.password)
       .subscribe(
-      data => { 
+      data => {
         this.loginForm.reset();
-        if (!this.backAuth.redirectUrl) {
-          console.log('not nav');
-        } else {
-          this.router.navigate([this.backAuth.redirectUrl]);
-          this.backAuth.redirectUrl = undefined;     
-        }
-      });
+        this.isRedirected();
+      },
+      err => this.loginForm.reset);
+  }
+
+
+  isRedirected() {
+    if (this.backAuth.redirectUrl === undefined) {
+      console.log('not nav');
+    } else {
+      console.log('nav');
+      this.router.navigate([this.backAuth.redirectUrl]);
+      this.backAuth.redirectUrl = undefined;
+    }
   }
 }
