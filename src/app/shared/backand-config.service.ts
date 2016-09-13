@@ -50,8 +50,12 @@ export class BackandConfigService {
     return authHeader;
   }
 
-  public extractErrorMessage(err) {
-    return JSON.parse(err._body).error_description;
+  public errorHander(res) {
+    if(res.status === 401) {
+     localStorage.clear();
+    }
+    this.authStatus = this.extractErrorMessage(res);
+    this.logError(res);
   }
 
   public getAuthType(): string {
@@ -65,8 +69,12 @@ export class BackandConfigService {
   public getUsername(): string {
     return this.username;
   }
+  
+  private extractErrorMessage(err) {
+    return JSON.parse(err._body).error_description;
+  }
 
-  public logError(err) {
+  private logError(err) {
     console.error('Error: ' + err);
   }
 }

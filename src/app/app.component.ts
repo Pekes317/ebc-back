@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { BackandAuthService } from './shared';
+import { BackandAuthService } from './shared/backand-auth.service';
 
 @Component({
   selector: 'app-root',

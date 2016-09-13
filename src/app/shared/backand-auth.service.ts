@@ -40,9 +40,15 @@ export class BackandAuthService {
 
   public currentUser() {
     const userQuery = `${this.config.apiUrl}/1/query/data/CurrentUser`;
-    return this.http.get(userQuery, {
+    let $obs = this.http.get(userQuery, {
       headers: this.config.authHeader
     }).map(res => res.json());
+
+    $obs.subscribe(
+      data => console.log(data),
+      err => this.config.errorHander(err),
+      () => console.log('Current User')
+    )
   }
 
   public getAuthToken(username, password) {
@@ -64,7 +70,7 @@ export class BackandAuthService {
         this.setTokenHeader(data);
       },
       err => {
-        console.error(err);
+        this.config.errorHander(err);
       },
       () => console.log('Finish Auth'));
 
@@ -92,9 +98,9 @@ export class BackandAuthService {
         this.setTokenHeader(data);
       },
       err => {
-        console.error(err);
+       this.config.errorHander(err);
       },
-      () => console.log('Finish Auth'));
+      () => console.log('Finish Re-Auth'));
 
     return $obs;
   }
@@ -117,7 +123,7 @@ export class BackandAuthService {
         console.log(data);
       },
       err => {
-        console.error(err);
+        this.config.errorHander(err);
       },
       () => console.log('Finish Request Reset Password'));
 
@@ -139,7 +145,7 @@ export class BackandAuthService {
         console.log(data);
       },
       err => {
-        console.error(err);
+        this.config.errorHander(err);
       },
       () => console.log('Finish Sign Up'));
 
@@ -150,9 +156,6 @@ export class BackandAuthService {
     this.setAnonymousHeader();
   }
 
-  private checkErrors(err) {
-
-  }
   private getToken(res) {
     console.log(res);
     localStorage.setItem('tokenData', JSON.stringify(res.json()));

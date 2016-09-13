@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { BackandAuthService } from '../shared';
+import { BackandAuthService } from '../shared/backand-auth.service';
 
 @Component({
   selector: 'app-login',
