@@ -1,8 +1,6 @@
 {
 	"root": true,
 
-	"extends": "@ljharb",
-
 	"rules": {
 		"callback-return": [0],
 		"complexity": [1],
