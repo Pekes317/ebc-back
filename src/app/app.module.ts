@@ -9,7 +9,7 @@ import { BackandAuthService } from './shared/backand-auth.service';
 import { BackandConfigService } from './shared/backand-config.service';
 import { HomeComponent } from './home';
 import { appRoutingProviders, routing } from './app.routing';
-import { MaterialModule } from './app.md.module';
+import { MaterialModule } from './app-md.module';
 import { LoginComponent } from './login';
 
 @NgModule({

@@ -12,6 +12,7 @@ export class LoginComponent implements OnInit {
   email: FormControl = new FormControl('', Validators.required);
   loginForm: FormGroup;
   password: FormControl = new FormControl('', Validators.required);
+  redirect: boolean = false;
 
   constructor(private backAuth: BackandAuthService, private router: Router) {
     this.loginForm = new FormGroup({
@@ -21,6 +22,9 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
+    if (this.backAuth.redirectUrl !== undefined) {
+      this.redirect = true;
+    }
   }
 
   logIn(form) {
@@ -29,19 +33,16 @@ export class LoginComponent implements OnInit {
       .subscribe(
       data => {
         this.loginForm.reset();
-        this.isRedirected();
+        if (this.redirect) {
+          this.isRedirected();
+        }
       },
-      err => this.loginForm.reset);
+      err => this.loginForm.reset());
   }
 
 
   isRedirected() {
-    if (this.backAuth.redirectUrl === undefined) {
-      console.log('not nav');
-    } else {
-      console.log('nav');
-      this.router.navigate([this.backAuth.redirectUrl]);
-      this.backAuth.redirectUrl = undefined;
-    }
+    this.router.navigate([this.backAuth.redirectUrl]);
+    this.backAuth.redirectUrl = undefined;
   }
 }

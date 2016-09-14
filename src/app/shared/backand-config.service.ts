@@ -26,7 +26,7 @@ export class BackandConfigService {
   username: string;
 
   constructor() {
-    
+     this.authToken = { header_name: '', header_value: '' };
   }
 
   authCheck() {

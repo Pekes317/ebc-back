@@ -3,9 +3,12 @@ import { CommonModule } from '@angular/common';
 import { routing } from './back-office.routes';
 import { BackOfficeComponent } from './back-office.component';
 
+import { MaterialModule } from '../app-md.module';
+
 @NgModule({
   imports: [
     CommonModule,
+    MaterialModule,
     routing
   ],
   declarations: [
