@@ -1,0 +1,10 @@
+@import '../theme/app.material';
+
+.back {
+	width: 100vw;
+	transform: translate(-.5rem, -.5rem);
+
+	.office {
+		padding: .5rem;
+	}
+}

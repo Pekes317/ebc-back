@@ -1,9 +1,15 @@
-<md-sidenav-layout>
+<div class="back">
+  <md-sidenav-layout>
+    <md-sidenav #menu>
 
-  <md-sidenav>
-    Drawer panel
-  </md-sidenav>
-  <p>
-    back-office works!
-  </p>
-</md-sidenav-layout>
+    </md-sidenav>
+    <button md-icon-button (click)="menu.open()">
+      <md-icon>chevron_right</md-icon>
+    </button>
+    <div class="office">
+      <p>
+        back-office works!
+      </p>
+    </div>
+  </md-sidenav-layout>
+</div>
