@@ -1,4 +1,5 @@
-@import '../theme/app.material';
+@import '../theme/app.material',
+ '../theme/material/sidenav-mixins';
 
 .back {
 	width: 100vw;
@@ -6,5 +7,18 @@
 
 	.office {
 		padding: .5rem;
+
+		.crumb {
+			background-color: md-color($md-accent);	
+			color: map-get($md-grey, 0);
+			border-radius: .1rem;
+			height: 2.5rem;
+			@include md-elevation(1);
+
+			.trail {
+				display: inline-block;
+				vertical-align: middle;
+			}
+		}
 	}
 }

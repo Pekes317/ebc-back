@@ -27,6 +27,11 @@ export class LoginComponent implements OnInit {
     }
   }
 
+  isRedirected() {
+    this.router.navigate([this.backAuth.redirectUrl]);
+    this.backAuth.redirectUrl = undefined;
+  }
+
   logIn(form) {
     let creds = form.value
     this.backAuth.getAuthToken(creds.username, creds.password)
@@ -40,9 +45,7 @@ export class LoginComponent implements OnInit {
       err => this.loginForm.reset());
   }
 
-
-  isRedirected() {
-    this.router.navigate([this.backAuth.redirectUrl]);
-    this.backAuth.redirectUrl = undefined;
+  toHome() {
+    this.router.navigate(['']);
   }
 }

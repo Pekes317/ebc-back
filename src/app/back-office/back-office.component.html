@@ -3,13 +3,15 @@
     <md-sidenav #menu>
 
     </md-sidenav>
-    <button md-icon-button (click)="menu.open()">
-      <md-icon>chevron_right</md-icon>
-    </button>
     <div class="office">
-      <p>
-        back-office works!
-      </p>
+      <div class="crumb">
+        <button md-icon-button (click)="menu.open()">
+          <md-icon>menu</md-icon>
+        </button>
+        <span class="trail">| &ensp;Back Office</span>
+      </div>
+      <!-- Routed views go here -->
+      <router-outlet></router-outlet>
     </div>
   </md-sidenav-layout>
 </div>

@@ -18,3 +18,7 @@
 .space-align {
 	flex: 1 1 auto;
 }
+
+.warning {
+	color: map-get($md-red, 500);
+}
