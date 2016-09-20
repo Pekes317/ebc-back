@@ -9,6 +9,7 @@ import { BackandAuthService } from './shared/backand-auth.service';
   styleUrls: ['app.component.scss']
 })
 export class AppComponent {
+  title: string;
 
   constructor(private backAuth: BackandAuthService, private router: Router) {
 
