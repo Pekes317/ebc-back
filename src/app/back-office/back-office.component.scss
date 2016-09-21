@@ -2,10 +2,33 @@
  '../theme/material/sidenav-mixins';
 
 .back {
-	width: 100vw;
-	transform: translate(-.5rem, -.5rem);
+	@include md-fullscreen;
+	z-index: 2;
+
+	.menu {
+		height: 100vh;
+		min-width: 25vw;
+
+		.header {
+		
+			.space-align {
+				flex: 1 1 auto;
+			}
+
+			img {
+				height: 70%;
+				border-radius: 50%;
+			}
+		}
+
+		.btns {
+			display: flex;
+			flex-direction: column;
+		}
+	}
 
 	.office {
+		margin-top: 4.5rem;
 		padding: .5rem;
 
 		.crumb {

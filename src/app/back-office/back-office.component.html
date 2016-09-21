@@ -1,17 +1,25 @@
-<div class="back">
-  <md-sidenav-layout>
-    <md-sidenav #menu>
-
-    </md-sidenav>
-    <div class="office">
-      <div class="crumb">
-        <button md-icon-button (click)="menu.open()">
-          <md-icon>menu</md-icon>
-        </button>
-        <span class="trail">| &ensp;Back Office</span>
-      </div>
-      <!-- Routed views go here -->
-      <router-outlet></router-outlet>
+<md-sidenav-layout class="back">
+  <md-sidenav #menu class="menu">
+    <md-toolbar color="accent" class="header">
+      <span>
+        {{backUser?.firstName}}
+      </span>
+      <span class="space-align"></span>
+      <img [src]="backUser?.pic" />
+    </md-toolbar>
+    <div class="btns">
+      <a [routerLink]="['/']" md-button>Home</a>
+      <button md-button>something</button>
     </div>
-  </md-sidenav-layout>
-</div>
+  </md-sidenav>
+  <div class="office">
+    <div class="crumb">
+      <button md-icon-button (click)="menu.open()">
+        <md-icon>menu</md-icon>
+      </button>
+      <span class="trail">| &ensp;Back Office</span>
+    </div>
+    <!-- Routed views go here -->
+    <router-outlet></router-outlet>
+  </div>
+</md-sidenav-layout>

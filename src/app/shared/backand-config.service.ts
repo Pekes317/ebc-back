@@ -41,6 +41,7 @@ export class BackandConfigService {
       }
     } else {
       this.authToken = { header_name: '', header_value: '' };
+      this.authStatus = 'Not Authorized';
     }
   }
 

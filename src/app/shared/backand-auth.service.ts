@@ -39,6 +39,7 @@ export class BackandAuthService {
   }
 
   public currentUser() {
+    this.config.authCheck();
     const userQuery = `${this.config.apiUrl}/1/query/data/CurrentUser`;
     let $obs = this.http.get(userQuery, {
       headers: this.config.authHeader
@@ -49,6 +50,8 @@ export class BackandAuthService {
       err => this.config.errorHander(err),
       () => console.log('Current User')
     )
+    
+    return $obs;
   }
 
   public getAuthToken(username, password) {
