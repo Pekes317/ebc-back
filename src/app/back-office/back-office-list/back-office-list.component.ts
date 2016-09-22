@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./back-office-list.component.scss']
 })
 export class BackOfficeListComponent implements OnInit {
+  
 
   constructor() { }
 

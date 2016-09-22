@@ -8,8 +8,9 @@
       <img [src]="backUser?.pic" />
     </md-toolbar>
     <div class="btns">
-      <a [routerLink]="['/']" md-button>Home</a>
-      <button md-button>something</button>
+      <a [routerLink]="['/']" md-button><md-icon>home</md-icon></a>
+      <a [routerLink]="['/back-office']" md-button (click)="menu.close()">DashBoard</a>
+      <a [routerLink]="['/back-office/items']" md-button (click)="menu.close()">Items</a>
     </div>
   </md-sidenav>
   <div class="office">

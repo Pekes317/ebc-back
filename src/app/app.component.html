@@ -1,19 +1,17 @@
 <md-toolbar color="primary" class="navbar">
   <span>EBC: The App</span>
   <span class="space-align"></span>
-  <span>
-    <button md-icon-button [md-menu-trigger-for]="menu">
-      <md-icon>more_vert</md-icon>
+  <button md-icon-button [md-menu-trigger-for]="menu">
+    <md-icon>more_vert</md-icon>
     </button>
-  </span>
 </md-toolbar>
 <!-- Routed views go here -->
 <router-outlet class="content"></router-outlet>
 <md-toolbar class="foot">
   <span>&copy; 2016 EBC: Electronic Business Card.</span>
 </md-toolbar>
-<md-menu x-position="before" #menu="mdMenu">
+<md-menu x-position="before"  #menu="mdMenu">
   <button md-menu-item (click)="toLogin()">Login</button>
   <button md-menu-item (click)="toOffice()">Office</button>
-  <button md-menu-item class="warning" (click)="toHome()">Sign Out</button>
+  <button md-menu-item class="warning"  (click)="toHome()">Sign Out</button>
 </md-menu>

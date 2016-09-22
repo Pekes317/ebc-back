@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { BackOfficeModule } from './back-office';
 import { BackandAuthService } from './shared/backand-auth.service';
 import { BackandConfigService } from './shared/backand-config.service';
+import { BackandItemService } from './shared/backand-item.service';
 import { HomeComponent } from './home';
 import { appRoutingProviders, routing } from './app.routing';
 import { MaterialModule } from './app-md.module';
@@ -26,6 +27,7 @@ import { LoginComponent } from './login';
     appRoutingProviders,
     BackandAuthService,
     BackandConfigService,
+    BackandItemService,
     Title
   ],
   bootstrap: [AppComponent]

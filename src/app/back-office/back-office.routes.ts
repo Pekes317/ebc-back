@@ -3,6 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { AuthGuard, TitleResolve } from '../shared';
 import { BackOfficeComponent } from './back-office.component';
+import { BackOfficeHomeComponent } from './back-office-home/back-office-home.component';
+import { BackOfficeListComponent } from './back-office-list/back-office-list.component';
 
 const officeRoutes: Routes = [
 	{
@@ -10,7 +12,17 @@ const officeRoutes: Routes = [
 		component: BackOfficeComponent,
 		canActivate: [AuthGuard],
 		data: { title: 'Back Office' },
-		resolve: { title: TitleResolve }
+		resolve: { title: TitleResolve },
+		children: [
+			{
+				path: '',
+				component: BackOfficeHomeComponent
+			},
+			{
+				path: 'items',
+				component: BackOfficeListComponent
+			}
+		]
 	 }
 ];
 

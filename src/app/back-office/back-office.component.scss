@@ -3,7 +3,6 @@
 
 .back {
 	@include md-fullscreen;
-	z-index: 2;
 
 	.menu {
 		height: 100vh;
@@ -24,6 +23,10 @@
 		.btns {
 			display: flex;
 			flex-direction: column;
+
+			md-icon {
+				transform: translateY(.4rem);
+			}
 		}
 	}
 
