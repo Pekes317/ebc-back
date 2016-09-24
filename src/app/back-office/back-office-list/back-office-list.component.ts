@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, DoCheck } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { BackandItemService } from '../../shared/backand-item.service';
@@ -9,11 +9,17 @@ import { BackandItem } from '../../shared/';
   templateUrl: './back-office-list.component.html',
   styleUrls: ['./back-office-list.component.scss']
 })
-export class BackOfficeListComponent implements OnInit {
+export class BackOfficeListComponent implements DoCheck, OnInit {
+  isChecked: boolean = false;
   items: Array<BackandItem>;
+  isSelected: Array<number> = [];
   table: string;
 
   constructor(private backand: BackandItemService, private route: ActivatedRoute) { }
+
+  ngDoCheck() {
+    this.checked();
+  }
 
   ngOnInit() {
     this.route.params.subscribe(
@@ -25,4 +31,16 @@ export class BackOfficeListComponent implements OnInit {
       })
   }
 
+  checked() {
+    if (this.isSelected.length !== 0 ) {
+      this.isChecked = true;
+    } else {
+      this.isChecked = false;
+    }
+  }
+
+  selected(item) {
+    this.isSelected.push(item);
+    console.log(this.isSelected);
+  }
 }

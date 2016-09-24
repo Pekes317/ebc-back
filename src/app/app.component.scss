@@ -31,5 +31,5 @@
 }
 
 .warning {
-	color: map-get($md-red, 500);
+	color: md-color($md-warn);
 }

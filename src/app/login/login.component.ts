@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+
 import { BackandAuthService } from '../shared/backand-auth.service';
+import { EmailValidator } from '../shared';
 
 @Component({
   selector: 'app-login',
@@ -9,7 +11,7 @@ import { BackandAuthService } from '../shared/backand-auth.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  email: FormControl = new FormControl('', Validators.required);
+  email: FormControl = new FormControl('', [Validators.required, EmailValidator.validate]);
   loginForm: FormGroup;
   password: FormControl = new FormControl('', Validators.required);
   redirect: boolean = false;
@@ -18,7 +20,7 @@ export class LoginComponent implements OnInit {
     this.loginForm = new FormGroup({
       username: this.email,
       password: this.password
-    })
+    });
   }
 
   ngOnInit() {

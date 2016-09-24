@@ -1,7 +1,11 @@
 <md-card class="main">
-	<md-card-title class="top">
+	<md-card-title class="top" [class.select]="isChecked">
 		<span>{{table}}</span>
-		<span>Action</span>
+		<span>
+			<button md-icon-button>
+				<md-icon>add</md-icon>
+			</button>
+		</span>
 	</md-card-title>
 	<table class="head">
 		<tr>
@@ -24,7 +28,7 @@
 		</tr>
 		<tr *ngFor="let item of items">
 			<td class="check">
-				<md-checkbox></md-checkbox>
+				<md-checkbox (change)="selected(item?.id)"></md-checkbox>
 			</td>
 			<td>
 				<button md-icon-button md-ripple>

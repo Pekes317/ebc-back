@@ -1,28 +1,25 @@
-@import '../../theme/app.material';
-
-@mixin bottom-border {
-	border-bottom-style: solid;
-	border-bottom-color: map-get($md-grey, 400);
-	border-bottom-width: .1rem;
-}
-
-@mixin row-padding {
-	padding-left: 1rem;
-	padding-right: 1rem;
-}
+@import '../../theme/app.material',
+	'../../theme/app.mixin';
 
 .main {
 	max-height: 65vh;
 	margin-top: 1rem;
+	padding-top: 0;
 	padding-left: 0;
 	padding-right: 0;
 	overflow: auto;
 
 	.top {
+		padding-top: 1rem;
+		padding-bottom: 1rem;
 		display: flex;
 		justify-content: space-between;
 		text-transform: capitalize;
 		@include row-padding;
+	}
+
+	.select {
+		background-color: transparentize(md-color($md-primary), .5);
 	}
 
 	.head {
@@ -30,13 +27,14 @@
 		border-spacing: 0;
 		
 		tr:hover {
+			cursor: default;
 			background-color: transparentize(map-get($md-grey, 200), .6);
 		}
 	
 		th {
 			@include bottom-border;
 			@include row-padding;
-			color: map-get($md-grey, 400);
+			color: map-get($md-grey, 500);
 		}
 
 		.check {
