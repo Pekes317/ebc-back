@@ -11,12 +11,14 @@ import { BackandItem } from '../../shared/';
 })
 export class BackOfficeListComponent implements OnInit {
   items: Array<BackandItem>;
+  table: string;
 
   constructor(private backand: BackandItemService, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.route.params.subscribe(
       data => {
+        this.table = data['list'];
         this.backand.getList(data['list']).subscribe(
           list => this.items = list.data
         );

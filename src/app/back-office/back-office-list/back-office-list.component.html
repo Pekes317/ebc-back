@@ -1,3 +1,46 @@
 <md-card class="main">
-  
+	<md-card-title class="top">
+		<span>{{table}}</span>
+		<span>Action</span>
+	</md-card-title>
+	<table class="head">
+		<tr>
+			<th>
+				<md-icon>check_box</md-icon>
+			</th>
+			<th>
+				<md-icon>edit</md-icon>
+			</th>
+			<th>Id</th>
+			<th>Name</th>
+			<th>Description</th>
+			<th>SVG</th>
+			<th>Image</th>
+			<th>Extra Data</th>
+			<th>Flyer</th>
+			<th>Ready</th>
+			<th>Users</th>
+			<th>Item</th>
+		</tr>
+		<tr *ngFor="let item of items">
+			<td class="check">
+				<md-checkbox></md-checkbox>
+			</td>
+			<td>
+				<button md-icon-button md-ripple>
+					<md-icon>edit</md-icon>
+				</button>
+			</td>
+			<td>{{item?.id}}</td>
+			<td>{{item?.name}}</td>
+			<td>{{item?.desc}}</td>
+			<td>{{item?.media}}</td>
+			<td>{{item?.pic}}</td>
+			<td>{{item?.data}}</td>
+			<td>{{item?.fluer}}</td>
+			<td>{{item?.ready}}</td>
+			<td>{{item?.user}}</td>
+			<td>{{item?.item}}</td>
+		</tr>
+	</table>
 </md-card>
