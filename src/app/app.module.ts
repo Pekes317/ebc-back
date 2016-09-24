@@ -27,8 +27,7 @@ import { LoginComponent } from './login';
     appRoutingProviders,
     BackandAuthService,
     BackandConfigService,
-    BackandItemService,
-    Title
+    BackandItemService
   ],
   bootstrap: [AppComponent]
 })

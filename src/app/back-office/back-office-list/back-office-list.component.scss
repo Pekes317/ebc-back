@@ -1,0 +1,13 @@
+@import '../../theme/app.material';
+
+@mixin bottom-border {
+	border-bottom-style: solid;
+	border-bottom-color: map-get($md-grey, 400);
+	border-bottom-width: .1rem;
+}
+
+.main {
+	margin-top: 1rem;
+	padding-left: 0;
+	padding-right: 0;
+}
