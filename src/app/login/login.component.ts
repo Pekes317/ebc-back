@@ -26,6 +26,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     if (this.backAuth.redirectUrl !== undefined) {
       this.redirect = true;
+      console.log(this.backAuth.redirectUrl);
     }
   }
 

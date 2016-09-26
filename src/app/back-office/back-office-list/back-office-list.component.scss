@@ -1,54 +1,91 @@
-@import '../../theme/app.material',
-	'../../theme/app.mixin';
+	@import '../../theme/app.material',
+'../../theme/app.mixin';
 
 .main {
-	max-height: 65vh;
+	max-height: 67vh;
 	margin-top: 1rem;
 	padding-top: 0;
 	padding-left: 0;
 	padding-right: 0;
-	overflow: auto;
+	overflow: hidden;
 
 	.top {
 		padding-top: 1rem;
 		padding-bottom: 1rem;
 		display: flex;
 		justify-content: space-between;
-		text-transform: capitalize;
 		@include row-padding;
+
+		.title {
+			text-transform: capitalize;
+		}
 	}
 
 	.select {
-		background-color: transparentize(md-color($md-primary), .5);
+		background-color: md-color($md-primary, 100, .5);
+
+		span:first-child {
+			color: md-color($md-primary);
+			font-size: 1rem;
+		}
 	}
 
-	.head {
+	.list {
 		width: 100%;
-		border-spacing: 0;
-		
-		tr:hover {
-			cursor: default;
-			background-color: transparentize(map-get($md-grey, 200), .6);
-		}
-	
-		th {
-			@include bottom-border;
-			@include row-padding;
-			color: map-get($md-grey, 500);
-		}
+		max-height: 57vh;
+		overflow: auto;
 
-		.check {
-				padding-bottom: 1rem;
-				padding-right: 3px;
-				text-align: center;
+		.data {
+			width: 100%;
+			border-spacing: 0;
+			table-layout: fixed;
+
+			tr:hover {
+				cursor: default;
+
+				&.data {
+					background-color: transparentize(map-get($md-grey, 200), .5);
+				}
 			}
 
-		td {
-			@include bottom-border;
-			@include row-padding;
-			max-width: 5vw;
-			overflow: hidden;
-			text-overflow: ellipsis;
+			.head {
+				width: 100%;
+								
+				th {
+					@include bottom-border;
+					@include row-padding;
+					color: map-get($md-grey, 500);
+					background-color: map-get($md-grey, 0);
+				}
+			}
+
+			.list {
+
+				.check {
+					padding-bottom: 1rem;
+					padding-right: 3px;
+					text-align: center;
+				}
+
+				td {
+					@include bottom-border;
+					@include row-padding;
+					max-width: 5vw;
+					overflow: hidden;
+					text-overflow: ellipsis;
+				}
+			}
+
+			.foot {
+				
+				td {
+					padding-top: 1.3rem;
+					@include row-padding;
+					max-width: 5vw;
+					overflow: hidden;
+					text-overflow: ellipsis;
+				}
+			}
 		}
 	}
 }

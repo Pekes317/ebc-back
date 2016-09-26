@@ -20,7 +20,9 @@ const officeRoutes: Routes = [
 			},
 			{
 				path: 'items',
-				component: BackOfficeListComponent
+				component: BackOfficeListComponent,
+				data: { title: 'Back Office', list: 'items' },
+				resolve: { title: TitleResolve }
 			}
 		]
 	 }

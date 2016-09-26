@@ -1,50 +1,65 @@
 <md-card class="main">
 	<md-card-title class="top" [class.select]="isChecked">
-		<span>{{table}}</span>
+		<span *ngIf="!isChecked" class="title">{{table}}</span>
+		<span *ngIf="isChecked">{{isSelected.length}} items selected</span>
 		<span>
-			<button md-icon-button>
+			<button *ngIf="!isChecked" md-icon-button (click)="addItem()">
 				<md-icon>add</md-icon>
+			</button>
+			<button *ngIf="isChecked" md-icon-button (click)="delete()">
+				<md-icon>delete</md-icon>
 			</button>
 		</span>
 	</md-card-title>
-	<table class="head">
-		<tr>
-			<th>
-				<md-icon>check_box</md-icon>
-			</th>
-			<th>
-				<md-icon>edit</md-icon>
-			</th>
-			<th>Id</th>
-			<th>Name</th>
-			<th>Description</th>
-			<th>SVG</th>
-			<th>Image</th>
-			<th>Extra Data</th>
-			<th>Flyer</th>
-			<th>Ready</th>
-			<th>Users</th>
-			<th>Item</th>
-		</tr>
-		<tr *ngFor="let item of items">
-			<td class="check">
-				<md-checkbox (change)="selected(item?.id)"></md-checkbox>
-			</td>
-			<td>
-				<button md-icon-button md-ripple>
-					<md-icon>edit</md-icon>
-				</button>
-			</td>
-			<td>{{item?.id}}</td>
-			<td>{{item?.name}}</td>
-			<td>{{item?.desc}}</td>
-			<td>{{item?.media}}</td>
-			<td>{{item?.pic}}</td>
-			<td>{{item?.data}}</td>
-			<td>{{item?.fluer}}</td>
-			<td>{{item?.ready}}</td>
-			<td>{{item?.user}}</td>
-			<td>{{item?.item}}</td>
-		</tr>
-	</table>
+	<div class="list">
+		<table class="data">
+			<thead class="head">
+				<tr>
+					<th>
+						<md-icon>check_box</md-icon>
+					</th>
+					<th>
+						<md-icon>edit</md-icon>
+					</th>
+					<th>Id</th>
+					<th>Name</th>
+					<th>Description</th>
+					<th>SVG</th>
+					<th>Image</th>
+					<th>Extra Data</th>
+					<th>Flyer</th>
+					<th>Ready</th>
+					<th>Users</th>
+					<th>Item</th>
+				</tr>
+			</thead>
+			<tbody class="list">
+				<tr *ngFor="let item of items" class="data">
+					<td class="check">
+						<md-checkbox (change)="selected(item?.id)"></md-checkbox>
+					</td>
+					<td>
+						<button md-icon-button md-ripple>
+							<md-icon>edit</md-icon>
+						</button>
+					</td>
+					<td>{{item?.id}}</td>
+					<td>{{item?.name}}</td>
+					<td>{{item?.desc}}</td>
+					<td>{{item?.media}}</td>
+					<td>{{item?.pic}}</td>
+					<td>{{item?.data}}</td>
+					<td>{{item?.fluer}}</td>
+					<td>{{item?.ready}}</td>
+					<td>{{item?.user}}</td>
+					<td>{{item?.item}}</td>
+				</tr>
+			</tbody>
+			<tfoot class="foot">
+				<tr>
+					<td colspan="12">&nbsp;</td>
+				</tr>
+			</tfoot>
+		</table>
+	</div>
 </md-card>

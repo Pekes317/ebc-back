@@ -6,6 +6,7 @@ import { BackOfficeComponent } from './back-office.component';
 import { MaterialModule } from '../app-md.module';
 import { BackOfficeHomeComponent } from './back-office-home/back-office-home.component';
 import { BackOfficeListComponent } from './back-office-list/back-office-list.component';
+import { BackOfficeDetailComponent } from './back-office-detail/back-office-detail.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { BackOfficeListComponent } from './back-office-list/back-office-list.com
   declarations: [
     BackOfficeComponent,
     BackOfficeHomeComponent,
-    BackOfficeListComponent
+    BackOfficeListComponent,
+    BackOfficeDetailComponent
   ]
 })
 export class BackOfficeModule { }

@@ -26,9 +26,8 @@ export class BackandItemService {
     return $obs;
   }
 
-  public deleteItem(list, id, data) {
+  public deleteItem(list, id) {
     let url = `${this.baseUrl}/${list}/${id}`;
-    let update = JSON.stringify(data);
 
     let $obs = this.http.delete(url, {
       headers: this.config.authHeader
