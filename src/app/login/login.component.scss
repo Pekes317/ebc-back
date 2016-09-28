@@ -1,14 +1,13 @@
-@import '../theme/app.material',
-	'../theme/app.mixin';
+@import	'../theme/app.mixin';
 
 @include crumb;
 
 .login {
 	margin-top: .5rem;
 	
-	.title {
-		color: md-color($md-accent);
-	}
+	/*.title {
+		color: $accent;
+	}*/
 
 	.fields {
 		display: flex;

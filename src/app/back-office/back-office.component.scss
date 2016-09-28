@@ -1,9 +1,6 @@
-@import '../theme/app.material',
- '../theme/material/sidenav-mixins',
- '../theme/app.mixin';
+@import '../theme/app.mixin';
 
 .back {
-	@include md-fullscreen;
 
 	.menu {
 		height: 100vh;

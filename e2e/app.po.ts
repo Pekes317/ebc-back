@@ -1,6 +1,6 @@
 import { browser, element, by } from 'protractor/globals';
 
-export class EbcBackPage {
+export class TesterPage {
   navigateTo() {
     return browser.get('/');
   }

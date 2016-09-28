@@ -10,9 +10,11 @@ import { BackandItem } from '../../shared/';
   styleUrls: ['./back-office-list.component.scss']
 })
 export class BackOfficeListComponent implements DoCheck, OnInit {
+  allChecked: boolean = false;
   isChecked: boolean = false;
   items: Array<BackandItem>;
   isSelected: Array<number> = [];
+  started: boolean = false;
   table: string;
 
   constructor(private backand: BackandItemService, private route: ActivatedRoute) { }
@@ -26,8 +28,10 @@ export class BackOfficeListComponent implements DoCheck, OnInit {
       data => {
         this.table = data['list'];
         this.backand.getList(this.table).subscribe(
-          list => this.items = list.data
-        );
+          list => {
+            this.items = list.data;
+            this.started = true;
+          });
       });
   }
 
@@ -41,6 +45,13 @@ export class BackOfficeListComponent implements DoCheck, OnInit {
     } else {
       this.isChecked = false;
     }
+    if (this.started) {
+      if (this.isSelected.length === this.items.length) {
+        this.allChecked = true;
+      } else {
+        this.allChecked = false;
+      }
+    }
   }
 
   delete() {
@@ -50,6 +61,14 @@ export class BackOfficeListComponent implements DoCheck, OnInit {
       this.backand.deleteItem(this.table, data);
     });
     this.ngOnInit();
+  }
+
+  selectAll() {
+    /*this.items.forEach(data => {
+      this.selected(data['id']);
+      console.log(this.isSelected);
+    })*/
+    console.log(this.isSelected);
   }
 
   selected(item) {

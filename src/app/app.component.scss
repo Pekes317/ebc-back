@@ -1,4 +1,4 @@
-@import './theme/app.material';
+@import 'theme/app.theme';
 
 .navbar {
 	position: relative;
@@ -6,14 +6,6 @@
 	left: -.5rem;
 	width: 100vw;
 	@include md-elevation(3);
-
-	button {
-		z-index: 999;
-	}
-}
-
-.content {
-	z-index: 0;
 }
 
 .foot {
@@ -31,5 +23,5 @@
 }
 
 .warning {
-	color: md-color($md-warn);
+	color: md-color($warn);
 }

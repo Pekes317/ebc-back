@@ -1,10 +1,10 @@
-import { EbcBackPage } from './app.po';
+import { TesterPage } from './app.po';
 
-describe('ebc-back App', function() {
-  let page: EbcBackPage;
+describe('tester App', function() {
+  let page: TesterPage;
 
   beforeEach(() => {
-    page = new EbcBackPage();
+    page = new TesterPage();
   });
 
   it('should display message saying app works', () => {

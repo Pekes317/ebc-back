@@ -1,4 +1,4 @@
-@import '../theme/app.material';
+@import '../theme/app.mixin';
 
 @mixin img {
 	display: inline-block;
@@ -13,9 +13,9 @@
 	justify-content: center;
 	align-items: center;
 	width: 100vw;
+	background-color: md-color($primary, 800, .9);
 	transform: translate(-.55rem, -.5rem);
-	background-color: md-color($md-primary, darker, .9);
-	z-index: 0;
+	z-index: 9;
 	
 	h1 {
 		color: map-get($md-grey, 0);
@@ -37,8 +37,6 @@
 	text-align: center;
 
 	.badges {
-		margin-top: 1.5rem;
-		padding-bottom: 1rem;
 	
 		img {
 			@include img;
@@ -48,7 +46,7 @@
 
 	.find {
 		font-weight: 600;
-		color: md-color($md-accent, darker, 1);
+		color: md-color($accent);
 	}
 
 	.legal {
@@ -57,7 +55,6 @@
 		background-color: map-get($md-blue-grey, 50);
 		padding: .7rem;
 		box-sizing: border-box;
-		margin-top: 2rem;
 		width: 50vw;
 		font-size: .7rem;
 		text-align: left;

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { BrowserModule, Title } from '@angular/platform-browser';
+import { MaterialModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { BackOfficeModule } from './back-office';
@@ -10,7 +11,6 @@ import { BackandConfigService } from './shared/backand-config.service';
 import { BackandItemService } from './shared/backand-item.service';
 import { HomeComponent } from './home';
 import { appRoutingProviders, routing } from './app.routing';
-import { MaterialModule } from './app-md.module';
 import { LoginComponent } from './login';
 
 @NgModule({
