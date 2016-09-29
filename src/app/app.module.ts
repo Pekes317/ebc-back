@@ -12,6 +12,7 @@ import { BackandItemService } from './shared/backand-item.service';
 import { HomeComponent } from './home';
 import { appRoutingProviders, routing } from './app.routing';
 import { LoginComponent } from './login';
+import { NavbarModule } from './navbar/navbar.module';;
 
 @NgModule({
   imports: [
@@ -20,9 +21,14 @@ import { LoginComponent } from './login';
     ReactiveFormsModule,
     HttpModule,
     MaterialModule.forRoot(),
+    NavbarModule,
     routing
   ],
-  declarations: [AppComponent, HomeComponent, LoginComponent],
+  declarations: [
+    AppComponent,
+    HomeComponent,
+    LoginComponent
+  ],
   providers: [
     appRoutingProviders,
     BackandAuthService,

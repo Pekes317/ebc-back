@@ -3,7 +3,6 @@
 .back {
 
 	.menu {
-		height: 100vh;
 		min-width: 25vw;
 
 		.header {
@@ -29,8 +28,7 @@
 	}
 
 	.office {
-		margin-top: 4.5rem;
-		padding: .5rem;
+		padding: 1rem;
 
 		@include crumb;
 	}

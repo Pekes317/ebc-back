@@ -1,0 +1,12 @@
+<md-toolbar color="primary" class="navbar">
+  <span>EBC: The App | <ng-content></ng-content></span>
+  <span class="space-align"></span>
+  <button md-icon-button md-ripple [md-menu-trigger-for]="menu">
+    <md-icon>more_vert</md-icon>
+    </button>
+</md-toolbar>
+<md-menu x-position="before"  #menu="mdMenu">
+  <button md-menu-item (click)="toLogin()">Login</button>
+  <button md-menu-item (click)="toOffice()">Office</button>
+  <button md-menu-item class="warning"  (click)="toHome()">Sign Out</button>
+</md-menu>

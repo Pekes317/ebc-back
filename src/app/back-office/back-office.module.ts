@@ -7,12 +7,13 @@ import { BackOfficeComponent } from './back-office.component';
 import { BackOfficeHomeComponent } from './back-office-home/back-office-home.component';
 import { BackOfficeListComponent } from './back-office-list/back-office-list.component';
 import { BackOfficeDetailComponent } from './back-office-detail/back-office-detail.component';
-
+import { NavbarModule } from '../navbar/navbar.module';
 
 @NgModule({
   imports: [
     CommonModule,
     MaterialModule,
+    NavbarModule,
     routing
   ],
   declarations: [
@@ -20,6 +21,6 @@ import { BackOfficeDetailComponent } from './back-office-detail/back-office-deta
     BackOfficeHomeComponent,
     BackOfficeListComponent,
     BackOfficeDetailComponent
-  ]
+  ],
 })
 export class BackOfficeModule { }

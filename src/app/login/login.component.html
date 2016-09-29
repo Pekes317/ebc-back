@@ -1,19 +1,26 @@
-<div class="crumb">
-  <button md-icon-button md-ripple (click)="toHome()">
+<div class="back">
+  <app-navbar>Login</app-navbar>
+  <div class="content">
+    <div class="crumb">
+      <button md-icon-button md-ripple (click)="toHome()">
     <md-icon>home</md-icon>
   </button>
-  <span class="trail">| &ensp;Login</span>
-</div>
-<md-card class="login">
-  <md-card-title class="title">Login</md-card-title>
-  <form [formGroup]="loginForm" (ngSubmit)="logIn(loginForm)">
-    <md-card-content class="fields">
-      <md-input class="field" type="email" [dividerColor]="email.valid ? 'primary' : 'warn'" placeholder="Your UserName/Email" formControlName="username"></md-input>
-      <md-input class="field" type="password" [dividerColor]="password.valid ? 'primary' : 'warn'" placeholder="Your Password" formControlName="password"></md-input>
-    </md-card-content>
-    <button md-raised-button md-ripple color="primary" type="submit" [disabled]="loginForm.invalid">Login</button>
-    <!--<md-card-actions>
+      <span class="trail">| &ensp;Login</span>
+    </div>
+    <md-card class="login">
+      <md-card-title class="title">Login</md-card-title>
+      <form [formGroup]="loginForm" (ngSubmit)="logIn(loginForm)">
+        <md-card-content class="fields">
+          <md-input class="field" type="email" [dividerColor]="email.valid ? 'primary' : 'warn'" placeholder="Your UserName/Email"
+            formControlName="username"></md-input>
+          <md-input class="field" type="password" [dividerColor]="password.valid ? 'primary' : 'warn'" placeholder="Your Password"
+            formControlName="password"></md-input>
+        </md-card-content>
+        <button md-raised-button md-ripple color="primary" type="submit" [disabled]="loginForm.invalid">Login</button>
+        <!--<md-card-actions>
       <button md-raised-button color="primary" type="submit">Login</button>
     </md-card-actions>-->
-  </form>
-</md-card>
+      </form>
+    </md-card>
+  </div>
+</div>

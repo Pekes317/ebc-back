@@ -12,11 +12,24 @@ import { BackandConfigService } from './shared/backand-config.service';
 export class AppComponent implements OnInit {
   title: string;
 
-  constructor(private backConfig: BackandConfigService) {
+  constructor(private backAuth: BackandAuthService, private backConfig: BackandConfigService, private router: Router) {
 
   }
 
   ngOnInit() {
     this.backConfig.authCheck();
+  }
+
+  toHome() {
+    this.backAuth.clearAuthToken();
+    this.router.navigate(['']);
+  }
+
+  toLogin() {
+    this.router.navigate(['login']);
+  }
+
+  toOffice() {
+    this.router.navigate(['back-office']);
   }
 }
