@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Headers } from '@angular/http';
+import { Router } from '@angular/router';
 
 import { BackandHeader, BackandUrls } from './backand-types';
 
@@ -9,7 +10,7 @@ export class BackandConfigService {
   anonymousToken: string = 'your anonymousToken token';
   appName: string = 'ebc2';
   authStatus: string = '';
-  authToken: BackandHeader;
+  authToken: BackandHeader = { header_name: '', header_value: '' };
   authType: string;
   is_auth_error: boolean = false;
   signUpToken: string = 'your signup token';
@@ -25,9 +26,7 @@ export class BackandConfigService {
   };
   username: string;
 
-  constructor() {
-     this.authToken = { header_name: '', header_value: '' };
-  }
+  constructor(public router: Router) {}
 
   authCheck() {
     let storedToken = localStorage.getItem('auth_token');
@@ -54,6 +53,7 @@ export class BackandConfigService {
   public errorHander(res) {
     if(res.status === 401) {
      localStorage.clear();
+     this.router.navigate(['login']);
     }
     this.authStatus = this.extractErrorMessage(res);
     this.logError(res);

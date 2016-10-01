@@ -1,9 +1,11 @@
-import { Component, OnInit, DoCheck } from '@angular/core';
+import { Component, OnInit, DoCheck, ViewContainerRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { MdDialog, MdDialogConfig } from '@angular/material';
 
 import { BackandItemService } from '../../shared/backand-item.service';
 import { BackandItem } from '../../shared/';
-
+import { BackOfficeDetailComponent } from '../back-office-detail/back-office-detail.component';
+  
 @Component({
   selector: 'app-back-office-list',
   templateUrl: './back-office-list.component.html',
@@ -17,7 +19,11 @@ export class BackOfficeListComponent implements DoCheck, OnInit {
   started: boolean = false;
   table: string;
 
-  constructor(private backand: BackandItemService, private route: ActivatedRoute) { }
+  constructor(
+    public view: ViewContainerRef,
+    private backand: BackandItemService,
+    private dialog: MdDialog,
+    private route: ActivatedRoute) { }
 
   ngDoCheck() {
     this.checked();
@@ -36,7 +42,9 @@ export class BackOfficeListComponent implements DoCheck, OnInit {
   }
 
   addItem() {
-
+    let config: MdDialogConfig = new MdDialogConfig();
+    config.viewContainerRef = this.view;
+    this.dialog.open(BackOfficeDetailComponent, config);
   }
 
   checked() {
@@ -67,8 +75,8 @@ export class BackOfficeListComponent implements DoCheck, OnInit {
     /*this.items.forEach(data => {
       this.selected(data['id']);
       console.log(this.isSelected);
-    })*/
-    console.log(this.isSelected);
+    });
+    console.log(this.isSelected);*/
   }
 
   selected(item) {

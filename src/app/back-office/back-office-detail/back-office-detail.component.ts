@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MdDialogRef } from '@angular/material';
 
 @Component({
   selector: 'app-back-office-detail',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BackOfficeDetailComponent implements OnInit {
 
-  constructor() { }
+  constructor(public dialogRef: MdDialogRef<BackOfficeDetailComponent>) { }
 
   ngOnInit() {
   }

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { BackandAuthService } from '../shared/backand-auth.service';
 import { BackandUser } from '../shared';
