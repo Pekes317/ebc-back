@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '@angular/material';
 
 import { routing } from './back-office.routes';
@@ -14,6 +15,7 @@ import { NavbarModule } from '../navbar/navbar.module';
     CommonModule,
     MaterialModule,
     NavbarModule,
+    ReactiveFormsModule,
     routing
   ],
   declarations: [
@@ -22,5 +24,8 @@ import { NavbarModule } from '../navbar/navbar.module';
     BackOfficeListComponent,
     BackOfficeDetailComponent
   ],
+  entryComponents: [
+    BackOfficeDetailComponent
+  ]
 })
 export class BackOfficeModule { }

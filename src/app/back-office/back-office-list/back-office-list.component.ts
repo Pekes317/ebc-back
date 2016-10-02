@@ -1,4 +1,4 @@
-import { Component, OnInit, DoCheck, ViewContainerRef } from '@angular/core';
+import { Component, DoCheck, OnInit, ViewContainerRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MdDialog, MdDialogConfig } from '@angular/material';
 
@@ -44,7 +44,7 @@ export class BackOfficeListComponent implements DoCheck, OnInit {
   addItem() {
     let config: MdDialogConfig = new MdDialogConfig();
     config.viewContainerRef = this.view;
-    this.dialog.open(BackOfficeDetailComponent, config);
+    let form = this.dialog.open(BackOfficeDetailComponent, config);
   }
 
   checked() {
