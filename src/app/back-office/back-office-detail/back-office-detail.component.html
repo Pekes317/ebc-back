@@ -1,9 +1,21 @@
-<div>
+<div class="dialog">
   <h2 class="title">Add New Item</h2>
-  <md-input>
-    <span md-prefix>Name:&nbsp;</span>
-  </md-input>
-  <md-input>
-    <span md-prefix>Description:&nbsp;</span>
-  </md-input>
+  <div class="form">
+    <md-input placeholder="Name"></md-input>
+    <md-input placeholder="Description"></md-input>
+    <md-input placeholder="SVG"></md-input>
+    <md-input placeholder="Image"></md-input>
+    <md-input placeholder="Extra Data"></md-input>
+    <md-input placeholder="User"></md-input>
+    <md-input placeholder="Item"></md-input>
+  </div>
+  <div class="toggles">
+    <md-slide-toggle color="primary">Flyer</md-slide-toggle>
+    <md-slide-toggle color="primary">Ready</md-slide-toggle>
+    <md-slide-toggle color="primary">Disable</md-slide-toggle>
+  </div>
+  <div class="toggles">
+    <button md-raised-button color="warn" type="button" (click)="cancel()">Cancel</button>
+    <button md-raised-button color="primary" type="submit">Submit</button>
+  </div>
 </div>

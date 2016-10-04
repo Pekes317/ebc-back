@@ -13,9 +13,12 @@ export class BackOfficeDetailComponent implements OnInit {
   itemId: number;
   table: string;
 
-  constructor(private backand: BackandItemService) { }
+  constructor(private backand: BackandItemService, private dialog: MdDialogRef<any>) { }
 
   ngOnInit() {
   }
 
+  cancel() {
+   this.dialog.close();
+  }
 }
