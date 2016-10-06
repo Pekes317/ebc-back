@@ -44,7 +44,9 @@ export class BackOfficeListComponent implements DoCheck, OnInit {
   addItem() {
     let config: MdDialogConfig = new MdDialogConfig();
     config.viewContainerRef = this.view;
-    let form = this.dialog.open(BackOfficeDetailComponent, config);
+    let ebcNew = this.dialog.open(BackOfficeDetailComponent, config);
+    ebcNew.componentInstance.table = this.table;
+    ebcNew.componentInstance.edit = false;
   }
 
   checked() {
@@ -69,6 +71,15 @@ export class BackOfficeListComponent implements DoCheck, OnInit {
       this.backand.deleteItem(this.table, data);
     });
     this.ngOnInit();
+  }
+
+  editItem(id) {
+    let config: MdDialogConfig = new MdDialogConfig();
+    config.viewContainerRef = this.view;
+    let ebcNew = this.dialog.open(BackOfficeDetailComponent, config);
+    ebcNew.componentInstance.table = this.table;
+    ebcNew.componentInstance.itemId = id;
+    ebcNew.componentInstance.edit = true;
   }
 
   selectAll() {

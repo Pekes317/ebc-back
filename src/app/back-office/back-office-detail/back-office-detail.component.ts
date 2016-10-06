@@ -11,14 +11,52 @@ import { BackandItem } from '../../shared/backand-types';
 })
 export class BackOfficeDetailComponent implements OnInit {
   itemId: number;
+  ebcPiece: BackandItem = {
+    id: NaN,
+    name: '',
+    desc: '',
+    media: '',
+    pic: '',
+    data: '',
+    flyer: false,
+    ready: false,
+    disable: false,
+    user: '',
+    item: ''
+  };
+  edit: boolean;
   table: string;
 
   constructor(private backand: BackandItemService, private dialog: MdDialogRef<any>) { }
 
   ngOnInit() {
+    if (this.edit) {
+      this.backand.getItem(this.table, this.itemId).subscribe(
+        data => this.ebcPiece = data
+      );
+    }
   }
 
   cancel() {
-   this.dialog.close();
+    this.dialog.close();
+  }
+
+  ebcNew(data) {
+    console.log(data);
+  }
+
+  ebcUpdate(data) {
+    console.log(data);
+  }
+
+  ebcSub() {
+    let data = this.ebcPiece;
+    
+    delete data['id']
+    if (this.edit) {
+      this.ebcUpdate(data);
+    } else {
+      this.ebcNew(data);
+    }
   }
 }

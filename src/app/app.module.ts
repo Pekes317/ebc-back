@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { BrowserModule, Title } from '@angular/platform-browser';
 import { MaterialModule } from '@angular/material';
@@ -18,6 +18,7 @@ import { NavbarModule } from './navbar/navbar.module';;
   imports: [
     BrowserModule,
     BackOfficeModule,
+    FormsModule,
     ReactiveFormsModule,
     HttpModule,
     MaterialModule.forRoot(),
