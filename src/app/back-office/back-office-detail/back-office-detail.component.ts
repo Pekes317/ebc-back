@@ -10,7 +10,6 @@ import { BackandItem } from '../../shared/backand-types';
   styleUrls: ['./back-office-detail.component.scss']
 })
 export class BackOfficeDetailComponent implements OnInit {
-  itemId: number;
   ebcPiece: BackandItem = {
     id: NaN,
     name: '',
@@ -25,37 +24,36 @@ export class BackOfficeDetailComponent implements OnInit {
     item: ''
   };
   edit: boolean;
+  itemId: number;
   table: string;
 
   constructor(private backand: BackandItemService, private dialog: MdDialogRef<any>) { }
 
   ngOnInit() {
-    if (this.edit) {
-      this.backand.getItem(this.table, this.itemId).subscribe(
-        data => this.ebcPiece = data
-      );
-    }
+
   }
 
   cancel() {
     this.dialog.close();
   }
 
-  ebcNew(data) {
-    console.log(data);
+  ebcNew(data: Object) {
+    this.backand.addItem(this.table, data);
+    this.cancel();
   }
 
-  ebcUpdate(data) {
-    console.log(data);
+  ebcUpdate(data: Object) {
+    this.backand.updateItem(this.table, this.itemId, data);
+    this.cancel();
   }
 
   ebcSub() {
     let data = this.ebcPiece;
-    
-    delete data['id']
+
     if (this.edit) {
       this.ebcUpdate(data);
-    } else {
+    } else if (!this.edit) {
+      delete data['id']
       this.ebcNew(data);
     }
   }

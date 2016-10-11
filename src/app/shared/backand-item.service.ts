@@ -80,7 +80,7 @@ export class BackandItemService {
 
     let $obs = this.http.put(url, update, {
       headers: this.config.authHeader
-    }).map(res => res.json());
+    }).map(res => res);
     
     $obs.subscribe(
       data => console.log(data),

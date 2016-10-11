@@ -40,7 +40,7 @@
 						<md-checkbox [checked]="allChecked" (change)="selected(item?.id)"></md-checkbox>
 					</td>
 					<td>
-						<button md-icon-button md-ripple (click)="editItem(item?.id)">
+						<button md-icon-button md-ripple (click)="editItem(item)">
 							<md-icon>edit</md-icon>
 						</button>
 					</td>
@@ -50,7 +50,7 @@
 					<td>{{item?.media}}</td>
 					<td>{{item?.pic}}</td>
 					<td>{{item?.data}}</td>
-					<td>{{item?.fluer}}</td>
+					<td>{{item?.flyer}}</td>
 					<td>{{item?.ready}}</td>
 					<td>{{item?.disable}}</td>
 					<td>{{item?.user}}</td>
