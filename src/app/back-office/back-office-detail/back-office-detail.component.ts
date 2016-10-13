@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { MdDialogRef } from '@angular/material';
 
 import { BackandItemService } from '../../shared/backand-item.service';
@@ -24,6 +24,7 @@ export class BackOfficeDetailComponent implements OnInit {
     item: ''
   };
   edit: boolean;
+  toast: boolean = false;
   itemId: number;
   table: string;
 
@@ -49,6 +50,7 @@ export class BackOfficeDetailComponent implements OnInit {
 
   ebcSub() {
     let data = this.ebcPiece;
+    this.toast = true;
 
     if (this.edit) {
       this.ebcUpdate(data);

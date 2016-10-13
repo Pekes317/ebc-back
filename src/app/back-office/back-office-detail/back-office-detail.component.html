@@ -1,5 +1,5 @@
 <div class="dialog">
-  <h2 class="title">Add New Item</h2>
+  <h2 class="title"><span *ngIf="edit">Update</span><span *ngIf="!edit">Add New</span> Item</h2>
   <div class="form">
     <md-input placeholder="Name" [(ngModel)]="ebcPiece.name"></md-input>
     <md-input placeholder="Description" [(ngModel)]="ebcPiece.desc"></md-input>

@@ -1,11 +1,18 @@
 import { Component, DoCheck, OnInit, ViewContainerRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { MdDialog, MdDialogConfig } from '@angular/material';
+import {
+  MdDialog,
+  MdDialogConfig,
+  MdDialogRef,
+  MdSnackBar,
+  MdSnackBarConfig,
+  MdSnackBarRef
+} from '@angular/material';
 
 import { BackandItemService } from '../../shared/backand-item.service';
 import { BackandItem } from '../../shared/';
 import { BackOfficeDetailComponent } from '../back-office-detail/back-office-detail.component';
-  
+
 @Component({
   selector: 'app-back-office-list',
   templateUrl: './back-office-list.component.html',
@@ -23,7 +30,8 @@ export class BackOfficeListComponent implements DoCheck, OnInit {
     public view: ViewContainerRef,
     private backand: BackandItemService,
     private dialog: MdDialog,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute,
+    private snack: MdSnackBar) { }
 
   ngDoCheck() {
     this.checked();
@@ -33,23 +41,25 @@ export class BackOfficeListComponent implements DoCheck, OnInit {
     this.route.data.subscribe(
       data => {
         this.table = data['list'];
-        this.backand.getList(this.table).subscribe(
-          list => {
-            this.items = list.data;
-            this.started = true;
-          });
+        this.getItems();
       });
   }
 
   addItem() {
-    let config: MdDialogConfig = new MdDialogConfig();
-    config.viewContainerRef = this.view;
-    let ebcNew = this.dialog.open(BackOfficeDetailComponent, config);
-    ebcNew.componentInstance.table = this.table;
-    ebcNew.componentInstance.edit = false;
-    ebcNew.afterClosed().subscribe(
-      data => this.ngOnInit()
-    )
+    this.detailModal(false);
+  }
+
+  completeModal(ebcItem: MdDialogRef<BackOfficeDetailComponent>, edit) {
+    ebcItem.afterClosed().subscribe(
+      () => {
+        let toast = ebcItem.componentInstance.toast;
+        let config = new MdSnackBarConfig(this.view);
+        if (toast) {
+          let message = this.snack.open(`Item has been ${this.setMessage(edit)}`, 'Okay', config);
+          this.getItems();
+          this.toastDismiss(message);
+        };
+      });
   }
 
   checked() {
@@ -68,33 +78,39 @@ export class BackOfficeListComponent implements DoCheck, OnInit {
   }
 
   delete() {
+    let config = new MdSnackBarConfig(this.view);
     this.isSelected.forEach(data => {
       let index = this.isSelected.indexOf(data);
       this.isSelected.splice(index, 1);
       this.backand.deleteItem(this.table, data);
+      let message = this.snack.open('Item(s) have been Deleted', 'Okay', config);
+      this.toastDismiss(message);
     });
-    this.ngOnInit();
+  }
+
+  detailModal(edit, item?) {
+    let config: MdDialogConfig = new MdDialogConfig();
+    config.viewContainerRef = this.view;
+    let ebcItem = this.dialog.open(BackOfficeDetailComponent, config);
+    ebcItem.componentInstance.table = this.table;
+    ebcItem.componentInstance.edit = edit;
+    if (edit) {
+      ebcItem.componentInstance.ebcPiece = item;
+      ebcItem.componentInstance.itemId = item['id'];
+    };
+    this.completeModal(ebcItem, edit);
   }
 
   editItem(item) {
-    let config: MdDialogConfig = new MdDialogConfig();
-    config.viewContainerRef = this.view;
-    let ebcNew = this.dialog.open(BackOfficeDetailComponent, config);
-    ebcNew.componentInstance.table = this.table;
-    ebcNew.componentInstance.ebcPiece = item;
-    ebcNew.componentInstance.edit = true;
-    ebcNew.componentInstance.itemId = item['id'];
-    ebcNew.afterClosed().subscribe(
-      data => this.ngOnInit()
-    )
+    this.detailModal(true, item);
   }
 
-  selectAll() {
-    /*this.items.forEach(data => {
-      this.selected(data['id']);
-      console.log(this.isSelected);
-    });
-    console.log(this.isSelected);*/
+  getItems() {
+    this.backand.getList(this.table).subscribe(
+      list => {
+        this.items = list.data;
+        this.started = true;
+      });
   }
 
   selected(item) {
@@ -104,5 +120,24 @@ export class BackOfficeListComponent implements DoCheck, OnInit {
     } else {
       this.isSelected.push(item);
     }
+  }
+
+  setMessage(edit) {
+    let text;
+    if (edit) {
+      text = 'Updated';
+    } else {
+      text = 'Created';
+    }
+    return text;
+  }
+
+  toastDismiss(message: MdSnackBarRef<any>) {
+    setTimeout(() => {
+      message.dismiss();
+    }, 3000);
+    message.afterDismissed().subscribe(
+      () => this.getItems()
+    )
   }
 }

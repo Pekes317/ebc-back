@@ -69,7 +69,7 @@ export class BackandItemService {
       data => console.log(data),
       err => this.config.errorHander(err),
       () => console.log('Items')
-    )
+    );
 
     return $obs;
   }
