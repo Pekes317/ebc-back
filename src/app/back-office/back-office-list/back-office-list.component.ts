@@ -1,4 +1,5 @@
-import { Component, DoCheck, OnInit, ViewContainerRef } from '@angular/core';
+import { Component, DoCheck, OnDestroy, OnInit, ViewContainerRef } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import {
   MdDialog,
@@ -18,11 +19,12 @@ import { BackOfficeDetailComponent } from '../back-office-detail/back-office-det
   templateUrl: './back-office-list.component.html',
   styleUrls: ['./back-office-list.component.scss']
 })
-export class BackOfficeListComponent implements DoCheck, OnInit {
+export class BackOfficeListComponent implements DoCheck, OnDestroy, OnInit {
   allChecked: boolean = false;
+  backandCall: Subscription;
   isChecked: boolean = false;
-  items: Array<BackandItem>;
   isSelected: Array<number> = [];
+  items: Array<BackandItem>;
   started: boolean = false;
   table: string;
 
@@ -37,12 +39,17 @@ export class BackOfficeListComponent implements DoCheck, OnInit {
     this.checked();
   }
 
+  ngOnDestroy() {
+    this.backandCall.unsubscribe();
+  }
+
   ngOnInit() {
-    this.route.data.subscribe(
+    let data = this.route.data.subscribe(
       data => {
         this.table = data['list'];
         this.getItems();
       });
+    data.unsubscribe();
   }
 
   addItem() {
@@ -106,7 +113,7 @@ export class BackOfficeListComponent implements DoCheck, OnInit {
   }
 
   getItems() {
-    this.backand.getList(this.table).subscribe(
+    this.backandCall = this.backand.getList(this.table).subscribe(
       list => {
         this.items = list.data;
         this.started = true;
@@ -138,6 +145,6 @@ export class BackOfficeListComponent implements DoCheck, OnInit {
     }, 3000);
     message.afterDismissed().subscribe(
       () => this.getItems()
-    )
+    );
   }
 }

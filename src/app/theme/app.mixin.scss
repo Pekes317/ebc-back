@@ -16,6 +16,7 @@
 		background-color: md-color($accent);
 		color: map-get($md-grey, 0);
 		border-radius: .1rem;
+		margin-bottom: 1rem;
 		height: 2.5rem;
 		z-index: -999;
 	  @include md-elevation(1);

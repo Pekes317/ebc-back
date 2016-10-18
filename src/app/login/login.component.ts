@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 import { BackandAuthService } from '../shared/backand-auth.service';
 import { EmailValidator } from '../shared';
@@ -10,9 +11,11 @@ import { EmailValidator } from '../shared';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnDestroy, OnInit {
+  backandCall: Subscription;
   email: FormControl = new FormControl('', [Validators.required, EmailValidator.validate]);
   loginForm: FormGroup;
+  loggedIn: boolean = false;
   password: FormControl = new FormControl('', Validators.required);
   redirect: boolean = false;
 
@@ -21,6 +24,12 @@ export class LoginComponent implements OnInit {
       username: this.email,
       password: this.password
     });
+  }
+
+  ngOnDestroy() {
+    if (this.loggedIn) {
+      this.backandCall.unsubscribe();
+    }
   }
 
   ngOnInit() {
@@ -36,7 +45,8 @@ export class LoginComponent implements OnInit {
 
   logIn(form) {
     let creds = form.value
-    this.backAuth.getAuthToken(creds.username, creds.password)
+    this.loggedIn = true;
+    this.backandCall = this.backAuth.getAuthToken(creds.username, creds.password)
       .subscribe(
       data => {
         this.loginForm.reset();
