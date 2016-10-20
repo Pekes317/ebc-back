@@ -1,4 +1,11 @@
-<md-card>
-  <md-card-title>User Guide</md-card-title>
-  
-</md-card>
+<div class="dash">
+	<md-card class="main">
+		<md-card-title>Dashboard</md-card-title>
+	</md-card>
+	<md-card>
+		<md-card-title>User Guide</md-card-title>
+		<md-list>
+			<md-list-item *ngFor="let user of users">{{user?.id}}: {{user?.firstName}} {{user?.lastName}}</md-list-item>
+		</md-list>
+	</md-card>
+</div>

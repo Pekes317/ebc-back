@@ -9,15 +9,19 @@ import { BackandUser } from '../../shared/backand-types';
   styleUrls: ['./back-office-home.component.scss']
 })
 export class BackOfficeHomeComponent implements OnInit {
-  users: BackandUser;
+  users: Array<BackandUser>;
 
   constructor(private backand: BackandItemService) { }
 
   ngOnInit() {
+    this.getUsers();
   }
 
-  getUsers(){
-
+  getUsers() {
+    this.backand.getList('users').subscribe(
+      users => {
+        this.users = users.data;
+      });
   }
 
 }
