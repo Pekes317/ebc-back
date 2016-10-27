@@ -5,6 +5,7 @@ import { AuthGuard, TitleResolve } from '../shared';
 import { BackOfficeComponent } from './back-office.component';
 import { BackOfficeHomeComponent } from './back-office-home/back-office-home.component';
 import { BackOfficeListComponent } from './back-office-list/back-office-list.component';
+import { BackOfficeFileComponent } from './back-office-file/back-office-file.component';
 
 const officeRoutes: Routes = [
 	{
@@ -33,6 +34,12 @@ const officeRoutes: Routes = [
 			{
 				path: 'templates',
 				component: BackOfficeListComponent,
+				data: { title: 'Back Office', list: 'templates' },
+				resolve: { title: TitleResolve }
+			},
+			{
+				path: 'file',
+				component: BackOfficeFileComponent,
 				data: { title: 'Back Office', list: 'templates' },
 				resolve: { title: TitleResolve }
 			}

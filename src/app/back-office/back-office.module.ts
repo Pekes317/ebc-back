@@ -9,6 +9,7 @@ import { BackOfficeHomeComponent } from './back-office-home/back-office-home.com
 import { BackOfficeListComponent } from './back-office-list/back-office-list.component';
 import { BackOfficeDetailComponent } from './back-office-detail/back-office-detail.component';
 import { NavbarModule } from '../navbar/navbar.module';
+import { BackOfficeFileComponent } from './back-office-file/back-office-file.component';
 
 @NgModule({
   imports: [
@@ -23,7 +24,8 @@ import { NavbarModule } from '../navbar/navbar.module';
     BackOfficeComponent,
     BackOfficeHomeComponent,
     BackOfficeListComponent,
-    BackOfficeDetailComponent
+    BackOfficeDetailComponent,
+    BackOfficeFileComponent
   ],
   entryComponents: [
     BackOfficeDetailComponent
