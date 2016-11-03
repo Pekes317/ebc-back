@@ -10,10 +10,11 @@ export class AuthGuard implements CanActivate {
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
 		let storedToken = localStorage.getItem('auth_token');
-    if (storedToken) { return true; }
-
+    
     // Store the attempted URL for redirecting
     this.backAuth.redirectUrl = state.url;
+    
+    if (storedToken) { return true; }
 
     // Navigate to the login page
     this.router.navigate(['/login']);

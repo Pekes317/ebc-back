@@ -1,3 +1,5 @@
 <p>
   back-office-file works!
+  <span *ngFor="let item of ebcItems">{{item?.id}} </span>
 </p>
+<button md-raised-button color="primary" (click)="postFile()">Post</button>
