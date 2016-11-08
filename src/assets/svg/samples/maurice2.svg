@@ -1,0 +1,39 @@
+<svg version="1.2" id="joey2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 281 465">
+  <defs>
+    <style>
+	  #joey2 {
+	    background: rgba(25,25,25,.9);
+	  }
+	 .spot {
+	    opacity: 0;
+	    filter: url(#blur);
+        transition: .6s opacity;
+        fill: rgb(17, 193, 243);
+      }
+      .spot:hover {
+        opacity: 0.4;
+        cursor: pointer;
+      }
+    </style>
+    <filter id="blur" name="blur">
+      <feGaussianBlur stdDeviation="10"/>
+    </filter>
+  </defs>
+  <title>maurice</title>
+  <g id="map">
+    <image width="281" height="465" id="card" xlink:href="https://goo.gl/klssZp" > </image>
+    <a target="_system" xlink:href="https://soundcloud.com/joeymaurice" data-ebc="joeymaurice"><path id="sound" class="spot" fill="none" d="M22.3,240.5L22.3,240.5c-4.8,0-8.8-3.9-8.8-8.7v-201c0-4.8,3.9-8.7,8.7-8.7h0
+		c4.8,0,8.7,3.9,8.7,8.7v201C31,236.6,27.1,240.5,22.3,240.5z"/></a>
+    <a target="_system" xlink:href="https://soundcloud.com/joeymaurice/joey-maurice-10-toes-ft-trip" data-ebc="joey-maurice-10-toes-ft-trip"><path id="cloud" class="spot" fill="none" d="M248.8,449.8h-15.3c-6.6,0-12-5.4-12-12v-15.3c0-6.6,5.4-12,12-12h15.3c6.6,0,12,5.4,12,12v15.3
+		C260.8,444.4,255.4,449.8,248.8,449.8z"/></a>
+    <a target="_system" xlink:href="https://www.instagram.com/_e.b.c_" data-ebc="user?username=_e.b.c_"><path id="ebc" class="spot" fill="none" d="M169,406h-54.5c-6.6,0-12-5.4-12-12v-11c0-6.6,5.4-12,12-12H169c6.6,0,12,5.4,12,12v11
+		C181,400.6,175.6,406,169,406z"/></a>
+    <a target="_system" xlink:href="https://www.instagram.com/joeymauricegang" data-ebc="user?username=joeymauricegang"><path id="instagram" class="spot" fill="none" d="M56.5,449.8H34.3c-6.6,0-12-5.4-12-12v-15.3c0-6.6,5.4-12,12-12h22.3c6.6,0,12,5.4,12,12v15.3
+		C68.5,444.4,63.1,449.8,56.5,449.8z"/></a>
+     <a target="_system" xlink:href="https://www.facebook.com/JOEYMauriceGunna" data-ebc="profile/1476919368"><path id="facebook" class="spot" fill="none" d="M156.5,446.5H132c-6.6,0-12-5.4-12-12v-12c0-6.6,5.4-12,12-12h24.5c6.6,0,12,5.4,12,12v12
+		C168.5,441.1,163.1,446.5,156.5,446.5z"/></a>
+    <a target="_system" xlink:href="http://goo.gl/QYeYfy" data-ebc="1 Philips Drive, Atlanta, GA 30303"><path id="address" class="spot" fill="none" d="M254,343H30c-6.6,0-12-5.4-12-12v-3.5c0-6.6,5.4-12,12-12h224c6.6,0,12,5.4,12,12v3.5
+		C266,337.6,260.6,343,254,343z"/></a>
+    <a target="_system" xlink:href="https://youtu.be/77VusWENEWM" data-ebc="77VusWENEWM"><ellipse id="youtube" class="spot" fill="none" cx="172.8" cy="143" rx="76.8" ry="100.5"/></a>
+  </g>
+</svg>

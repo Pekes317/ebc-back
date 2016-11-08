@@ -1,0 +1,41 @@
+<svg version="1.2" id="mr-ny" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1801 2344">
+  <defs>
+    <style>
+      #mr-ny {
+	  	background: rgba(25,25,25,.9);
+	  }
+	  .spot {
+	    opacity: 0;
+	    filter: url(#blur);
+        transition: .6s opacity;
+        fill: rgb(17, 193, 243);
+      }
+      .spot:hover {
+        opacity: 0.4;
+        cursor: pointer;
+      }
+    </style>
+    <filter id="blur" name="blur">
+      <feGaussianBlur stdDeviation="10"/>
+    </filter>
+  </defs>
+  <title>My NY</title>
+  <g id="map">
+    <image id="base" width="1801" height="2344" xlink:href="https://goo.gl/SKPa4y" />
+    <a target="_system" xlink:href="https://www.instagram.com/p/BCee1tvm-kj/" data-ebc="media?id=1197530183571859747"><circle id="insta_1" class="spot" fill="none" stroke="none" stroke-miterlimit="10" cx="371.5" cy="1755.5" r="320.5"/></a>
+    <a target="_system" xlink:href="https://vimeo.com/178145694" data-ebc="178145694"><circle id="vimeo" class="spot" fill="none" stroke="none" stroke-miterlimit="10" cx="1426.9" cy="1755.5" r="320.5"/></a>
+    <a target="_system" xlink:href="https://www.instagram.com/p/BCgFDyOG-jJ/" data-ebc="media?id=1197979751195338953"><circle id="insta_1" class="spot" fill="none" stroke="none" stroke-miterlimit="10" cx="923.1" cy="1177.1" r="431.1"/></a>
+    <a target="_system" xlink:href="mailto:bookmrnewyourk@gmail.com" data-ebc="bookmrnewyourk@gmail.com"><path id="email" class="spot" fill="none" stroke="none" stroke-miterlimit="10" d="M1322.3,716H507c-17.6,0-32-14.4-32-32v0
+		c0-17.6,14.4-32,32-32h815.3c17.6,0,32,14.4,32,32v0C1354.3,701.6,1339.9,716,1322.3,716z"/></a>
+    <a target="_system" xlink:href="tel:14145141228" data-ebc="1-414-514-1228"><path id="phone" class="spot" fill="none" stroke="none" stroke-miterlimit="10" d="M1153,627H773c-15.4,0-28-12.6-28-28l0,0
+		c0-15.4,12.6-28,28-28h380c15.4,0,28,12.6,28,28l0,0C1181,614.4,1168.4,627,1153,627z"/></a>
+    <a target="_system" xlink:href="https://www.instagram.com/mrnewyorkparty/" data-ebc="user?username=mrnewyorkparty"><path id="instagram" class="spot" fill="none" stroke="none" stroke-miterlimit="10" d="M1020,2072.5h-82.5c-6.6,0-12-5.4-12-12V1983
+		c0-6.6,5.4-12,12-12h82.5c6.6,0,12,5.4,12,12v77.5C1032,2067.1,1026.6,2072.5,1020,2072.5z"/></a>
+    <a target="_system" xlink:href="https://www.facebook.com/Mrnewyorkparty/" data-ebc="page/954695864573362"><path id="facebook" class="spot" fill="none" stroke="none" stroke-miterlimit="10" d="M839.5,2190.5h-62c-6.6,0-12-5.4-12-12v-62
+		c0-6.6,5.4-12,12-12h62c6.6,0,12,5.4,12,12v62C851.5,2185.1,846.1,2190.5,839.5,2190.5z"/></a>
+    <a target="_system" xlink:href="https://twitter.com/MrNewYorkPARTY" data-ebc="MrNewYorkPARTY"><path id="twitter" class="spot" fill="none" stroke="none" stroke-miterlimit="10" d="M1047.3,2316.8H972c-6.6,0-12-5.4-12-12v-75.3
+		c0-6.6,5.4-12,12-12h75.3c6.6,0,12,5.4,12,12v75.3C1059.3,2311.4,1053.8,2316.8,1047.3,2316.8z"/></a>
+    <a target="_system" xlink:href="https://www.instagram.com/_e.b.c_/" data-ebc="user?username=_e.b.c_"><path id="ebc" class="spot" fill="none" stroke="none" stroke-miterlimit="10" d="M1639.4,185.7h-201c-42.1,0-76.5-34.4-76.5-76.5v0
+		c0-42.1,34.4-76.5,76.5-76.5h201c42.1,0,76.5,34.4,76.5,76.5v0C1715.9,151.3,1681.5,185.7,1639.4,185.7z"/></a>
+  </g>
+</svg>

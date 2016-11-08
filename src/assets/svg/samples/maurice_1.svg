@@ -1,0 +1,39 @@
+<svg id="maurice" version="1.2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 869 1451">
+  <defs>
+    <style>
+	  #maurice {
+	    background: rgba(25,25,25,.9);
+	  }
+	 .spot {
+	    opacity: 0;
+	    filter: url(#blur);
+        transition: .6s opacity;
+        fill: rgb(17, 193, 243);
+      }
+      .spot:hover {
+        opacity: 0.4;
+        cursor: pointer;
+      }
+    </style>
+    <filter id="blur" name="blur">
+      <feGaussianBlur stdDeviation="10"/>
+    </filter>
+  </defs>
+  <title>maurice</title>
+  <g id="map">
+    <image id="base" width="869" height="1451" xlink:href="https://goo.gl/wWFoJ7"/>
+    <a target="_system" xlink:href="https://youtu.be/HwvcGtMzh04" data-ebc="HwvcGtMzh04">
+    <path id="video" class="spot" d="M223.41,442.89c24.67,58.31-24.53,97-15.87,188.89,2.92,31,6.75,71.62,31.75,96.83,81.8,82.47,380.27-10,447.62-184.13,18.19-47,26.89-119.06-1.59-138.1-27-18-73.77,20.53-88.89,4.76-19.67-20.51,58.1-87.33,44.44-146-18.4-79.12-202.58-142.34-338.1-81-82.29,37.27-158.07,125.66-141.27,185.71C171.46,405.45,205.1,399.61,223.41,442.89Z"/>
+    </a> <a target="_system" xlink:href="http://goo.gl/hH6T7h" data-ebc="1150 Crescent Ave NE, Atlanta, GA 30309">
+    <rect id="address" class="spot" x="108" y="915.25" width="712.13" height="100" rx="50" ry="50"/>
+    </a> <a target="_system" xlink:href="https://www.instagram.com/_e.b.c_" data-ebc="user?username=_e.b.c_">
+    <ellipse id="ebc" class="spot" cx="431.5" cy="1174" rx="136" ry="56"/>
+    </a> <a target="_system" xlink:href="https://www.facebook.com/JOEYMauriceGunna" data-ebc="profile/1476919368">
+    <rect id="fb" class="spot" x="362.5" y="1273" width="145" height="127.5" rx="12" ry="12"/>
+    </a> <a target="_system" xlink:href="https://soundcloud.com/grindtv/joey-maurice-otc-ft-phraynkh-p-prod-dj-burn-one?in=grindtv/sets/joey-maurice-blue-2" data-ebc="joey-maurice-blue-2">
+    <rect id="sound" class="spot" x="694.5" y="1281" width="117.25" height="117.25" rx="12" ry="12"/>
+    </a> <a target="_system" xlink:href="https://www.instagram.com/joeymauricegang" data-ebc="user?username=joeymauricegang">
+    <rect id="instagram" class="spot" x="53.5" y="1274" width="147" height="124.25" rx="12" ry="12"/>
+    </a>
+  </g>
+</svg>

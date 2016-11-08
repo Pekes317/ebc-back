@@ -7,7 +7,7 @@ import { BackandHeader, BackandUrls } from './backand-types';
 @Injectable()
 export class BackandConfigService {
   apiUrl: string = 'https://api.backand.com';
-  anonymousToken: string = 'your anonymousToken token';
+  anonymousToken: string = '6755ec7e-3a7e-4dc7-a414-fd1acf8a51a1';
   appName: string = 'ebc2';
   authStatus: string = '';
   authToken: BackandHeader = { header_name: '', header_value: '' };

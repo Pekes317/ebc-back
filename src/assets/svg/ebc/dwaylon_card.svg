@@ -1,0 +1,31 @@
+<svg version="1.2" id="dwaylon-card" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1008 576">
+  <defs>
+    <style>
+      #dwaylon-card {
+	  	background: rgba(25,25,25,.9);
+	  }
+	  .spot {
+	    opacity: 0;
+	    filter: url(#blur);
+        transition: .6s opacity;
+        fill: rgb(17, 193, 243);
+      }
+      .spot:hover {
+        opacity: 0.4;
+        cursor: pointer;
+      }
+    </style>
+	<filter id="blur" name="blur">
+      <feGaussianBlur stdDeviation="10"/>
+    </filter>
+  </defs>
+  <title>Esther Nicole Photography LLC</title>
+  <g id="map">
+	<image id="pic" width="1008" height="576" xlink:href="https://goo.gl/I7Cmxp"/>
+	<a target="_system" xlink:href="tel:7062843027" data-ebc="(706) 284-3027"><rect id="phone" class="spot" x="225" y="247" width="273" height="37" rx="18.5" ry="18.5"/></a>
+	<a target="_system" xlink:href="mailto:esthernicole.photos@gmail.com" data-ebc="esthernicole.photos@gmail.com"><rect id="email" class="spot" x="130" y="291" width="456" height="38" rx="19" ry="19"/></a>
+	<a target="_system" xlink:href="http://www.esthernicolephotos.wix.com/photography" data-ebc="www.esthernicolephotos.wix.com/photography"><rect id="web" class="spot" x="63" y="333" width="605" height="35" rx="17.5" ry="17.5"/></a>
+	<a target="_system" xlink:href="https://www.facebook.com/Esther-Nicole-Photography-LLC-137326069968267" data-ebc="page/137326069968267"><rect id="facebook" class="spot" x="180" y="437" width="374" height="41" rx="20.5" ry="20.5"/></a>
+	<a target="_system" xlink:href="https://www.instagram.com/esthernicolephotography/" data-ebc="uuser?username=esthernicolephotography"><rect id="instagram" class="spot" x="173" y="492" width="350" height="50" rx="21.5" ry="21.5"/></a>
+  </g>
+</svg>
