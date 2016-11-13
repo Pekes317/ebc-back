@@ -1,0 +1,63 @@
+<md-card class="main">
+	<md-card-title class="top" [class.select]="isChecked">
+		<span *ngIf="!isChecked" class="title">{{table}}</span>
+		<span *ngIf="isChecked">{{isSelected.length}} Users selected</span>
+		<span>
+			<button *ngIf="!isChecked" md-icon-button (click)="addItem()">
+				<md-icon>add</md-icon>
+			</button>
+			<button *ngIf="isChecked" md-icon-button (click)="delete()">
+				<md-icon>delete</md-icon>
+			</button>
+		</span>
+	</md-card-title>
+	<div class="list">
+		<table class="data">
+			<thead class="head">
+				<tr>
+					<th class="check">
+						<md-checkbox [checked]="allChecked" [indeterminate]="isChecked"></md-checkbox>
+					</th>
+					<th>
+						<md-icon>edit</md-icon>
+					</th>
+					<th>Id</th>
+					<th>email</th>
+					<th>Frist Name</th>
+					<th>Last Name</th>
+					<th>Image</th>
+					<th>Member Since</th>
+					<th>Subcribed</th>
+					<th>User</th>
+					<th>Items</th>
+				</tr>
+			</thead>
+			<tbody class="list">
+				<tr *ngFor="let user of users" class="data">
+					<td class="check">
+						<md-checkbox [checked]="allChecked" (change)="selected(user?.id)"></md-checkbox>
+					</td>
+					<td>
+						<button md-icon-button md-ripple (click)="editItem(user)">
+							<md-icon>edit</md-icon>
+						</button>
+					</td>
+					<td>{{user?.id}}</td>
+					<td>{{user?.email}}</td>
+					<td>{{user?.firstName}}</td>
+					<td>{{user?.lastName}}</td>
+					<td>{{user?.pic}}</td>
+					<td>{{user?.since | date}}</td>
+					<td>{{user?.subscribed}}</td>
+					<td>{{user?.user}}</td>
+					<td>{{user?.items}}</td>
+				</tr>
+			</tbody>
+			<tfoot class="foot">
+				<tr>
+					<td colspan="10">&nbsp;</td>
+				</tr>
+			</tfoot>
+		</table>
+	</div>
+</md-card>

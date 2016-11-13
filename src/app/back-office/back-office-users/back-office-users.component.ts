@@ -11,23 +11,23 @@ import {
 } from '@angular/material';
 
 import { BackandItemService } from '../../shared/backand-item.service';
-import { BackandItem } from '../../shared/';
+import { BackandUser } from '../../shared/';
 import { BackOfficeDetailComponent } from '../back-office-detail/back-office-detail.component';
 
 @Component({
-  selector: 'app-back-office-list',
-  templateUrl: './back-office-list.component.html',
-  styleUrls: ['./back-office-list.component.scss']
+  selector: 'app-back-office-users',
+  templateUrl: './back-office-users.component.html',
+  styleUrls: ['./back-office-users.component.scss']
 })
-export class BackOfficeListComponent implements DoCheck, OnDestroy, OnInit {
+export class BackOfficeUsersComponent implements DoCheck, OnDestroy, OnInit {
   allChecked: boolean = false;
   backandCall: Subscription;
   isChecked: boolean = false;
   isSelected: Array<number> = [];
-  items: Array<BackandItem>;
+  users: Array<BackandUser>;
   started: boolean = false;
   table: string;
-
+  
   constructor(
     public view: ViewContainerRef,
     private backand: BackandItemService,
@@ -63,7 +63,7 @@ export class BackOfficeListComponent implements DoCheck, OnDestroy, OnInit {
         let config = new MdSnackBarConfig();
         config.viewContainerRef = this.view;
         if (toast) {
-          let message = this.snack.open(`Item has been ${this.setMessage(edit)}`, 'Okay', config);
+          let message = this.snack.open(`User has been ${this.setMessage(edit)}`, 'Okay', config);
           this.getItems();
           this.toastDismiss(message);
         };
@@ -77,7 +77,7 @@ export class BackOfficeListComponent implements DoCheck, OnDestroy, OnInit {
       this.isChecked = false;
     }
     if (this.started) {
-      if (this.isSelected.length === this.items.length) {
+      if (this.isSelected.length === this.users.length) {
         this.allChecked = true;
       } else {
         this.allChecked = false;
@@ -97,37 +97,37 @@ export class BackOfficeListComponent implements DoCheck, OnDestroy, OnInit {
     });
   }
 
-  detailModal(edit, item?) {
+  detailModal(edit, user?) {
     let config: MdDialogConfig = new MdDialogConfig();
     config.viewContainerRef = this.view;
     let ebcItem = this.dialog.open(BackOfficeDetailComponent, config);
     ebcItem.componentInstance.table = this.table;
     ebcItem.componentInstance.edit = edit;
     if (edit) {
-      ebcItem.componentInstance.ebcPiece = item;
-      ebcItem.componentInstance.itemId = item['id'];
+      ebcItem.componentInstance.ebcPiece = user;
+      ebcItem.componentInstance.itemId = user['id'];
     };
     this.completeModal(ebcItem, edit);
   }
 
-  editItem(item) {
-    this.detailModal(true, item);
+  editItem(user) {
+    this.detailModal(true, user);
   }
 
   getItems() {
     this.backandCall = this.backand.getList(this.table).subscribe(
       list => {
-        this.items = list.data;
+        this.users = list.data;
         this.started = true;
       });
   }
 
-  selected(item) {
-    let index = this.isSelected.indexOf(item);
+  selected(user) {
+    let index = this.isSelected.indexOf(user);
     if (index !== -1) {
       this.isSelected.splice(index, 1);
     } else {
-      this.isSelected.push(item);
+      this.isSelected.push(user);
     }
   }
 
@@ -149,4 +149,4 @@ export class BackOfficeListComponent implements DoCheck, OnDestroy, OnInit {
       () => this.getItems()
     );
   }
-}
+}                   

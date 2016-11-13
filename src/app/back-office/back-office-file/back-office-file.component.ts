@@ -10,5 +10,6 @@ export class BackOfficeFileComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    
   }
 }
