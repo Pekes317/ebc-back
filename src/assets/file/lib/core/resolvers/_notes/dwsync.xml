@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<dwsync>
+<file name="FsResolver.js" server="beezleea.wwwss36.a2hosted.com" local="131195000727026857" remote="131234900400000000" Dst="1" />
+<file name="GitFsResolver.js" server="beezleea.wwwss36.a2hosted.com" local="131195000748577624" remote="131234900400000000" Dst="1" />
+<file name="GitHubResolver.js" server="beezleea.wwwss36.a2hosted.com" local="131195000757201683" remote="131234900400000000" Dst="1" />
+<file name="GitRemoteResolver.js" server="beezleea.wwwss36.a2hosted.com" local="131195000778213953" remote="131234900400000000" Dst="1" />
+<file name="GitResolver.js" server="beezleea.wwwss36.a2hosted.com" local="131195000783865454" remote="131234900400000000" Dst="1" />
+<file name="index.js" server="beezleea.wwwss36.a2hosted.com" local="131195000865714907" remote="131234900400000000" Dst="1" />
+<file name="pluginResolverFactory.js" server="beezleea.wwwss36.a2hosted.com" local="131195000867186604" remote="131234900400000000" Dst="1" />
+<file name="Resolver.js" server="beezleea.wwwss36.a2hosted.com" local="131195000850105369" remote="131234900400000000" Dst="1" />
+<file name="SvnResolver.js" server="beezleea.wwwss36.a2hosted.com" local="131195000863021872" remote="131234900400000000" Dst="1" />
+<file name="UrlResolver.js" server="beezleea.wwwss36.a2hosted.com" local="131195000864337040" remote="131234900400000000" Dst="1" />
+<file name="FsResolver.js" server="ftp.beezleeart.com" local="131195000727026857" remote="131234921400000000" Dst="1" />
+<file name="GitFsResolver.js" server="ftp.beezleeart.com" local="131195000748577624" remote="131234921400000000" Dst="1" />
+<file name="GitHubResolver.js" server="ftp.beezleeart.com" local="131195000757201683" remote="131234921400000000" Dst="1" />
+<file name="GitRemoteResolver.js" server="ftp.beezleeart.com" local="131195000778213953" remote="131234921400000000" Dst="1" />
+<file name="GitResolver.js" server="ftp.beezleeart.com" local="131195000783865454" remote="131234921400000000" Dst="1" />
+<file name="index.js" server="ftp.beezleeart.com" local="131195000865714907" remote="131234921400000000" Dst="1" />
+<file name="pluginResolverFactory.js" server="ftp.beezleeart.com" local="131195000867186604" remote="131234921400000000" Dst="1" />
+<file name="Resolver.js" server="ftp.beezleeart.com" local="131195000850105369" remote="131234921400000000" Dst="1" />
+<file name="SvnResolver.js" server="ftp.beezleeart.com" local="131195000863021872" remote="131234921400000000" Dst="1" />
+<file name="UrlResolver.js" server="ftp.beezleeart.com" local="131195000864337040" remote="131234921400000000" Dst="1" />
+</dwsync>
