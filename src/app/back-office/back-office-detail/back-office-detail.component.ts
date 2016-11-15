@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MdDialogRef } from '@angular/material';
 
 import { BackandItemService } from '../../shared/backand-item.service';
@@ -28,7 +28,7 @@ export class BackOfficeDetailComponent implements OnInit {
   itemId: number;
   table: string;
 
-  constructor(private backand: BackandItemService, private dialog: MdDialogRef<any>) { }
+  constructor(private backand: BackandItemService, private dialog: MdDialogRef<BackOfficeDetailComponent>) { }
 
   ngOnInit() {
 

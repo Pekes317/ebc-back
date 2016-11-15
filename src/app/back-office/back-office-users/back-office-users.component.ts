@@ -3,7 +3,6 @@ import { Subscription } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import {
   MdDialog,
-  MdDialogConfig,
   MdDialogRef,
   MdSnackBar,
   MdSnackBarConfig,
@@ -12,7 +11,7 @@ import {
 
 import { BackandItemService } from '../../shared/backand-item.service';
 import { BackandUser } from '../../shared/';
-import { BackOfficeDetailComponent } from '../back-office-detail/back-office-detail.component';
+import { BackOfficeEditComponent } from '../back-office-edit/back-office-edit.component';
 
 @Component({
   selector: 'app-back-office-users',
@@ -27,7 +26,7 @@ export class BackOfficeUsersComponent implements DoCheck, OnDestroy, OnInit {
   users: Array<BackandUser>;
   started: boolean = false;
   table: string;
-  
+
   constructor(
     public view: ViewContainerRef,
     private backand: BackandItemService,
@@ -56,7 +55,7 @@ export class BackOfficeUsersComponent implements DoCheck, OnDestroy, OnInit {
     this.detailModal(false);
   }
 
-  completeModal(ebcItem: MdDialogRef<BackOfficeDetailComponent>, edit) {
+  completeModal(ebcItem: MdDialogRef<BackOfficeEditComponent>, edit) {
     ebcItem.afterClosed().subscribe(
       () => {
         let toast = ebcItem.componentInstance.toast;
@@ -92,22 +91,20 @@ export class BackOfficeUsersComponent implements DoCheck, OnDestroy, OnInit {
       let index = this.isSelected.indexOf(data);
       this.isSelected.splice(index, 1);
       this.backand.deleteItem(this.table, data);
-      let message = this.snack.open('Item(s) have been Deleted', 'Okay', config);
+      let message = this.snack.open('User(s) have been Deleted', 'Okay', config);
       this.toastDismiss(message);
     });
   }
 
   detailModal(edit, user?) {
-    let config: MdDialogConfig = new MdDialogConfig();
-    config.viewContainerRef = this.view;
-    let ebcItem = this.dialog.open(BackOfficeDetailComponent, config);
-    ebcItem.componentInstance.table = this.table;
-    ebcItem.componentInstance.edit = edit;
+    let ebcUser: MdDialogRef<BackOfficeEditComponent> = this.dialog.open(BackOfficeEditComponent);
+    ebcUser.componentInstance.table = this.table;
+    ebcUser.componentInstance.edit = edit;
     if (edit) {
-      ebcItem.componentInstance.ebcPiece = user;
-      ebcItem.componentInstance.itemId = user['id'];
+      ebcUser.componentInstance.ebcUser = user;
+      ebcUser.componentInstance.ebcId = user['id'];
     };
-    this.completeModal(ebcItem, edit);
+    this.completeModal(ebcUser, edit);
   }
 
   editItem(user) {

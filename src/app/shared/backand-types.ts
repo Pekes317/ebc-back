@@ -22,6 +22,8 @@ export interface BackandUser {
 	pic: string;
 	since: Date;
 	subscribed: boolean;
+	items?: any;
+	user?: any;
 }
 
 export interface BackandItem {
@@ -36,4 +38,11 @@ export interface BackandItem {
 	data?: string;
 	item?: any;
 	user?: any;
+}
+
+export interface BackandSvg {
+	id: number;
+	path: string;
+	disable: boolean;
+	itemID: number;
 }

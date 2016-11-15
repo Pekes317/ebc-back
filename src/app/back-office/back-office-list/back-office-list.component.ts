@@ -3,7 +3,6 @@ import { Subscription } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import {
   MdDialog,
-  MdDialogConfig,
   MdDialogRef,
   MdSnackBar,
   MdSnackBarConfig,
@@ -98,9 +97,7 @@ export class BackOfficeListComponent implements DoCheck, OnDestroy, OnInit {
   }
 
   detailModal(edit, item?) {
-    let config: MdDialogConfig = new MdDialogConfig();
-    config.viewContainerRef = this.view;
-    let ebcItem = this.dialog.open(BackOfficeDetailComponent, config);
+    let ebcItem: MdDialogRef<BackOfficeDetailComponent> = this.dialog.open(BackOfficeDetailComponent);
     ebcItem.componentInstance.table = this.table;
     ebcItem.componentInstance.edit = edit;
     if (edit) {

@@ -1,0 +1,31 @@
+<div class="dialog">
+  <div [ngSwitch]="table">
+    <div *ngSwitchCase="'users'">
+      <h2 class="title"><span *ngIf="edit">Update</span><span *ngIf="!edit">Add New</span> User</h2>
+      <div class="form">
+        <md-input placeholder="email" [(ngModel)]="ebcUser.email"></md-input>
+        <md-input placeholder="First Name" [(ngModel)]="ebcUser.firstName"></md-input>
+        <md-input placeholder="Last Name" [(ngModel)]="ebcUser.lastName"></md-input>
+        <md-input placeholder="Image" [(ngModel)]="ebcUser.pic"></md-input>
+      </div>
+      <div class="toggles">
+        <md-slide-toggle color="primary" [(ngModel)]="ebcUser.subscribed">Subscribed</md-slide-toggle>
+      </div>
+    </div>
+    <div *ngSwitchCase="'svg'">
+      <h2 class="title"><span *ngIf="edit">Update</span><span *ngIf="!edit">Add New</span> svg</h2>
+      <div class="svg">
+        <md-input placeholder="Path" [(ngModel)]="ebcSvg.path"></md-input>
+        <span>&emsp;</span>
+        <md-input placeholder="Item Id" [(ngModel)]="ebcSvg.itemID"></md-input>
+      </div>
+      <div class="toggles">
+        <md-slide-toggle color="primary" [(ngModel)]="ebcSvg.disable">Disable</md-slide-toggle>
+      </div>
+    </div>
+  </div>
+  <div class="toggles">
+    <button md-raised-button md-ripple color="warn" type="button" (click)="cancel()">Cancel</button>
+    <button md-raised-button md-ripple color="primary" type="submit" (click)="ebcSub()">Submit</button>
+  </div>
+</div>

@@ -39,7 +39,7 @@ export class LoginComponent implements OnDestroy, OnInit {
   }
 
   isRedirected() {
-    this.router.navigate([this.backAuth.redirectUrl.substring(1)]);
+    this.router.navigate([this.backAuth.redirectUrl]);
     this.backAuth.redirectUrl = undefined;
   }
 
