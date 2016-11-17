@@ -12,7 +12,8 @@ import { BackandItemService } from './shared/backand-item.service';
 import { HomeComponent } from './home';
 import { appRoutingProviders, routing } from './app.routing';
 import { LoginComponent } from './login';
-import { NavbarModule } from './navbar/navbar.module';;
+import { NavbarModule } from './navbar/navbar.module';
+import { EbcSvgComponent } from './ebc-svg/ebc-svg.component';;
 
 @NgModule({
   imports: [
@@ -28,7 +29,8 @@ import { NavbarModule } from './navbar/navbar.module';;
   declarations: [
     AppComponent,
     HomeComponent,
-    LoginComponent
+    LoginComponent,
+    EbcSvgComponent
   ],
   providers: [
     appRoutingProviders,

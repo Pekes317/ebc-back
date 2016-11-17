@@ -1,0 +1,20 @@
+@import '../theme/app.mixin';
+.back {
+  
+	@include md-fullscreen;
+  
+	.content {
+    padding: 1rem;
+   
+	  @include crumb;
+
+		.card {
+			max-height: 70vh;
+			overflow: auto;
+
+			.disable {
+				color: md-color($warn); 
+			}
+		}
+  }
+}

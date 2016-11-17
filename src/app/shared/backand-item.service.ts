@@ -47,7 +47,8 @@ export class BackandItemService {
 
     let $obs = this.http.get(url, {
       headers: this.config.authHeader
-    }).map(res => res.json());
+    })
+    .map(res => res.json());
 
     $obs.subscribe(
       data => console.log(data),

@@ -36,6 +36,7 @@ export class BackandAuthService {
     this.config.authToken = { header_name: '', header_value: '' };
     localStorage.removeItem('auth_token');
     localStorage.removeItem('tokenData');
+    this.config.authCheck();
   }
 
   public currentUser() {
@@ -49,7 +50,7 @@ export class BackandAuthService {
       err => this.config.errorHander(err),
       () => console.log('Current User')
     )
-    
+
     return $obs;
   }
 
@@ -100,7 +101,7 @@ export class BackandAuthService {
         this.setTokenHeader(data);
       },
       err => {
-       this.config.errorHander(err);
+        this.config.errorHander(err);
       },
       () => console.log('Finish Re-Auth'));
 
@@ -161,6 +162,7 @@ export class BackandAuthService {
   private getToken(res) {
     console.log(res);
     localStorage.setItem('tokenData', JSON.stringify(res.json()));
+    localStorage.setItem('username', res.json().username);
     return res.json().access_token;
   }
 
@@ -168,8 +170,8 @@ export class BackandAuthService {
     this.config.authStatus = "OK";
     this.config.authToken.header_name = "AnonymousToken";
     this.config.authToken.header_value = this.config.anonymousToken;
-    this.storeAuthToken(this.config.authToken);
     localStorage.setItem('username', 'Anonymous');
+    this.storeAuthToken(this.config.authToken);
   }
 
   private setTokenHeader(jwt) {

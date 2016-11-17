@@ -13,7 +13,7 @@ export class BackandConfigService {
   authToken: BackandHeader = { header_name: '', header_value: '' };
   authType: string;
   is_auth_error: boolean = false;
-  signUpToken: string = 'your signup token';
+  signUpToken: string = 'dbaea0da-730d-4039-8f8a-77a507a3e908';
   urls: BackandUrls = {
     signup: '/1/user/signup',
     token: '/token',
@@ -33,10 +33,10 @@ export class BackandConfigService {
 
     if (storedToken) {
       this.authToken = JSON.parse(storedToken);
-      this.authType = this.authToken.header_name == 'Anonymous' ? 'Anonymous' : 'Token';
+      this.authType = this.authToken.header_name === 'Token' ? 'Token' : 'Anonymous';
       this.authStatus = 'OK';
       if (this.authType == 'Token') {
-        this.username = JSON.parse(localStorage.getItem('tokenData')).username;
+        this.username = JSON.parse(localStorage.getItem('username')).username;
       }
     } else {
       this.authToken = { header_name: '', header_value: '' };

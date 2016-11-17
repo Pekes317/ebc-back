@@ -1,0 +1,19 @@
+<div class="back">
+  <app-navbar>Card</app-navbar>
+  <div class="content">
+    <div class="crumb">
+      <button md-icon-button md-ripple (click)="toHome()">
+        <md-icon>home</md-icon>
+      </button>
+      <span class="trail">| &ensp;Card</span>
+    </div>
+    <md-card  class="card">
+      <object *ngIf="!ebcCard?.disable" md-card-image [attr.data]="ebcSVG"></object>
+      <div class="disable" *ngIf="ebcCard?.disable">
+         <md-card-title>I am sorry, but this Card is currently disable. Please contact EBC Tech Support for assistance.</md-card-title>
+        <img md-card-image src="assets/ebc_disabled.png">
+         <md-card-title>I am sorry, but this Card is currently disable. Please contact EBC Tech Support for assistance.</md-card-title>
+      </div>
+    </md-card>
+  </div>
+</div>

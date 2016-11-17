@@ -1,0 +1,1 @@
+import 'angular2-ie9-shims/shims_for_IE@2.1.2';
