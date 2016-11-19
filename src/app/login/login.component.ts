@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { MdSnackBar } from '@angular/material';
 import { Subscription } from 'rxjs';
 
 import { BackandAuthService } from '../shared/backand-auth.service';
@@ -17,9 +18,8 @@ export class LoginComponent implements OnDestroy, OnInit {
   loginForm: FormGroup;
   loggedIn: boolean = false;
   password: FormControl = new FormControl('', Validators.required);
-  redirect: boolean = false;
 
-  constructor(private backAuth: BackandAuthService, private router: Router) {
+  constructor(private backAuth: BackandAuthService, private router: Router, private snack: MdSnackBar) {
     this.loginForm = new FormGroup({
       username: this.email,
       password: this.password
@@ -33,9 +33,28 @@ export class LoginComponent implements OnDestroy, OnInit {
   }
 
   ngOnInit() {
-    if (this.backAuth.redirectUrl !== undefined) {
-      this.redirect = true;
+
+  }
+
+  alert() {
+    let message;
+    let action;
+
+    if (this.loggedIn) {
+      message = 'Loggin Successful';
+      action = 'Okay';
     }
+    if (!this.loggedIn) {
+      message = 'Loggin Failed';
+      action = 'Try Again';
+    }
+    this.snack.open(message, action)
+      .afterDismissed()
+      .subscribe(() => {
+        if (this.loggedIn) {
+          this.isRedirected();
+        }
+      });
   }
 
   isRedirected() {
@@ -45,16 +64,17 @@ export class LoginComponent implements OnDestroy, OnInit {
 
   logIn(form) {
     let creds = form.value
-    this.loggedIn = true;
     this.backandCall = this.backAuth.getAuthToken(creds.username, creds.password)
       .subscribe(
       data => {
+        this.loggedIn = true;
         this.loginForm.reset();
-        if (this.redirect) {
-          this.isRedirected();
-        }
+        this.alert();
       },
-      err => this.loginForm.reset());
+      err => {
+        this.loginForm.reset();
+        this.alert();
+      });
   }
 
   toHome() {

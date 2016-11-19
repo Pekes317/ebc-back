@@ -1,6 +1,7 @@
 import { ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
+import { RoleGuard } from './shared';
 import { AuthGuard, TitleResolve } from '../shared';
 import { BackOfficeComponent } from './back-office.component';
 import { BackOfficeHomeComponent } from './back-office-home/back-office-home.component';
@@ -13,7 +14,7 @@ const officeRoutes: Routes = [
 	{
 		path: 'back-office',
 		component: BackOfficeComponent,
-		canActivate: [AuthGuard],
+		canActivate: [AuthGuard, RoleGuard],
 		data: { title: 'Back Office' },
 		resolve: { title: TitleResolve },
 		children: [
