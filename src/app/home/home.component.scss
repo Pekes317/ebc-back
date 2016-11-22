@@ -35,6 +35,10 @@
 				@include img;
 				max-width: 20vmin;
 			}
+
+			a {
+				cursor: pointer;
+			}
 		}
 
 		.find {
