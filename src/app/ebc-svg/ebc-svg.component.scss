@@ -5,15 +5,18 @@
   
 	.content {
     padding: 1rem;
-		overflow: auto;
    
 	  @include crumb;
 
-		.card {
-			max-height: 65vh;
+		.scroll {
+			overflow: auto;
 
-			.disable {
-				color: md-color($warn); 
+			.card {
+				height: 50vh;
+
+				.disable {
+					color: md-color($warn); 
+				}
 			}
 		}
   }
