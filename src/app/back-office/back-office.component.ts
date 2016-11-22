@@ -17,9 +17,6 @@ export class BackOfficeComponent implements OnInit {
     this.backAuth.currentUser().subscribe(
       data => {
         this.backUser = data[0];
-        if (this.backUser.pic === 'img/user.svg') {
-          this.backUser.pic = 'assets/user.svg';
-        }
       });
   }
 }
