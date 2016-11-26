@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { Http } from '@angular/http';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MdSnackBar } from '@angular/material';
 import { Subscription } from 'rxjs';
@@ -16,12 +16,10 @@ import { BackandSvg } from '../shared/backand-types';
 })
 export class EbcSvgComponent implements OnInit {
   ebcCard: BackandSvg;
-  ebcSVG: SafeResourceUrl;
   navSafe: boolean = false;
 
-  constructor(private auth: BackandAuthService, private backand: BackandItemService,
-    private route: ActivatedRoute, private router: Router,
-    private sanitize: DomSanitizer, private snack: MdSnackBar) { 
+  constructor(private auth: BackandAuthService, private backand: BackandItemService, private http: Http,
+    private route: ActivatedRoute, private router: Router, private snack: MdSnackBar) { 
       
     }
 
@@ -37,7 +35,6 @@ export class EbcSvgComponent implements OnInit {
       svg => {
         cards = svg['data'];
         this.ebcCard = cards.find(cards => cards.itemID === id);
-        this.ebcSVG = this.sanitize.bypassSecurityTrustResourceUrl(this.ebcCard.path);
       });
   }
 

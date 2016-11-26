@@ -3,6 +3,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { BrowserModule, Title } from '@angular/platform-browser';
 import { MaterialModule } from '@angular/material';
+import { InlineSVGModule } from 'ng2-inline-svg';
 
 import { AppComponent } from './app.component';
 import { BackOfficeModule } from './back-office';
@@ -22,6 +23,7 @@ import { EbcSvgComponent } from './ebc-svg/ebc-svg.component';;
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
+    InlineSVGModule,
     MaterialModule.forRoot(),
     NavbarModule,
     routing
