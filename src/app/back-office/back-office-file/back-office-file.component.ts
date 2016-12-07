@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Http } from '@angular/http';
 
 @Component({
   selector: 'app-back-office-file',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BackOfficeFileComponent implements OnInit {
 
-  constructor() { }
+  constructor(private http: Http) { }
 
   ngOnInit() {
-    
+    this.getAuth();
+  }
+
+  getAuth() {  
+    this.http.get('http://admin:yield63EBC**@ebc.beezleeart.com/assets/file/').subscribe(
+      data => console.log('Success', data),
+      err => console.log('Fail', err)
+    )
   }
 }
