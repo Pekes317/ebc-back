@@ -54,7 +54,7 @@ export class BackOfficeEditComponent implements OnInit {
     let data;
     this.toast = true;
 
-    if(this.table === 'user') {
+    if(this.table === 'users') {
       data = this.ebcUser;
     } else if (this.table === 'svg') {
       data = this.ebcSvg;
