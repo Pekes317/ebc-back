@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
+import { Observable } from 'rxjs';
 
 import { BackandConfigService } from './backand-config.service';
 
@@ -13,7 +14,7 @@ export class BackandItemService {
     let url = `${this.baseUrl}/${list}`;
     let update = JSON.stringify(data);
 
-    let $obs = this.http.post(url, update, {
+    let $obs: Observable<any> = this.http.post(url, update, {
       headers: this.config.authHeader
    }).map(res => res.json());
 
@@ -29,11 +30,9 @@ export class BackandItemService {
   public deleteItem(list, id) {
     let url = `${this.baseUrl}/${list}/${id}`;
 
-    let $obs = this.http.delete(url, {
+    let $obs: Observable<any> = this.http.delete(url, {
       headers: this.config.authHeader
-    }).map(res => res.json());
-
-    $obs.subscribe(
+    }).map(res => res.json()).do(
       data => console.log(data),
       err => this.config.errorHander(err),
       () => console.log('Items')
@@ -45,7 +44,7 @@ export class BackandItemService {
   public getList(list) {
     let url = `${this.baseUrl}/${list}`;
 
-    let $obs = this.http.get(url, {
+    let $obs: Observable<any> = this.http.get(url, {
       headers: this.config.authHeader
     })
     .map(res => res.json()).do(
@@ -54,17 +53,15 @@ export class BackandItemService {
       () => console.log('Items')
     )
 
-    return $obs;
+   return $obs;
   }
 
   public getItem(list, id) {
     let url = `${this.baseUrl}/${list}/${id}`;
 
-    let $obs = this.http.get(url, {
+   let $obs: Observable<any> = this.http.get(url, {
       headers: this.config.authHeader
-   }).map(res => res.json());
-
-    $obs.subscribe(
+   }).map(res => res.json()).do(
       data => console.log(data),
       err => this.config.errorHander(err),
       () => console.log('Items')
@@ -77,7 +74,7 @@ export class BackandItemService {
     let url = `${this.baseUrl}/${list}/${id}`;
     let update = JSON.stringify(data);
 
-    let $obs = this.http.put(url, update, {
+    let $obs: Observable<any> = this.http.put(url, update, {
       headers: this.config.authHeader
     }).map(res => res);
     
@@ -87,6 +84,6 @@ export class BackandItemService {
       () => console.log('Items')
     )
 
-    return $obs;
+   return $obs;
   }
 }

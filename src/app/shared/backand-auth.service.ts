@@ -1,5 +1,6 @@
 import { Http, Headers } from '@angular/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 import { BackandConfigService } from './backand-config.service';
 
@@ -16,7 +17,7 @@ export class BackandAuthService {
       newPassword: newPassword
     });
 
-    let $obs = this.http.post(url, creds, {
+    let $obs: Observable<any> = this.http.post(url, creds, {
       headers: this.config.authHeader
     }).map(res => res);
 
@@ -41,7 +42,7 @@ export class BackandAuthService {
 
   public currentUser() {
     const userQuery = `${this.config.apiUrl}/1/query/data/CurrentUser`;
-    let $obs = this.http.get(userQuery, {
+    let $obs: Observable<any> = this.http.get(userQuery, {
       headers: this.config.authHeader
     }).map(res => res.json());
 
@@ -64,7 +65,7 @@ export class BackandAuthService {
 
     header.append('Content-Type', 'application/x-www-form-urlencoded');
 
-    let $obs = this.http.post(url, creds, {
+    let $obs: Observable<any> = this.http.post(url, creds, {
       headers: header
     }).map(res => this.getToken(res));
 
@@ -92,7 +93,7 @@ export class BackandAuthService {
 
     header.append('Content-Type', 'application/x-www-form-urlencoded');
 
-    let $obs = this.http.post(url, creds, {
+    let $obs: Observable<any> = this.http.post(url, creds, {
       headers: header
     }).map(res => this.getToken(res));
 
@@ -117,7 +118,7 @@ export class BackandAuthService {
     let header = new Headers();
     header.append('SignUpToken', this.config.signUpToken);
 
-    let $obs = this.http.post(url, creds, {
+    let $obs: Observable<any> = this.http.post(url, creds, {
       headers: header
     }).map(res => res);
 
@@ -139,7 +140,7 @@ export class BackandAuthService {
     let header = new Headers();
     header.append('SignUpToken', this.config.signUpToken);
 
-    let $obs = this.http.post(url, creds, {
+    let $obs: Observable<any> = this.http.post(url, creds, {
       headers: header
     });
 

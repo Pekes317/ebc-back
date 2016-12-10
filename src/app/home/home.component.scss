@@ -1,7 +1,6 @@
 @import '../theme/app.mixin';
 
 .back {
-	@include md-fullscreen;
 
 	.header {
 		display: flex;
