@@ -9,9 +9,11 @@ import { EbcSvgComponent } from './ebc-svg/ebc-svg.component';
 const appRoutes: Routes = [
 	{ path: '', component: HomeComponent, data: { title: 'Home' }, resolve: { title: TitleResolve } },
 	{ path: 'login', component: LoginComponent, data: { title: 'Login' }, resolve: { title: TitleResolve } },
-	{ path: 'card/:id', component: EbcSvgComponent, 
-	data: { title: 'Card' }, canDeactivate: [SvgGuardService],
-	resolve: { title: TitleResolve } }
+	{
+		path: 'card/:id', component: EbcSvgComponent,
+		data: { title: 'Card' }, canDeactivate: [SvgGuardService],
+		resolve: { title: TitleResolve }
+	}
 ];
 
 export const appRoutingProviders: any[] = [

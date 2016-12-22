@@ -13,7 +13,7 @@ import { BackOfficeFileComponent } from './back-office-file/back-office-file.com
 import { BackOfficeSvgComponent } from './back-office-svg/back-office-svg.component';
 import { BackOfficeUsersComponent } from './back-office-users/back-office-users.component';
 import { BackOfficeEditComponent } from './back-office-edit/back-office-edit.component';
-import { RoleGuard } from './shared';
+import { AuthResolve, RoleGuard } from './shared';
 
 @NgModule({
   imports: [
@@ -35,6 +35,7 @@ import { RoleGuard } from './shared';
     BackOfficeEditComponent
   ],
   providers: [
+    AuthResolve,
     RoleGuard
   ],
   entryComponents: [

@@ -11,13 +11,6 @@ export class BackOfficeFileComponent implements OnInit {
   constructor(private http: Http) { }
 
   ngOnInit() {
-    this.getAuth();
-  }
 
-  getAuth() {  
-    this.http.get('http://admin:yield63EBC**@ebc.beezleeart.com/assets/file/').subscribe(
-      data => console.log('Success', data),
-      err => console.log('Fail', err)
-    )
   }
 }

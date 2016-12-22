@@ -1,7 +1,7 @@
 import { ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { RoleGuard } from './shared';
+import { AuthResolve, RoleGuard } from './shared';
 import { AuthGuard, TitleResolve } from '../shared';
 import { BackOfficeComponent } from './back-office.component';
 import { BackOfficeHomeComponent } from './back-office-home/back-office-home.component';
@@ -26,7 +26,7 @@ const officeRoutes: Routes = [
 				path: 'file',
 				component: BackOfficeFileComponent,
 				data: { title: 'Back Office', list: 'templates' },
-				resolve: { title: TitleResolve }
+				resolve: { auth: AuthResolve, title: TitleResolve }
 			},
 			{
 				path: 'items',

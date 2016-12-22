@@ -14,7 +14,8 @@ import { HomeComponent } from './home';
 import { appRoutingProviders, routing } from './app.routing';
 import { LoginComponent } from './login';
 import { NavbarModule } from './navbar/navbar.module';
-import { EbcSvgComponent } from './ebc-svg/ebc-svg.component';;
+import { EbcSvgComponent } from './ebc-svg/ebc-svg.component';
+import { PrivatePolicyComponent } from './private-policy/private-policy.component';;
 
 @NgModule({
   imports: [
@@ -32,13 +33,17 @@ import { EbcSvgComponent } from './ebc-svg/ebc-svg.component';;
     AppComponent,
     HomeComponent,
     LoginComponent,
-    EbcSvgComponent
+    EbcSvgComponent,
+    PrivatePolicyComponent
   ],
   providers: [
     appRoutingProviders,
     BackandAuthService,
     BackandConfigService,
     BackandItemService
+  ],
+  entryComponents: [
+    PrivatePolicyComponent
   ],
   bootstrap: [AppComponent]
 })
