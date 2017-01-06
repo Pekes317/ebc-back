@@ -1,7 +1,11 @@
 {
-  "name": "tester",
-  "version": "0.0.0",
-  "license": "MIT",
+  "name": "ebc-back",
+  "version": "1.0.0",
+  "license": "GNU GPLv3",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Pekes317/ebc-back.git"
+  },
   "angular-cli": {},
   "scripts": {
     "ng": "ng",
@@ -31,6 +35,7 @@
   },
   "devDependencies": {
     "@angular/compiler-cli": "^2.3.1",
+    "@types/hammerjs": "2.0.34",
     "@types/jasmine": "2.5.38",
     "@types/node": "^6.0.42",
     "angular-cli": "1.0.0-beta.24",
