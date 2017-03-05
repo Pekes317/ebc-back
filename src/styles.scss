@@ -1,11 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
-@import './app/theme/app.theme';
+@import 'theme/app.theme';
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 
 body {
   font-family: 'Roboto', sans-serif;
-  background-color: map-get($md-grey, 50);
+  background-color: map-get($mat-grey, 50);
 }
 
 html, body {

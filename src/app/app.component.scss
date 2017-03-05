@@ -1,4 +1,4 @@
-@import 'theme/app.theme';
+@import '../theme/app.theme';
 
 .foot {
 	position: fixed;
@@ -7,7 +7,7 @@
 	right: 0;
 	font-size: .8rem;
 	background-color: transparent;
-	color: map-get($md-grey, 500);
+	color: map-get($mat-grey, 500);
 }
 
 .space-align {

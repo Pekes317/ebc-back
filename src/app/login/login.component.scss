@@ -1,4 +1,4 @@
-@import	'../theme/app.mixin';
+@import	'../../theme/app.mixin';
 
 .back {
 
@@ -10,7 +10,7 @@
 		.login {
 			
 			.title {
-				color: md-color($accent)
+				color: mat-color($accent)
 			}
 
 			.fields {

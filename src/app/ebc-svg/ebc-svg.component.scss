@@ -1,4 +1,4 @@
-@import '../theme/app.mixin';
+@import '../../theme/app.mixin';
 .back {
   
 	.content {
@@ -13,7 +13,7 @@
 				height: 50vh;
 
 				.disable {
-					color: md-color($warn); 
+					color: mat-color($warn); 
 				}
 			}
 		}

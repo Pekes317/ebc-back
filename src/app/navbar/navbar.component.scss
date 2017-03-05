@@ -1,10 +1,10 @@
-@import '../theme/app.theme';
+@import '../../theme/app.theme';
 
 .navbar {
 	position: relative;
 	top: 0;
 	left: 0;
-	@include md-elevation(3);
+	@include mat-elevation(3);
 	z-index: 1;
 }
 
@@ -13,5 +13,5 @@
 }
 
 .warning {
-	color: md-color($warn);
+	color: mat-color($warn);
 }

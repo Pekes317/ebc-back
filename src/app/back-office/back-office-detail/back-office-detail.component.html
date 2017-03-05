@@ -1,15 +1,29 @@
 <div class="dialog">
   <h2 class="title"><span *ngIf="edit">Update</span><span *ngIf="!edit">Add New</span> Item</h2>
   <div class="form">
-    <md-input placeholder="Name" [(ngModel)]="ebcPiece.name"></md-input>
-    <md-input placeholder="SVG" [(ngModel)]="ebcPiece.media"></md-input>
-    <md-input placeholder="Image" [(ngModel)]="ebcPiece.pic"></md-input>
-    <md-input placeholder="User" [(ngModel)]="ebcPiece.user"></md-input>
-    <md-input placeholder="Item" [(ngModel)]="ebcPiece.item"></md-input>
+    <md-input-container>
+      <input matInput placeholder="Name" [(ngModel)]="ebcPiece.name">
+    </md-input-container>
+    <md-input-container>
+      <input matInput placeholder="SVG" [(ngModel)]="ebcPiece.media">
+    </md-input-container>
+    <md-input-container>
+      <input matInput placeholder="Image" [(ngModel)]="ebcPiece.pic">
+    </md-input-container>
+    <md-input-container>
+      <input matInput placeholder="User" [(ngModel)]="ebcPiece.user">
+    </md-input-container>
+    <md-input-container>
+      <input matInput placeholder="Item" [(ngModel)]="ebcPiece.item">
+    </md-input-container>
   </div>
   <div class="form">
-    <md-textarea placeholder="Description" [(ngModel)]="ebcPiece.desc"></md-textarea>
-    <md-textarea placeholder="Extra Data" [(ngModel)]="ebcPiece.data"></md-textarea>
+    <md-input-container>
+      <textarea matInput placeholder="Description" [(ngModel)]="ebcPiece.desc"></textarea>
+    </md-input-container>
+    <md-input-container>
+      <textarea matInput placeholder="Extra Data" [(ngModel)]="ebcPiece.data"></textarea>
+    </md-input-container>
   </div>
   <div class="toggles">
     <md-slide-toggle color="primary" [(ngModel)]="ebcPiece.flyer">Flyer</md-slide-toggle>

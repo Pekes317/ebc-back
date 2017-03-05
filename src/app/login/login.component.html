@@ -11,15 +11,14 @@
       <md-card-title class="title">Login</md-card-title>
       <form [formGroup]="loginForm" (ngSubmit)="logIn(loginForm)">
         <md-card-content class="fields">
-          <md-input class="field" type="email" [dividerColor]="email.valid ? 'primary' : 'warn'" placeholder="Your UserName/Email"
-            formControlName="username"></md-input>
-          <md-input class="field" type="password" [dividerColor]="password.valid ? 'primary' : 'warn'" placeholder="Your Password"
-            formControlName="password"></md-input>
+          <md-input-container [dividerColor]="email.valid ? 'primary' : 'warn'">
+            <input matInput class="field" type="email" placeholder="Your UserName/Email" formControlName="username">
+          </md-input-container>
+          <md-input-container [dividerColor]="password.valid ? 'primary' : 'warn'">
+            <input matInput class="field" type="password" placeholder="Your Password" formControlName="password">
+          </md-input-container>
         </md-card-content>
         <button md-raised-button md-ripple color="primary" type="submit" [disabled]="loginForm.invalid">Login</button>
-        <!--<md-card-actions>
-      <button md-raised-button color="primary" type="submit">Login</button>
-    </md-card-actions>-->
       </form>
     </md-card>
   </div>

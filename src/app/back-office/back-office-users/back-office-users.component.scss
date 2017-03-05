@@ -1,4 +1,4 @@
-	@import '../../theme/app.mixin';
+	@import '../../../theme/app.mixin';
 	
 	.main {
 		max-height: 67vh;
@@ -20,10 +20,10 @@
 		}
 	
 		.select {
-			background-color: md-color($primary, 100 ,.5);
+			background-color: mat-color($primary, 100 ,.5);
 	
 			span:first-child {
-				color:md-color($primary);
+				color:mat-color($primary);
 				font-size: 1rem;
 			}
 		}
@@ -43,7 +43,7 @@
 					cursor: default;
 	
 					&.data {
-						background-color: transparentize(map-get($md-grey, 200), .5);
+						background-color: transparentize(map-get($mat-grey, 200), .5);
 					}
 				}
 	
@@ -58,8 +58,8 @@
 				th {
 						@include bottom-border;
 						@include row-padding;
-						color: map-get($md-grey, 500);
-						background-color: map-get($md-grey, 0);
+						color: map-get($mat-grey, 500);
+						background-color: map-get($mat-grey, 0);
 					}
 				}
 	
