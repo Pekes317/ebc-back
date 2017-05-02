@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { BrowserModule, Title } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from '@angular/material';
 import { InlineSVGModule } from 'ng-inline-svg';
 
@@ -19,6 +20,7 @@ import { PrivatePolicyComponent } from './private-policy/private-policy.componen
 
 @NgModule({
   imports: [
+    BrowserAnimationsModule,
     BrowserModule,
     BackOfficeModule,
     FormsModule,

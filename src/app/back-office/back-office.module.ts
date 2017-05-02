@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '@angular/material';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { routing } from './back-office.routes';
 import { BackOfficeComponent } from './back-office.component';
@@ -17,6 +18,7 @@ import { AuthResolve, RoleGuard } from './shared';
 
 @NgModule({
   imports: [
+    BrowserAnimationsModule,
     CommonModule,
     FormsModule,
     MaterialModule,
