@@ -1,89 +1,44 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
 import { Observable } from 'rxjs';
-
-import { BackandConfigService } from './backand-config.service';
+import { BackandService } from '@backand/angular2-sdk';
 
 @Injectable()
 export class BackandItemService {
-  baseUrl: string = `${this.config.apiUrl}/1/objects`;
 
-  constructor(public config: BackandConfigService, public http: Http) { }
+  constructor(public backand: BackandService) { }
 
   public addItem(list, data) {
-    let url = `${this.baseUrl}/${list}`;
-    let update = JSON.stringify(data);
-
-    let $obs: Observable<any> = this.http.post(url, update, {
-      headers: this.config.authHeader
-   }).map(res => res.json());
-
-    $obs.subscribe(
-      data => console.log(data),
-      err => this.config.errorHander(err),
-      () => console.log('Items')
-    )
-
-    return $obs;
+    return this.backand.object.create(list, data)
+      .catch(err => {
+        console.log(err);
+      });
   }
 
   public deleteItem(list, id) {
-    let url = `${this.baseUrl}/${list}/${id}`;
-
-    let $obs: Observable<any> = this.http.delete(url, {
-      headers: this.config.authHeader
-    }).map(res => res.json()).do(
-      data => console.log(data),
-      err => this.config.errorHander(err),
-      () => console.log('Items')
-    )
-
-    return $obs;
+    return this.backand.object.remove(list, id)
+      .catch(err => {
+        console.log(err);
+      });
   }
 
   public getList(list) {
-    let url = `${this.baseUrl}/${list}`;
-
-    let $obs: Observable<any> = this.http.get(url, {
-      headers: this.config.authHeader
-    })
-    .map(res => res.json()).do(
-      data => console.log(data),
-      err => this.config.errorHander(err),
-      () => console.log('Items')
-    )
-
-   return $obs;
+    return this.backand.object.getList(list)
+      .catch(err => {
+        console.log(err);
+      });
   }
 
   public getItem(list, id) {
-    let url = `${this.baseUrl}/${list}/${id}`;
-
-   let $obs: Observable<any> = this.http.get(url, {
-      headers: this.config.authHeader
-   }).map(res => res.json()).do(
-      data => console.log(data),
-      err => this.config.errorHander(err),
-      () => console.log('Items')
-    );
-
-    return $obs;
+    return this.backand.object.getItem(list, id)
+      .catch(err => {
+        console.log(err);
+      });
   }
 
   public updateItem(list, id, data) {
-    let url = `${this.baseUrl}/${list}/${id}`;
-    let update = JSON.stringify(data);
-
-    let $obs: Observable<any> = this.http.put(url, update, {
-      headers: this.config.authHeader
-    }).map(res => res);
-    
-    $obs.subscribe(
-      data => console.log(data),
-      err => this.config.errorHander(err),
-      () => console.log('Items')
-    )
-
-   return $obs;
+    return this.backand.object.updateItem(list, id, data)
+      .catch(err => {
+        console.log(err);
+      });
   }
 }

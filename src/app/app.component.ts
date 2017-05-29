@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MdDialog, MdDialogRef } from '@angular/material';
+import { BackandService } from '@backand/angular2-sdk';
+import { Warehouse } from 'ngx-warehouse';
 
-import { BackandAuthService } from './shared/backand-auth.service';
-import { BackandConfigService } from './shared/backand-config.service';
 import { PrivatePolicyComponent } from './private-policy/private-policy.component';
 
 @Component({
@@ -14,12 +14,20 @@ import { PrivatePolicyComponent } from './private-policy/private-policy.componen
 export class AppComponent implements OnInit {
   title: string;
 
-  constructor(private backConfig: BackandConfigService, private dialog: MdDialog) {
+  constructor(private backand: BackandService, private dialog: MdDialog, private warehouse: Warehouse) {
 
   }
 
   ngOnInit() {
-    this.backConfig.authCheck();
+    this.backand.init({
+      appName: 'ebc2',
+      anonymousToken: '6755ec7e-3a7e-4dc7-a414-fd1acf8a51a1',
+      manageRefreshToken: true,
+      runSocket: true,
+      signUpToken: 'dbaea0da-730d-4039-8f8a-77a507a3e908',
+      storagePrefix: 'ebc-',
+      useAnonymousTokenByDefault: false
+    });
   }
 
   showPolicy() {

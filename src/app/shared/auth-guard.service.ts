@@ -1,15 +1,16 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, Router, ActivatedRouteSnapshot,
 	RouterStateSnapshot } from '@angular/router';
+import { Warehouse } from 'ngx-warehouse';
 
 import { BackandAuthService } from './backand-auth.service';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
-  constructor(private backAuth: BackandAuthService, private router: Router) { }
+  constructor(private backAuth: BackandAuthService, private router: Router, private warehouse: Warehouse) { }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-		let storedToken = localStorage.getItem('auth_token');
+		let storedToken = ebcAuth;
     
     // Store the attempted URL for redirecting
     this.backAuth.redirectUrl = state.url;

@@ -46,3 +46,11 @@ export interface BackandSvg {
 	disable: boolean;
 	itemID: number;
 }
+
+export interface SignupData {
+	email: string;
+	firstName: string;
+	lastName:string;
+	password: string;
+	confirmPassword: string;
+}

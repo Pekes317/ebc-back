@@ -112,7 +112,7 @@ export class BackOfficeSvgComponent implements  DoCheck, OnDestroy, OnInit {
   }
 
   getItems() {
-    this.backandCall = this.backand.getList(this.table).subscribe(
+    this.backandCall = this.backand.getList(this.table).then(
       list => {
         this.svgs = list.data;
         this.started = true;

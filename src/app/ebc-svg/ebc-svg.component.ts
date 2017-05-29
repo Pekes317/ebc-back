@@ -31,7 +31,7 @@ export class EbcSvgComponent implements OnInit {
     let cards: Array<BackandSvg>;
     let id = this.getItemId();
 
-    this.backand.getList('svg').subscribe(
+    this.backand.getList('svg').then(
       svg => {
         cards = svg['data'];
         this.ebcCard = cards.find(cards => cards.itemID === id);
@@ -55,12 +55,10 @@ export class EbcSvgComponent implements OnInit {
 
   toHome() {
     this.navSafe = true;
-    this.auth.clearAuthToken();
     this.router.navigate(['']);
   }
 
   toLogin() {
-    this.auth.clearAuthToken();
     this.router.navigate(['login']);
   }
 

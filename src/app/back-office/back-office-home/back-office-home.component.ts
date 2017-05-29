@@ -18,7 +18,7 @@ export class BackOfficeHomeComponent implements OnInit {
   }
 
   getUsers() {
-    this.backand.getList('users').subscribe(
+    this.backand.getList('users').then(
       users => {
         this.users = users.data;
       });

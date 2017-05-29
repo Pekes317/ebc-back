@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MdSnackBar } from '@angular/material';
+import { Warehouse } from 'ngx-warehouse';
 import { Subscription } from 'rxjs';
 
 import { BackandAuthService } from '../shared/backand-auth.service';
@@ -19,7 +20,8 @@ export class LoginComponent implements OnDestroy, OnInit {
   loggedIn: boolean = false;
   password: FormControl = new FormControl('', Validators.required);
 
-  constructor(private backAuth: BackandAuthService, private router: Router, private snack: MdSnackBar) {
+  constructor(private backAuth: BackandAuthService, private router: Router, 
+  private snack: MdSnackBar, private warehouse: Warehouse) {
     this.loginForm = new FormGroup({
       username: this.email,
       password: this.password
@@ -32,9 +34,7 @@ export class LoginComponent implements OnDestroy, OnInit {
     }
   }
 
-  ngOnInit() {
-
-  }
+  ngOnInit() { }
 
   alert() {
     let message;
@@ -65,13 +65,13 @@ export class LoginComponent implements OnDestroy, OnInit {
   logIn(form) {
     let creds = form.value
     this.backandCall = this.backAuth.getAuthToken(creds.username, creds.password)
-      .subscribe(
+      .then(
       data => {
         this.loggedIn = true;
         this.loginForm.reset();
         this.alert();
-      },
-      err => {
+      })
+      .catch(err => {
         this.loginForm.reset();
         this.alert();
       });
