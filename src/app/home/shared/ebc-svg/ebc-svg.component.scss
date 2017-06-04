@@ -5,6 +5,9 @@
     padding: 1rem;
    
 	  @include crumb;
+		.text {
+			padding: .5rem 0;
+		}
 
 		.scroll {
 			overflow: auto;

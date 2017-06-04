@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { BackandService } from '@backand/angular2-sdk';
+import { MdSnackBar, MdSnackBarRef } from '@angular/material';
 
 @Component({
   selector: 'app-ebc-reset',
@@ -14,14 +15,18 @@ export class EbcResetComponent implements OnInit {
   resetForm: FormGroup;
   resetToken: string;
 
-
-  constructor(private backand: BackandService, private router: Router) { }
+  constructor(private active: ActivatedRoute, private backand: BackandService,
+    private toast: MdSnackBar, private router: Router) { }
 
   ngOnInit() {
     this.resetForm = new FormGroup({
       newPassword: this.newPassword,
       passwordConfirm: this.passwordConfirm
     }, this.areEqual);
+    this.active.queryParams
+      .subscribe(query => {
+        this.resetToken = query['token'];
+      });
   }
 
   areEqual(g: FormGroup) {
@@ -34,11 +39,29 @@ export class EbcResetComponent implements OnInit {
     }
   }
 
+  compReset(good) {
+    let resetMess = this.toast.open(`Your Password has ${good ? 'been reset' : 'reset has fail'}`, good ? 'Okay' : 'Try Again');
+    setTimeout(() => {
+      resetMess.dismiss();
+    }, 3000);
+  }
+
   toHome() {
     this.router.navigate(['']);
   }
 
-  submitReset() {
-    
+  submitReset(form) {
+    let reset = form.value;
+    this.backand.resetPassword(reset.newPassword, this.resetToken)
+      .then(res => {
+        console.log(res);
+        this.resetForm.reset();
+        this.compReset(true);
+      })
+      .catch(err => {
+        console.log(err);
+        this.resetForm.reset();
+        this.compReset(false);
+      });
   }
 }

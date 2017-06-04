@@ -2,10 +2,8 @@
   <app-navbar>Card</app-navbar>
   <div class="content">
     <div class="crumb">
-      <button md-icon-button md-ripple (click)="toHome()">
-        <md-icon>home</md-icon>
-      </button>
-      <span class="trail">| &ensp;Card</span>
+      <span class="trail text">&emsp;Card&ensp;</span>
+      <span class="trail text">|&ensp;{{ ebcCard?.itemID }}</span>
     </div>
     <div class="scroll">
       <md-card class="card">

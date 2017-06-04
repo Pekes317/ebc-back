@@ -53,11 +53,6 @@ export class EbcSvgComponent implements OnInit {
     this.getCard();
   }
 
-  toHome() {
-    this.navSafe = true;
-    this.router.navigate(['']);
-  }
-
   toLogin() {
     this.router.navigate(['login']);
   }
