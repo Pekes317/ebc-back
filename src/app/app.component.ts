@@ -28,6 +28,14 @@ export class AppComponent implements OnInit {
       storagePrefix: 'ebc-',
       useAnonymousTokenByDefault: false
     });
+    this.authCheck();
+  }
+
+  authCheck() {
+    this.warehouse.get('auth')
+    .subscribe(auth => ebcAuth = auth);
+    this.warehouse.get('userRole')
+     .subscribe(role => ebcRole = role);
   }
 
   showPolicy() {

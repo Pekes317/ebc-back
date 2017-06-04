@@ -1,11 +1,10 @@
-import { Component, DoCheck, OnDestroy, OnInit, ViewContainerRef } from '@angular/core';
+import { Component, DoCheck, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import {
   MdDialog,
   MdDialogRef,
   MdSnackBar,
-  MdSnackBarConfig,
   MdSnackBarRef
 } from '@angular/material';
 
@@ -28,7 +27,6 @@ export class BackOfficeSvgComponent implements  DoCheck, OnDestroy, OnInit {
   table: string;
 
   constructor(
-    public view: ViewContainerRef,
     private backand: BackandItemService,
     private dialog: MdDialog,
     private route: ActivatedRoute,
@@ -56,13 +54,11 @@ export class BackOfficeSvgComponent implements  DoCheck, OnDestroy, OnInit {
   }
 
   completeModal(ebcItem: MdDialogRef<BackOfficeEditComponent>, edit) {
+    let modal = ebcItem.componentInstance;
     ebcItem.afterClosed().subscribe(
       () => {
-        let toast = ebcItem.componentInstance.toast;
-        let config = new MdSnackBarConfig();
-        config.viewContainerRef = this.view;
-        if (toast) {
-          let message = this.snack.open(`SVG has been ${this.setMessage(edit)}`, 'Okay', config);
+        if (modal.toast) {
+          let message = this.snack.open(`SVG has been ${this.setMessage(edit)}`, 'Okay');
           this.getItems();
           this.toastDismiss(message);
         };
@@ -85,13 +81,11 @@ export class BackOfficeSvgComponent implements  DoCheck, OnDestroy, OnInit {
   }
 
   delete() {
-    let config = new MdSnackBarConfig();
-    config.viewContainerRef = this.view;
     this.isSelected.forEach(data => {
       let index = this.isSelected.indexOf(data);
       this.isSelected.splice(index, 1);
       this.backand.deleteItem(this.table, data);
-      let message = this.snack.open('SVG(s) have been Deleted', 'Okay', config);
+      let message = this.snack.open('SVG(s) have been Deleted', 'Okay');
       this.toastDismiss(message);
     });
   }

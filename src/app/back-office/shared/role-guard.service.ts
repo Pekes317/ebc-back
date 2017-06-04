@@ -8,8 +8,7 @@ export class RoleGuard implements CanActivate {
   constructor(private snack: MdSnackBar) { }
 
   canActivate(): Promise<boolean> | boolean {
-    let user = JSON.parse(localStorage.getItem('tokenData'));
-    if(user['role'] === 'Admin' || user['role'] === 'Member') {
+    if(ebcRole === 'Admin' || ebcRole === 'Member') {
       return true;
     }
 

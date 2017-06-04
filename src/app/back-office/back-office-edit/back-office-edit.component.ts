@@ -27,7 +27,7 @@ export class BackOfficeEditComponent implements OnInit {
     itemID: NaN
   }
   edit: boolean;
-  toast: boolean = false;
+  toast: boolean;
   table: string;
 
   constructor(private backand: BackandItemService, private dialog: MdDialogRef<BackOfficeEditComponent>) { }
@@ -41,20 +41,20 @@ export class BackOfficeEditComponent implements OnInit {
   }
 
   ebcNew(data: Object) {
-    this.backand.addItem(this.table, data);
-    this.cancel();
+    this.backand.addItem(this.table, data)
+      .then(() => this.cancel());
   }
 
   ebcUpdate(data: Object) {
-    this.backand.updateItem(this.table, this.ebcId, data);
-    this.cancel();
+    this.backand.updateItem(this.table, this.ebcId, data)
+      .then(() => this.cancel());
   }
 
   ebcSub() {
     let data;
     this.toast = true;
 
-    if(this.table === 'users') {
+    if (this.table === 'users') {
       data = this.ebcUser;
     } else if (this.table === 'svg') {
       data = this.ebcSvg;

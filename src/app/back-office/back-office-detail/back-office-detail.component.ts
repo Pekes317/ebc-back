@@ -24,7 +24,7 @@ export class BackOfficeDetailComponent implements OnInit {
     item: ''
   };
   edit: boolean;
-  toast: boolean = false;
+  toast: boolean;
   itemId: number;
   table: string;
 

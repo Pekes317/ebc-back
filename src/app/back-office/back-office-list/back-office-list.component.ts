@@ -1,11 +1,10 @@
-import { Component, DoCheck, OnDestroy, OnInit, ViewContainerRef } from '@angular/core';
+import { Component, DoCheck, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import {
   MdDialog,
   MdDialogRef,
   MdSnackBar,
-  MdSnackBarConfig,
   MdSnackBarRef
 } from '@angular/material';
 
@@ -18,7 +17,7 @@ import { BackOfficeDetailComponent } from '../back-office-detail/back-office-det
   templateUrl: './back-office-list.component.html',
   styleUrls: ['./back-office-list.component.scss']
 })
-export class BackOfficeListComponent implements DoCheck, OnDestroy, OnInit {
+export class BackOfficeListComponent implements DoCheck, OnInit {
   allChecked: boolean = false;
   backandCall: Subscription;
   isChecked: boolean = false;
@@ -28,7 +27,6 @@ export class BackOfficeListComponent implements DoCheck, OnDestroy, OnInit {
   table: string;
 
   constructor(
-    public view: ViewContainerRef,
     private backand: BackandItemService,
     private dialog: MdDialog,
     private route: ActivatedRoute,
@@ -36,10 +34,6 @@ export class BackOfficeListComponent implements DoCheck, OnDestroy, OnInit {
 
   ngDoCheck() {
     this.checked();
-  }
-
-  ngOnDestroy() {
-    this.backandCall.unsubscribe();
   }
 
   ngOnInit() {
@@ -56,16 +50,14 @@ export class BackOfficeListComponent implements DoCheck, OnDestroy, OnInit {
   }
 
   completeModal(ebcItem: MdDialogRef<BackOfficeDetailComponent>, edit) {
+    let modal = ebcItem.componentInstance;
     ebcItem.afterClosed().subscribe(
       () => {
-        let toast = ebcItem.componentInstance.toast;
-        let config = new MdSnackBarConfig();
-        config.viewContainerRef = this.view;
-        if (toast) {
-          let message = this.snack.open(`Item has been ${this.setMessage(edit)}`, 'Okay', config);
+        if (modal.toast) {
+          let message = this.snack.open(`Item has been ${this.setMessage(edit)}`, 'Okay');
           this.getItems();
           this.toastDismiss(message);
-        };
+        }
       });
   }
 
@@ -85,15 +77,12 @@ export class BackOfficeListComponent implements DoCheck, OnDestroy, OnInit {
   }
 
   delete() {
-    let config = new MdSnackBarConfig();
-    config.viewContainerRef = this.view;
-    this.isSelected.forEach(data => {
-      let index = this.isSelected.indexOf(data);
-      this.isSelected.splice(index, 1);
-      this.backand.deleteItem(this.table, data);
-      let message = this.snack.open('Item(s) have been Deleted', 'Okay', config);
-      this.toastDismiss(message);
-    });
+    this.backand.deleteItem(this.table, this.isSelected)
+      .then(res => {
+        this.isSelected = [];
+        let message = this.snack.open('Item(s) have been Deleted', 'Okay');
+        this.toastDismiss(message);
+      });
   }
 
   detailModal(edit, item?) {

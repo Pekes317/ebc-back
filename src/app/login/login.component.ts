@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MdSnackBar } from '@angular/material';
@@ -13,25 +13,17 @@ import { EmailValidator } from '../shared';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnDestroy, OnInit {
-  backandCall: Subscription;
+export class LoginComponent implements OnInit {
   email: FormControl = new FormControl('', [Validators.required, EmailValidator.validate]);
   loginForm: FormGroup;
-  loggedIn: boolean = false;
   password: FormControl = new FormControl('', Validators.required);
 
-  constructor(private backAuth: BackandAuthService, private router: Router, 
-  private snack: MdSnackBar, private warehouse: Warehouse) {
+  constructor(private backAuth: BackandAuthService, private router: Router,
+    private snack: MdSnackBar, private warehouse:  Warehouse) {
     this.loginForm = new FormGroup({
       username: this.email,
       password: this.password
     });
-  }
-
-  ngOnDestroy() {
-    if (this.loggedIn) {
-      this.backandCall.unsubscribe();
-    }
   }
 
   ngOnInit() { }
@@ -40,18 +32,18 @@ export class LoginComponent implements OnDestroy, OnInit {
     let message;
     let action;
 
-    if (this.loggedIn) {
+    if (ebcAuth) {
       message = 'Loggin Successful';
       action = 'Okay';
     }
-    if (!this.loggedIn) {
+    if (!ebcAuth) {
       message = 'Loggin Failed';
       action = 'Try Again';
     }
     this.snack.open(message, action)
       .afterDismissed()
       .subscribe(() => {
-        if (this.loggedIn) {
+        if (ebcAuth) {
           this.isRedirected();
         }
       });
@@ -64,10 +56,8 @@ export class LoginComponent implements OnDestroy, OnInit {
 
   logIn(form) {
     let creds = form.value
-    this.backandCall = this.backAuth.getAuthToken(creds.username, creds.password)
-      .then(
-      data => {
-        this.loggedIn = true;
+    this.backAuth.getAuthToken(creds.username, creds.password)
+      .then(data => {
         this.loginForm.reset();
         this.alert();
       })

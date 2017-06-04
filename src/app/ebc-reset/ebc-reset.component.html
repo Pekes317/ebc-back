@@ -9,15 +9,15 @@
   <md-card class="reset">
     <md-card-title class="title">Reset Password</md-card-title>
     <form>
-      <md-card-content class="fields">
+      <md-card-content class="fields" [formGroup]="resetForm" (submit)="submitReset(resetForm);">
         <md-input-container>
-          <input matInput class="field" type="password" placeholder="New Password">
+          <input matInput class="field" type="password" placeholder="New Password" formControlName="newPassword">
         </md-input-container>
         <md-input-container>
-          <input matInput class="field" type="password" placeholder="Confirm Password">
+          <input matInput class="field" type="password" placeholder="Confirm Password" formControlName="passwordConfrim">
         </md-input-container>
       </md-card-content>
       <button md-raised-button md-ripple color="primary" type="submit">Change Password</button>
-      </form>
+    </form>
   </md-card>
 </div>

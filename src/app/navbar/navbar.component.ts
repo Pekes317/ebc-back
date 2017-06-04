@@ -25,7 +25,6 @@ export class NavbarComponent implements OnInit {
     .subscribe(
       data => {
         ebcAuth = false;
-        console.log('cleaned');
       },
       err => console.log(err));
   }

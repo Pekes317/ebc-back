@@ -14,8 +14,18 @@ export class BackandItemService {
       });
   }
 
-  public deleteItem(list, id) {
-    return this.backand.object.remove(list, id)
+  public deleteItem(list, itemArray) {
+    let delList = [];
+    let urlBase = `${this.backand.defaults.apiUrl}/${this.backand.constants.URLS.objects}/items`;
+    itemArray.forEach(id => {
+      let item = {
+        method: 'DELETE',
+        url: `${urlBase}/${id}`
+      };
+      delList.push(item);
+    });
+    console.log(delList);
+    return this.backand.bulk.general(delList)
       .catch(err => {
         console.log(err);
       });
@@ -29,14 +39,14 @@ export class BackandItemService {
   }
 
   public getItem(list, id) {
-    return this.backand.object.getItem(list, id)
+    return this.backand.object.getOne(list, id)
       .catch(err => {
         console.log(err);
       });
   }
 
   public updateItem(list, id, data) {
-    return this.backand.object.updateItem(list, id, data)
+    return this.backand.object.update(list, id, data)
       .catch(err => {
         console.log(err);
       });
