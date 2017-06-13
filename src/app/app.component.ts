@@ -33,9 +33,25 @@ export class AppComponent implements OnInit {
 
   authCheck() {
     this.warehouse.get('auth')
-    .subscribe(auth => ebcAuth = auth);
+      .subscribe(auth => ebcAuth = auth);
     this.warehouse.get('userRole')
-     .subscribe(role => ebcRole = role);
+      .subscribe(role => ebcRole = role);
+    this.dbUpdate();
+  }
+
+  dbUpdate() {
+    let ebcArr: Array<string> = ['items', 'svg', 'users', 'samples', 'templates'];
+    let needUpdate = sessionStorage.getItem('updateList');
+    if (needUpdate === null || needUpdate === 'true') {
+      ebcArr.forEach(str => {
+        this.backand.object.getList(str)
+          .then(list => {
+            this.warehouse.set(str, list.data);
+            sessionStorage.setItem('updateList', 'false');
+          })
+          .catch(err => console.log(err));
+      });
+    }
   }
 
   showPolicy() {

@@ -6,7 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from '@angular/material';
 import { BackandService } from '@backand/angular2-sdk';
 import { InlineSVGModule } from 'ng-inline-svg';
-import { NgxWarehouseModule } from 'ngx-warehouse';
+import { NgxWarehouseModule, WarehouseConfig, DRIVER_TYPE } from 'ngx-warehouse';
 import * as io from 'socket.io-client';
 window["io"] = io;
 
@@ -20,7 +20,15 @@ import { LoginComponent } from './login';
 import { NavbarModule } from './navbar/navbar.module';
 import { EbcSvgComponent } from './ebc-svg/ebc-svg.component';
 import { PrivatePolicyComponent } from './private-policy/private-policy.component';
-import { EbcResetComponent } from './ebc-reset/ebc-reset.component';;
+import { EbcResetComponent } from './ebc-reset/ebc-reset.component';
+
+const ebcConfig: WarehouseConfig = {
+  driver: DRIVER_TYPE.DEFAULT,
+  name: 'ebcback',
+  version: 1.0,
+  storeName: 'ebc_store',
+  description: 'EBC Back Office'
+};
 
 @NgModule({
   imports: [
@@ -33,7 +41,7 @@ import { EbcResetComponent } from './ebc-reset/ebc-reset.component';;
     InlineSVGModule,
     MaterialModule,
     NavbarModule,
-    NgxWarehouseModule,
+    NgxWarehouseModule.configureWarehouse(ebcConfig),
     routing
   ],
   declarations: [

@@ -1,12 +1,8 @@
-import { Component, DoCheck, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Component, DoCheck, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import {
-  MdDialog,
-  MdDialogRef,
-  MdSnackBar,
-  MdSnackBarRef
-} from '@angular/material';
+import { MdDialog, MdDialogRef, MdSnackBar, MdSnackBarRef } from '@angular/material';
+import { DRIVER_TYPE, Warehouse, WarehouseConfig } from 'ngx-warehouse';
+import { Subscription } from 'rxjs';
 
 import { BackandItemService } from '../../shared/backand-item.service';
 import { BackandItem } from '../../shared/';
@@ -17,9 +13,9 @@ import { BackOfficeDetailComponent } from '../back-office-detail/back-office-det
   templateUrl: './back-office-list.component.html',
   styleUrls: ['./back-office-list.component.scss']
 })
-export class BackOfficeListComponent implements DoCheck, OnInit {
+export class BackOfficeListComponent implements DoCheck, OnDestroy, OnInit {
   allChecked: boolean = false;
-  backandCall: Subscription;
+  ebcData: Subscription;
   isChecked: boolean = false;
   isSelected: Array<number> = [];
   items: Array<BackandItem>;
@@ -28,12 +24,15 @@ export class BackOfficeListComponent implements DoCheck, OnInit {
 
   constructor(
     private backand: BackandItemService,
-    private dialog: MdDialog,
-    private route: ActivatedRoute,
-    private snack: MdSnackBar) { }
+    private dialog: MdDialog, private route: ActivatedRoute,
+    private snack: MdSnackBar, private warehouse: Warehouse) { }
 
   ngDoCheck() {
     this.checked();
+  }
+
+  ngOnDestroy() {
+    this.ebcData.unsubscribe();
   }
 
   ngOnInit() {
@@ -41,24 +40,13 @@ export class BackOfficeListComponent implements DoCheck, OnInit {
       data => {
         this.table = data['list'];
         this.getItems();
+        this.backand.itemListener();
       });
     data.unsubscribe();
   }
 
   addItem() {
     this.detailModal(false);
-  }
-
-  completeModal(ebcItem: MdDialogRef<BackOfficeDetailComponent>, edit) {
-    let modal = ebcItem.componentInstance;
-    ebcItem.afterClosed().subscribe(
-      () => {
-        if (modal.toast) {
-          let message = this.snack.open(`Item has been ${this.setMessage(edit)}`, 'Okay');
-          this.getItems();
-          this.toastDismiss(message);
-        }
-      });
   }
 
   checked() {
@@ -74,6 +62,18 @@ export class BackOfficeListComponent implements DoCheck, OnInit {
         this.allChecked = false;
       }
     }
+  }
+
+  completeModal(ebcItem: MdDialogRef<BackOfficeDetailComponent>, edit) {
+    let modal = ebcItem.componentInstance;
+    ebcItem.afterClosed().subscribe(
+      () => {
+        if (modal.toast) {
+          let message = this.snack.open(`Item has been ${this.setMessage(edit)}`, 'Okay');
+          this.getItems();
+          this.toastDismiss(message);
+        }
+      });
   }
 
   delete() {
@@ -101,10 +101,26 @@ export class BackOfficeListComponent implements DoCheck, OnInit {
   }
 
   getItems() {
-    this.backandCall = this.backand.getList(this.table).then(
+    this.ebcData = this.warehouse.get(this.table)
+      .subscribe(data => {
+        if (data === null) {
+          this.httpCall();
+        } else {
+          this.items = data;
+        }
+      },
+      err => {
+        console.log('error', err);
+      });
+  }
+
+  httpCall() {
+    this.backand.getList(this.table).then(
       list => {
+        this.storeItems(list.data);
         this.items = list.data;
         this.started = true;
+        sessionStorage.setItem('updateList', 'false');
       });
   }
 
@@ -125,6 +141,10 @@ export class BackOfficeListComponent implements DoCheck, OnInit {
       text = 'Created';
     }
     return text;
+  }
+
+  storeItems(items) {
+    this.warehouse.set(this.table, items);
   }
 
   toastDismiss(message: MdSnackBarRef<any>) {
