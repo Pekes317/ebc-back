@@ -11,7 +11,7 @@ import { BackandUser } from '../shared';
 export class BackOfficeComponent implements OnInit {
   backUser: BackandUser;
 
-  constructor(private  backAuth: BackandAuthService) { }
+  constructor(private backAuth: BackandAuthService) { }
 
   ngOnInit() {
     this.backAuth.currentUser()

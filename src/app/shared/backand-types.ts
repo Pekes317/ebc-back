@@ -40,13 +40,6 @@ export interface BackandItem {
 	user?: any;
 }
 
-export interface BackandSvg {
-	id: number;
-	path: string;
-	disable: boolean;
-	itemID: number;
-}
-
 export interface SignupData {
 	email: string;
 	firstName: string;

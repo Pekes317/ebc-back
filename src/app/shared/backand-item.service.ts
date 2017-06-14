@@ -24,7 +24,6 @@ export class BackandItemService {
       };
       delList.push(item);
     });
-    console.log(delList);
     return this.backand.bulk.general(delList)
       .catch(err => {
         console.log(err);
@@ -46,7 +45,7 @@ export class BackandItemService {
   }
 
   public itemListener() {
-    this.backand.on('items_updated', data => {
+    this.backand.on('ebcList_updated', data => {
       let items = data[1]['Value'];
       this.rebuildList(items, 'items');
     });
@@ -61,7 +60,7 @@ export class BackandItemService {
 
   private rebuildList(listArr: Array<any>, list) {
     let items: Array<any> = [];
-
+    
     listArr.forEach(res => {
       let obj = {};
 

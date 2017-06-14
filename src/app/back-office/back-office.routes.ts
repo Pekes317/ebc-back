@@ -7,7 +7,6 @@ import { BackOfficeComponent } from './back-office.component';
 import { BackOfficeHomeComponent } from './back-office-home/back-office-home.component';
 import { BackOfficeListComponent } from './back-office-list/back-office-list.component';
 import { BackOfficeFileComponent } from './back-office-file/back-office-file.component';
-import { BackOfficeSvgComponent } from './back-office-svg/back-office-svg.component';
 import { BackOfficeUsersComponent } from './back-office-users/back-office-users.component';
 
 const officeRoutes: Routes = [
@@ -38,12 +37,6 @@ const officeRoutes: Routes = [
 				path: 'samples',
 				component: BackOfficeListComponent,
 				data: { title: 'Back Office', list: 'samples' },
-				resolve: { title: TitleResolve }
-			},
-				{
-				path: 'svg',
-				component: BackOfficeSvgComponent,
-				data: { title: 'Back Office', list: 'svg' },
 				resolve: { title: TitleResolve }
 			},
 			{

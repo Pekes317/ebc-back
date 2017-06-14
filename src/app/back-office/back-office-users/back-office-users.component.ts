@@ -1,12 +1,8 @@
-import { Component, DoCheck, OnInit } from '@angular/core';
+import { Component, DoCheck, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
-import {
-  MdDialog,
-  MdDialogRef,
-  MdSnackBar,
-  MdSnackBarRef
-} from '@angular/material';
+import { MdDialog, MdDialogRef, MdSnackBar, MdSnackBarRef } from '@angular/material';
+import { Warehouse } from 'ngx-warehouse';
 
 import { BackandItemService } from '../../shared/backand-item.service';
 import { BackandUser } from '../../shared/';
@@ -17,7 +13,7 @@ import { BackOfficeEditComponent } from '../back-office-edit/back-office-edit.co
   templateUrl: './back-office-users.component.html',
   styleUrls: ['./back-office-users.component.scss']
 })
-export class BackOfficeUsersComponent implements DoCheck, OnInit {
+export class BackOfficeUsersComponent implements DoCheck, OnDestroy, OnInit {
   allChecked: boolean = false;
   backandCall: Subscription;
   isChecked: boolean = false;
@@ -26,11 +22,8 @@ export class BackOfficeUsersComponent implements DoCheck, OnInit {
   started: boolean = false;
   table: string;
 
-  constructor(
-    private backand: BackandItemService,
-    private dialog: MdDialog,
-    private route: ActivatedRoute,
-    private snack: MdSnackBar) { }
+  constructor(private backand: BackandItemService, private dialog: MdDialog,
+    private route: ActivatedRoute, private snack: MdSnackBar, private warehouse: Warehouse) { }
 
   ngDoCheck() {
     this.checked();
@@ -45,8 +38,20 @@ export class BackOfficeUsersComponent implements DoCheck, OnInit {
     data.unsubscribe();
   }
 
+  ngOnDestroy() {
+    this.backandCall.unsubscribe();
+  }
+
   addItem() {
     this.detailModal(false);
+  }
+
+  backCall() {
+    this.backand.getList(this.table).then(
+      list => {
+        this.users = list.data;
+        this.started = true;
+      });
   }
 
   completeModal(ebcItem: MdDialogRef<BackOfficeEditComponent>, edit) {
@@ -102,10 +107,13 @@ export class BackOfficeUsersComponent implements DoCheck, OnInit {
   }
 
   getItems() {
-    this.backandCall = this.backand.getList(this.table).then(
-      list => {
-        this.users = list.data;
-        this.started = true;
+    this.backandCall =  this.warehouse.get('users').subscribe(
+      ebcUsers => {
+        if (ebcUsers === null) {
+          this.backCall();
+        } else {
+          this.users = ebcUsers;
+        }
       });
   }
 

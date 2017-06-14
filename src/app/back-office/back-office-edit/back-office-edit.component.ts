@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MdDialogRef } from '@angular/material';
 
 import { BackandItemService } from '../../shared/backand-item.service';
-import { BackandSvg, BackandUser } from '../../shared/backand-types';
+import { BackandUser } from '../../shared/backand-types';
 
 @Component({
   selector: 'app-back-office-edit',
@@ -20,21 +20,14 @@ export class BackOfficeEditComponent implements OnInit {
     since: new Date(),
     subscribed: false
   };
-  ebcSvg: BackandSvg = {
-    id: NaN,
-    path: '',
-    disable: false,
-    itemID: NaN
-  }
+
   edit: boolean;
   toast: boolean;
   table: string;
 
   constructor(private backand: BackandItemService, private dialog: MdDialogRef<BackOfficeEditComponent>) { }
 
-  ngOnInit() {
-
-  }
+  ngOnInit() { }
 
   cancel() {
     this.dialog.close();
@@ -51,14 +44,8 @@ export class BackOfficeEditComponent implements OnInit {
   }
 
   ebcSub() {
-    let data;
+    let data = this.ebcUser;
     this.toast = true;
-
-    if (this.table === 'users') {
-      data = this.ebcUser;
-    } else if (this.table === 'svg') {
-      data = this.ebcSvg;
-    }
 
     if (this.edit) {
       this.ebcUpdate(data);
