@@ -3,7 +3,7 @@
   <div class="content">
     <div class="crumb">
       <span class="trail text">&emsp;Card&ensp;</span>
-      <span class="trail text">|&ensp;{{ ebcCard?.itemID }}</span>
+      <span class="trail text">|&ensp;{{ ebcCard?.name }}</span>
     </div>
     <div class="scroll">
       <md-card class="card">
@@ -13,6 +13,7 @@
           <img md-card-image src="/assets/img/ebc_disabled.png">
           <md-card-title>I am sorry, but this Card is currently disable. Please contact EBC Tech Support for assistance.</md-card-title>
         </div>
+        <p>{{ ebcCard?.desc }}</p>
       </md-card>
     </div>
   </div>
