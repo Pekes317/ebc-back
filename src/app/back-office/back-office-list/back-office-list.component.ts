@@ -37,10 +37,11 @@ export class BackOfficeListComponent implements DoCheck, OnDestroy, OnInit {
 
   ngOnInit() {
     let data = this.route.data.subscribe(
-      data => {
-        this.table = data['list'];
+      ebcData => {
+        this.table = ebcData['list'];
         this.getItems();
         this.backand.itemListener();
+        this.backand.setList(this.table);
       });
     data.unsubscribe();
   }

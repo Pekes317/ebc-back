@@ -4,6 +4,7 @@ import { Warehouse } from 'ngx-warehouse';
 
 @Injectable()
 export class BackandItemService {
+  currentList: string;
 
   constructor(public backand: BackandService, public warehouse: Warehouse) { }
 
@@ -44,10 +45,14 @@ export class BackandItemService {
       });
   }
 
+  setList(current) {
+    this.currentList = current;
+  }
+
   public itemListener() {
     this.backand.on('ebcList_updated', data => {
       let items = data[1]['Value'];
-      this.rebuildList(items, 'items');
+      this.rebuildList(items, this.currentList);
     });
   }
 
