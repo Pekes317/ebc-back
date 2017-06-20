@@ -74,6 +74,7 @@ export class BackandItemService {
       })
       items.push(obj);
     });
+    console.log(items);
     this.warehouse.set(list, items);
   }
 }
