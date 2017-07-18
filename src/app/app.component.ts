@@ -40,7 +40,7 @@ export class AppComponent implements OnInit {
   }
 
   dbUpdate() {
-    let ebcArr: Array<string> = ['items', 'svg', 'users', 'samples', 'templates'];
+    let ebcArr: Array<string> = ['items', 'users', 'samples', 'templates'];
     let needUpdate = sessionStorage.getItem('updateList');
     if (needUpdate === null || needUpdate === 'true') {
       ebcArr.forEach(str => {
