@@ -21,7 +21,7 @@ export class BackOfficeDetailComponent implements OnInit {
     ready: false,
     disable: false,
     user: '',
-    item: ''
+    clients: ''
   };
   edit: boolean;
   toast: boolean;

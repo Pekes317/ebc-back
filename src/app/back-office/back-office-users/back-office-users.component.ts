@@ -30,14 +30,14 @@ export class BackOfficeUsersComponent implements DoCheck, OnDestroy, OnInit {
   }
 
   ngOnInit() {
-    let data = this.route.data.subscribe(
+    let ebcData = this.route.data.subscribe(
       data => {
         this.table = data['list'];
         this.getItems();
         this.backand.itemListener();
         this.backand.setList(this.table);
       });
-    data.unsubscribe();
+    ebcData.unsubscribe();
   }
 
   ngOnDestroy() {
@@ -146,4 +146,4 @@ export class BackOfficeUsersComponent implements DoCheck, OnDestroy, OnInit {
       () => this.getItems()
     );
   }
-}                   
+}

@@ -4,14 +4,14 @@ export interface BackandHeader {
 }
 
 export interface BackandUrls {
-	 signup: string;
-	 token: string;
-	 requestResetPassword: string;
-	 resetPassword: string;
-	 changePassword: string;
-	 socialLoginWithCode: string;
-	 socialSignupWithCode: string;
-	 socialLoginWithToken: string;
+	signup: string;
+	token: string;
+	requestResetPassword: string;
+	resetPassword: string;
+	changePassword: string;
+	socialLoginWithCode: string;
+	socialSignupWithCode: string;
+	socialLoginWithToken: string;
 }
 
 export interface BackandUser {
@@ -23,7 +23,8 @@ export interface BackandUser {
 	since: Date;
 	subscribed: boolean;
 	items?: any;
-	user?: any;
+	products?: any;
+	devices?: any;
 }
 
 export interface BackandItem {
@@ -36,14 +37,14 @@ export interface BackandItem {
 	ready: boolean;
 	disable: boolean;
 	data?: string;
-	item?: any;
+	clients?: any;
 	user?: any;
 }
 
 export interface SignupData {
 	email: string;
 	firstName: string;
-	lastName:string;
+	lastName: string;
 	password: string;
 	confirmPassword: string;
 }
