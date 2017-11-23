@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { CanActivate } from '@angular/router';
-import { MdSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material';
 
 @Injectable()
 export class RoleGuard implements CanActivate {
 
-  constructor(private snack: MdSnackBar) { }
+  constructor(private snack: MatSnackBar) { }
 
   canActivate(): Promise<boolean> | boolean {
     if(ebcRole === 'Admin' || ebcRole === 'Member') {

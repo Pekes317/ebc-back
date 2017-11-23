@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MdDialogRef } from '@angular/material';
+import { MatDialogRef } from '@angular/material';
 
 import { BackandItemService } from '../../shared/backand-item.service';
 import { BackandUser } from '../../shared/backand-types';
@@ -25,7 +25,7 @@ export class BackOfficeEditComponent implements OnInit {
   toast: boolean;
   table: string;
 
-  constructor(private backand: BackandItemService, private dialog: MdDialogRef<BackOfficeEditComponent>) { }
+  constructor(private backand: BackandItemService, private dialog: MatDialogRef<BackOfficeEditComponent>) { }
 
   ngOnInit() { }
 

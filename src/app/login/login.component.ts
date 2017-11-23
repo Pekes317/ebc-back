@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { MdSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material';
 import { Warehouse } from 'ngx-warehouse';
 import { Subscription } from 'rxjs';
 
@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
   password: FormControl = new FormControl('', Validators.required);
 
   constructor(private backAuth: BackandAuthService, private router: Router,
-    private snack: MdSnackBar, private warehouse:  Warehouse) {
+    private snack: MatSnackBar, private warehouse:  Warehouse) {
     this.loginForm = new FormGroup({
       username: this.email,
       password: this.password

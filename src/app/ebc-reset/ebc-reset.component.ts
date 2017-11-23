@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BackandService } from '@backand/angular2-sdk';
-import { MdSnackBar, MdSnackBarRef } from '@angular/material';
+import { MatSnackBar, MatSnackBarRef } from '@angular/material';
 
 @Component({
   selector: 'app-ebc-reset',
@@ -16,7 +16,7 @@ export class EbcResetComponent implements OnInit {
   resetToken: string;
 
   constructor(private active: ActivatedRoute, private backand: BackandService,
-    private toast: MdSnackBar, private router: Router) { }
+    private toast: MatSnackBar, private router: Router) { }
 
   ngOnInit() {
     this.resetForm = new FormGroup({

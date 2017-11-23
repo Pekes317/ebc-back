@@ -6,15 +6,15 @@
       <span class="trail text">|&ensp;{{ ebcCard?.name }}</span>
     </div>
     <div class="scroll">
-      <md-card class="card">
-        <div *ngIf="!ebcCard?.disable" md-card-image [inlineSVG]="ebcMedia"></div>
+      <mat-card class="card">
+        <div *ngIf="!ebcCard?.disable" mat-card-image [inlineSVG]="ebcMedia"></div>
         <div class="disable" *ngIf="ebcCard?.disable">
-          <md-card-title>I am sorry, but this Card is currently disable. Please contact EBC Tech Support for assistance.</md-card-title>
-          <img md-card-image src="/assets/img/ebc_disabled.png">
-          <md-card-title>I am sorry, but this Card is currently disable. Please contact EBC Tech Support for assistance.</md-card-title>
+          <mat-card-title>I am sorry, but this Card is currently disable. Please contact EBC Tech Support for assistance.</mat-card-title>
+          <img mat-card-image src="/assets/img/ebc_disabled.png">
+          <mat-card-title>I am sorry, but this Card is currently disable. Please contact EBC Tech Support for assistance.</mat-card-title>
         </div>
         <p>{{ ebcCard?.desc }}</p>
-      </md-card>
+      </mat-card>
     </div>
   </div>
 </div>

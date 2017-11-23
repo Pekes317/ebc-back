@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { MdDialog, MdDialogRef } from '@angular/material';
+import { MatDialog, MatDialogRef } from '@angular/material';
 import { BackandService } from '@backand/angular2-sdk';
 import { Warehouse } from 'ngx-warehouse';
 
@@ -14,7 +14,7 @@ import { PrivatePolicyComponent } from './private-policy/private-policy.componen
 export class AppComponent implements OnInit {
   title: string;
 
-  constructor(private backand: BackandService, private dialog: MdDialog, private warehouse: Warehouse) {
+  constructor(private backand: BackandService, private dialog: MatDialog, private warehouse: Warehouse) {
 
   }
 
@@ -55,6 +55,6 @@ export class AppComponent implements OnInit {
   }
 
   showPolicy() {
-    let policy: MdDialogRef<PrivatePolicyComponent> = this.dialog.open(PrivatePolicyComponent);
+    let policy: MatDialogRef<PrivatePolicyComponent> = this.dialog.open(PrivatePolicyComponent);
   }
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { MdSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material';
 import { Subscription } from 'rxjs';
 
 import { NavbarComponent } from '../navbar/navbar.component';
@@ -19,7 +19,7 @@ export class EbcSvgComponent implements OnInit {
   navSafe: boolean = false;
 
   constructor(private auth: BackandAuthService, private backand: BackandItemService, 
-    private route: ActivatedRoute, private router: Router, private snack: MdSnackBar) {
+    private route: ActivatedRoute, private router: Router, private snack: MatSnackBar) {
 
   }
 

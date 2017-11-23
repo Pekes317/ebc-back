@@ -2,24 +2,24 @@
   <app-navbar>Login</app-navbar>
   <div class="content">
     <div class="crumb">
-      <button md-icon-button md-ripple (click)="toHome()">
-        <md-icon>home</md-icon>
+      <button mat-icon-button mat-ripple (click)="toHome()">
+        <mat-icon>home</mat-icon>
       </button>
       <span class="trail">| &ensp;Login</span>
     </div>
-    <md-card class="login">
-      <md-card-title class="title">Login</md-card-title>
+    <mat-card class="login">
+      <mat-card-title class="title">Login</mat-card-title>
       <form [formGroup]="loginForm" (ngSubmit)="logIn(loginForm)">
-        <md-card-content class="fields">
-          <md-input-container [dividerColor]="email.valid ? 'primary' : 'warn'">
+        <mat-card-content class="fields">
+          <mat-input-container [dividerColor]="email.valid ? 'primary' : 'warn'">
             <input matInput class="field" type="email" placeholder="Your UserName/Email" formControlName="username">
-          </md-input-container>
-          <md-input-container [dividerColor]="password.valid ? 'primary' : 'warn'">
+          </mat-input-container>
+          <mat-input-container [dividerColor]="password.valid ? 'primary' : 'warn'">
             <input matInput class="field" type="password" placeholder="Your Password" formControlName="password">
-          </md-input-container>
-        </md-card-content>
-        <button md-raised-button md-ripple color="primary" type="submit" [disabled]="loginForm.invalid">Login</button>
+          </mat-input-container>
+        </mat-card-content>
+        <button mat-raised-button mat-ripple color="primary" type="submit" [disabled]="loginForm.invalid">Login</button>
       </form>
-    </md-card>
+    </mat-card>
   </div>
 </div>

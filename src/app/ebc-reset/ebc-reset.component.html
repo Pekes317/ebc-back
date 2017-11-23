@@ -1,23 +1,23 @@
 <app-navbar>Reset Password</app-navbar>
 <div class="content">
   <div class="crumb">
-    <button md-icon-button md-ripple (click)="toHome()">
-      <md-icon>home</md-icon>
+    <button mat-icon-button mat-ripple (click)="toHome()">
+      <mat-icon>home</mat-icon>
     </button>
     <span class="trail">| &ensp;Reset Password</span>
   </div>
-  <md-card class="reset">
-    <md-card-title class="title">Reset Password</md-card-title>
+  <mat-card class="reset">
+    <mat-card-title class="title">Reset Password</mat-card-title>
     <form [formGroup]="resetForm" (ngSubmit)="submitReset(resetForm)">
-      <md-card-content class="fields">
-        <md-input-container [dividerColor]="resetForm.valid ? 'primary' : 'warn'">
+      <mat-card-content class="fields">
+        <mat-input-container [dividerColor]="resetForm.valid ? 'primary' : 'warn'">
           <input matInput class="field" type="password" placeholder="New Password" formControlName="newPassword">
-        </md-input-container>
-        <md-input-container [dividerColor]="resetForm.valid ? 'primary' : 'warn'">
+        </mat-input-container>
+        <mat-input-container [dividerColor]="resetForm.valid ? 'primary' : 'warn'">
           <input matInput class="field" type="password" placeholder="Confirm Password" formControlName="passwordConfirm">
-        </md-input-container>
-      </md-card-content>
-      <button md-raised-button md-ripple color="primary" type="submit" [disabled]="resetForm.invalid || !resetForm.dirty">Change Password</button>
+        </mat-input-container>
+      </mat-card-content>
+      <button mat-raised-button mat-ripple color="primary" type="submit" [disabled]="resetForm.invalid || !resetForm.dirty">Change Password</button>
     </form>
-  </md-card>
+  </mat-card>
 </div>

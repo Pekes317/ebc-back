@@ -2,24 +2,24 @@
   <div [ngSwitch]="table">
     <h2 class="title"><span *ngIf="edit">Update</span><span *ngIf="!edit">Add New</span> User</h2>
     <div class="form">
-      <md-input-container>
+      <mat-input-container>
         <input matInput placeholder="email" [(ngModel)]="ebcUser.email">
-      </md-input-container>
-      <md-input-container>
+      </mat-input-container>
+      <mat-input-container>
         <input matInput placeholder="First Name" [(ngModel)]="ebcUser.firstName">
-      </md-input-container>
-      <md-input-container>
+      </mat-input-container>
+      <mat-input-container>
         <input matInput placeholder="Last Name" [(ngModel)]="ebcUser.lastName">
-      </md-input-container>
-      <md-input-container>
+      </mat-input-container>
+      <mat-input-container>
         <input matInput placeholder="Image" [(ngModel)]="ebcUser.pic">
-      </md-input-container>
+      </mat-input-container>
     </div>
     <div class="toggles">
-      <md-slide-toggle color="primary" [(ngModel)]="ebcUser.subscribed">Subscribed</md-slide-toggle>
+      <mat-slide-toggle color="primary" [(ngModel)]="ebcUser.subscribed">Subscribed</mat-slide-toggle>
     </div>
     <div class="toggles">
-      <button md-raised-button md-ripple color="warn" type="button" (click)="cancel()">Cancel</button>
-      <button md-raised-button md-ripple color="primary" type="submit" (click)="ebcSub()">Submit</button>
+      <button mat-raised-button mat-ripple color="warn" type="button" (click)="cancel()">Cancel</button>
+      <button mat-raised-button mat-ripple color="primary" type="submit" (click)="ebcSub()">Submit</button>
     </div>
   </div>

@@ -1,25 +1,25 @@
-<md-card class="main">
-	<md-card-title class="top" [class.select]="isChecked">
+<mat-card class="main">
+	<mat-card-title class="top" [class.select]="isChecked">
 		<span *ngIf="!isChecked" class="title">{{table}}</span>
 		<span *ngIf="isChecked">{{isSelected.length}} Users selected</span>
 		<span>
-			<button *ngIf="!isChecked" md-icon-button (click)="addItem()">
-				<md-icon>add</md-icon>
+			<button *ngIf="!isChecked" mat-icon-button (click)="addItem()">
+				<mat-icon>add</mat-icon>
 			</button>
-			<button *ngIf="isChecked" md-icon-button (click)="delete()">
-				<md-icon>delete</md-icon>
+			<button *ngIf="isChecked" mat-icon-button (click)="delete()">
+				<mat-icon>delete</mat-icon>
 			</button>
 		</span>
-	</md-card-title>
+	</mat-card-title>
 	<div class="list">
 		<table class="data">
 			<thead class="head">
 				<tr>
 					<th class="check">
-						<md-checkbox [checked]="allChecked" [indeterminate]="isChecked"></md-checkbox>
+						<mat-checkbox [checked]="allChecked" [indeterminate]="isChecked"></mat-checkbox>
 					</th>
 					<th>
-						<md-icon>edit</md-icon>
+						<mat-icon>edit</mat-icon>
 					</th>
 					<th>Id</th>
 					<th>email</th>
@@ -33,11 +33,11 @@
 			<tbody class="list">
 				<tr *ngFor="let user of users" class="data">
 					<td class="check">
-						<md-checkbox [checked]="allChecked" (change)="selected(user?.id)"></md-checkbox>
+						<mat-checkbox [checked]="allChecked" (change)="selected(user?.id)"></mat-checkbox>
 					</td>
 					<td>
-						<button md-icon-button md-ripple (click)="editItem(user)">
-							<md-icon>edit</md-icon>
+						<button mat-icon-button mat-ripple (click)="editItem(user)">
+							<mat-icon>edit</mat-icon>
 						</button>
 					</td>
 					<td>{{user?.id}}</td>
@@ -56,4 +56,4 @@
 			</tfoot>
 		</table>
 	</div>
-</md-card>
+</mat-card>

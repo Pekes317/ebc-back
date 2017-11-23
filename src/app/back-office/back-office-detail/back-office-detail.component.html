@@ -1,37 +1,37 @@
 <div class="dialog">
   <h2 class="title"><span *ngIf="edit">Update</span><span *ngIf="!edit">Add New</span> Item</h2>
   <div class="form">
-    <md-input-container>
+    <mat-input-container>
       <input matInput placeholder="Name" [(ngModel)]="ebcPiece.name">
-    </md-input-container>
-    <md-input-container>
+    </mat-input-container>
+    <mat-input-container>
       <input matInput placeholder="SVG" [(ngModel)]="ebcPiece.media">
-    </md-input-container>
-    <md-input-container>
+    </mat-input-container>
+    <mat-input-container>
       <input matInput placeholder="Image" [(ngModel)]="ebcPiece.pic">
-    </md-input-container>
-    <md-input-container>
+    </mat-input-container>
+    <mat-input-container>
       <input matInput placeholder="User" [(ngModel)]="ebcPiece.user">
-    </md-input-container>
-    <md-input-container>
+    </mat-input-container>
+    <mat-input-container>
       <input matInput placeholder="clients" [(ngModel)]="ebcPiece.clients">
-    </md-input-container>
+    </mat-input-container>
   </div>
   <div class="form">
-    <md-input-container>
+    <mat-input-container>
       <textarea matInput placeholder="Description" [(ngModel)]="ebcPiece.desc"></textarea>
-    </md-input-container>
-    <md-input-container>
+    </mat-input-container>
+    <mat-input-container>
       <textarea matInput placeholder="Extra Data" [(ngModel)]="ebcPiece.data"></textarea>
-    </md-input-container>
+    </mat-input-container>
   </div>
   <div class="toggles">
-    <md-slide-toggle color="primary" [(ngModel)]="ebcPiece.flyer">Flyer</md-slide-toggle>
-    <md-slide-toggle color="primary" [(ngModel)]="ebcPiece.ready">Ready</md-slide-toggle>
-    <md-slide-toggle color="primary" [(ngModel)]="ebcPiece.disable">Disable</md-slide-toggle>
+    <mat-slide-toggle color="primary" [(ngModel)]="ebcPiece.flyer">Flyer</mat-slide-toggle>
+    <mat-slide-toggle color="primary" [(ngModel)]="ebcPiece.ready">Ready</mat-slide-toggle>
+    <mat-slide-toggle color="primary" [(ngModel)]="ebcPiece.disable">Disable</mat-slide-toggle>
   </div>
   <div class="toggles">
-    <button md-raised-button md-ripple color="warn" type="button" (click)="cancel()">Cancel</button>
-    <button md-raised-button md-ripple color="primary" type="submit" (click)="ebcSub()">Submit</button>
+    <button mat-raised-button mat-ripple color="warn" type="button" (click)="cancel()">Cancel</button>
+    <button mat-raised-button mat-ripple color="primary" type="submit" (click)="ebcSub()">Submit</button>
   </div>
 </div>

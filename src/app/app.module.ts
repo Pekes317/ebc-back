@@ -3,7 +3,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { BrowserModule, Title } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MaterialModule } from '@angular/material';
 import { BackandService } from '@backand/angular2-sdk';
 import { InlineSVGModule } from 'ng-inline-svg';
 import { NgxWarehouseModule, WarehouseConfig, DRIVER_TYPE } from 'ngx-warehouse';
@@ -39,7 +38,6 @@ const ebcConfig: WarehouseConfig = {
     ReactiveFormsModule,
     HttpModule,
     InlineSVGModule,
-    MaterialModule,
     NavbarModule,
     NgxWarehouseModule.configureWarehouse(ebcConfig),
     routing

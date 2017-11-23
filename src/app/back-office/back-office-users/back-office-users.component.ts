@@ -1,7 +1,7 @@
 import { Component, DoCheck, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
-import { MdDialog, MdDialogRef, MdSnackBar, MdSnackBarRef } from '@angular/material';
+import { MatDialog, MatDialogRef, MatSnackBar, MatSnackBarRef } from '@angular/material';
 import { Warehouse } from 'ngx-warehouse';
 
 import { BackandItemService } from '../../shared/backand-item.service';
@@ -22,8 +22,8 @@ export class BackOfficeUsersComponent implements DoCheck, OnDestroy, OnInit {
   started: boolean = false;
   table: string;
 
-  constructor(private backand: BackandItemService, private dialog: MdDialog,
-    private route: ActivatedRoute, private snack: MdSnackBar, private warehouse: Warehouse) { }
+  constructor(private backand: BackandItemService, private dialog: MatDialog,
+    private route: ActivatedRoute, private snack: MatSnackBar, private warehouse: Warehouse) { }
 
   ngDoCheck() {
     this.checked();
@@ -56,7 +56,7 @@ export class BackOfficeUsersComponent implements DoCheck, OnDestroy, OnInit {
       });
   }
 
-  completeModal(ebcItem: MdDialogRef<BackOfficeEditComponent>, edit) {
+  completeModal(ebcItem: MatDialogRef<BackOfficeEditComponent>, edit) {
     let modal = ebcItem.componentInstance;
     ebcItem.afterClosed().subscribe(
       () => {
@@ -94,7 +94,7 @@ export class BackOfficeUsersComponent implements DoCheck, OnDestroy, OnInit {
   }
 
   detailModal(edit, user?) {
-    let ebcUser: MdDialogRef<BackOfficeEditComponent> = this.dialog.open(BackOfficeEditComponent);
+    let ebcUser: MatDialogRef<BackOfficeEditComponent> = this.dialog.open(BackOfficeEditComponent);
     ebcUser.componentInstance.table = this.table;
     ebcUser.componentInstance.edit = edit;
     if (edit) {
@@ -138,7 +138,7 @@ export class BackOfficeUsersComponent implements DoCheck, OnDestroy, OnInit {
     return text;
   }
 
-  toastDismiss(message: MdSnackBarRef<any>) {
+  toastDismiss(message: MatSnackBarRef<any>) {
     setTimeout(() => {
       message.dismiss();
     }, 3000);

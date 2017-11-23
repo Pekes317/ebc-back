@@ -1,6 +1,6 @@
 import { Component, DoCheck, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { MdDialog, MdDialogRef, MdSnackBar, MdSnackBarRef } from '@angular/material';
+import { MatDialog, MatDialogRef, MatSnackBar, MatSnackBarRef } from '@angular/material';
 import { DRIVER_TYPE, Warehouse, WarehouseConfig } from 'ngx-warehouse';
 import { Subscription } from 'rxjs';
 
@@ -24,8 +24,8 @@ export class BackOfficeListComponent implements DoCheck, OnDestroy, OnInit {
 
   constructor(
     private backand: BackandItemService,
-    private dialog: MdDialog, private route: ActivatedRoute,
-    private snack: MdSnackBar, private warehouse: Warehouse) { }
+    private dialog: MatDialog, private route: ActivatedRoute,
+    private snack: MatSnackBar, private warehouse: Warehouse) { }
 
   ngDoCheck() {
     this.checked();
@@ -65,7 +65,7 @@ export class BackOfficeListComponent implements DoCheck, OnDestroy, OnInit {
     }
   }
 
-  completeModal(ebcItem: MdDialogRef<BackOfficeDetailComponent>, edit) {
+  completeModal(ebcItem: MatDialogRef<BackOfficeDetailComponent>, edit) {
     let modal = ebcItem.componentInstance;
     ebcItem.afterClosed().subscribe(
       () => {
@@ -87,7 +87,7 @@ export class BackOfficeListComponent implements DoCheck, OnDestroy, OnInit {
   }
 
   detailModal(edit, item?) {
-    let ebcItem: MdDialogRef<BackOfficeDetailComponent> = this.dialog.open(BackOfficeDetailComponent);
+    let ebcItem: MatDialogRef<BackOfficeDetailComponent> = this.dialog.open(BackOfficeDetailComponent);
     ebcItem.componentInstance.table = this.table;
     ebcItem.componentInstance.edit = edit;
     if (edit) {
@@ -148,7 +148,7 @@ export class BackOfficeListComponent implements DoCheck, OnDestroy, OnInit {
     this.warehouse.set(this.table, items);
   }
 
-  toastDismiss(message: MdSnackBarRef<any>) {
+  toastDismiss(message: MatSnackBarRef<any>) {
     setTimeout(() => {
       message.dismiss();
     }, 3000);

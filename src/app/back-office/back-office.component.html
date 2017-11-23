@@ -1,33 +1,33 @@
-<md-sidenav-container class="back">
+<mat-sidenav-container class="back">
   <app-navbar class="bar">Back Office</app-navbar>
-  <md-sidenav #menu class="menu">
-    <md-toolbar color="accent" class="header">
+  <mat-sidenav #menu class="menu">
+    <mat-toolbar color="accent" class="header">
       <span>
         {{backUser?.firstName}}
       </span>
       <span class="space-align"></span>
       <img [src]="backUser?.pic" />
-    </md-toolbar>
+    </mat-toolbar>
     <div class="btns">
-      <a md-ripple [routerLink]="['/']" md-button>
-        <md-icon>home</md-icon>
+      <a mat-ripple [routerLink]="['/']" mat-button>
+        <mat-icon>home</mat-icon>
       </a>
-      <a md-ripple [routerLink]="['/back-office']" md-button (click)="menu.close()">DashBoard</a>
-      <a md-ripple [routerLink]="['/back-office/items']" md-button (click)="menu.close()">Items</a>
-      <a md-ripple [routerLink]="['/back-office/samples']" md-button (click)="menu.close()">Samples</a>
-      <a md-ripple [routerLink]="['/back-office/templates']" md-button (click)="menu.close()">Templates</a>
-      <a md-ripple [routerLink]="['/back-office/users']" md-button (click)="menu.close()">Users</a>
-      <a md-ripple [routerLink]="['/back-office/file']" md-button (click)="menu.close()">File Manager</a>
+      <a mat-ripple [routerLink]="['/back-office']" mat-button (click)="menu.close()">DashBoard</a>
+      <a mat-ripple [routerLink]="['/back-office/items']" mat-button (click)="menu.close()">Items</a>
+      <a mat-ripple [routerLink]="['/back-office/samples']" mat-button (click)="menu.close()">Samples</a>
+      <a mat-ripple [routerLink]="['/back-office/templates']" mat-button (click)="menu.close()">Templates</a>
+      <a mat-ripple [routerLink]="['/back-office/users']" mat-button (click)="menu.close()">Users</a>
+      <a mat-ripple [routerLink]="['/back-office/file']" mat-button (click)="menu.close()">File Manager</a>
     </div>
-  </md-sidenav>
+  </mat-sidenav>
   <div class="office">
     <div class="crumb">
-      <button md-icon-button (click)="menu.open()">
-        <md-icon>menu</md-icon>
+      <button mat-icon-button (click)="menu.open()">
+        <mat-icon>menu</mat-icon>
       </button>
       <span class="trail">| &ensp;Back Office</span>
     </div>
     <!-- Routed views go here -->
     <router-outlet></router-outlet>
   </div>
-</md-sidenav-container>
+</mat-sidenav-container>
