@@ -1,2 +1,2 @@
-let ebcAuth: boolean;
-let ebcRole: string;
+var ebcAuth;
+var ebcRole;

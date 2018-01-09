@@ -10,11 +10,12 @@ import * as io from 'socket.io-client';
 window["io"] = io;
 
 import { AppComponent } from './app.component';
+import { appRoutingProviders, routing } from './app.routing';
 import { BackOfficeModule } from './back-office';
 import { BackandAuthService } from './shared/backand-auth.service';
 import { BackandItemService } from './shared/backand-item.service';
+import { EbcMaterialModule } from './ebc-material/ebc-material.module';
 import { HomeComponent } from './home';
-import { appRoutingProviders, routing } from './app.routing';
 import { LoginComponent } from './login';
 import { NavbarModule } from './navbar/navbar.module';
 import { EbcSvgComponent } from './ebc-svg/ebc-svg.component';
@@ -32,8 +33,9 @@ const ebcConfig: WarehouseConfig = {
 @NgModule({
   imports: [
     BrowserAnimationsModule,
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'ebc-server' }),
     BackOfficeModule,
+    EbcMaterialModule,
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
