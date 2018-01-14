@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Warehouse } from 'ngx-warehouse';
+// import { Warehouse } from 'ngx-warehouse';
 
 import { BackandAuthService } from '../shared/backand-auth.service';
 
@@ -11,22 +11,20 @@ import { BackandAuthService } from '../shared/backand-auth.service';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(private backAuth: BackandAuthService, private router: Router, private warehouse: Warehouse) { }
+  constructor(private backAuth: BackandAuthService, private router: Router/*, private warehouse: Warehouse*/) { }
 
   ngOnInit() {
   }
   
   toHome() {
-     this.backAuth.signout()
-    .then(() => {
-      this.router.navigate(['']);
-    });
-    this.warehouse.destroy()
-    .subscribe(
-      data => {
-        ebcAuth = false;
-      },
-      err => console.log(err));
+    this.router.navigate(['']);
+
+    // this.warehouse.destroy()
+    // .subscribe(
+    //   data => {
+    //     ebcAuth = false;
+    //   },
+    //   err => console.log(err));
   }
 
   toLogin() {

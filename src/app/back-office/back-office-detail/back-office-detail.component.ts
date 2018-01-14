@@ -40,12 +40,10 @@ export class BackOfficeDetailComponent implements OnInit {
 
   ebcNew(data: Object) {
     this.backand.addItem(this.table, data)
-    .then(() => this.cancel());
   }
 
   ebcUpdate(data: Object) {
     this.backand.updateItem(this.table, this.itemId, data)
-    .then(() => this.cancel());
   }
 
   ebcSub() {

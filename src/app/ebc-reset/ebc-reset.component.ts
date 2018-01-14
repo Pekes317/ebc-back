@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { BackandService } from '@backand/angular2-sdk';
 import { MatSnackBar, MatSnackBarRef } from '@angular/material';
 
 @Component({
@@ -15,7 +14,7 @@ export class EbcResetComponent implements OnInit {
   resetForm: FormGroup;
   resetToken: string;
 
-  constructor(private active: ActivatedRoute, private backand: BackandService,
+  constructor(private active: ActivatedRoute,
     private toast: MatSnackBar, private router: Router) { }
 
   ngOnInit() {
@@ -52,16 +51,5 @@ export class EbcResetComponent implements OnInit {
 
   submitReset(form) {
     let reset = form.value;
-    this.backand.resetPassword(reset.newPassword, this.resetToken)
-      .then(res => {
-        console.log(res);
-        this.resetForm.reset();
-        this.compReset(true);
-      })
-      .catch(err => {
-        console.log(err);
-        this.resetForm.reset();
-        this.compReset(false);
-      });
   }
 }

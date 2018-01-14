@@ -15,8 +15,5 @@ export class BackOfficeComponent implements OnInit {
 
   ngOnInit() {
     this.backAuth.currentUser()
-    .subscribe(user => {
-        this.backUser = user;
-      });
   }
 }

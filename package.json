@@ -15,8 +15,8 @@
     "test": "ng test",
     "pree2e": "webdriver-manager update --standalone false --gecko false",
     "e2e": "protractor",
-    "universal": "ng build --prod && ng build --prod --app pm-server --output-hashing=none",
-    "univ-dev": "ng build --aot && ng build --aot --app pm-server --output-hashing=none"
+    "universal": "ng build --prod && ng build --prod --app ebc-server --output-hashing=none",
+    "univ-dev": "ng build --aot && ng build --aot --app ebc-server --output-hashing=none"
   },
   "private": true,
   "dependencies": {
@@ -32,7 +32,7 @@
     "@angular/platform-browser-dynamic": "^5.1.3",
     "@angular/platform-server": "^5.1.3",
     "@angular/router": "^5.1.3",
-    "@backand/angular2-sdk": "^1.2.13",
+    "@backand/nodejs-sdk": "^1.2.16",
     "@nestjs/common": "^4.5.2",
     "@nestjs/core": "^4.5.2",
     "@nestjs/microservices": "^4.5.2",
@@ -57,11 +57,13 @@
   "devDependencies": {
     "@angular/cli": "1.6.3",
     "@angular/compiler-cli": "^5.1.3",
+    "@types/chai": "^4.1.0",
     "@types/express": "4.11.0",
     "@types/hammerjs": "2.0.35",
-    "@types/socket.io-client": "^1.4.32",
     "@types/jasmine": "2.8.3",
     "@types/node": "^8.5.7",
+    "@types/socket.io-client": "^1.4.32",
+    "chai": "^4.1.2",
     "codelyzer": "4.0.2",
     "jasmine-core": "2.8.0",
     "jasmine-spec-reporter": "4.2.1",

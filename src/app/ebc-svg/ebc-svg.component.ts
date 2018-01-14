@@ -30,13 +30,7 @@ export class EbcSvgComponent implements OnInit {
   getCard() {
     let id = this.getItemId();
 
-    this.backand.getItem('items', id).then(
-      svg => {
-        this.ebcCard = svg['data'];
-        let path= this.ebcCard.media;
-        let index = path.indexOf('asset');
-        this.ebcMedia = path.slice(index - 1);
-      });
+    this.backand.getItem('items', id)
   }
 
   getItemId() {

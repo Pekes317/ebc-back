@@ -1,23 +1,19 @@
 import { Injectable } from '@angular/core';
-import { BackandService } from '@backand/angular2-sdk';
-import { Warehouse } from 'ngx-warehouse'; 
+// import { Warehouse } from 'ngx-warehouse'; 
 
 @Injectable()
 export class BackandItemService {
   currentList: string;
 
-  constructor(public backand: BackandService, public warehouse: Warehouse) { }
+constructor(/*public warehouse: Warehouse*/) { }
 
   public addItem(list, data) {
-    return this.backand.object.create(list, data)
-      .catch(err => {
-        console.log(err);
-      });
+    
   }
 
   public deleteItem(list, itemArray) {
     let delList = [];
-    let urlBase = `${this.backand.defaults.apiUrl}/${this.backand.constants.URLS.objects}/items`;
+    let urlBase = `/items`;
     itemArray.forEach(id => {
       let item = {
         method: 'DELETE',
@@ -25,24 +21,14 @@ export class BackandItemService {
       };
       delList.push(item);
     });
-    return this.backand.bulk.general(delList)
-      .catch(err => {
-        console.log(err);
-      });
   }
 
   public getList(list) {
-    return this.backand.object.getList(list)
-      .catch(err => {
-        console.log(err);
-      });
+  
   }
 
   public getItem(list, id) {
-    return this.backand.object.getOne(list, id)
-      .catch(err => {
-        console.log(err);
-      });
+   
   }
 
   setList(current) {
@@ -50,17 +36,11 @@ export class BackandItemService {
   }
 
   public itemListener() {
-    this.backand.on('ebcList_updated', data => {
-      let items = data[1]['Value'];
-      this.rebuildList(items, this.currentList);
-    });
+    
   }
 
   public updateItem(list, id, data) {
-    return this.backand.object.update(list, id, data)
-      .catch(err => {
-        console.log(err);
-      });
+    
   }
 
   private rebuildList(listArr: Array<any>, list) {
@@ -75,6 +55,6 @@ export class BackandItemService {
       items.push(obj);
     });
     console.log(items);
-    this.warehouse.set(list, items);
+    // this.warehouse.set(list, items);
   }
 }

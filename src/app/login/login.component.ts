@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
-import { Warehouse } from 'ngx-warehouse';
 import { Subscription } from 'rxjs';
 
 import { BackandAuthService } from '../shared/backand-auth.service';
@@ -19,7 +18,7 @@ export class LoginComponent implements OnInit {
   password: FormControl = new FormControl('', Validators.required);
 
   constructor(private backAuth: BackandAuthService, private router: Router,
-    private snack: MatSnackBar, private warehouse:  Warehouse) {
+    private snack: MatSnackBar) {
     this.loginForm = new FormGroup({
       username: this.email,
       password: this.password
@@ -57,14 +56,6 @@ export class LoginComponent implements OnInit {
   logIn(form) {
     let creds = form.value
     this.backAuth.getAuthToken(creds.username, creds.password)
-      .then(data => {
-        this.loginForm.reset();
-        this.alert();
-      })
-      .catch(err => {
-        this.loginForm.reset();
-        this.alert();
-      });
   }
 
   toHome() {

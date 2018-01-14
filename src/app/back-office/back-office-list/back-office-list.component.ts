@@ -1,7 +1,7 @@
 import { Component, DoCheck, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MatDialog, MatDialogRef, MatSnackBar, MatSnackBarRef } from '@angular/material';
-import { DRIVER_TYPE, Warehouse, WarehouseConfig } from 'ngx-warehouse';
+// import { DRIVER_TYPE, Warehouse, WarehouseConfig } from 'ngx-warehouse';
 import { Subscription } from 'rxjs';
 
 import { BackandItemService } from '../../shared/backand-item.service';
@@ -25,7 +25,7 @@ export class BackOfficeListComponent implements DoCheck, OnDestroy, OnInit {
   constructor(
     private backand: BackandItemService,
     private dialog: MatDialog, private route: ActivatedRoute,
-    private snack: MatSnackBar, private warehouse: Warehouse) { }
+    private snack: MatSnackBar/*, private warehouse: Warehouse*/) { }
 
   ngDoCheck() {
     this.checked();
@@ -79,11 +79,6 @@ export class BackOfficeListComponent implements DoCheck, OnDestroy, OnInit {
 
   delete() {
     this.backand.deleteItem(this.table, this.isSelected)
-      .then(res => {
-        this.isSelected = [];
-        let message = this.snack.open('Item(s) have been Deleted', 'Okay');
-        this.toastDismiss(message);
-      });
   }
 
   detailModal(edit, item?) {
@@ -102,27 +97,21 @@ export class BackOfficeListComponent implements DoCheck, OnDestroy, OnInit {
   }
 
   getItems() {
-    this.ebcData = this.warehouse.get(this.table)
-      .subscribe(data => {
-        if (data === null) {
-          this.httpCall();
-        } else {
-          this.items = data;
-        }
-      },
-      err => {
-        console.log('error', err);
-      });
+    // this.ebcData = this.warehouse.get(this.table)
+    //   .subscribe(data => {
+    //     if (data === null) {
+    //       this.httpCall();
+    //     } else {
+    //       this.items = data;
+    //     }
+    //   },
+    //   err => {
+    //     console.log('error', err);
+    //   });
   }
 
   httpCall() {
-    this.backand.getList(this.table).then(
-      list => {
-        this.storeItems(list.data);
-        this.items = list.data;
-        this.started = true;
-        sessionStorage.setItem('updateList', 'false');
-      });
+    this.backand.getList(this.table)
   }
 
   selected(item) {
@@ -145,7 +134,7 @@ export class BackOfficeListComponent implements DoCheck, OnDestroy, OnInit {
   }
 
   storeItems(items) {
-    this.warehouse.set(this.table, items);
+    // this.warehouse.set(this.table, items);
   }
 
   toastDismiss(message: MatSnackBarRef<any>) {
