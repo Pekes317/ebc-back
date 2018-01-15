@@ -1,18 +1,13 @@
 import { Controller, Get, Req, Res } from '@nestjs/common';
 
+import { ClientRoutesService } from '../client-routes/client-routes.service';
+
 @Controller()
 export class AppController {
-    constructor() { }
+    constructor(private readonly client: ClientRoutesService) { }
 
     @Get()
     root( @Req() req: any, @Res() res: any) {
-        res.render('index', {
-            req,
-            res,
-            providers: [{
-                provide: 'serverUrl',
-                useValue: `${req.protocol}://${req.get('host')}`
-            }]
-        });
+        this.client.renderRoute(req, res);
     }
 }
