@@ -1,7 +1,6 @@
 import { Component, DoCheck, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MatDialog, MatDialogRef, MatSnackBar, MatSnackBarRef } from '@angular/material';
-// import { DRIVER_TYPE, Warehouse, WarehouseConfig } from 'ngx-warehouse';
 import { Subscription } from 'rxjs';
 
 import { BackandItemService } from '../../shared/backand-item.service';
@@ -25,7 +24,7 @@ export class BackOfficeListComponent implements DoCheck, OnDestroy, OnInit {
   constructor(
     private backand: BackandItemService,
     private dialog: MatDialog, private route: ActivatedRoute,
-    private snack: MatSnackBar/*, private warehouse: Warehouse*/) { }
+    private snack: MatSnackBar) { }
 
   ngDoCheck() {
     this.checked();
@@ -97,17 +96,7 @@ export class BackOfficeListComponent implements DoCheck, OnDestroy, OnInit {
   }
 
   getItems() {
-    // this.ebcData = this.warehouse.get(this.table)
-    //   .subscribe(data => {
-    //     if (data === null) {
-    //       this.httpCall();
-    //     } else {
-    //       this.items = data;
-    //     }
-    //   },
-    //   err => {
-    //     console.log('error', err);
-    //   });
+
   }
 
   httpCall() {
@@ -134,7 +123,7 @@ export class BackOfficeListComponent implements DoCheck, OnDestroy, OnInit {
   }
 
   storeItems(items) {
-    // this.warehouse.set(this.table, items);
+   
   }
 
   toastDismiss(message: MatSnackBarRef<any>) {

@@ -1,5 +1,4 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-// import { Warehouse } from 'ngx-warehouse';
 import { Subscription } from 'rxjs';
 
 import { BackandItemService } from '../../shared/backand-item.service';
@@ -14,7 +13,7 @@ export class BackOfficeHomeComponent implements OnInit, OnDestroy {
   ebcData: Subscription;
   users: Array<BackandUser>;
 
-  constructor(private backand: BackandItemService /*, private warehouse: Warehouse*/) { }
+  constructor(private backand: BackandItemService) { }
 
   ngOnInit() {
     this.getUsers();
@@ -29,13 +28,6 @@ export class BackOfficeHomeComponent implements OnInit, OnDestroy {
   }
 
   getUsers() {
-    // this.ebcData = this.warehouse.get('users').subscribe(
-    //   ebcUsers => {
-    //     if (ebcUsers === null) {
-    //       this.backCall();
-    //     } else {
-    //       this.users = ebcUsers;
-    //     }
-    //   });
+
   }
 }

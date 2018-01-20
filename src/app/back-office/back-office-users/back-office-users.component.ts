@@ -2,7 +2,6 @@ import { Component, DoCheck, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { MatDialog, MatDialogRef, MatSnackBar, MatSnackBarRef } from '@angular/material';
-// import { Warehouse } from 'ngx-warehouse';
 
 import { BackandItemService } from '../../shared/backand-item.service';
 import { BackandUser } from '../../shared/';
@@ -23,7 +22,7 @@ export class BackOfficeUsersComponent implements DoCheck, OnDestroy, OnInit {
   table: string;
 
   constructor(private backand: BackandItemService, private dialog: MatDialog,
-    private route: ActivatedRoute, private snack: MatSnackBar/*, private warehouse: Warehouse*/) { }
+    private route: ActivatedRoute, private snack: MatSnackBar) { }
 
   ngDoCheck() {
     this.checked();
@@ -105,14 +104,7 @@ export class BackOfficeUsersComponent implements DoCheck, OnDestroy, OnInit {
   }
 
   getItems() {
-    // this.backandCall =  this.warehouse.get('users').subscribe(
-    //   ebcUsers => {
-    //     if (ebcUsers === null) {
-    //       this.backCall();
-    //     } else {
-    //       this.users = ebcUsers;
-    //     }
-    //   });
+
   }
 
   selected(user) {

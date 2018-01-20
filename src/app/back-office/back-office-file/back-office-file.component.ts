@@ -10,7 +10,5 @@ export class BackOfficeFileComponent implements OnInit {
 
   constructor(private http: Http) { }
 
-  ngOnInit() {
-
-  }
+  ngOnInit() { }
 }
