@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { SignupData } from './backand-types';
@@ -16,7 +16,7 @@ export class BackandAuthService {
   }
 
   public currentUser() {
-
+    
   }
 
   public getAuthToken(user, pass) {
@@ -28,11 +28,22 @@ export class BackandAuthService {
     this.http.post(`./api/auth/token`, login)
     .subscribe(res => { 
       console.log(res);
+      this.requestResetPassword(res);
      },
     err => console.log(err));
   }
 
   public requestResetPassword(email) {
+    let back = 'https://api.backand.com/1/user/';
+
+    let head = new HttpHeaders();
+    head.append('Authorization', `Bearer ${email.access_token}`);
+
+    this.http.get(back, { headers: head })
+    .subscribe(res => { 
+      console.log(res);
+     },
+    err => console.log(err));
 
   }
 
