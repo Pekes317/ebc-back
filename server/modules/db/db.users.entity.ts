@@ -1,4 +1,8 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, JoinColumn, OneToMany, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
+
+import { Collected } from './db.collected.entity';
+import { Equipment } from './db.equipment.entity';
+import { Items } from './db.items.entity';
 
 @Entity()
 export class Users {
@@ -15,4 +19,14 @@ export class Users {
   @Column('datetime') since: Date;
 
   @Column() subscribed: boolean;
+
+  @OneToMany(type => Items, item => item.user)
+  items: Items[];
+
+  @OneToMany(type => Equipment, devices => devices.owner)
+  devices: Equipment[];
+
+  @OneToOne(type => Collected, collect => collect.client)
+  @JoinColumn()
+  collection: Collected;
 }

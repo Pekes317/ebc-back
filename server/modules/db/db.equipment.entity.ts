@@ -1,4 +1,6 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+
+import { Users } from './db.users.entity';
 
 @Entity()
 export class Equipment {
@@ -6,5 +8,6 @@ export class Equipment {
 
 	@Column() device: string;
 
-	@Column() owner: number
+	@ManyToOne(type => Users, )
+	owner: Users;
 }
