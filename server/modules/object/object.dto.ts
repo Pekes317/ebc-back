@@ -9,7 +9,7 @@ export class EquipDto {
 }
 
 export class GetObjDto {
-	readonly name: string;
+	readonly list: string;
 	readonly id?: string;
 }
 
