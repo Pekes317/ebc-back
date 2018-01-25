@@ -31,12 +31,11 @@ export class ObjectController {
 
     @Get(':list')
     getItems( @Res() res: any, @Param() obj: GetObjDto) {
-        this.dbService.findAll(obj.list)
-            .then(dto => res.status(HttpStatus.OK).send(dto))
+        this.dbService.setTable(obj.list)
+            .then(service => this.dbService.getAll(service)
+                .then(dto => res.status(HttpStatus.OK).send(dto))
+                .catch(err => res.status(HttpStatus.NOT_FOUND).send(err)))
             .catch(err => res.status(HttpStatus.UNAUTHORIZED).send(err));
-        // object.getList(obj.name)
-        //     .then(dto => res.status(HttpStatus.OK).send(dto.data))
-        //     .catch(err => res.status(HttpStatus.UNAUTHORIZED).send(err));
     }
 
     @Put(':list/:id')
