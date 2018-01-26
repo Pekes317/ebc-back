@@ -1,7 +1,7 @@
 import {  Column, Entity, JoinTable, ManyToMany, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
 
-import { Items } from '../items/db.items.entity';
-import { Users } from '../users/db.users.entity';
+import { Items } from './db.items.entity';
+import { Users } from './db.users.entity';
 
 @Entity()
 export class Collected {
