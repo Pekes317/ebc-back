@@ -4,10 +4,11 @@ import * as firebase from 'firebase/app';
 import 'firebase/auth';
 
 import { NewPassDto, ResetPassDto, ResetReqDto, SignInDto, SignUpDto } from './auth.dto';
+import { AuthService } from './auth.service';
 
 @Controller('api/auth')
 export class AuthController {
-    constructor() { }
+    constructor(private readonly userService: AuthService) { }
 
     @Post('token')
     addToken( @Res() res: any, @Body() creds: SignInDto) {
@@ -18,7 +19,7 @@ export class AuthController {
 
     @Post('signup')
     createUser( @Res() res: any, @Body() newUser: SignUpDto) {
-        auth().createUser(newUser)
+        this.userService.createNewUser(newUser)
             .then(user => res.status(HttpStatus.OK).send(user))
             .catch(err => res.status(HttpStatus.UNAUTHORIZED).send(err));
     }
