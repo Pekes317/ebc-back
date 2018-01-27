@@ -13,6 +13,7 @@ import { appRoutingProviders, routing } from './app.routing';
 import { BackOfficeModule } from './back-office';
 import { BackandAuthService } from './shared/backand-auth.service';
 import { BackandItemService } from './shared/backand-item.service';
+import { CreateUserComponent } from './create-user/create-user.component';
 import { EbcMaterialModule } from './ebc-material/ebc-material.module';
 import { HomeComponent } from './home';
 import { LoginComponent } from './login';
@@ -37,6 +38,7 @@ import { EbcResetComponent } from './ebc-reset/ebc-reset.component';
   ],
   declarations: [
     AppComponent,
+    CreateUserComponent,
     HomeComponent,
     LoginComponent,
     EbcSvgComponent,

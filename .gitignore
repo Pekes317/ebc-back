@@ -38,3 +38,7 @@ testem.log
 #System Files
 .DS_Store
 Thumbs.db
+
+# FireBase Creds
+ebc-admin.json
+ebc-client.json

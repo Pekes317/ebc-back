@@ -31,7 +31,7 @@ export class NavbarComponent implements OnInit {
     this.router.navigate(['login']);
   }
 
-  toOffice() {
-    this.router.navigate(['back-office']);
+  toCreate() {
+    this.router.navigate(['signup']);
   }
 }

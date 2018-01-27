@@ -1,0 +1,31 @@
+<div class="back">
+  <app-navbar>Login</app-navbar>
+  <div class="content">
+    <div class="crumb">
+      <button mat-icon-button mat-ripple (click)="toHome()">
+        <mat-icon>home</mat-icon>
+      </button>
+      <span class="trail">| &ensp;SignUp</span>
+    </div>
+    <mat-card class="login">
+      <mat-card-title class="title">SignUp</mat-card-title>
+      <form [formGroup]="createForm" (ngSubmit)="createUser(createForm)">
+        <mat-card-content class="fields">
+          <mat-input-container [dividerColor]="email.valid ? 'primary' : 'warn'">
+            <input matInput class="field" type="email" placeholder="Your UserName/Email" formControlName="email">
+          </mat-input-container>
+          <mat-input-container [dividerColor]="password.valid ? 'primary' : 'warn'">
+            <input matInput class="field" type="password" placeholder="Your Password" formControlName="password">
+          </mat-input-container>
+          <mat-input-container>
+            <input matInput class="field" type="text" placeholder="Display Name" formControlName="displayName">
+          </mat-input-container>
+          <mat-input-container>
+            <input matInput class="field" type="text" placeholder="Photo" formControlName="photoUrl">
+          </mat-input-container>
+        </mat-card-content>
+        <button mat-raised-button mat-ripple color="primary" type="submit" [disabled]="createForm.invalid">SignUp</button>
+      </form>
+    </mat-card>
+  </div>
+</div>

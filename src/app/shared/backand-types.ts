@@ -43,8 +43,13 @@ export interface BackandItem {
 
 export interface SignupData {
 	email: string;
-	firstName: string;
-	lastName: string;
+	displayName: string;
 	password: string;
-	confirmPassword: string;
+	photoUrl: string;
+	emailVerified: boolean;
+	disabled: boolean;
+	// firstName: string;
+	// lastName: string;
+	// password: string;
+	// confirmPassword: string;
 }

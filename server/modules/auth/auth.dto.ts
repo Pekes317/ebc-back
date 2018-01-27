@@ -19,9 +19,10 @@ export class SignInDto {
 }
 
 export class SignUpDto {
-	readonly firstName: string;
-  readonly lastName: string;
-  readonly email: string;
-  readonly password: string;
-  readonly confirmPassword: string
+	readonly disabled: boolean;
+	readonly displayName: string;
+	readonly email: string;
+	readonly emailVerified: boolean;
+	readonly password: string;
+	readonly photoUrl: string;
 }

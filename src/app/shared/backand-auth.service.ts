@@ -34,21 +34,15 @@ export class BackandAuthService {
   }
 
   public requestResetPassword(email) {
-    let back = 'https://api.backand.com/1/user/';
-
-    let head = new HttpHeaders();
-    head.append('Authorization', `Bearer ${email.access_token}`);
-
-    this.http.get(back, { headers: head })
-    .subscribe(res => { 
-      console.log(res);
-     },
-    err => console.log(err));
-
+    
   }
 
   public signUp(userData: SignupData) {
+    userData.emailVerified = true;
+    userData.disabled = false;
 
+    this.http.post('./api/auth/signup', userData)
+     .subscribe(res => console.log(res));
   }
 
   public signout() {
