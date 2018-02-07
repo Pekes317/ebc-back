@@ -46,10 +46,7 @@ export interface SignupData {
 	displayName: string;
 	password: string;
 	photoUrl: string;
-	emailVerified: boolean;
-	disabled: boolean;
-	// firstName: string;
-	// lastName: string;
-	// password: string;
+	emailVerified?: boolean;
+	disabled?: boolean;
 	// confirmPassword: string;
 }

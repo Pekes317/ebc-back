@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { Global, Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
 import { Collected } from './db.collected.entity';
@@ -18,6 +18,7 @@ const dbEntities = [
 	Users
 ]
 
+@Global()
 @Module({
 	imports: [ TypeOrmModule.forFeature(dbEntities) ],
 	components: [ 

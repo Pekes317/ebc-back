@@ -8,7 +8,7 @@ import { Items } from './db.items.entity';
 import { Samples } from './db.samples.entity';
 import { Templates } from './db.templates.entity';
 import { Users } from './db.users.entity';
-import { CallService, Collect, Equip, Item, Sample, Temp, User } from './db.route.types';
+import { Collect, Equip, Item, Sample, Temp, User } from './db.route.types';
 
 @Component()
 export class DbService {

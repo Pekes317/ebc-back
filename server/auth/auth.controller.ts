@@ -1,4 +1,4 @@
-import { Body, Controller, Get, HttpStatus, Post, Res } from '@nestjs/common';
+import { Body, Controller, Get, HttpStatus, Post, Res, Req } from '@nestjs/common';
 import { auth } from 'firebase-admin';
 import * as firebase from 'firebase/app';
 import 'firebase/auth';
@@ -24,9 +24,9 @@ export class AuthController {
             .catch(err => res.status(HttpStatus.UNAUTHORIZED).send(err));
     }
 
-    @Post('newPass')
+    @Post('new-pass')
     newPassword( @Res() res: any, @Body() changePass: NewPassDto) {
-
+      
     }
 
     @Get('exit')
@@ -39,7 +39,7 @@ export class AuthController {
 
     }
 
-    @Post('resetRequest')
+    @Post('reset-request')
     resetRequest( @Res() res: any, @Body() resetReq: ResetReqDto) {
 
     }

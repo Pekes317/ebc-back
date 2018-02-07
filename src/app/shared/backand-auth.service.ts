@@ -16,7 +16,7 @@ export class BackandAuthService {
   }
 
   public currentUser() {
-    
+   
   }
 
   public getAuthToken(user, pass) {
@@ -40,6 +40,7 @@ export class BackandAuthService {
   public signUp(userData: SignupData) {
     userData.emailVerified = true;
     userData.disabled = false;
+    userData.photoUrl = 'https://ebc.beezleeart.com/assets/img/user.svg';
 
     this.http.post('./api/auth/signup', userData)
      .subscribe(res => console.log(res));

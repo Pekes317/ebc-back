@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { BackandAuthService } from '../shared/backand-auth.service';
 import { EmailValidator } from '../shared';
-import { AbstractControl } from '@angular/forms/src/model';
 
 @Component({
   selector: 'app-create-user',
@@ -20,7 +19,7 @@ export class CreateUserComponent implements OnInit {
 
   constructor(private auth: BackandAuthService, private router: Router) { }
 
-  ngOnInit() { 
+  ngOnInit() {
     this.createForm = new FormGroup({
       displayName: this.displayName,
       email: this.email,

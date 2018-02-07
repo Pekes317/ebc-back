@@ -8,17 +8,9 @@ import { Items } from './db.items.entity'
 export class Users {
   @PrimaryGeneratedColumn() id: number;
 
-  @Column() name: string;
+  @Column() fbUser: string;
 
   @Column() email: string;
-
-  @Column() firstName: string;
-
-  @Column() lastName: string;
-
-  @Column('datetime') since: Date;
-
-  @Column() subscribed: boolean;
 
   @OneToMany(type => Items, items => items.user)
   items: Items[];

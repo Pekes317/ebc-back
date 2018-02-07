@@ -9,7 +9,7 @@ import * as firebase from 'firebase';
 
 import * as express from 'express';
 
-import { ApplicationModule } from './modules/app.module';
+import { ApplicationModule } from './app.module';
 const dist = `${process.cwd()}/dist`;
 const { AppServerModuleNgFactory, LAZY_MODULE_MAP } = require(`${dist}/public/main.bundle`);
 const creds = require('./ebc-admin.json');
