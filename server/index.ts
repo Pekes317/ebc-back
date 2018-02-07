@@ -1,15 +1,16 @@
 import 'zone.js/dist/zone-node';
 
-import { NestFactory, NestApplication } from '@nestjs/core';
+import { NestFactory, NestApplication, Reflector } from '@nestjs/core';
 import { INestApplication } from '@nestjs/common/interfaces/nest-application.interface';
 import { ngExpressEngine } from '@nguniversal/express-engine';
 import { provideModuleMap } from '@nguniversal/module-map-ngfactory-loader';
 import { app, credential, initializeApp } from 'firebase-admin';
 import * as firebase from 'firebase';
-
 import * as express from 'express';
 
 import { ApplicationModule } from './app.module';
+import { AuthGuard } from './common/auth.guard';
+
 const dist = `${process.cwd()}/dist`;
 const { AppServerModuleNgFactory, LAZY_MODULE_MAP } = require(`${dist}/public/main.bundle`);
 const creds = require('./ebc-admin.json');
@@ -28,9 +29,10 @@ initializeApp({
 });
 
 const client = firebase.initializeApp(clientCreds, app().name);
-
+const reflector = new Reflector();
 const serverApp: Promise<INestApplication> = NestFactory.create(ApplicationModule);
 serverApp.then(instance => {
+  instance.useGlobalGuards(new AuthGuard(reflector))
   instance.engine('html', configuredNgExpressEngine);
   instance.set('view engine', 'html');
   instance.set('views', `${dist}/views`);

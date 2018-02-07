@@ -5,11 +5,13 @@ import 'firebase/auth';
 
 import { NewPassDto, ResetPassDto, ResetReqDto, SignInDto, SignUpDto } from './auth.dto';
 import { AuthService } from './auth.service';
+import { Auth } from '../common/auth.decorator';
 
 @Controller('api/auth')
 export class AuthController {
     constructor(private readonly userService: AuthService) { }
 
+    @Auth(false)
     @Post('token')
     addToken( @Res() res: any, @Body() creds: SignInDto) {
         firebase.auth().signInWithEmailAndPassword(creds.username, creds.password)
