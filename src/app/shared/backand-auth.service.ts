@@ -20,17 +20,7 @@ export class BackandAuthService {
   }
 
   public getAuthToken(user, pass) {
-    let login = {
-      username: user,
-      password: pass
-    }
-
-    this.http.post(`./api/auth/token`, login)
-    .subscribe(res => { 
-      console.log(res);
-      this.requestResetPassword(res);
-     },
-    err => console.log(err));
+    
   }
 
   public requestResetPassword(email) {

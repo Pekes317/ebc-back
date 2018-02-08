@@ -1,19 +1,28 @@
 import { Guard, CanActivate, ExecutionContext } from '@nestjs/common';
 import { Observable } from 'rxjs/Observable';
 import { Reflector } from '@nestjs/core';
+import { auth } from 'firebase-admin';
 
 @Guard()
 export class AuthGuard implements CanActivate {
 
 	constructor(private readonly reflector: Reflector) { }
 
-	canActivate(req: any, context: ExecutionContext): boolean {
-		const auth = req.headers.authorization;
+	canActivate(req: any, context: ExecutionContext): boolean | Promise<boolean> | Observable<boolean> {
 		const { parent, handler } = context;
-		const protect = this.reflector.get<boolean>('protect', handler);
-		
-		if (auth || protect === false ) {
+		const exposed = this.reflector.get<boolean>('exposed', handler);
+		if (exposed) {
 			return true;
+		}
+		if (req.token) {
+			return auth().verifyIdToken(req.token)
+			.then(decode => {
+				req.uid = decode.uid;
+				return true;
+			})
+		  .catch(err => {
+				return false;
+			}) 
 		}
 		return false;
 	}

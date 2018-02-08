@@ -2,10 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
+import { AngularFireAuth } from 'angularfire2/auth';
 import { Subscription } from 'rxjs';
 
-import { BackandAuthService } from '../shared/backand-auth.service';
 import { EmailValidator } from '../shared';
+import { userInfo } from 'os';
 
 @Component({
   selector: 'app-login',
@@ -17,15 +18,14 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   password: FormControl = new FormControl('', Validators.required);
 
-  constructor(private backAuth: BackandAuthService, private router: Router,
-    private snack: MatSnackBar) {
+  constructor(private firebase: AngularFireAuth, private router: Router, private snack: MatSnackBar) {
     this.loginForm = new FormGroup({
       username: this.email,
       password: this.password
     });
   }
 
-  ngOnInit() {  }
+  ngOnInit() { }
 
   alert() {
     let message;
@@ -42,20 +42,17 @@ export class LoginComponent implements OnInit {
     this.snack.open(message, action)
       .afterDismissed()
       .subscribe(() => {
-        if (ebcAuth) {
-          this.isRedirected();
-        }
-      });
-  }
 
-  isRedirected() {
-    this.router.navigate([this.backAuth.redirectUrl]);
-    this.backAuth.redirectUrl = undefined;
+      });
   }
 
   logIn(form) {
     let creds = form.value
-    this.backAuth.getAuthToken(creds.username, creds.password)
+    this.firebase.auth.signInAndRetrieveDataWithEmailAndPassword(creds.username, creds.password)
+      .then(userRecord => {
+        this.firebase.idToken.subscribe(token => console.log(token))
+      })
+      .catch(err => console.log(err))
   }
 
   toHome() {

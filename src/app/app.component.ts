@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatDialog, MatDialogRef } from '@angular/material';
-// import { Warehouse } from 'ngx-warehouse';
+import {  } from 'angularfire2';
 
 import { PrivatePolicyComponent } from './private-policy/private-policy.component';
 
@@ -11,21 +11,14 @@ import { PrivatePolicyComponent } from './private-policy/private-policy.componen
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  title: string;
 
-  constructor(private dialog: MatDialog/*, private warehouse: Warehouse*/) {
-
-  }
+  constructor(private dialog: MatDialog) { }
 
   ngOnInit() {
     this.authCheck();
   }
 
   authCheck() {
-    // this.warehouse.get('auth')
-    //   .subscribe(auth => ebcAuth = auth);
-    // this.warehouse.get('userRole')
-    //   .subscribe(role => ebcRole = role);
     this.dbUpdate();
   }
 

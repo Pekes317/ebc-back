@@ -1,3 +1,3 @@
 import { ReflectMetadata } from '@nestjs/common';
 
-export const Auth = (protect: boolean) => ReflectMetadata('protect', protect);
+export const NoAuth = (exposed: boolean) => ReflectMetadata('exposed', exposed);

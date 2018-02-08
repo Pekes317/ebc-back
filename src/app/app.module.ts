@@ -5,6 +5,8 @@ import { HttpModule } from '@angular/http';
 import { BrowserModule, Title } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { InlineSVGModule } from 'ng-inline-svg';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireAuthModule } from 'angularfire2/auth';
 import * as io from 'socket.io-client';
 // window["io"] = io;
 
@@ -15,6 +17,7 @@ import { BackandAuthService } from './shared/backand-auth.service';
 import { BackandItemService } from './shared/backand-item.service';
 import { CreateUserComponent } from './create-user/create-user.component';
 import { EbcMaterialModule } from './ebc-material/ebc-material.module';
+import { environment } from '../environments/environment';
 import { HomeComponent } from './home';
 import { LoginComponent } from './login';
 import { NavbarModule } from './navbar/navbar.module';
@@ -24,6 +27,8 @@ import { EbcResetComponent } from './ebc-reset/ebc-reset.component';
 
 @NgModule({
   imports: [
+    AngularFireModule.initializeApp(environment.firebase, 'ebc-app'),
+    AngularFireAuthModule,
     BrowserAnimationsModule,
     BrowserModule.withServerTransition({ appId: 'ebc-server' }),
     BackOfficeModule,
