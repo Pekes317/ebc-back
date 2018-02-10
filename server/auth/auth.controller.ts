@@ -14,6 +14,6 @@ export class AuthController {
     createUser( @Res() res: any, @Body() newUser: SignUpDto) {
         this.userService.createNewUser(newUser)
             .then(user => res.status(HttpStatus.OK).send(user))
-            .catch(err => res.status(HttpStatus.UNAUTHORIZED).send(err));
+            .catch(err => res.status(HttpStatus.BAD_REQUEST).send(err));
     }
 }

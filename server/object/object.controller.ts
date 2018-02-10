@@ -13,7 +13,7 @@ export class ObjectController {
             .then(service => this.dbService.createOne(service, newItem)
                 .then(dto => res.status(HttpStatus.OK).send(dto))
                 .catch(err => res.status(HttpStatus.NOT_FOUND).send(err)))
-            .catch(err => res.status(HttpStatus.UNAUTHORIZED).send(err));
+            .catch(err => res.status(HttpStatus.BAD_REQUEST).send(err));
     }
 
     @Delete(':list/:id')
@@ -22,7 +22,7 @@ export class ObjectController {
             .then(service => this.dbService.deleteOne(service, obj.id)
                 .then(dto => res.status(HttpStatus.OK).send(dto))
                 .catch(err => res.status(HttpStatus.NOT_FOUND).send(err)))
-            .catch(err => res.status(HttpStatus.UNAUTHORIZED).send(err));
+            .catch(err => res.status(HttpStatus.BAD_REQUEST).send(err));
     }
 
     @Get(':list/:id')
@@ -31,7 +31,7 @@ export class ObjectController {
             .then(service => this.dbService.getOne(service, obj.id)
                 .then(dto => res.status(HttpStatus.OK).send(dto))
                 .catch(err => res.status(HttpStatus.NOT_FOUND).send(err)))
-            .catch(err => res.status(HttpStatus.UNAUTHORIZED).send(err));
+            .catch(err => res.status(HttpStatus.BAD_REQUEST).send(err));
     }
 
     @Get(':list')
@@ -40,7 +40,7 @@ export class ObjectController {
             .then(service => this.dbService.getAll(service)
                 .then(dto => res.status(HttpStatus.OK).send(dto))
                 .catch(err => res.status(HttpStatus.NOT_FOUND).send(err)))
-            .catch(err => res.status(HttpStatus.UNAUTHORIZED).send(err));
+            .catch(err => res.status(HttpStatus.BAD_REQUEST).send(err));
     }
 
     @Put(':list/:id')
@@ -49,6 +49,6 @@ export class ObjectController {
             .then(service => this.dbService.updateOne(service, obj.id, newItem)
                 .then(dto => res.status(HttpStatus.OK).send(dto))
                 .catch(err => res.status(HttpStatus.NOT_FOUND).send(err)))
-            .catch(err => res.status(HttpStatus.UNAUTHORIZED).send(err));
+            .catch(err => res.status(HttpStatus.BAD_REQUEST).send(err));
     }
 }
