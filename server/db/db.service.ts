@@ -12,12 +12,12 @@ import { Collect, Equip, Item, Sample, Temp, User } from './db.route.types';
 
 @Component()
 export class DbService {
-    constructor( @InjectRepository(Collected) private readonly collect: Repository<Collected>,
-        @InjectRepository(Equipment) private readonly equip: Repository<Equipment>,
-        @InjectRepository(Items) private readonly items: Repository<Items>,
-        @InjectRepository(Samples) private readonly sample: Repository<Samples>,
-        @InjectRepository(Templates) private readonly temp: Repository<Templates>,
-        @InjectRepository(Users) private readonly users: Repository<Users>) { }
+    constructor( @InjectRepository(Collected) public readonly collect: Repository<Collected>,
+        @InjectRepository(Equipment) public readonly equip: Repository<Equipment>,
+        @InjectRepository(Items) public readonly items: Repository<Items>,
+        @InjectRepository(Samples) public readonly sample: Repository<Samples>,
+        @InjectRepository(Templates) public readonly temp: Repository<Templates>,
+        @InjectRepository(Users) public readonly users: Repository<Users>) { }
 
     async setTable(dbTable) {
         switch (dbTable) {

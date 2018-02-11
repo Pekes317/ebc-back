@@ -11,6 +11,7 @@ export class AuthGuard implements CanActivate {
 	canActivate(req: any, context: ExecutionContext): boolean | Promise<boolean> | Observable<boolean>  {
 		const { parent, handler } = context;
 		const exposed = this.reflector.get<boolean>('exposed', handler);
+		const role = this.reflector.get<string>('role', handler);
 		if (exposed) {
 			return true;
 		}
@@ -18,12 +19,17 @@ export class AuthGuard implements CanActivate {
 			return auth().verifyIdToken(req.token)
 			.then(decode => {
 				req.uid = decode.uid;
-				return true;
+				return this.checkRole(decode.role, role);
 			})
 		  .catch(err => {
 				throw new HttpException(err, HttpStatus.UNAUTHORIZED);
 			}) 
 		}
 		return false;
+	}
+
+	checkRole(user, role) {
+		
+		return true;
 	}
 }

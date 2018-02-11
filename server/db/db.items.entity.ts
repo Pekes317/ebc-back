@@ -13,7 +13,7 @@ export class Items {
 
 	@Column('text') data: string;
 
-	@ManyToOne(type => Users, users => users.items)
+	@ManyToOne(type => Users, users => users.items, { cascadeAll: true })
 	user: Users;
 
 	@Column() media: string;

@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, HttpStatus, Post, Param, Put, Res, Req } from '@nestjs/common';
+import { Body, Controller, Delete, Get, HttpStatus, Post, Param, Put, Res } from '@nestjs/common';
 import { DbService } from '../db/db.service';
 
 import { GetObjDto, NewItemDto } from './object.dto';
@@ -11,7 +11,7 @@ export class ObjectController {
     createItem( @Res() res: any, @Param() obj: GetObjDto, @Body() newItem: NewItemDto) {
         this.dbService.setTable(obj.list)
             .then(service => this.dbService.createOne(service, newItem)
-                .then(dto => res.status(HttpStatus.OK).send(dto))
+                .then(dto => res.status(HttpStatus.CREATED).send(dto))
                 .catch(err => res.status(HttpStatus.NOT_FOUND).send(err)))
             .catch(err => res.status(HttpStatus.BAD_REQUEST).send(err));
     }

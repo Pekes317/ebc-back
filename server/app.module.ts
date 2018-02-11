@@ -11,6 +11,7 @@ import { ClientRoutesModule } from './client-routes/client-routes.module';
 import { ClientRoutesController } from './client-routes/client-routes.controller';
 import { DbModule } from './db/db.module';
 import { ObjectModule } from './object/object.module';
+import { MobileModule } from './mobile/mobile.module';
 
 const dist = `${process.cwd()}/dist`;
 
@@ -19,6 +20,7 @@ const dist = `${process.cwd()}/dist`;
 		AuthModule,
 		ClientRoutesModule,
 		DbModule,
+		MobileModule,
 		ObjectModule,
 		TypeOrmModule.forRoot()
 	],
