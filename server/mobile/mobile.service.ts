@@ -9,13 +9,12 @@ export class MobileService {
 	constructor(private readonly db: DbService) { }
 
 	async createItem(user, item): Promise<any> {
-		const newItem = this.db.users.create();
+		const newItem = this.db.items.create();
 		return await this.db.users.find({ fbUser: user })
 			.then(users => {
 				let user = users[0];
-				user.items.push(item);
-				this.db.users.merge(newItem, user);
-				return this.db.users.save(newItem);
+				this.db.items.merge(newItem, item, { user: user })
+				return this.db.items.save(newItem);
 			})
 	}
 
