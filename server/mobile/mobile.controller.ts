@@ -1,5 +1,6 @@
 import { Body, Controller, Delete, Get, HttpStatus, Post, Param, Put, Res, Req } from '@nestjs/common';
 
+import { NoAuth } from '../common/auth.decorator';
 import { MobileService } from './mobile.service';
 import { TypeDto } from './mobile.dto';
 import { ItemDto } from '../object/object.dto';
@@ -13,8 +14,8 @@ export class MobileController {
 	addUserItem( @Req() req: any, @Res() res: any, @Body() data: ItemDto) {
 		let user = req.uid;
 		this.mobile.createItem(user, data)
-		.then(item => res.status(HttpStatus.CREATED).send(item))
-		.catch(err => res.status(HttpStatus.REQUEST_TIMEOUT).send(err));
+			.then(item => res.status(HttpStatus.CREATED).send(item))
+			.catch(err => res.status(HttpStatus.REQUEST_TIMEOUT).send(err));
 	}
 
 	@Get(':type')
@@ -24,17 +25,24 @@ export class MobileController {
 			.then(items => res.status(HttpStatus.OK).send(items))
 			.catch(err => res.status(HttpStatus.REQUEST_TIMEOUT).send(err));
 	}
-
-	@Get('temp/:type')
-	getTempItems( @Res() res: any, @Param() param: TypeDto) {
-		this.mobile.tempItems(param.type)
+	@Get('sample/:type')
+	getSampleItems( @Res() res: any, @Param() param: TypeDto) {
+		this.mobile.sampleItems(param.type)
 			.then(items => res.status(HttpStatus.OK).send(items))
 			.catch(err => res.status(HttpStatus.REQUEST_TIMEOUT).send(err));
 	}
 
-	@Get('sample/:type')
-	getSampleItems( @Res() res: any, @Param() param: TypeDto) {
-		this.mobile.sampleItems(param.type)
+	@NoAuth(true)
+	@Get('shared/:id')
+	getSharedItem( @Res() res: any, @Param() param: number) {
+		this.mobile.shareItem(param)
+			.then(item => res.status(HttpStatus.OK).send(item))
+			.catch(err => res.status(HttpStatus.REQUEST_TIMEOUT).send(err));
+	}
+
+	@Get('temp/:type')
+	getTempItems( @Res() res: any, @Param() param: TypeDto) {
+		this.mobile.tempItems(param.type)
 			.then(items => res.status(HttpStatus.OK).send(items))
 			.catch(err => res.status(HttpStatus.REQUEST_TIMEOUT).send(err));
 	}

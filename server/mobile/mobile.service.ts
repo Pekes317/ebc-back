@@ -17,6 +17,20 @@ export class MobileService {
 				return this.db.items.save(newItem);
 			})
 	}
+	
+	async sampleItems(type): Promise<any> {
+		let flyer = (type === 'flyers') ? true : false;
+		return await this.db.sample.find({ flyer: flyer });
+	}
+
+	async shareItem(item): Promise<any> {
+		return await this.db.items.findOneById(item);
+	}
+
+	async tempItems(type): Promise<any> {
+		let flyer = (type === 'flyers') ? true : false;
+		return await this.db.temp.find({ flyer: flyer });
+	}
 
 	async usersItems(user, type): Promise<any> {
 		let flyer = (type === 'flyers') ? true : false;
@@ -25,15 +39,5 @@ export class MobileService {
 				let items = user[0].items.filter(items => items.flyer === flyer);
 				return items;
 			});
-	}
-
-	async tempItems(type): Promise<any> {
-		let flyer = (type === 'flyers') ? true : false;
-		return await this.db.temp.find({ flyer: flyer });
-	}
-
-	async sampleItems(type): Promise<any> {
-		let flyer = (type === 'flyers') ? true : false;
-		return await this.db.sample.find({ flyer: flyer });
 	}
 }
