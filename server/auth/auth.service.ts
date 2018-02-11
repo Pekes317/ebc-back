@@ -8,8 +8,8 @@ import { DbService } from '../db/db.service';
 export class AuthService {
     constructor(private readonly dbConnect: DbService) { }
 
-    addUserRole(uid: string) {
-        auth().setCustomUserClaims(uid, { role: 'user' });
+    addUserRole(uid: string, role: string = 'user') {
+        auth().setCustomUserClaims(uid, { role: role });
     }
 
     async createNewUser(newUser: SignUpDto): Promise<any> {
