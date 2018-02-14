@@ -31,7 +31,7 @@ export class BackOfficeListComponent implements DoCheck, OnDestroy, OnInit {
   }
 
   ngOnDestroy() {
-    this.ebcData.unsubscribe();
+    // this.ebcData.unsubscribe();
   }
 
   ngOnInit() {
@@ -96,10 +96,6 @@ export class BackOfficeListComponent implements DoCheck, OnDestroy, OnInit {
   }
 
   getItems() {
-
-  }
-
-  httpCall() {
     this.backand.getList(this.table)
   }
 

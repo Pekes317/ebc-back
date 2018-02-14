@@ -27,22 +27,24 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() { }
 
-  alert() {
+  alert(ebcAuth) {
     let message;
     let action;
 
     if (ebcAuth) {
-      message = 'Loggin Successful';
+      message = 'Login Successful';
       action = 'Okay';
     }
     if (!ebcAuth) {
-      message = 'Loggin Failed';
+      message = 'Login Failed';
       action = 'Try Again';
     }
-    this.snack.open(message, action)
+    this.snack.open(message, action, {
+      duration: 5000
+    })
       .afterDismissed()
       .subscribe(() => {
-
+       this.router.navigate(['back-office'])
       });
   }
 
@@ -50,9 +52,13 @@ export class LoginComponent implements OnInit {
     let creds = form.value
     this.firebase.auth.signInAndRetrieveDataWithEmailAndPassword(creds.username, creds.password)
       .then(userRecord => {
-        this.firebase.idToken.subscribe(token => console.log(token))
+        this.alert(true);
       })
-      .catch(err => console.log(err))
+      .catch(err => {
+        this.alert(false);
+        console.log(err);
+      });
+      this.loginForm.reset();
   }
 
   toHome() {

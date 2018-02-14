@@ -1,51 +1,46 @@
 import { Injectable } from '@angular/core';
-// import { Warehouse } from 'ngx-warehouse'; 
+import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class BackandItemService {
   currentList: string;
 
-constructor(/*public warehouse: Warehouse*/) { }
+  constructor(private http: HttpClient) { }
 
   public addItem(list, data) {
-    
+
   }
 
   public deleteItem(list, itemArray) {
-    let delList = [];
-    let urlBase = `/items`;
-    itemArray.forEach(id => {
-      let item = {
-        method: 'DELETE',
-        url: `${urlBase}/${id}`
-      };
-      delList.push(item);
-    });
+
   }
 
   public getList(list) {
-  
+    this.http.get(`./api/obj/${list}`)
+      .subscribe(
+      items => { console.log(items); return items },
+      err => console.log(err));
   }
 
   public getItem(list, id) {
-   
+
   }
 
-  setList(current) {
+  public setList(current) {
     this.currentList = current;
   }
 
   public itemListener() {
-    
+
   }
 
   public updateItem(list, id, data) {
-    
+
   }
 
   private rebuildList(listArr: Array<any>, list) {
     let items: Array<any> = [];
-    
+
     listArr.forEach(res => {
       let obj = {};
 

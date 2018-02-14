@@ -1,2 +1,1 @@
-var ebcAuth;
 var ebcRole;

@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-// import { Warehouse } from 'ngx-warehouse';
-
-import { BackandAuthService } from '../shared/backand-auth.service';
+import { AngularFireAuth } from 'angularfire2/auth';
 
 @Component({
   selector: 'app-navbar',
@@ -10,25 +8,21 @@ import { BackandAuthService } from '../shared/backand-auth.service';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
+  auth: boolean = JSON.parse(localStorage.getItem('ebcAuth'));
 
-  constructor(private backAuth: BackandAuthService, private router: Router/*, private warehouse: Warehouse*/) { }
+  constructor(private fireAuth: AngularFireAuth, private router: Router) { }
 
-  ngOnInit() {
-  }
-  
+  ngOnInit() { }
+
   toHome() {
-    this.router.navigate(['']);
-
-    // this.warehouse.destroy()
-    // .subscribe(
-    //   data => {
-    //     ebcAuth = false;
-    //   },
-    //   err => console.log(err));
+    this.fireAuth.auth.signOut()
+      .then(() => this.router.navigate(['']))
+      .catch(err => console.log(err));
   }
 
   toLogin() {
-    this.router.navigate(['login']);
+    let path:string = this.auth ? 'back-office' : 'login';
+    this.router.navigate([path]);
   }
 
   toCreate() {

@@ -13,7 +13,7 @@ const officeRoutes: Routes = [
 	{
 		path: 'back-office',
 		component: BackOfficeComponent,
-		canActivate: [AuthGuard, RoleGuard],
+		canActivate: [],
 		data: { title: 'Back Office' },
 		resolve: { title: TitleResolve },
 		children: [
@@ -25,7 +25,7 @@ const officeRoutes: Routes = [
 				path: 'file',
 				component: BackOfficeFileComponent,
 				data: { title: 'Back Office', list: 'templates' },
-				resolve: { auth: AuthResolve, title: TitleResolve }
+				resolve: { title: TitleResolve }
 			},
 			{
 				path: 'items',

@@ -3,10 +3,10 @@
   <mat-sidenav #menu class="menu">
     <mat-toolbar color="accent" class="header">
       <span>
-        {{backUser?.firstName}}
+        {{backUser?.displayName}}
       </span>
       <span class="space-align"></span>
-      <img [src]="backUser?.pic" />
+      <img [src]="backUser?.photoUrl" />
     </mat-toolbar>
     <div class="btns">
       <a mat-ripple [routerLink]="['/']" mat-button>

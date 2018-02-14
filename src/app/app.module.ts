@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { BrowserModule, Title } from '@angular/platform-browser';
@@ -12,6 +12,7 @@ import * as io from 'socket.io-client';
 
 import { AppComponent } from './app.component';
 import { appRoutingProviders, routing } from './app.routing';
+import { AuthInterceptor } from './shared/auth.interceptor';
 import { BackOfficeModule } from './back-office';
 import { BackandAuthService } from './shared/backand-auth.service';
 import { BackandItemService } from './shared/backand-item.service';
@@ -27,7 +28,7 @@ import { EbcResetComponent } from './ebc-reset/ebc-reset.component';
 
 @NgModule({
   imports: [
-    AngularFireModule.initializeApp(environment.firebase, 'ebc-app'),
+    AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     BrowserAnimationsModule,
     BrowserModule.withServerTransition({ appId: 'ebc-server' }),
@@ -53,7 +54,12 @@ import { EbcResetComponent } from './ebc-reset/ebc-reset.component';
   providers: [
     appRoutingProviders,
     BackandAuthService,
-    BackandItemService
+    BackandItemService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
   ],
   entryComponents: [
     PrivatePolicyComponent

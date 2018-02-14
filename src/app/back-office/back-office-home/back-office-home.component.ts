@@ -20,7 +20,7 @@ export class BackOfficeHomeComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.ebcData.unsubscribe();
+    //this.ebcData.unsubscribe();
   }
 
   backCall() {
