@@ -6,6 +6,7 @@ import { Subscription } from 'rxjs';
 import { BackandItemService } from '../../shared/backand-item.service';
 import { BackandItem } from '../../shared/';
 import { BackOfficeDetailComponent } from '../back-office-detail/back-office-detail.component';
+import { subscribeOn } from 'rxjs/operator/subscribeOn';
 
 @Component({
   selector: 'app-back-office-list',
@@ -97,6 +98,7 @@ export class BackOfficeListComponent implements DoCheck, OnDestroy, OnInit {
 
   getItems() {
     this.backand.getList(this.table)
+    .subscribe((data: Array<BackandItem>) => this.items = data)
   }
 
   selected(item) {

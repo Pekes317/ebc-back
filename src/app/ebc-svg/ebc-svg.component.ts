@@ -15,22 +15,20 @@ import { BackandItem } from '../shared/backand-types';
 })
 export class EbcSvgComponent implements OnInit {
   ebcCard: BackandItem;
-  ebcMedia: string; 
-  navSafe: boolean = false;
+  navSafe: boolean;
 
-  constructor(private auth: BackandAuthService, private backand: BackandItemService, 
-    private route: ActivatedRoute, private router: Router, private snack: MatSnackBar) {
-
-  }
+  constructor(private backand: BackandItemService, private route: ActivatedRoute,
+    private router: Router, private snack: MatSnackBar) { }
 
   ngOnInit() {
-    this.getAuth();
+    this.getCard();
   }
 
   getCard() {
     let id = this.getItemId();
 
-    this.backand.getItem('items', id)
+    this.backand.getItem('shared', id)
+      .subscribe((item: BackandItem) => this.ebcCard = item)
   }
 
   getItemId() {
@@ -43,18 +41,12 @@ export class EbcSvgComponent implements OnInit {
     return itemID;
   }
 
-  getAuth() {
-    this.auth.useAnoymousAuth();
-    this.getCard();
-  }
-
   toLogin() {
     this.router.navigate(['login']);
   }
 
   navAlert() {
-    this.navSafe = true;
-    this.snack.open('Access Denied', 'to Login')
+    this.snack.open('Access Denied', 'to Login', { duration: 3000 })
       .afterDismissed()
       .subscribe(() => {
         this.toLogin();

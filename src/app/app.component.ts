@@ -19,7 +19,6 @@ export class AppComponent implements OnInit {
   }
 
   authCheck() {
-    // this.dbUpdate();l
     let authUser =  { };
     this.fireAuth.idToken.subscribe(
       token => {
@@ -36,19 +35,11 @@ export class AppComponent implements OnInit {
           localStorage.setItem('ebcAuth', 'true');
         } else {
           localStorage.setItem('ebcAuth', 'false');
+          localStorage.removeItem('token');
+          localStorage.removeItem('ebcUser');
         }        
       })
   }
-
-  // dbUpdate() {
-  //   let ebcArr: Array<string> = ['items', 'users', 'samples', 'templates'];
-  //   let needUpdate = sessionStorage.getItem('updateList');
-  //   if (needUpdate === null || needUpdate === 'true') {
-  //     ebcArr.forEach(str => {
-      
-  //     });
-  //   }
-  // }
 
   showPolicy() {
     let policy: MatDialogRef<PrivatePolicyComponent> = this.dialog.open(PrivatePolicyComponent);

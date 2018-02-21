@@ -11,22 +11,6 @@ export class BackandAuthService {
 
   constructor(private http: HttpClient) { }
 
-  public changePassword(oldPassword, newPassword) {
-
-  }
-
-  public currentUser() {
-   
-  }
-
-  public getAuthToken(user, pass) {
-    
-  }
-
-  public requestResetPassword(email) {
-    
-  }
-
   public signUp(userData: SignupData) {
     userData.emailVerified = true;
     userData.disabled = false;
@@ -34,26 +18,5 @@ export class BackandAuthService {
 
     this.http.post('./api/auth/signup', userData)
      .subscribe(res => console.log(res));
-  }
-
-  public signout() {
-
-  }
-
-  public useAnoymousAuth() {
-
-  }
-
-  private storeAuth(status: boolean) {
-
-  }
-
-  private storeRole(authData) {
-    ebcRole = authData['role'];
-    this.storeUser(authData['userId']);
-  }
-
-  private storeUser(userId) {
-
   }
 }

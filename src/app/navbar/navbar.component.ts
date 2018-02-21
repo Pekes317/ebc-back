@@ -20,7 +20,7 @@ export class NavbarComponent implements OnInit {
       .catch(err => console.log(err));
   }
 
-  toLogin() {
+  toMain() {
     let path:string = this.auth ? 'back-office' : 'login';
     this.router.navigate([path]);
   }

@@ -11,7 +11,8 @@ export class SvgGuardService implements CanDeactivate<EbcSvgComponent> {
   canDeactivate(comp: EbcSvgComponent,
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Promise<boolean> | boolean {
-      if(comp.navSafe) {
+      let token = localStorage.getItem('token');
+      if(token) {
         return true;
       }
 

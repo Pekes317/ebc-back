@@ -8,7 +8,7 @@ export class AuthGuard implements CanActivate {
   constructor(private backAuth: BackandAuthService, private router: Router) { }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-		let storedToken;
+		let storedToken = localStorage.getItem('token');
     
     // Store the attempted URL for redirecting
     this.backAuth.redirectUrl = state.url;

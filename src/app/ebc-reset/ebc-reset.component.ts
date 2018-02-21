@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { AbstractControl, FormGroup, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatSnackBar, MatSnackBarRef } from '@angular/material';
+import { AngularFireAuth } from 'angularfire2/auth';
 
 @Component({
   selector: 'app-ebc-reset',
@@ -14,7 +15,7 @@ export class EbcResetComponent implements OnInit {
   resetForm: FormGroup;
   resetToken: string;
 
-  constructor(private active: ActivatedRoute,
+  constructor(private active: ActivatedRoute, private fireAuth: AngularFireAuth,
     private toast: MatSnackBar, private router: Router) { }
 
   ngOnInit() {
@@ -24,7 +25,7 @@ export class EbcResetComponent implements OnInit {
     }, this.areEqual);
     this.active.queryParams
       .subscribe(query => {
-        this.resetToken = query['token'];
+        this.resetToken = query['oobCode'];
       });
   }
 
@@ -49,7 +50,17 @@ export class EbcResetComponent implements OnInit {
     this.router.navigate(['']);
   }
 
-  submitReset(form) {
-    let reset = form.value;
+  submitReset(form: AbstractControl) {
+    let reset = form.get('newPassword').value;
+    this.fireAuth.auth.verifyPasswordResetCode(this.resetToken)
+      .then(() => this.fireAuth.auth.confirmPasswordReset(this.resetToken, reset)
+        .then(res => this.compReset(true))
+        .catch(err => this.resetError(err)))
+      .catch(err => this.resetError(err))
+  }
+
+  private resetError(error) {
+    console.log(error);
+    this.compReset(false);
   }
 }

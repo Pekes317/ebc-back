@@ -11,7 +11,7 @@ import { BackandUser } from '../../shared/backand-types';
 })
 export class BackOfficeEditComponent implements OnInit {
   ebcId: number;
-  ebcUser: BackandUser = {
+  ebcUser = {
     id: NaN,
     email: '',
     firstName: '',

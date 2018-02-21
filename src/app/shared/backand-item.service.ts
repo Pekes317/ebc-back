@@ -16,14 +16,16 @@ export class BackandItemService {
   }
 
   public getList(list) {
-    this.http.get(`./api/obj/${list}`)
-      .subscribe(
-      items => { console.log(items); return items },
-      err => console.log(err));
+    let call = this.http.get(`./api/obj/${list}`);
+    call.catch((err, caught) => { console.log(err); return caught });
+    return call;
   }
 
   public getItem(list, id) {
-
+    let api = (list === 'shared') ? `./api/mobile/${list}/${id}`: `./api/obj/${list}/${id}`;
+    let call = this.http.get(api);
+    call.catch((err, caught) => { console.log(err); return caught });
+    return call;
   }
 
   public setList(current) {

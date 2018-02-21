@@ -7,7 +7,7 @@
     </div>
     <div class="scroll">
       <mat-card class="card">
-        <div *ngIf="!ebcCard?.disable" mat-card-image [inlineSVG]="ebcMedia"></div>
+        <div *ngIf="!ebcCard?.disable" mat-card-image [inlineSVG]="ebcCard?.media"></div>
         <div class="disable" *ngIf="ebcCard?.disable">
           <mat-card-title>I am sorry, but this Card is currently disable. Please contact EBC Tech Support for assistance.</mat-card-title>
           <img mat-card-image src="/assets/img/ebc_disabled.png">

@@ -1,7 +1,7 @@
 import { ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { AuthResolve, RoleGuard } from './shared';
+import { RoleGuard } from './shared';
 import { AuthGuard, TitleResolve } from '../shared';
 import { BackOfficeComponent } from './back-office.component';
 import { BackOfficeHomeComponent } from './back-office-home/back-office-home.component';
@@ -44,13 +44,13 @@ const officeRoutes: Routes = [
 				component: BackOfficeListComponent,
 				data: { title: 'Back Office', list: 'templates' },
 				resolve: { title: TitleResolve }
-			},
-			{
-				path: 'users',
-				component: BackOfficeUsersComponent,
-				data: { title: 'Back Office', list: 'users' },
-				resolve: { title: TitleResolve }
-			}
+			}//,
+			// {
+			// 	path: 'users',
+			// 	component: BackOfficeUsersComponent,
+			// 	data: { title: 'Back Office', list: 'users' },
+			// 	resolve: { title: TitleResolve }
+			// }
 		]
 	 }
 ];

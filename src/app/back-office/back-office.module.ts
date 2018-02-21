@@ -4,7 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
-import { AuthResolve, RoleGuard } from './shared';
+import { RoleGuard } from './shared';
 import { BackOfficeComponent } from './back-office.component';
 import { BackOfficeHomeComponent } from './back-office-home/back-office-home.component';
 import { BackOfficeListComponent } from './back-office-list/back-office-list.component';
@@ -36,7 +36,6 @@ import { routing } from './back-office.routes';
     BackOfficeEditComponent
   ],
   providers: [
-    AuthResolve,
     RoleGuard
   ],
   entryComponents: [
