@@ -6,7 +6,6 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { Subscription } from 'rxjs';
 
 import { EmailValidator } from '../shared';
-import { userInfo } from 'os';
 
 @Component({
   selector: 'app-login',

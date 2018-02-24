@@ -1,3 +1,6 @@
+import * as config from '../ebc-client.json';
+
 export const environment = {
-  production: true
+  production: true,
+  firebase: config
 };

@@ -32,9 +32,9 @@ export class ApplicationModule implements NestModule {
 	configure(consumer: MiddlewaresConsumer) {
 		ServeFaviconMiddleware.configure(`${dist}/views/favicon.ico`);
 		ServeStaticMiddleware.configure(`${dist}/views/`);
-		consumer.apply(CorsMiddleware).forRoutes({ path: '/api/*' });
-		// consumer.apply(ServeFaviconMiddleware).forRoutes(ClientRoutesController);
-		// consumer.apply(ServeStaticMiddleware).forRoutes(ClientRoutesController);;
+		consumer.apply(CorsMiddleware).forRoutes({ path:  '/api/*' }, { path: '/assets/svg/*' });
+		consumer.apply(ServeFaviconMiddleware).forRoutes(ClientRoutesController);
+		consumer.apply(ServeStaticMiddleware).forRoutes(ClientRoutesController);
 		consumer.apply(ExpressBearerTokenMiddleware).forRoutes({ path: '/api/*' });
 	}
 }

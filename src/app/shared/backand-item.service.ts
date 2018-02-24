@@ -8,11 +8,17 @@ export class BackandItemService {
   constructor(private http: HttpClient) { }
 
   public addItem(list, data) {
-
+    this.http.post(`./api/obj/${list}`, data)
+      .subscribe(newItem => console.log(newItem),
+        err => console.log(err));
   }
 
   public deleteItem(list, itemArray) {
-
+    itemArray.forEach(item => {
+      this.http.delete(`./api/obj/${list}/${item}`)
+        .subscribe(result => console.log(result),
+          err => console.log(err));
+    });
   }
 
   public getList(list) {
@@ -22,7 +28,7 @@ export class BackandItemService {
   }
 
   public getItem(list, id) {
-    let api = (list === 'shared') ? `./api/mobile/${list}/${id}`: `./api/obj/${list}/${id}`;
+    let api = (list === 'shared') ? `./api/mobile/${list}/${id}` : `./api/obj/${list}/${id}`;
     let call = this.http.get(api);
     call.catch((err, caught) => { console.log(err); return caught });
     return call;
@@ -37,21 +43,8 @@ export class BackandItemService {
   }
 
   public updateItem(list, id, data) {
-
-  }
-
-  private rebuildList(listArr: Array<any>, list) {
-    let items: Array<any> = [];
-
-    listArr.forEach(res => {
-      let obj = {};
-
-      res.forEach(i => {
-        obj[i.Key] = i.Value;
-      })
-      items.push(obj);
-    });
-    console.log(items);
-    // this.warehouse.set(list, items);
+    this.http.post(`./api/obj/${list}/${id}`, data)
+      .subscribe(newItem => console.log(newItem),
+        err => console.log(err));
   }
 }

@@ -7,12 +7,13 @@ import { provideModuleMap } from '@nguniversal/module-map-ngfactory-loader';
 import { credential, initializeApp } from 'firebase-admin';
 import * as express from 'express';
 
-import { ApplicationModule } from './app.module';
-import { AuthGuard } from './common/auth.guard';
+import { ApplicationModule } from './modules/app.module';
+import { AuthGuard } from './modules/common/auth.guard';
 
 const dist = `${process.cwd()}/dist`;
 const { AppServerModuleNgFactory, LAZY_MODULE_MAP } = require(`${dist}/public/main.bundle`);
 const creds = require('./ebc-admin.json');
+const port: number = JSON.parse(process.env.PORT || '50400');
 
 const configuredNgExpressEngine = ngExpressEngine({
   bootstrap: AppServerModuleNgFactory,
@@ -26,13 +27,16 @@ initializeApp({
   databaseURL: 'https://ebc2-549f1.firebaseio.com'
 });
 
-const reflector = new Reflector();
-const serverApp: Promise<INestApplication> = NestFactory.create(ApplicationModule);
-serverApp.then(app => {
+const reflector = new Reflector()
+
+async function bootstrap() {
+  const app = await NestFactory.create(ApplicationModule);
   app.useGlobalGuards(new AuthGuard(reflector))
   app.engine('html', configuredNgExpressEngine);
   app.set('view engine', 'html');
   app.set('views', `${dist}/views`);
   app.use(express.static(`${dist}/views`));
-  app.listen(3000, () => console.log('Application is listening on port 3000'))
-});
+  app.listen(port, () => console.log(`Application is listening on port ${port}`))
+}
+
+bootstrap();

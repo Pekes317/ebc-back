@@ -1,22 +1,21 @@
 {
+  "compileOnSave": false,
   "compilerOptions": {
     "module": "commonjs",
+    "outDir": "./dist",
+    "sourceMap": false,
     "declaration": false,
-    "noImplicitAny": false,
-    "removeComments": true,
-    "noLib": false,
+    "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "target": "es6",
-    "sourceMap": true,
-    "allowJs": true,
-    "outDir": "./dist"
+    "lib": ["es2017", "dom"]
   },
   "include": [
-    "server/**/*"
+    "server/**/*",
+    "server/index.ts"
   ],
   "exclude": [
-    "node_modules",
     "server/**/*.spec.ts"
   ]
 }
