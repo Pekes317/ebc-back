@@ -2,7 +2,7 @@ import { Component } from '@nestjs/common';
 
 @Component()
 export class ClientRoutesService {
-    constructor() {}
+    constructor() { }
 
     renderRoute(req: any, res: any) {
         res.render('index', {

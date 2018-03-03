@@ -8,7 +8,7 @@ export class ObjectController {
     constructor(private readonly dbService: DbService) { }
 
     @Post(':list')
-    createItem( @Res() res: any, @Param() obj: GetObjDto, @Body() newItem: NewItemDto) {
+    createItem(@Res() res: any, @Param() obj: GetObjDto, @Body() newItem: NewItemDto) {
         this.dbService.setTable(obj.list)
             .then(service => this.dbService.createOne(service, newItem)
                 .then(dto => res.status(HttpStatus.CREATED).send(dto))
@@ -17,7 +17,7 @@ export class ObjectController {
     }
 
     @Delete(':list/:id')
-    deleteItem( @Res() res: any, @Param() obj: GetObjDto) {
+    deleteItem(@Res() res: any, @Param() obj: GetObjDto) {
         this.dbService.setTable(obj.list)
             .then(service => this.dbService.deleteOne(service, obj.id)
                 .then(dto => res.status(HttpStatus.OK).send(dto))
@@ -26,7 +26,7 @@ export class ObjectController {
     }
 
     @Get(':list/:id')
-    getItem( @Res() res: any, @Param() obj: GetObjDto) {
+    getItem(@Res() res: any, @Param() obj: GetObjDto) {
         this.dbService.setTable(obj.list)
             .then(service => this.dbService.getOne(service, obj.id)
                 .then(dto => res.status(HttpStatus.OK).send(dto))
@@ -35,7 +35,7 @@ export class ObjectController {
     }
 
     @Get(':list')
-    getItems( @Res() res: any, @Param() obj: GetObjDto) {
+    getItems(@Res() res: any, @Param() obj: GetObjDto) {
         this.dbService.setTable(obj.list)
             .then(service => this.dbService.getAll(service)
                 .then(dto => res.status(HttpStatus.OK).send(dto))
@@ -44,7 +44,7 @@ export class ObjectController {
     }
 
     @Put(':list/:id')
-    updateItem( @Res() res: any, @Param() obj: GetObjDto, @Body() newItem: NewItemDto) {
+    updateItem(@Res() res: any, @Param() obj: GetObjDto, @Body() newItem: NewItemDto) {
         this.dbService.setTable(obj.list)
             .then(service => this.dbService.updateOne(service, obj.id, newItem)
                 .then(dto => res.status(HttpStatus.OK).send(dto))

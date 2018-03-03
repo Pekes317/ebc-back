@@ -17,19 +17,24 @@ export class MobileService {
 				return this.db.items.save(newItem);
 			})
 	}
-	
+
 	async sampleItems(type): Promise<any> {
 		let flyer = (type === 'flyers') ? true : false;
 		return await this.db.sample.find({ flyer: flyer });
 	}
 
-	async shareItem(item): Promise<any> {
-		return await this.db.items.findOneById(item);
+	async registerDevice(user, device): Promise<any> {
+		const newDevice = this.db.equip.create();
+		return await this.db.users.find({ fbUser: user })
+			.then(users => {
+				let user = users[0];
+				this.db.equip.merge(newDevice, device, { owner: user })
+				return this.db.items.save(newDevice);
+			})
 	}
 
-	async tempItems(type): Promise<any> {
-		let flyer = (type === 'flyers') ? true : false;
-		return await this.db.temp.find({ flyer: flyer });
+	async shareItem(item): Promise<any> {
+		return await this.db.items.findOneById(item);
 	}
 
 	async usersItems(user, type): Promise<any> {
@@ -39,5 +44,10 @@ export class MobileService {
 				let items = user[0].items.filter(items => items.flyer === flyer);
 				return items;
 			});
+	}
+	
+	async tempItems(type): Promise<any> {
+		let flyer = (type === 'flyers') ? true : false;
+		return await this.db.temp.find({ where: { flyer: flyer } });
 	}
 }

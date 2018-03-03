@@ -8,6 +8,6 @@ export class Equipment {
 
 	@Column() device: string;
 
-	@ManyToOne(type => Users, )
+	@ManyToOne(type => Users, owner => owner.devices)
 	owner: Users;
 }

@@ -30,11 +30,12 @@ const dist = `${process.cwd()}/dist`;
 })
 export class ApplicationModule implements NestModule {
 	configure(consumer: MiddlewaresConsumer) {
+		CorsMiddleware.configure({ origin: '*', preflightContinue: true });
 		ServeFaviconMiddleware.configure(`${dist}/views/favicon.ico`);
 		ServeStaticMiddleware.configure(`${dist}/views/`);
-		consumer.apply(CorsMiddleware).forRoutes({ path:  '/api/*' }, { path: '/assets/svg/*' });
+		consumer.apply(CorsMiddleware).forRoutes({ path: '/api/*' }, { path: '/assets/svg/*' });
 		consumer.apply(ServeFaviconMiddleware).forRoutes(ClientRoutesController);
 		consumer.apply(ServeStaticMiddleware).forRoutes(ClientRoutesController);
-		consumer.apply(ExpressBearerTokenMiddleware).forRoutes({ path: '/api/*' });
+		consumer.apply(ExpressBearerTokenMiddleware).forRoutes({ path: '*' });
 	}
 }

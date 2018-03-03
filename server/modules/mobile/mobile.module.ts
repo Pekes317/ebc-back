@@ -11,4 +11,4 @@ import { MobileService } from './mobile.service';
 		MobileController
 	]
 })
-export class MobileModule {}
+export class MobileModule { }

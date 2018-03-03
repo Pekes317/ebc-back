@@ -2,7 +2,7 @@ import { Body, Controller, Delete, Get, HttpStatus, Post, Param, Put, Res, Req }
 
 import { NoAuth } from '../common/auth.decorator';
 import { MobileService } from './mobile.service';
-import { TypeDto } from './mobile.dto';
+import { DeviceDto, TypeDto } from './mobile.dto';
 import { ItemDto } from '../object/object.dto';
 
 @Controller('api/mobile')
@@ -10,8 +10,16 @@ export class MobileController {
 
 	constructor(private readonly mobile: MobileService) { }
 
+	@Post('register')
+	addUserDevice(@Req() req: any, @Res() res: any, @Body() device: DeviceDto) {
+		let user = req.uid;
+		this.mobile.registerDevice(user, device.token)
+			.then(mobile => res.status(HttpStatus.CREATED).send(mobile))
+			.catch(err => res.status(HttpStatus.REQUEST_TIMEOUT).send(err));
+	}
+
 	@Post('create')
-	addUserItem( @Req() req: any, @Res() res: any, @Body() data: ItemDto) {
+	addUserItem(@Req() req: any, @Res() res: any, @Body() data: ItemDto) {
 		let user = req.uid;
 		this.mobile.createItem(user, data)
 			.then(item => res.status(HttpStatus.CREATED).send(item))
@@ -19,14 +27,14 @@ export class MobileController {
 	}
 
 	@Get(':type')
-	getUsersItems( @Req() req: any, @Res() res: any, @Param() param: TypeDto) {
+	getUsersItems(@Req() req: any, @Res() res: any, @Param() param: TypeDto) {
 		let user = req.uid;
 		this.mobile.usersItems(user, param.type)
 			.then(items => res.status(HttpStatus.OK).send(items))
 			.catch(err => res.status(HttpStatus.REQUEST_TIMEOUT).send(err));
 	}
 	@Get('sample/:type')
-	getSampleItems( @Res() res: any, @Param() param: TypeDto) {
+	getSampleItems(@Res() res: any, @Param() param: TypeDto) {
 		this.mobile.sampleItems(param.type)
 			.then(items => res.status(HttpStatus.OK).send(items))
 			.catch(err => res.status(HttpStatus.REQUEST_TIMEOUT).send(err));
@@ -34,14 +42,14 @@ export class MobileController {
 
 	@NoAuth(true)
 	@Get('shared/:id')
-	getSharedItem( @Res() res: any, @Param() param: number) {
+	getSharedItem(@Res() res: any, @Param() param: number) {
 		this.mobile.shareItem(param)
 			.then(item => res.status(HttpStatus.OK).send(item))
 			.catch(err => res.status(HttpStatus.REQUEST_TIMEOUT).send(err));
 	}
 
 	@Get('temp/:type')
-	getTempItems( @Res() res: any, @Param() param: TypeDto) {
+	getTempItems(@Res() res: any, @Param() param: TypeDto) {
 		this.mobile.tempItems(param.type)
 			.then(items => res.status(HttpStatus.OK).send(items))
 			.catch(err => res.status(HttpStatus.REQUEST_TIMEOUT).send(err));

@@ -20,10 +20,14 @@ const dbEntities = [
 
 @Global()
 @Module({
-	imports: [ TypeOrmModule.forFeature(dbEntities) ],
-	components: [ 
+	imports: [
+		TypeOrmModule.forFeature(dbEntities)
+	],
+	components: [
 		DbService
 	],
-	exports: [ DbService ]
+	exports: [
+		DbService
+	]
 })
-export class DbModule {}
+export class DbModule { }

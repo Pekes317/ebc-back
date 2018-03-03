@@ -1,7 +1,7 @@
 import { Component } from '@nestjs/common';
 import { auth } from 'firebase-admin';
 
-import { SignUpDto } from './auth.dto';
+import { UserDto } from './auth.dto';
 import { DbService } from '../db/db.service';
 
 @Component()
@@ -12,7 +12,7 @@ export class AuthService {
         auth().setCustomUserClaims(uid, { role: role });
     }
 
-    async createNewUser(newUser: SignUpDto): Promise<any> {
+    async createNewUser(newUser: UserDto): Promise<any> {
         return await auth().createUser(newUser)
             .then(userRecord => {
                 this.addUserRole(userRecord.uid);

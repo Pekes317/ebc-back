@@ -12,7 +12,7 @@ import { Collect, Equip, Item, Sample, Temp, User } from './db.route.types';
 
 @Component()
 export class DbService {
-    constructor( @InjectRepository(Collected) public readonly collect: Repository<Collected>,
+    constructor(@InjectRepository(Collected) public readonly collect: Repository<Collected>,
         @InjectRepository(Equipment) public readonly equip: Repository<Equipment>,
         @InjectRepository(Items) public readonly items: Repository<Items>,
         @InjectRepository(Samples) public readonly sample: Repository<Samples>,

@@ -40,6 +40,7 @@ export class EbcResetComponent implements OnInit {
   }
 
   compReset(good) {
+    this.resetForm.reset();
     let resetMess = this.toast.open(`Your Password has ${good ? 'been reset' : 'reset has fail'}`, good ? 'Okay' : 'Try Again');
     setTimeout(() => {
       resetMess.dismiss();
@@ -62,5 +63,6 @@ export class EbcResetComponent implements OnInit {
   private resetError(error) {
     console.log(error);
     this.compReset(false);
+    this.resetForm.reset();
   }
 }
