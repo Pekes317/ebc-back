@@ -43,7 +43,7 @@ export class BackandItemService {
   }
 
   public updateItem(list, id, data) {
-    this.http.post(`./api/obj/${list}/${id}`, data)
+    this.http.put(`./api/obj/${list}/${id}`, data)
       .subscribe(newItem => console.log(newItem),
         err => console.log(err));
   }

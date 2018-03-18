@@ -1,4 +1,5 @@
 import 'zone.js/dist/zone-node';
+global['XMLHttpRequest'] = require('xmlhttprequest').XMLHttpRequest;
 
 import { NestFactory, NestApplication, Reflector } from '@nestjs/core';
 import { INestApplication } from '@nestjs/common/interfaces/nest-application.interface';
