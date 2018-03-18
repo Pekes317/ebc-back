@@ -23,10 +23,9 @@ export class MobileController {
 	@Post('create')
 	addUserItem(@Req() req: any, @Res() res: any, @Body() data: ItemDto) {
 		let user = req.uid;
-		res.status(HttpStatus.CREATED).send([])
-		// this.mobile.createItem(user, data)
-		// 	.then(item => res.status(HttpStatus.CREATED).send(item))
-		// 	.catch(err => res.status(HttpStatus.REQUEST_TIMEOUT).send(err));
+		this.mobile.createItem(user, data)
+			.then(item => res.status(HttpStatus.CREATED).send(item))
+			.catch(err => res.status(HttpStatus.REQUEST_TIMEOUT).send(err));
 	}
 
 	@UseInterceptors(SlackInterceptor)

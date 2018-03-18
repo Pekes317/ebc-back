@@ -21,12 +21,11 @@ export class ObjectController {
     @UseInterceptors(SlackInterceptor)
     @Delete(':list/:id')
     deleteItem(@Res() res: any, @Param() obj: GetObjDto) {
-        res.status(HttpStatus.OK).send(obj)
-        // this.dbService.setTable(obj.list)
-        //     .then(service => this.dbService.deleteOne(service, obj.id)
-        //         .then(dto => res.status(HttpStatus.OK).send(dto))
-        //         .catch(err => res.status(HttpStatus.NOT_FOUND).send(err)))
-        //     .catch(err => res.status(HttpStatus.BAD_REQUEST).send(err));
+        this.dbService.setTable(obj.list)
+            .then(service => this.dbService.deleteOne(service, obj.id)
+                .then(dto => res.status(HttpStatus.OK).send(dto))
+                .catch(err => res.status(HttpStatus.NOT_FOUND).send(err)))
+            .catch(err => res.status(HttpStatus.BAD_REQUEST).send(err));
     }
 
     @Get(':list/:id')

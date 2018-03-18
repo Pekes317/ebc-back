@@ -15,7 +15,7 @@ export class SlackInterceptor implements NestInterceptor {
       () => {
         auth().getUser(req.uid)
           .then(user => {
-            let slackMessage = `${this.createMessage(req.route, req.body, req.params)}\nWas completed by ${user.displayName}.`
+            let slackMessage = `${this.createMessage(req.route, req.body, req.params)}\nIt was completed by ${user.displayName}.`
             this.slack.send(slackMessage, this.slackCallback)
           })
           .catch(err => console.log(err))
