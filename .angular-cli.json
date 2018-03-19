@@ -3,8 +3,7 @@
     "version": "1.0.0",
     "name": "ebc-back"
   },
-  "apps": [
-    {
+  "apps": [{
       "root": "src",
       "outDir": "dist/views",
       "assets": [
@@ -18,7 +17,11 @@
       "tsconfig": "tsconfig.json",
       "prefix": "app",
       "styles": [
-        "styles.scss"
+        "styles.scss",
+        "../node_modules/font-awesome/css/font-awesome.css"
+      ],
+      "addons": [
+        "../node_modules/font-awesome/fonts/*.+(otf|eot|svg|ttf|woff|woff2)"
       ],
       "scripts": [
         "scripts.ts"
@@ -63,8 +66,7 @@
       "config": "./protractor.conf.js"
     }
   },
-  "lint": [
-    {
+  "lint": [{
       "files": "src/**/*.ts",
       "project": "src/tsconfig.json"
     },

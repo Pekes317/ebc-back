@@ -21,12 +21,12 @@ const officeRoutes: Routes = [
 				path: '',
 				component: BackOfficeHomeComponent
 			},
-				{
-				path: 'file',
-				component: BackOfficeFileComponent,
-				data: { title: 'Back Office', list: 'templates' },
-				resolve: { title: TitleResolve }
-			},
+			// 	{
+			// 	path: 'file',
+			// 	component: BackOfficeFileComponent,
+			// 	data: { title: 'Back Office', list: 'templates' },
+			// 	resolve: { title: TitleResolve }
+			// },
 			{
 				path: 'items',
 				component: BackOfficeListComponent,
