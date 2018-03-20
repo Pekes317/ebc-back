@@ -2,8 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FileManagerModule } from '@rign/angular2-filemanager';
-import { TreeModule } from '@rign/angular2-tree';
+// import { FileManagerModule } from '@rign/angular2-filemanager';
+// import { TreeModule } from '@rign/angular2-tree';
 
 import { RoleGuard } from './shared';
 import { BackOfficeComponent } from './back-office.component';
@@ -23,7 +23,7 @@ import { routing } from './back-office.routes';
     BrowserAnimationsModule,
     CommonModule,
     EbcMaterialModule,
-    FileManagerModule.forChild(fileManagerConfig),
+    // FileManagerModule.forChild(fileManagerConfig),
     FormsModule,
     NavbarModule,
     ReactiveFormsModule,

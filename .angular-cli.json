@@ -1,9 +1,9 @@
 {
   "project": {
-    "version": "1.0.0",
     "name": "ebc-back"
   },
-  "apps": [{
+  "apps": [
+    {
       "root": "src",
       "outDir": "dist/views",
       "assets": [
@@ -15,13 +15,11 @@
       "polyfills": "polyfills.ts",
       "test": "test.ts",
       "tsconfig": "tsconfig.json",
+      "testTsconfig": "tsconfig.json",
       "prefix": "app",
       "styles": [
         "styles.scss",
         "../node_modules/font-awesome/css/font-awesome.css"
-      ],
-      "addons": [
-        "../node_modules/font-awesome/fonts/*.+(otf|eot|svg|ttf|woff|woff2)"
       ],
       "scripts": [
         "scripts.ts"
@@ -33,17 +31,20 @@
       }
     },
     {
+      "name": "ebc-server",
       "root": "src",
       "outDir": "dist/public",
       "assets": [
         "assets",
         "favicon.ico"
       ],
+      "platform": "server",
       "index": "index.html",
       "main": "main.server.ts",
       "polyfills": "polyfills.ts",
       "test": "test.ts",
       "tsconfig": "tsconfig.server.json",
+      "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
         "styles.scss"
@@ -55,10 +56,7 @@
       "environments": {
         "dev": "environments/environment.ts",
         "prod": "environments/environment.prod.ts"
-      },
-      "name": "ebc-server",
-      "platform": "server",
-      "testTsconfig": "tsconfig.spec.json"
+      }
     }
   ],
   "e2e": {
@@ -66,7 +64,8 @@
       "config": "./protractor.conf.js"
     }
   },
-  "lint": [{
+  "lint": [
+    {
       "files": "src/**/*.ts",
       "project": "src/tsconfig.json"
     },
@@ -82,6 +81,7 @@
   },
   "defaults": {
     "styleExt": "scss",
-    "component": {}
+    "component": {
+    }
   }
 }

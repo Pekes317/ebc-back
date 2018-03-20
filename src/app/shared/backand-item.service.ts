@@ -8,9 +8,9 @@ export class BackandItemService {
   constructor(private http: HttpClient) { }
 
   public addItem(list, data) {
-    this.http.post(`./api/obj/${list}`, data)
-      .subscribe(newItem => console.log(newItem),
-        err => console.log(err));
+    let call = this.http.post(`./api/obj/${list}`, data);
+    call.catch((err, caught) => { console.log(err); return caught });
+    return call;
   }
 
   public deleteItem(list, itemArray) {
@@ -37,14 +37,14 @@ export class BackandItemService {
   public setList(current) {
     this.currentList = current;
   }
-
+  
   public itemListener() {
-
+    
   }
 
   public updateItem(list, id, data) {
-    this.http.put(`./api/obj/${list}/${id}`, data)
-      .subscribe(newItem => console.log(newItem),
-        err => console.log(err));
+    let call = this.http.put(`./api/obj/${list}/${id}`, data);
+    call.catch((err, caught) => { console.log(err); return caught });
+    return call;
   }
 }
