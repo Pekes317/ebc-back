@@ -28,7 +28,6 @@ export class MobileController {
 			.catch(err => res.status(HttpStatus.REQUEST_TIMEOUT).send(err));
 	}
 
-	@UseInterceptors(SlackInterceptor)
 	@Get(':type')
 	getUsersItems(@Req() req: any, @Res() res: any, @Param() param: TypeDto) {
 		let user = req.uid;
@@ -44,7 +43,6 @@ export class MobileController {
 			.catch(err => res.status(HttpStatus.REQUEST_TIMEOUT).send(err));
 	}
 
-	@UseInterceptors(SlackInterceptor)
 	@NoAuth(true)
 	@Get('shared/:id')
 	getSharedItem(@Res() res: any, @Param() param: number) {
