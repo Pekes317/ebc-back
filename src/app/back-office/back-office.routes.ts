@@ -13,7 +13,7 @@ const officeRoutes: Routes = [
 	{
 		path: 'back-office',
 		component: BackOfficeComponent,
-		canActivate: [],
+		canActivate: [ AuthGuard ],
 		data: { title: 'Back Office' },
 		resolve: { title: TitleResolve },
 		children: [

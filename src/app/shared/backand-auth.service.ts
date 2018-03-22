@@ -16,7 +16,8 @@ export class BackandAuthService {
     userData.disabled = false;
     userData.photoUrl = 'https://ebc.beezleeart.com/assets/img/user.svg';
 
-    this.http.post('./api/auth/signup', userData)
-     .subscribe(res => console.log(res));
+    let call = this.http.post('./api/auth/signup', userData)
+     .catch((err, caught) => { console.log(err); return caught});
+     return call;
   }
 }
