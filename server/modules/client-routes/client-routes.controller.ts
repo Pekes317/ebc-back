@@ -26,6 +26,12 @@ export class ClientRoutesController {
     }
 
     @NoAuth(true)
+    @Get('signup')
+    signupRoute(@Req() req: any, @Res() res: any) {
+        this.client.renderRoute(req, res);
+    }
+
+    @NoAuth(true)
     @Get('resetPass')
     resetPassRoute(@Req() req: any, @Res() res: any) {
         this.client.renderRoute(req, res);
