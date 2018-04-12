@@ -12,7 +12,7 @@ import { ApplicationModule } from './modules/app.module';
 import { AuthGuard } from './modules/common/auth.guard';
 
 const dist = `${process.cwd()}/dist`;
-const { AppServerModuleNgFactory, LAZY_MODULE_MAP } = require(`${dist}/public/main.bundle`);
+const { AppServerModuleNgFactory, LAZY_MODULE_MAP } = require(`${dist}/public/main`);
 const creds = require('./ebc-admin.json');
 const port: number = JSON.parse(process.env.PORT || '50400');
 

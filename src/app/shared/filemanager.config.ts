@@ -1,9 +1,9 @@
-import { IFileManagerConfiguration } from '@rign/angular2-filemanager';
+import { IFileManagerConfiguration } from '@beezleeart/ngx-filemanager';
 
 export const fileManagerConfig: IFileManagerConfiguration = {
   allowChooseMultipleFiles: true,
   urls: {
-    filesUrl: '/api/files',
+    filesUrl: null,
     folderMoveUrl: '/api/folder/move',
     foldersUrl: '/api/folder'
   }

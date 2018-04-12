@@ -8,9 +8,9 @@ export class RoleGuard implements CanActivate {
   constructor(private snack: MatSnackBar) { }
 
   canActivate(): Promise<boolean> | boolean {
-    if(ebcRole === 'Admin' || ebcRole === 'Member') {
-      return true;
-    }
+    // if(ebcRole === 'Admin' || ebcRole === 'Member') {
+    //   return true;
+    // }
 
     this.snack.open('Access Denied Incorrect Role', 'Try Again');
     return false;

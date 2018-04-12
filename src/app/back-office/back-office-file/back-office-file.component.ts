@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Http } from '@angular/http';
+import { FileManagerConfiguration, FileManagerDispatcherService } from '@beezleeart/ngx-filemanager';
 
 @Component({
   selector: 'app-back-office-file',
@@ -8,7 +8,16 @@ import { Http } from '@angular/http';
 })
 export class BackOfficeFileComponent implements OnInit {
 
-  constructor(private http: Http) { }
+  constructor(public fileManagerConfiguration: FileManagerConfiguration,
+    private fileManagerDispatcher: FileManagerDispatcherService) { }
 
   ngOnInit() { }
+
+  public toggleMultiSelection() {
+    this.fileManagerConfiguration.isMultiSelection = !this.fileManagerConfiguration.isMultiSelection;
+
+    if (!this.fileManagerConfiguration.isMultiSelection) {
+      this.fileManagerDispatcher.unSelectAllFiles();
+    }
+  }
 }

@@ -2,6 +2,7 @@
 
 # compiled output
 /dist
+/dist-server
 /tmp
 
 # dependencies
@@ -30,7 +31,6 @@
 npm-debug.log
 testem.log
 /typings
-ormconfig.json
 
 # e2e
 /e2e/*.js
@@ -39,7 +39,3 @@ ormconfig.json
 #System Files
 .DS_Store
 Thumbs.db
-
-# FireBase Creds
-ebc-admin.json
-ebc-client.json

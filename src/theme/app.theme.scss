@@ -11,13 +11,20 @@
 $primary: mat-palette($mat-light-blue, 500, 100, 800);
 $accent:  mat-palette($mat-purple, 500, 300, 800);
 
+$file-accent:  mat-palette($mat-green, 600, 300, 900);
 // The warn palette is optional (defaults to red).
 $warn:    mat-palette($mat-red);
 
 // Create the theme object (a Sass map containing all of the palettes).
 $theme: mat-light-theme($primary, $accent, $warn);
 
+$file-theme: mat-light-theme($primary, $file-accent, $warn);
+
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
 @include angular-material-theme($theme);
+
+.ebc-filemanager {
+	@include angular-material-theme($file-theme);
+}
