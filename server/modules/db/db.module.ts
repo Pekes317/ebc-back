@@ -16,7 +16,7 @@ const dbEntities = [
 	Samples,
 	Templates,
 	Users
-]
+];
 
 @Global()
 @Module({

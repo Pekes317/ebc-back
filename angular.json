@@ -141,7 +141,7 @@
         }
       }
     },
-    "ebc-server": {
+    "ebc-serv": {
       "root": "",
       "projectType": "application",
       "architect": {
@@ -155,79 +155,9 @@
           },
           "configurations": {
             "production": {
-              "optimization": true,
-              "outputHashing": "none",
-              "sourceMap": false,
-              "extractCss": true,
-              "namedChunks": false,
-              "aot": true,
-              "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
-              "fileReplacements": [
-                {
-                  "src": "src/environments/environment.ts",
-                  "replaceWith": "src/environments/environment.prod.ts"
-                }
-              ]
+               "optimization": true,
+               "preserveSymlinks": true
             }
-          }
-        },
-        "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
-          "options": {
-            "browserTarget": "ebc-server:build"
-          },
-          "configurations": {
-            "production": {
-              "browserTarget": "ebc-server:build:production"
-            }
-          }
-        },
-        "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n",
-          "options": {
-            "browserTarget": "ebc-server:build"
-          }
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "src/test.ts",
-            "karmaConfig": "./karma.conf.js",
-            "polyfills": "src/polyfills.ts",
-            "tsConfig": "src/tsconfig.spec.json",
-            "scripts": [
-              {
-                "input": "src/scripts.ts"
-              }
-            ],
-            "styles": [
-              {
-                "input": "src/styles.scss"
-              }
-            ],
-            "assets": [
-              {
-                "glob": "**/*",
-                "input": "src/assets",
-                "output": "/assets"
-              },
-              {
-                "glob": "favicon.ico",
-                "input": "src",
-                "output": "/"
-              }
-            ]
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "src/tsconfig.json"
-            ],
-            "exclude": []
           }
         }
       }
