@@ -1,37 +1,41 @@
-import { Component } from '@nestjs/common';
 import { readdirSync, statSync } from 'fs';
 import { join } from 'path';
+import { Dimensions, Directory, File } from './filemanager.types';
 import { lookup } from 'mime-types';
 import * as sizeOf from 'image-size';
 
-import { Dimensions, Directory, File } from './filemanager.types';
-
-@Component()
-export class FilemanagerService {
+export class FileFolderService {
 
 	baseDir: string = '/assets/svg/';
 	basePath: string = `${__dirname}/views/${this.baseDir}`;
 
-	constructor() {  }
+	constructor() { }
 
-	public getItems(subNode: string) {
-		let list: Array<Directory | File> = [];
+	public getItems(subNode: string, file: boolean) {
+		let folders: Array<Directory> = [];
+		let files: Array<File> = [];
 		let items = readdirSync(this.basePath + subNode);
 
 		items.forEach(item => {
 			let stat = statSync(`${this.basePath}${subNode}/${item}`);
+
 			if (stat && stat.isDirectory()) {
-				list.push(this.prepareDir(item, subNode));
+				folders.push(this.prepareDir(item, subNode));
 			}
+
 			if (stat && stat.isFile()) {
 				let file = join(subNode, item);
-				list.push(this.prepareFile(file));
+				files.push(this.prepareFile(file));
 			}
 		});
 
-		return list;
+		if (file) {
+			return files;
+		}
+
+		return folders
 	}
-	
+
 	public isDirectory(path: string): boolean {
 		try {
 			let dir = statSync(this.basePath + path);
@@ -59,7 +63,7 @@ export class FilemanagerService {
 		};
 	}
 
-	public prepareFile(filePath: string): File { 
+	public prepareFile(filePath: string): File {
 		let src = join('/uploads', filePath).replace(/ /g, '\\ ');
 		let mimeType = lookup(filePath);
 		let isImage = false;
@@ -70,11 +74,11 @@ export class FilemanagerService {
 		if (mimeType) {
 			isImage = mimeType.indexOf('image') === 0;
 		}
-	
+
 		if (isImage) {
 			dimensions = sizeOf(join(this.basePath, filePath))
 		}
-	
+
 		return {
 			id: filePath,
 			folderId: dirs.join('/'),

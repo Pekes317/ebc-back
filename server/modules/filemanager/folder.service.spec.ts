@@ -1,6 +1,6 @@
 import { Test } from '@nestjs/testing';
 import { TestingModule } from '@nestjs/testing/testing-module';
-import { FilemanagerService } from './filemanager.service';
+import { FolderService } from './folder.service';
 import { expect } from 'chai';
 
 describe('ClientRoutesController', () => {
@@ -8,15 +8,15 @@ describe('ClientRoutesController', () => {
   beforeEach(() => {
     return Test.createTestingModule({
       controllers: [
-        FilemanagerService
+        FolderService
       ]
     }).compile()
       .then(compiledModule => module = compiledModule);
   });
 
-  let controller: FilemanagerService;
+  let controller: FolderService;
   beforeEach(() => {
-    controller = module.get(FilemanagerService);
+    controller = module.get(FolderService);
   });
 
   it('should exist', () => {
