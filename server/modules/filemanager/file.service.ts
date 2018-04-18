@@ -12,7 +12,10 @@ import { FileFolderService } from './file-folder.class';
 @Component()
 export class FileService extends FileFolderService {
 
-	constructor() { 
+	fileExist: boolean = false;
+	newPath: string = '';
+
+	constructor() {
 		super();
 	}
 
@@ -30,6 +33,10 @@ export class FileService extends FileFolderService {
 		return allFilesDeleted;
 	}
 
+	public fileSaved(fileRtn) {
+		return fileRtn;
+	}
+
 	public saveFile(folderId, req) {
 		let fileExist: boolean = false;
 		let form = new IncomingForm();
@@ -39,23 +46,16 @@ export class FileService extends FileFolderService {
 		form.uploadDir = this.basePath;
 
 		form.on('file', (field, file) => {
-			let newFile = this.checkFile(file, folderId);
-			fileExist = newFile.exist;
-			newPath = newFile.path;
+			this.newPath = this.checkFile(file, folderId);
 		});
 
 		form.on('error', err => {
 			console.log(`An error has occured: \n ${err}`);
 		});
 
-		form.on('end', () => {
-			return {
-				exists: fileExist,
-				file: this.prepareFile(newPath)
-			}
-		});
-
 		form.parse(req);
+
+		return form;
 	}
 
 	public updateFile(oldFile: FileUpdate) {
@@ -90,24 +90,22 @@ export class FileService extends FileFolderService {
 	}
 
 	private checkFile(file, folder) {
-		let newFile = {
-			exist: false,
-			path: ''
-		}
+		let path = ''
 		file.name = file.name.replace(/[^A-Za-z0-9\-\._]/g, '');
 
 		if (folder) {
-			newFile.path = join(folder, file.name);
+			path = join(folder, file.name);
 		} else {
-			newFile.path = file.name;
+			path = file.name;
 		}
 
-		if (this.isFile(newFile.path)) {
-			newFile.exist = true;
+		if (this.isFile(path)) {
+			this.fileExist = true;
 			unlinkSync(file.path);
 		} else {
-			renameSync(file.path, this.basePath + newFile.path);
+			renameSync(file.path, this.basePath + path);
+
+			return path;
 		}
-		return newFile;
 	}
 }

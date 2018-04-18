@@ -9,7 +9,7 @@
   "angular-cli": {},
   "scripts": {
     "ng": "ng",
-    "ng-start": "ng serve",
+    "ng-start": "ng serve --proxy-config proxy.conf.json",
     "start": "ts-node server/app",
     "build": "ng build",
     "test": "ng test",

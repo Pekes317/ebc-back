@@ -6,7 +6,7 @@ import { BrowserModule, Title } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
-import { FileManagerModule } from '@beezleeart/ngx-filemanager';
+import { FileManagerModule, FileManagerApiService, FileManagerBackendApiService } from '@beezleeart/ngx-filemanager';
 import { TreeModule } from '@beezleeart/ngx-tree';
 import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
 import { AngularFireModule } from 'angularfire2';
@@ -51,7 +51,7 @@ const firebase = {
     ConfirmationPopoverModule.forRoot(),
     EbcMaterialModule,
     EffectsModule.forRoot([]),
-    FileManagerModule.forRoot(fileManagerConfig),
+    FileManagerModule.forRoot(fileManagerConfig, { provide: FileManagerApiService, useClass: FileManagerBackendApiService }),
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
