@@ -10,7 +10,7 @@
   "scripts": {
     "ng": "ng",
     "ng-start": "ng serve --proxy-config proxy.conf.json",
-    "start": "ts-node server/app",
+    "start": "nodemon ./server/main",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -86,7 +86,7 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.5.5",
-    "@angular/cli": "^6.0.0-rc.4",
+    "@angular/cli": "^6.0.0-rc.5",
     "@angular/compiler-cli": "^5.2.9",
     "@ngrx/schematics": "^5.2.0",
     "@types/chai": "^4.1.2",

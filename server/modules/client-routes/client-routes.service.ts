@@ -1,10 +1,10 @@
-import { Component } from '@nestjs/common';
+import { Component, Res, Req } from '@nestjs/common';
 
 @Component()
 export class ClientRoutesService {
     constructor() { }
 
-    renderRoute(req: any, res: any) {
+    renderRoute(@Res() req: any, @Req() res: any) {
         res.render('index', {
             req,
             res,

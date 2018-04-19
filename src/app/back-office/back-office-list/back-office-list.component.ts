@@ -6,7 +6,6 @@ import { Subscription } from 'rxjs';
 import { BackandItemService } from '../../shared/backand-item.service';
 import { BackandItem } from '../../shared/';
 import { BackOfficeDetailComponent } from '../back-office-detail/back-office-detail.component';
-import { subscribeOn } from 'rxjs/operator/subscribeOn';
 
 @Component({
   selector: 'app-back-office-list',
