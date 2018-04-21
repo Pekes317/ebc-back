@@ -1,4 +1,5 @@
-import { NgModule } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import { NgModule, PLATFORM_ID } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
@@ -46,7 +47,7 @@ const firebase = {
     AngularFireModule.initializeApp(firebase),
     AngularFireAuthModule,
     BrowserAnimationsModule,
-    BrowserModule.withServerTransition({ appId: 'ebc-server' }),
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     BackOfficeModule,
     ConfirmationPopoverModule.forRoot(),
     EbcMaterialModule,

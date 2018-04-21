@@ -6,7 +6,7 @@ import * as sizeOf from 'image-size';
 
 export class FileFolderService {
 
-	baseDir: string = '../../../dist/views/assets/svg/';
+	baseDir: string = 'dist/views/assets/svg/';
 	basePath: string = `${process.cwd()}/${this.baseDir}`;
 
 	constructor() { }
