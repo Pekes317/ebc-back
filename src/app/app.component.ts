@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { MatDialog, MatDialogRef } from '@angular/material';
 import { AngularFireAuth } from 'angularfire2/auth';
 
+import { BackandAuthService } from './shared/backand-auth.service';
 import { PrivatePolicyComponent } from './private-policy/private-policy.component';
 
 @Component({
@@ -12,32 +13,27 @@ import { PrivatePolicyComponent } from './private-policy/private-policy.componen
 })
 export class AppComponent implements OnInit {
 
-  constructor(private fireAuth: AngularFireAuth, private dialog: MatDialog) { }
+  constructor(private fireAuth: AngularFireAuth, private backAuth: BackandAuthService, private dialog: MatDialog) { }
 
   ngOnInit() {
     this.authCheck();
   }
 
   authCheck() {
-    let authUser =  { };
     this.fireAuth.idToken.subscribe(
       token => {
         let user = this.fireAuth.auth.currentUser;
         if (token) {
           console.log(token, user);
-          authUser = {
-            displayName: user.displayName,
+          this.backAuth.authUser = {
             email: user.email,
+            displayName: user.displayName,
             photoUrl: user.photoURL
-          };
-          localStorage.setItem('token', token);
-          localStorage.setItem('ebcUser', JSON.stringify(authUser));
-          localStorage.setItem('ebcAuth', 'true');
-        } else {
-          localStorage.setItem('ebcAuth', 'false');
-          localStorage.removeItem('token');
-          localStorage.removeItem('ebcUser');
-        }        
+          }
+          this.backAuth.authed = true;
+        }  else {
+          this.backAuth.authed = false;
+        }
       })
   }
 

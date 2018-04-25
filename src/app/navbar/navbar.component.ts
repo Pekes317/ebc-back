@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AngularFireAuth } from 'angularfire2/auth';
+import { AngularFireAuth  } from 'angularfire2/auth';
+
+import { BackandAuthService } from '../shared/backand-auth.service';
 
 @Component({
   selector: 'app-navbar',
@@ -8,9 +10,9 @@ import { AngularFireAuth } from 'angularfire2/auth';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
-  auth: boolean = JSON.parse(localStorage.getItem('ebcAuth'));
+  auth: boolean = this.backAuth.authed;
 
-  constructor(private fireAuth: AngularFireAuth, private router: Router) { }
+  constructor(private backAuth: BackandAuthService, private fireAuth: AngularFireAuth, private router: Router) { }
 
   ngOnInit() { }
 

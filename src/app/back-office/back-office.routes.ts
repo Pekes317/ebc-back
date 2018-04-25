@@ -1,8 +1,9 @@
 import { ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { RoleGuard } from './shared';
-import { AuthGuard, TitleResolve } from '../shared';
+import { RoleGuard } from './shared/role-guard.service';
+import { AuthGuard } from '../shared/auth-guard.service';
+import { TitleResolve } from '../shared/title-resolve.service'; 
 import { BackOfficeComponent } from './back-office.component';
 import { BackOfficeHomeComponent } from './back-office-home/back-office-home.component';
 import { BackOfficeListComponent } from './back-office-list/back-office-list.component';

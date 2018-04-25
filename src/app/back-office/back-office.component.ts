@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { BackandUser } from '../shared';
+import { BackandAuthService } from '../shared/backand-auth.service';
+import { BackandUser } from '../shared/backand-types';
 
 @Component({
   selector: 'app-back-office',
@@ -10,9 +11,9 @@ import { BackandUser } from '../shared';
 export class BackOfficeComponent implements OnInit {
   backUser: BackandUser;
 
-  constructor() { }
+  constructor(private backAuth: BackandAuthService) { }
 
   ngOnInit() {
-    this.backUser = JSON.parse(localStorage.getItem('ebcUser'));
+    this.backUser = this.backAuth.authUser;
   }
 }

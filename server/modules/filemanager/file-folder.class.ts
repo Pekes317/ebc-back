@@ -64,7 +64,7 @@ export class FileFolderService {
 	}
 
 	public prepareFile(filePath: string): File {
-		let src = join('/uploads', filePath).replace(/ /g, '\\ ');
+		let src = join('/assets/svg/', filePath).replace(/ /g, '\\ ');
 		let mimeType = lookup(filePath);
 		let isImage = false;
 		let dimensions: Dimensions;

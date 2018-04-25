@@ -5,6 +5,7 @@ export const fileManagerConfig: IFileManagerConfiguration = {
   urls: {
     filesUrl: '/api/manager/file',
     folderMoveUrl: '/api/manager/folder/move',
-    foldersUrl: '/api/manager/folder'
+    foldersUrl: '/api/manager/folder',
+    iconUrl: '/assets/icons'
   }
 }

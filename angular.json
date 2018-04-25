@@ -112,7 +112,12 @@
             "outputPath": "dist/public",
             "main": "src/main.server.ts",
             "tsConfig": "src/tsconfig.server.json",
-            "bundleDependencies": "all"
+            "bundleDependencies": "none"
+          },
+          "configurations": {
+            "production": {
+              "optimization": true
+            }
           }
         }
       }

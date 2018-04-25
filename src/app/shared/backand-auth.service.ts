@@ -2,10 +2,12 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-import { SignupData } from './backand-types';
+import { BackandUser, SignupData } from './backand-types';
 
 @Injectable()
 export class BackandAuthService {
+  authed: boolean = false;
+  authUser: BackandUser;
   redirectUrl: string;
   userId: number;
 

@@ -1,10 +1,12 @@
 import { ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { AuthGuard, SvgGuardService, TitleResolve } from './shared';
+import { AuthGuard } from './shared/auth-guard.service';
+import { SvgGuardService } from './shared/svg-guard.service';
+import { TitleResolve } from './shared/title-resolve.service';
 import { CreateUserComponent } from './create-user/create-user.component';
-import { HomeComponent } from './home';
-import { LoginComponent } from './login';
+import { HomeComponent } from './home/home.component';
+import { LoginComponent } from './login/login.component';
 import { EbcSvgComponent } from './ebc-svg/ebc-svg.component';
 import { EbcResetComponent } from './ebc-reset/ebc-reset.component';
 

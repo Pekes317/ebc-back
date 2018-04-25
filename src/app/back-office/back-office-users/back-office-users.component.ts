@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { MatDialog, MatDialogRef, MatSnackBar, MatSnackBarRef } from '@angular/material';
 
 import { BackandItemService } from '../../shared/backand-item.service';
-import { BackandUser } from '../../shared/';
+import { BackandUser } from '../../shared/backand-types';
 import { BackOfficeEditComponent } from '../back-office-edit/back-office-edit.component';
 
 @Component({

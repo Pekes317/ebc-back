@@ -7,27 +7,27 @@ import { BrowserModule, Title } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { FileManagerModule, FileManagerApiService, FileManagerBackendApiService } from '@beezleeart/ngx-filemanager';
 import { TreeModule } from '@beezleeart/ngx-tree';
 import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { InlineSVGModule } from 'ng-inline-svg';
-import { TranslateModule, TranslateService } from 'ng2-translate';
 import * as io from 'socket.io-client';
 // window['io'] = io;
 
 import { AppComponent } from './app.component';
 import { appRoutingProviders, routing } from './app.routing';
 import { AuthInterceptor } from './shared/auth.interceptor';
-import { BackOfficeModule } from './back-office';
+import { BackOfficeModule } from './back-office/back-office.module';
 import { BackandAuthService } from './shared/backand-auth.service';
 import { BackandItemService } from './shared/backand-item.service';
 import { CreateUserComponent } from './create-user/create-user.component';
 import { EbcMaterialModule } from './ebc-material/ebc-material.module';
 import { fileManagerConfig } from './shared/filemanager.config';
-import { HomeComponent } from './home';
-import { LoginComponent } from './login';
+import { HomeComponent } from './home/home.component';
+import { LoginComponent } from './login/login.component';
 import { NavbarModule } from './navbar/navbar.module';
 import { EbcSvgComponent } from './ebc-svg/ebc-svg.component';
 import { PrivatePolicyComponent } from './private-policy/private-policy.component';
@@ -102,6 +102,7 @@ export class AppModule {
       RI_TREE_LBL_DROP_ZONE: 'Drop here to move data to root level',
       RI_FM_BTN_LANDSCAPE: 'Landscape',
       RI_FM_BTN_PORTRAIT: 'Portrait',
+      RI_FM_BTN_SQUARE: 'Square',
       RI_FM_BTN_SAVE: 'Save',
       RI_FM_LBL_CHOOSE_SELECTION: 'Choose selection',
       RI_FM_LBL_DELETE_SELECTION: 'Delete selection',

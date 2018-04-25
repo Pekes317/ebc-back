@@ -5,7 +5,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FileManagerModule } from '@beezleeart/ngx-filemanager';
 import { TreeModule } from '@beezleeart/ngx-tree';
 
-import { RoleGuard } from './shared';
+import { RoleGuard } from './shared/role-guard.service';
 import { BackOfficeComponent } from './back-office.component';
 import { BackOfficeHomeComponent } from './back-office-home/back-office-home.component';
 import { BackOfficeListComponent } from './back-office-list/back-office-list.component';

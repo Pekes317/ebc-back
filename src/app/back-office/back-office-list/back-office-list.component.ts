@@ -4,7 +4,7 @@ import { MatDialog, MatDialogRef, MatSnackBar, MatSnackBarRef } from '@angular/m
 import { Subscription } from 'rxjs';
 
 import { BackandItemService } from '../../shared/backand-item.service';
-import { BackandItem } from '../../shared/';
+import { BackandItem } from '../../shared/backand-types';
 import { BackOfficeDetailComponent } from '../back-office-detail/back-office-detail.component';
 
 @Component({

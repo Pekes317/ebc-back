@@ -4,7 +4,7 @@ import { MatSnackBar } from '@angular/material';
 import { Router } from '@angular/router';
 
 import { BackandAuthService } from '../shared/backand-auth.service';
-import { EmailValidator } from '../shared';
+import { EmailValidator } from '../shared/custom-validators';
 
 @Component({
   selector: 'app-create-user',

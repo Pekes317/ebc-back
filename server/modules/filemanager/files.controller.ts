@@ -1,12 +1,14 @@
 import { Body, Controller, Delete, Get, Headers, HttpStatus, Post, Put, Query, Req, Res } from '@nestjs/common';
 
 import { FileService } from './file.service';
+import { NoAuth } from '../common/auth.decorator';
 
 @Controller('api/manager')
 export class FilesController {
 
 	constructor(private fileService: FileService) { }
-
+	
+	// @NoAuth(true)
 	@Post('file')
 	addFiles(@Res() res: any, @Req() req: any, @Headers('folderId') folderId: any) {
 		let newFile = this.fileService.saveFile(folderId, req);

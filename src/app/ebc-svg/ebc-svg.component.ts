@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
+import { AngularFireAuth } from 'angularfire2/auth';
 import { Subscription } from 'rxjs';
 
 import { NavbarComponent } from '../navbar/navbar.component';
@@ -14,11 +15,12 @@ import { BackandItem } from '../shared/backand-types';
   styleUrls: ['./ebc-svg.component.scss']
 })
 export class EbcSvgComponent implements OnInit {
+  auth: boolean = this.fireAuth.auth.currentUser ? true : false;
   ebcCard: BackandItem;
   navSafe: boolean;
 
   constructor(private backand: BackandItemService, private route: ActivatedRoute,
-    private router: Router, private snack: MatSnackBar) { }
+   private fireAuth: AngularFireAuth, private router: Router, private snack: MatSnackBar) { }
 
   ngOnInit() {
     this.getCard();
