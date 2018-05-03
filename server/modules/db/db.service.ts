@@ -41,7 +41,7 @@ export class DbService {
     }
 
     async deleteOne(callTbl: Repository<any>, id): Promise<any> {
-        return await callTbl.deleteById(id);
+        return await callTbl.delete(id);
     }
 
     async getAll(callTbl: Repository<any>): Promise<any> {
@@ -49,10 +49,10 @@ export class DbService {
     }
 
     async getOne(callTbl: Repository<any>, id): Promise<any> {
-        return await callTbl.findOneById(id);
+        return await callTbl.findByIds(id);
     }
 
     async updateOne(callTbl: Repository<any>, id, partial): Promise<any> {
-        return await callTbl.updateById(id, partial);
+        return await callTbl.update(id, partial);
     }
 }

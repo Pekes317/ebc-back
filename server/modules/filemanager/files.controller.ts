@@ -8,7 +8,7 @@ export class FilesController {
 
 	constructor(private fileService: FileService) { }
 	
-	// @NoAuth(true)
+	@NoAuth(true)
 	@Post('file')
 	addFiles(@Res() res: any, @Req() req: any, @Headers('folderId') folderId: any) {
 		let newFile = this.fileService.saveFile(folderId, req);

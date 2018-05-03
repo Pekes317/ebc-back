@@ -11,6 +11,7 @@ import { ClientRoutesModule } from './client-routes/client-routes.module';
 import { ClientRoutesController } from './client-routes/client-routes.controller';
 import { DbModule } from './db/db.module';
 import { FileManagerModule } from './filemanager/filemanager.module';
+import { ImgUploadModule } from './img-upload/img-upload.module';
 import { ObjectModule } from './object/object.module';
 import { MobileModule } from './mobile/mobile.module';
 
@@ -22,6 +23,7 @@ const dist = `${process.cwd()}/dist`;
 		ClientRoutesModule,
 		DbModule,
 		FileManagerModule,
+		ImgUploadModule,
 		MobileModule,
 		ObjectModule,
 		TypeOrmModule.forRoot()

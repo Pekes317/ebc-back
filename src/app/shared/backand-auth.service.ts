@@ -9,6 +9,7 @@ export class BackandAuthService {
   authed: boolean = false;
   authUser: BackandUser;
   redirectUrl: string;
+  token: string = '';
   userId: number;
 
   constructor(private http: HttpClient) { }

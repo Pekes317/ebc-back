@@ -24,13 +24,13 @@ export class AppComponent implements OnInit {
       token => {
         let user = this.fireAuth.auth.currentUser;
         if (token) {
-          console.log(token, user);
           this.backAuth.authUser = {
             email: user.email,
             displayName: user.displayName,
             photoUrl: user.photoURL
           }
           this.backAuth.authed = true;
+          this.backAuth.token = token;
         }  else {
           this.backAuth.authed = false;
         }

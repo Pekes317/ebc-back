@@ -6,8 +6,8 @@ import * as sizeOf from 'image-size';
 
 export class FileFolderService {
 
-	baseDir: string = 'dist/views/assets/svg/';
-	basePath: string = `${process.cwd()}/${this.baseDir}`;
+	baseDir: string = 'assets/svg/';
+	basePath: string = `${process.cwd()}/dist/views/${this.baseDir}`;
 
 	constructor() { }
 
@@ -64,7 +64,7 @@ export class FileFolderService {
 	}
 
 	public prepareFile(filePath: string): File {
-		let src = join('/assets/svg/', filePath).replace(/ /g, '\\ ');
+		let src = this.baseDir + filePath;
 		let mimeType = lookup(filePath);
 		let isImage = false;
 		let dimensions: Dimensions;

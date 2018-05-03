@@ -42,7 +42,7 @@ export class FolderService extends FileFolderService {
 	public deleteDir(nodeId) {
 		if (this.isDirectory(nodeId)) {
 			rmdirSync(this.basePath + nodeId);
-			return true;
+			return { success: !this.isDirectory(nodeId) };
 		}
 		return false;
 	}

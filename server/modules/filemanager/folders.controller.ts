@@ -24,7 +24,7 @@ export class FoldersController {
 		let nodeId = dir.nodeId || '';
 		let success = this.folderService.deleteDir(nodeId);
 		if (success) {
-			res.status(HttpStatus.OK).send({ success: true });
+			res.status(HttpStatus.OK).send(success);
 		} else {
 			res.status(HttpStatus.CONFLICT).send({ error: 'Directory exists' });
 		}	
