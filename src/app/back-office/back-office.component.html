@@ -6,7 +6,9 @@
         {{backUser?.displayName}}
       </span>
       <span class="space-align"></span>
-      <img [src]="backUser?.photoUrl" />
+      <div class="user-img">
+        <img [src]="backUser?.photoUrl" />
+      </div>
     </mat-toolbar>
     <div class="btns">
       <a mat-ripple [routerLink]="['/']" mat-button>

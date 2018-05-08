@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DomSanitizer, Meta, SafeResourceUrl } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
 import { AngularFireAuth } from 'angularfire2/auth';
@@ -17,10 +18,11 @@ import { BackandItem } from '../shared/backand-types';
 export class EbcSvgComponent implements OnInit {
   auth: boolean = this.fireAuth.auth.currentUser ? true : false;
   ebcCard: BackandItem;
+  ebcMedia: SafeResourceUrl;
   navSafe: boolean;
 
-  constructor(private backand: BackandItemService, private route: ActivatedRoute,
-   private fireAuth: AngularFireAuth, private router: Router, private snack: MatSnackBar) { }
+  constructor(private backand: BackandItemService, private route: ActivatedRoute, private fireAuth: AngularFireAuth,
+   private meta: Meta, private router: Router, private sanitizer: DomSanitizer, private snack: MatSnackBar) { }
 
   ngOnInit() {
     this.getCard();
@@ -30,7 +32,13 @@ export class EbcSvgComponent implements OnInit {
     let id = this.getItemId();
 
     this.backand.getItem('shared', id)
-      .subscribe((item: BackandItem) => this.ebcCard = item)
+      .subscribe((item: BackandItem) => {
+        this.ebcCard = item;
+        this.meta.updateTag({ property: 'og:image',  content: item.pic });
+        this.meta.updateTag({ property: 'og:title',  content: `EBC: ${item.name}` });
+        this.meta.updateTag({ property: 'og:description',  content: item.desc });
+        this.ebcMedia = this.sanitizer.bypassSecurityTrustResourceUrl(item.media);
+      });
   }
 
   getItemId() {

@@ -39,7 +39,6 @@ export class BackOfficeListComponent implements DoCheck, OnDestroy, OnInit {
       ebcData => {
         this.table = ebcData['list'];
         this.getItems();
-        this.backand.itemListener();
         this.backand.setList(this.table);
       });
     data.unsubscribe();

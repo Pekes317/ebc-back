@@ -2,7 +2,6 @@
 
 # compiled output
 /dist
-/dist-server
 /tmp
 
 # dependencies
@@ -41,3 +40,5 @@ testem.log
 Thumbs.db
 ebc-admin.json
 cloudinary.json
+ormconfig.json
+.gitsecret/keys/random_seed

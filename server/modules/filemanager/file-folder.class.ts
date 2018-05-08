@@ -2,12 +2,15 @@ import { readdirSync, statSync } from 'fs';
 import { join } from 'path';
 import { Dimensions, Directory, File } from './filemanager.types';
 import { lookup } from 'mime-types';
+import { dirname } from 'path';
 import * as sizeOf from 'image-size';
 
-export class FileFolderService {
+const appDir = dirname(require.main.filename);
 
+export class FileFolderService {
+ 
 	baseDir: string = 'assets/svg/';
-	basePath: string = `${process.cwd()}/dist/views/${this.baseDir}`;
+	basePath: string = `${appDir.substring(0, appDir.lastIndexOf('server'))}/dist/views/${this.baseDir}`;
 
 	constructor() { }
 

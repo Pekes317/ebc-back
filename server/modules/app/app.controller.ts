@@ -1,16 +1,26 @@
-import { Controller, Get, Req, Res, HttpStatus } from '@nestjs/common';
+import { Controller, Get, Next, Req, Res } from '@nestjs/common';
 
-import { ClientRoutesService } from '../client-routes/client-routes.service';
 import { NoAuth } from '../common/auth.decorator';
+import { resolve } from 'dns';
 
-
-@Controller()
+@Controller('*')
 export class AppController {
-    constructor(private readonly client: ClientRoutesService) { }
-   
+    constructor() { }
+
     @NoAuth(true)
     @Get()
-    root( @Req() req: any, @Res() res: any) {
-        this.client.renderRoute(req, res);
+    root(@Req() req: any, @Res() res: any, @Next() next: any) {
+        if (!req.originalUrl.startsWith('/api')) {
+            res.render('index', {
+                req,
+                res,
+                providers: [{
+                    provide: 'serverUrl',
+                    useValue: `${req.protocol}://${req.get('host')}`
+                }]
+            });
+        } else {
+            next()
+        }
     }
 }

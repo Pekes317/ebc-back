@@ -1,8 +1,8 @@
 import { enableProdMode } from '@angular/core';
 export { AppServerModule } from './app/app.server.module';
 
-import { environment } from './environments/environment';
+import { environment } from './environments/environment.prod';
 
-if (environment.production) {
+if (environment) {
   enableProdMode();
 }

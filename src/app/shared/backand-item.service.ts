@@ -35,10 +35,6 @@ export class BackandItemService {
     this.currentList = current;
   }
   
-  public itemListener() {
-    
-  }
-
   public updateItem(list, id, data) {
     let call = this.http.put(`./api/obj/${list}/${id}`, data);
     return call;

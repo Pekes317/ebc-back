@@ -47,7 +47,7 @@ export class MobileController {
 	@Get('shared/:id')
 	getSharedItem(@Res() res: any, @Param() param: number) {
 		this.mobile.shareItem(param)
-			.then(item => res.status(HttpStatus.OK).send(item))
+			.then(item => res.status(HttpStatus.OK).send(item[0]))
 			.catch(err => res.status(HttpStatus.REQUEST_TIMEOUT).send(err));
 	}
 

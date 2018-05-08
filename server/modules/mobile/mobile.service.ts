@@ -34,7 +34,7 @@ export class MobileService {
 	}
 
 	async shareItem(item): Promise<any> {
-		return await this.db.items.findByIds(item);
+		return await this.db.items.find(item);
 	}
 
 	async usersItems(user, type): Promise<any> {

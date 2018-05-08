@@ -10,11 +10,13 @@
 		}
 
 		.scroll {
+			box-sizing: border-box;
+			height: 70vh;
 			overflow: auto;
+			padding: .1rem .5rem 1rem;
 
 			.card {
-				height: 50vh;
-
+			
 				.disable {
 					color: mat-color($warn); 
 				}

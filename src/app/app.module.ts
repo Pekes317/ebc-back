@@ -13,7 +13,6 @@ import { TreeModule } from '@beezleeart/ngx-tree';
 import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
-import { InlineSVGModule } from 'ng-inline-svg';
 import * as io from 'socket.io-client';
 // window['io'] = io;
 
@@ -57,7 +56,6 @@ const firebase = {
     ReactiveFormsModule,
     HttpClientModule,
     HttpModule,
-    InlineSVGModule,
     NavbarModule,
     routing,
     StoreModule.forRoot({}),

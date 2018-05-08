@@ -1,6 +1,7 @@
 @import '../../theme/app.mixin';
 
 .back {
+	min-height: 100vh;
 
 	.menu {
 		min-width: 25vw;
@@ -11,10 +12,18 @@
 				flex: 1 1 auto;
 			}
 
-			img {
-				height: 70%;
+			.user-img {
 				border-radius: 50%;
-			}
+				height: 40px;
+				position: relative;
+				overflow: hidden;
+				width: 40px;
+				
+ 				img {
+					position: absolute;
+					width: 100%;			
+				}
+			}			
 		}
 
 		.btns {

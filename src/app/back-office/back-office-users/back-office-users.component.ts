@@ -33,7 +33,6 @@ export class BackOfficeUsersComponent implements DoCheck, OnDestroy, OnInit {
       data => {
         this.table = data['list'];
         this.getItems();
-        this.backand.itemListener();
         this.backand.setList(this.table);
       });
     ebcData.unsubscribe();
