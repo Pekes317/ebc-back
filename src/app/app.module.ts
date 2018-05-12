@@ -24,6 +24,8 @@ import { BackandAuthService } from './shared/backand-auth.service';
 import { BackandItemService } from './shared/backand-item.service';
 import { CreateUserComponent } from './create-user/create-user.component';
 import { EbcMaterialModule } from './ebc-material/ebc-material.module';
+import { FilesModule } from './files/files.module';
+import { FolderModule } from './folder/folder.module';
 import { fileManagerConfig } from './shared/filemanager.config';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
@@ -31,6 +33,7 @@ import { NavbarModule } from './navbar/navbar.module';
 import { EbcSvgComponent } from './ebc-svg/ebc-svg.component';
 import { PrivatePolicyComponent } from './private-policy/private-policy.component';
 import { EbcResetComponent } from './ebc-reset/ebc-reset.component';
+import { FileModel } from '@beezleeart/ngx-filemanager/lib/filesList/file.model';
 
 const firebase = {
   apiKey: 'AIzaSyB7VP6_qE1OOxvpR5Edci8nra_uMjEywwU',
@@ -52,6 +55,8 @@ const firebase = {
     EbcMaterialModule,
     EffectsModule.forRoot([]),
     FileManagerModule.forRoot(fileManagerConfig, { provide: FileManagerApiService, useClass: FileManagerBackendApiService }),
+    FilesModule,
+    FolderModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,

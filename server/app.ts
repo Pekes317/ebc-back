@@ -7,14 +7,13 @@ import { INestApplication } from '@nestjs/common/interfaces/nest-application.int
 import { ngExpressEngine } from '@nguniversal/express-engine';
 import { provideModuleMap } from '@nguniversal/module-map-ngfactory-loader';
 import { credential, initializeApp } from 'firebase-admin';
-import { dirname } from 'path';
 import * as express from 'express';
 
 import { ApplicationModule } from './modules/app.module';
 import { AuthGuard } from './modules/common/auth.guard';
+import { appDir } from './modules/common/base-path';
 
-const appDir = dirname(require.main.filename);
-const dist = `${appDir.substring(0, appDir.lastIndexOf('server'))}/dist`;
+const dist = appDir();
 const { AppServerModuleNgFactory, LAZY_MODULE_MAP } = require(`${dist}/public/main`);
 const creds = require('./ebc-admin.json');
 const port: number = JSON.parse(process.env.PORT || '50400');

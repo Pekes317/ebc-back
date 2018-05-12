@@ -20,7 +20,6 @@ export class BackandAuthService {
     userData.photoUrl = 'https://ebc.beezleeart.com/assets/img/user.svg';
 
     let call = this.http.post('./api/auth/signup', userData)
-     .catch((err, caught) => { console.log(err); return caught});
      return call;
   }
 }

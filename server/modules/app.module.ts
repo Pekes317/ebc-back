@@ -2,7 +2,6 @@ import { MiddlewaresConsumer, Module, NestModule } from '@nestjs/common';
 import { CorsMiddleware } from '@nest-middlewares/cors';
 import { ExpressBearerTokenMiddleware } from '@nest-middlewares/express-bearer-token';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { dirname } from 'path';
 
 import { AppController } from './app/app.controller';
 import { AuthModule } from './auth/auth.module';

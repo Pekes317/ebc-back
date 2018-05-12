@@ -5,12 +5,12 @@ import { lookup } from 'mime-types';
 import { dirname } from 'path';
 import * as sizeOf from 'image-size';
 
-const appDir = dirname(require.main.filename);
+import { appDir } from '../common/base-path';
 
 export class FileFolderService {
  
 	baseDir: string = 'assets/svg/';
-	basePath: string = `${appDir.substring(0, appDir.lastIndexOf('server'))}/dist/views/${this.baseDir}`;
+	basePath: string = `${appDir()}/views/${this.baseDir}`;
 
 	constructor() { }
 

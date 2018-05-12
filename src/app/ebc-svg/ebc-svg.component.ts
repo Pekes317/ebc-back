@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, SecurityContext } from '@angular/core';
 import { DomSanitizer, Meta, SafeResourceUrl } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
@@ -8,7 +8,7 @@ import { Subscription } from 'rxjs';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { BackandItemService } from '../shared/backand-item.service';
 import { BackandAuthService } from '../shared/backand-auth.service';
-import { BackandItem } from '../shared/backand-types';
+import { BackandItem, MediaContent } from '../shared/backand-types';
 
 @Component({
   selector: 'app-ebc-svg',
@@ -37,7 +37,10 @@ export class EbcSvgComponent implements OnInit {
         this.meta.updateTag({ property: 'og:image',  content: item.pic });
         this.meta.updateTag({ property: 'og:title',  content: `EBC: ${item.name}` });
         this.meta.updateTag({ property: 'og:description',  content: item.desc });
-        this.ebcMedia = this.sanitizer.bypassSecurityTrustResourceUrl(item.media);
+        this.backand.getMedia(item.media).subscribe(
+          (data: MediaContent) => this.ebcMedia = this.sanitizer.bypassSecurityTrustHtml(data.media),
+          err => console.log(err)
+        );
       });
   }
 

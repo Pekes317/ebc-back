@@ -41,5 +41,9 @@ export interface SignupData {
 	photoUrl: string;
 	emailVerified?: boolean;
 	disabled?: boolean;
-	// confirmPassword: string;
+	confirmPassword: string;
+}
+
+export interface MediaContent {
+	media: string;
 }

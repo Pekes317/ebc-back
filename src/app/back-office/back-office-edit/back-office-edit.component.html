@@ -2,18 +2,18 @@
   <div [ngSwitch]="table">
     <h2 class="title"><span *ngIf="edit">Update</span><span *ngIf="!edit">Add New</span> User</h2>
     <div class="form">
-      <mat-input-container>
+      <mat-form-field>
         <input matInput placeholder="email" [(ngModel)]="ebcUser.email">
-      </mat-input-container>
-      <mat-input-container>
+      </mat-form-field>
+      <mat-form-field>
         <input matInput placeholder="First Name" [(ngModel)]="ebcUser.firstName">
-      </mat-input-container>
-      <mat-input-container>
+      </mat-form-field>
+      <mat-form-field>
         <input matInput placeholder="Last Name" [(ngModel)]="ebcUser.lastName">
-      </mat-input-container>
-      <mat-input-container>
+      </mat-form-field>
+      <mat-form-field>
         <input matInput placeholder="Image" [(ngModel)]="ebcUser.pic">
-      </mat-input-container>
+      </mat-form-field>
     </div>
     <div class="toggles">
       <mat-slide-toggle color="primary" [(ngModel)]="ebcUser.subscribed">Subscribed</mat-slide-toggle>

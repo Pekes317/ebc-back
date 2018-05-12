@@ -31,6 +31,13 @@ export class BackandItemService {
     return call;
   }
 
+  public getMedia(media) {
+    let call = this.http.get('./api/media', {
+      params: { url: media }
+    });
+    return call;
+  }
+
   public setList(current) {
     this.currentList = current;
   }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { Http } from '@angular/http';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-private-policy',
@@ -17,9 +18,10 @@ export class PrivatePolicyComponent implements OnInit {
   }
 
   getPolicy() {
-    this.http.get('../assets/privacypolicy.html').map(res => res.text()).subscribe(
-      data => {
-      this.policyData =  this.santize.bypassSecurityTrustHtml(data);
-    });
+    this.http.get('../assets/privacypolicy.html').pipe(
+      map(res => res.text())).subscribe(
+        data => {
+          this.policyData = this.santize.bypassSecurityTrustHtml(data);
+        });
   }
 }
