@@ -112,7 +112,7 @@
             "outputPath": "dist/public",
             "main": "src/main.server.ts",
             "tsConfig": "src/tsconfig.server.json",
-            "optimization": true
+            "optimization": false
           }
         }
       }
