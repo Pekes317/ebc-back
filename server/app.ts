@@ -7,6 +7,7 @@ import { INestApplication } from '@nestjs/common/interfaces/nest-application.int
 import { ngExpressEngine } from '@nguniversal/express-engine';
 import { provideModuleMap } from '@nguniversal/module-map-ngfactory-loader';
 import { credential, initializeApp } from 'firebase-admin';
+import { json, OptionsJson } from 'body-parser';
 import * as express from 'express';
 
 import { ApplicationModule } from './modules/app.module';
@@ -31,6 +32,9 @@ initializeApp({
 });
 
 const reflector = new Reflector()
+const size: OptionsJson = {
+  limit: '50mb'
+};
 
 async function bootstrap() {
   const app = await NestFactory.create(ApplicationModule);
@@ -39,6 +43,7 @@ async function bootstrap() {
   app.set('view engine', 'html');
   app.set('views', `${dist}/views`);
   app.use(express.static(`${dist}/views`));
+  app.use(json(size));
   app.listen(port, () => console.log(`Application is listening on port ${port}`));
 }
 
