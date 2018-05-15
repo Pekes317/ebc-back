@@ -1,5 +1,5 @@
 import { Component, OnInit, SecurityContext } from '@angular/core';
-import { DomSanitizer, Meta, SafeResourceUrl } from '@angular/platform-browser';
+import { DomSanitizer, Meta, SafeHtml } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
 import { AngularFireAuth } from 'angularfire2/auth';
@@ -18,7 +18,7 @@ import { BackandItem, MediaContent } from '../shared/backand-types';
 export class EbcSvgComponent implements OnInit {
   auth: boolean = this.fireAuth.auth.currentUser ? true : false;
   ebcCard: BackandItem;
-  ebcMedia: SafeResourceUrl;
+  ebcMedia: SafeHtml;
   navSafe: boolean;
 
   constructor(private backand: BackandItemService, private route: ActivatedRoute, private fireAuth: AngularFireAuth,
