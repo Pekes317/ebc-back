@@ -1,0 +1,11 @@
+<div class="dash">
+	<mat-card class="main">
+		<mat-card-title>Dashboard</mat-card-title>
+	</mat-card>
+	<mat-card>
+		<mat-card-title>User Guide</mat-card-title>
+		<mat-list>
+			<mat-list-item *ngFor="let user of users">{{user?.id}}: {{user?.firstName}} {{user?.lastName}}</mat-list-item>
+		</mat-list>
+	</mat-card>
+</div>

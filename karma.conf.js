@@ -20,7 +20,7 @@ module.exports = function (config) {
       watched: false
     }],
     preprocessors: {
-      './src/test.ts': ['@angular-devkit/build-angular']
+      './src/client/test.ts': ['@angular-devkit/build-angular']
     },
     mime: {
       'text/x-typescript': ['ts', 'tsx']

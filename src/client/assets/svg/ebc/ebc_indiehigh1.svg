@@ -1,0 +1,30 @@
+<svg version="1.2" id="ebc-indie" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1500 2100">
+   <defs>
+    <style>
+      #ebc-indie {
+	  	background: rgba(25,25,25,.9);
+	  }
+	  .spot {
+	    opacity: 0;
+	    filter: url(#blur);
+        transition: .6s opacity;
+        fill: rgb(17, 193, 243);
+      }
+      .spot:hover {
+        opacity: 0.4;
+        cursor: pointer;
+      }
+    </style>
+	<filter id="blur" name="blur">
+      <feGaussianBlur stdDeviation="10"/>
+    </filter>
+  </defs>
+  <title>EBC Indie High</title>
+  <g>
+	<image id="pic" width="1500" height="2100" xlink:href="https://goo.gl/2cimOv"/>
+	<a target="_system" xlink:href="https://www.instagram.com/indiehighr8dio/" data-ebc="user?username=indiehighr8dio"><rect id="instagram" class="spot" x="147" y="1128" width="282" height="309" rx="75" ry="75"/></a>
+	<a target="_system" xlink:href="http://maps.apple.com/?daddr=33.74078628054162,-84.34640735112292" data-ebc="485 Flat Shoals Ave SE, Atlanta, GA 30316"><rect id="address" class="spot" x="72" y="1629" width="1377" height="75" rx="37.5" ry="37.5"/></a>
+	<a target="_system" xlink:href="https://www.instagram.com/_e.b.c_" data-ebc="user?username=_e.b.c_"><ellipse id="ebc" class="spot" cx="1174.5" cy="1293" rx="178.5" ry="168"/></a>
+	<a target="_system" xlink:href="https://www.instagram.com/p/BLHri8tgDdz/" data-ebc="media?id=1353241730698196851"><path id="insta" class="spot" d="M682,685l435-3c92.42,0,75,132.579,75,174l-39,72c-57,107.42-159.975,147.45-189,177-1.664,1.69-105.323,262.77-251.39,260.89C572.6,1364.08,514,1114,514,1114c-143.421-75-225-222.579-225-264l21-150C310,658.579,640.579,685,682,685Z"/></a>
+  </g>
+</svg>

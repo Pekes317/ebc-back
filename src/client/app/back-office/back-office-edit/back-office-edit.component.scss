@@ -1,0 +1,25 @@
+	@import '../../../theme/app.mixin';
+
+	.dialog {
+		
+		.form{
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-around;
+		}
+
+		.title {
+			color: mat-color($accent);
+			margin-top: 0;
+		}
+
+		.toggles{
+			display: flex;
+			justify-content: space-around;
+		}
+
+		.svg {
+			display: flex;
+			justify-content: space-between;
+		}
+	}

@@ -1,0 +1,31 @@
+<svg version="1.2" id="dwaylon-cardv" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1152 2016">
+  <defs>
+    <style>
+      #dwaylon-cardv {
+	  	background: rgba(25,25,25,.9);
+	  }
+	  .spot {
+	    opacity: 0;
+	    filter: url(#blur);
+        transition: .6s opacity;
+        fill: rgb(17, 193, 243);
+      }
+      .spot:hover {
+        opacity: 0.4;
+        cursor: pointer;
+      }
+    </style>
+	<filter id="blur" name="blur">
+      <feGaussianBlur stdDeviation="10"/>
+    </filter>
+  </defs>
+  <title>Cunning 3D</title>
+  <g>
+	<image id="pic" width="1152" height="2016" xlink:href="https://goo.gl/0PwLTU"/>
+	<a target="_system" xlink:href="tel:7062843027" data-ebc="(706) 284-3027"><rect id="phone" class="spot" x="351" y="660" width="426" height="87" rx="43.5" ry="43.5"/></a>
+	<a target="_system" xlink:href="mailto:cunning3d@gmail.com" data-ebc="Cunning3d@gmail.com"><rect id="email" class="spot" x="225" y="807" width="711" height="84" rx="42" ry="42"/></a>
+	<a target="_system" xlink:href="http://www.dwaylon15.wix.com/animation" data-ebc="www.dwaylon15.wix.com/animation"><rect id="web" class="spot" x="42" y="879" width="1086" height="99" rx="49.5" ry="49.5"/></a>
+	<a target="_system" xlink:href="https://www.facebook.com/cunning3d" data-ebc="page/1390084897872499"><rect id="facebook" class="spot" x="42" y="1044" width="1029" height="117" rx="58.5" ry="58.5"/></a>
+	<a target="_system" xlink:href="https://www.instagram.com/cunning3dandmedia/" data-ebc="user?username=cunning3dandmedia"><rect id="instagram" class="spot" x="192" y="1197" width="750" height="117" rx="58.5" ry="58.5"/></a>
+  </g>
+</svg>

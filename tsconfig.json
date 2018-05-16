@@ -14,10 +14,10 @@
     "lib": ["es2017", "dom"]
   },
   "include": [
-    "server/**/*"
+    "src/server/**/*"
   ],
   "exclude": [
     "node_modules",
-    "server/**/*.spec.ts"
+    "src/server/**/*.spec.ts"
   ]
 }

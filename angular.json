@@ -11,14 +11,14 @@
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "outputPath": "dist/views",
-            "index": "src/index.html",
-            "main": "src/main.ts",
-            "tsConfig": "src/tsconfig.app.json",
-            "polyfills": "src/polyfills.ts",
+            "index": "src/client/index.html",
+            "main": "src/client/main.ts",
+            "tsConfig": "src/client/tsconfig.app.json",
+            "polyfills": "src/client/polyfills.ts",
             "assets": [
               {
                 "glob": "**/*",
-                "input": "src/assets",
+                "input": "src/client/assets",
                 "output": "/assets"
               },
               {
@@ -28,10 +28,10 @@
               }
             ],
             "styles": [
-              "src/styles.scss"
+              "src/client/styles.scss"
             ],
             "scripts": [
-              "src/scripts.ts"
+              "src/client/scripts.ts"
             ]
           },
           "configurations": {
@@ -47,8 +47,8 @@
               "buildOptimizer": true,
               "fileReplacements": [
                 {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.prod.ts"
+                  "replace": "src/client/environments/environment.ts",
+                  "with": "src/client/environments/environment.prod.ts"
                 }
               ]
             }
@@ -76,17 +76,17 @@
           "options": {
             "main": "src/test.ts",
             "karmaConfig": "./karma.conf.js",
-            "polyfills": "src/polyfills.ts",
+            "polyfills": "src/client/polyfills.ts",
             "scripts": [
-              "src/scripts.ts"
+              "src/client/scripts.ts"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/client/styles.scss"
             ],
             "assets": [
               {
                 "glob": "**/*",
-                "input": "src/assets",
+                "input": "src/client/assets",
                 "output": "/assets"
               },
               {
@@ -110,8 +110,8 @@
           "builder": "@angular-devkit/build-angular:server",
           "options": {
             "outputPath": "dist/public",
-            "main": "src/main.server.ts",
-            "tsConfig": "src/tsconfig.server.json",
+            "main": "src/client/main.server.ts",
+            "tsConfig": "src/client/tsconfig.server.json",
             "optimization": false
           }
         }

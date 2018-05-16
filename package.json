@@ -10,7 +10,7 @@
   "scripts": {
     "ng": "ng",
     "start:ng": "ng serve --proxy-config proxy.conf.json",
-    "start": "nodemon ./server/app",
+    "start": "nodemon ./src/server/app",
     "build": "ng build && ng run ebc-back:server",
     "build:serv": "tsc",
     "build:prod": "ng build --prod && ng run ebc-back:server",
