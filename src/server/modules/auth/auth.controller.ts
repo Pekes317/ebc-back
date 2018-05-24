@@ -17,9 +17,11 @@ export class AuthController {
             .catch(err => res.status(HttpStatus.BAD_REQUEST).send(err));
     }
 
-    @Get()
-    getClaims(@Res() res: any) {
-
+    @Get('claims')
+    getClaims(@Res() res: any, @Req() req: any) {
+        auth().verifyIdToken(req.token)
+            .then(user => res.status(HttpStatus.OK).send(user))
+            .catch(err => res.status(HttpStatus.BAD_REQUEST).send(err));
     }
 
     @Post('update')

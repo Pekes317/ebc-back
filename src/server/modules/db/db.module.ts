@@ -23,7 +23,7 @@ const dbEntities = [
 	imports: [
 		TypeOrmModule.forFeature(dbEntities)
 	],
-	components: [
+	providers: [
 		DbService
 	],
 	exports: [

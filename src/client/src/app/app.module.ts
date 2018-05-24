@@ -5,10 +5,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { BrowserModule, Title } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ServiceWorkerModule } from '@angular/service-worker';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { FileManagerModule, FileManagerApiService, FileManagerBackendApiService } from '@beezleeart/ngx-filemanager';
+import { FileModel } from '@beezleeart/ngx-filemanager/lib/filesList/file.model';
 import { TreeModule } from '@beezleeart/ngx-tree';
 import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
 import { AngularFireModule } from 'angularfire2';
@@ -33,7 +35,8 @@ import { NavbarModule } from './navbar/navbar.module';
 import { EbcSvgComponent } from './ebc-svg/ebc-svg.component';
 import { PrivatePolicyComponent } from './private-policy/private-policy.component';
 import { EbcResetComponent } from './ebc-reset/ebc-reset.component';
-import { FileModel } from '@beezleeart/ngx-filemanager/lib/filesList/file.model';
+import { environment } from '../environments/environment';
+import { RouterModule } from '@angular/router';
 
 const firebase = {
   apiKey: 'AIzaSyB7VP6_qE1OOxvpR5Edci8nra_uMjEywwU',
@@ -65,7 +68,9 @@ const firebase = {
     routing,
     StoreModule.forRoot({}),
     TreeModule.forRoot(),
-    TranslateModule.forRoot()
+    TranslateModule.forRoot(),
+    ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production }),
+    RouterModule
   ],
   declarations: [
     AppComponent,

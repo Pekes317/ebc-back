@@ -1,4 +1,4 @@
-import { Component } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { readdirSync, renameSync, statSync, unlinkSync } from 'fs';
 import { join } from 'path';
 import { lookup } from 'mime-types';
@@ -9,7 +9,7 @@ import * as sizeOf from 'image-size';
 import { Dimensions, Directory, File, FileUpdate } from './filemanager.types';
 import { FileFolderService } from './file-folder.class';
 
-@Component()
+@Injectable()
 export class FileService extends FileFolderService {
 
 	fileExist: boolean = false;

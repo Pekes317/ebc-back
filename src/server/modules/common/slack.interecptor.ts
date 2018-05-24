@@ -1,16 +1,17 @@
-import { Interceptor, NestInterceptor, ExecutionContext } from '@nestjs/common';
+import { ExecutionContext, Injectable, NestInterceptor } from '@nestjs/common';
 import { Observable } from 'rxjs/Observable';
 import { auth } from 'firebase-admin';
 import { IncomingWebhook, IncomingWebhookDefaultArguments } from '@slack/client';
 import 'rxjs/add/operator/do';
 
-@Interceptor()
+@Injectable()
 export class SlackInterceptor implements NestInterceptor {
   args: IncomingWebhookDefaultArguments = {};
   botUrl = 'https://hooks.slack.com/services/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';
   slack = new IncomingWebhook(this.botUrl, this.args);
 
-  intercept(req: any, context: ExecutionContext, stream$: Observable<any>): Observable<any> {
+  intercept(context: ExecutionContext, stream$: Observable<any>): Observable<any> {
+    const req = context.switchToHttp().getRequest();
     return stream$.do(
       () => {
         auth().getUser(req.uid)

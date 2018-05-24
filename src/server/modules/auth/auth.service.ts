@@ -1,10 +1,10 @@
-import { Component } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { auth } from 'firebase-admin';
 
 import { UserDto } from './auth.dto';
 import { DbService } from '../db/db.service';
 
-@Component()
+@Injectable()
 export class AuthService {
     constructor(private readonly dbConnect: DbService) { }
 

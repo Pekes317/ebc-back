@@ -4,34 +4,34 @@
   "newProjectRoot": "projects",
   "projects": {
     "ebc-back": {
-      "root": "",
+      "root": "src/client",
       "projectType": "application",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "outputPath": "dist/views",
-            "index": "src/client/index.html",
-            "main": "src/client/main.ts",
-            "tsConfig": "src/client/tsconfig.app.json",
-            "polyfills": "src/client/polyfills.ts",
+            "index": "src/client/src/index.html",
+            "main": "src/client/src/main.ts",
+            "tsConfig": "src/client/src/tsconfig.app.json",
+            "polyfills": "src/client/src/polyfills.ts",
             "assets": [
               {
                 "glob": "**/*",
-                "input": "src/client/assets",
+                "input": "src/client/src/assets",
                 "output": "/assets"
               },
               {
                 "glob": "favicon.ico",
-                "input": "src",
+                "input": "src/client/src",
                 "output": "/"
               }
             ],
             "styles": [
-              "src/client/styles.scss"
+              "src/client/src/styles.scss"
             ],
             "scripts": [
-              "src/client/scripts.ts"
+              "src/client/src/scripts.ts"
             ]
           },
           "configurations": {
@@ -47,8 +47,8 @@
               "buildOptimizer": true,
               "fileReplacements": [
                 {
-                  "replace": "src/client/environments/environment.ts",
-                  "with": "src/client/environments/environment.prod.ts"
+                  "replace": "src/client/src/environments/environment.ts",
+                  "with": "src/client/src/environments/environment.prod.ts"
                 }
               ]
             }
@@ -74,24 +74,24 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "src/test.ts",
+            "main": "src/client/src/test.ts",
             "karmaConfig": "./karma.conf.js",
             "polyfills": "src/client/polyfills.ts",
             "scripts": [
-              "src/client/scripts.ts"
+              "src/client/src/scripts.ts"
             ],
             "styles": [
-              "src/client/styles.scss"
+              "src/client/src/styles.scss"
             ],
             "assets": [
               {
                 "glob": "**/*",
-                "input": "src/client/assets",
+                "input": "src/client/src/assets",
                 "output": "/assets"
               },
               {
                 "glob": "favicon.ico",
-                "input": "src",
+                "input": "src/client/src",
                 "output": "/"
               }
             ]
@@ -101,7 +101,7 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "src/tsconfig.json"
+              "src/client/src/tsconfig.json"
             ],
             "exclude": []
           }
@@ -110,9 +110,17 @@
           "builder": "@angular-devkit/build-angular:server",
           "options": {
             "outputPath": "dist/public",
-            "main": "src/client/main.server.ts",
-            "tsConfig": "src/client/tsconfig.server.json",
+            "main": "src/client/src/main.server.ts",
+            "tsConfig": "src/client/src/tsconfig.server.json",
             "optimization": false
+          }
+        },
+        "app-shell": {
+          "builder": "@angular-devkit/build-angular:app-shell",
+          "options": {
+            "browserTarget": "ebc-back:build",
+            "serverTarget": "ebc-back:server",
+            "route": "shell"
           }
         }
       }
@@ -142,7 +150,9 @@
       }
     }
   },
-  "cli": {},
+  "cli": {
+    "defaultCollection": "@nrwl/schematics"
+  },
   "schematics": {
     "@schematics/angular:component": {
       "prefix": "app",

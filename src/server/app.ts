@@ -38,7 +38,7 @@ const size: OptionsJson = {
 
 async function bootstrap() {
   const app = await NestFactory.create(ApplicationModule);
-  app.useGlobalGuards(new AuthGuard(reflector))
+  app.useGlobalGuards(new AuthGuard(reflector));
   app.engine('html', configuredNgExpressEngine);
   app.set('view engine', 'html');
   app.set('views', `${dist}/views`);

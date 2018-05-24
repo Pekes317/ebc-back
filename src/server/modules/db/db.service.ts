@@ -1,4 +1,4 @@
-import { Component } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 
@@ -10,7 +10,7 @@ import { Templates } from './db.templates.entity';
 import { Users } from './db.users.entity';
 import { Collect, Equip, Item, Sample, Temp, User } from './db.route.types';
 
-@Component()
+@Injectable()
 export class DbService {
     constructor(@InjectRepository(Collected) public readonly collect: Repository<Collected>,
         @InjectRepository(Equipment) public readonly equip: Repository<Equipment>,

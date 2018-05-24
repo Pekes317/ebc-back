@@ -8,7 +8,7 @@ import { AuthService } from './auth.service';
 	controllers: [
 		AuthController
 	],
-	components: [
+	providers: [
 		AuthService
 	]
 })

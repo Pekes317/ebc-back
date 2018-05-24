@@ -1,4 +1,4 @@
-import { MiddlewaresConsumer, Module, NestModule } from '@nestjs/common';
+import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { CorsMiddleware } from '@nest-middlewares/cors';
 import { ExpressBearerTokenMiddleware } from '@nest-middlewares/express-bearer-token';
 import { TypeOrmModule } from '@nestjs/typeorm';
@@ -26,9 +26,9 @@ import { MobileModule } from './mobile/mobile.module';
 	]
 })
 export class ApplicationModule implements NestModule {
-	configure(consumer: MiddlewaresConsumer) {
+	configure(consumer: MiddlewareConsumer) {
 		CorsMiddleware.configure({ origin: '*', methods: 'GET,HEAD,OPTIONS,PUT,PATCH,POST,DELETE', preflightContinue: true, optionsSuccessStatus: 200 });
-		consumer.apply(CorsMiddleware).forRoutes({ path: '/api/*' }, { path: '/assets/*' });
-		consumer.apply(ExpressBearerTokenMiddleware).forRoutes({ path: '*' });
+		consumer.apply(CorsMiddleware).forRoutes('/api/*');
+		consumer.apply(ExpressBearerTokenMiddleware).forRoutes('*');
 	}
 }

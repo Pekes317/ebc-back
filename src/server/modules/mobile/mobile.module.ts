@@ -4,7 +4,7 @@ import { MobileController } from './mobile.controller';
 import { MobileService } from './mobile.service';
 
 @Module({
-	components: [
+	providers: [
 		MobileService
 	],
 	controllers: [

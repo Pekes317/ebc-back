@@ -43,21 +43,23 @@ export class LoginComponent implements OnInit {
     })
       .afterDismissed()
       .subscribe(() => {
-       this.router.navigate(['back-office'])
+        if (ebcAuth) {
+          this.router.navigate(['back-office']);
+        }
       });
   }
 
   logIn(form) {
     let creds = form.value
-    this.firebase.auth.signInAndRetrieveDataWithEmailAndPassword(creds.username, creds.password)
-      .then(userRecord => {
+    this.firebase.auth.signInWithEmailAndPassword(creds.username, creds.password)
+      .then(userRecord => {        
         this.alert(true);
       })
       .catch(err => {
         this.alert(false);
         console.log(err);
       });
-      this.loginForm.reset();
+    this.loginForm.reset();
   }
 
   toHome() {

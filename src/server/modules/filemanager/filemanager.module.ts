@@ -7,6 +7,6 @@ import { FoldersController } from './folders.controller';
 
 @Module({
   controllers: [ FilesController, FoldersController ],
-  components: [ FileService, FolderService ]
+  providers: [ FileService, FolderService ]
 })
 export class FileManagerModule { }

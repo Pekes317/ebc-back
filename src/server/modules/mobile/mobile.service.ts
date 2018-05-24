@@ -1,9 +1,9 @@
-import { Component } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { Repository } from 'typeorm';
 
 import { DbService } from '../db/db.service';
 
-@Component()
+@Injectable()
 export class MobileService {
 
 	constructor(private readonly db: DbService) { }
