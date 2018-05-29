@@ -15,8 +15,6 @@ import { TreeModule } from '@beezleeart/ngx-tree';
 import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
-import * as io from 'socket.io-client';
-// window['io'] = io;
 
 import { AppComponent } from './app.component';
 import { appRoutingProviders, routing } from './app.routing';

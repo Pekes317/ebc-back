@@ -37,6 +37,9 @@ export class EbcSvgComponent implements OnInit {
         this.meta.updateTag({ property: 'og:image',  content: item.pic });
         this.meta.updateTag({ property: 'og:title',  content: `EBC: ${item.name}` });
         this.meta.updateTag({ property: 'og:description',  content: item.desc });
+        this.meta.updateTag({ property: 'twitter:image',  content: item.pic });
+        this.meta.updateTag({ property: 'twitter:title',  content: `EBC: ${item.name}` });
+        this.meta.updateTag({ property: 'twitter:description',  content: item.desc });
         this.backand.getMedia(item.media).subscribe(
           (data: MediaContent) => this.ebcMedia = this.sanitizer.bypassSecurityTrustHtml(data.media),
           err => console.log(err)

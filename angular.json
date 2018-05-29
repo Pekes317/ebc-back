@@ -33,10 +33,12 @@
           },
           "configurations": {
             "production": {
-              "fileReplacements": [{
-                "replace": "apps/client/src/environments/environment.ts",
-                "with": "apps/client/src/environments/environment.prod.ts"
-              }],
+              "fileReplacements": [
+                {
+                  "replace": "apps/client/src/environments/environment.ts",
+                  "with": "apps/client/src/environments/environment.prod.ts"
+                }
+              ],
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
@@ -101,7 +103,15 @@
           "options": {
             "outputPath": "dist/public",
             "main": "apps/client/src/main.server.ts",
-            "tsConfig": "apps/client/src/tsconfig.server.json"
+            "tsConfig": "apps/client/tsconfig.server.json"
+          }
+        },
+        "app-shell": {
+          "builder": "@angular-devkit/build-angular:app-shell",
+          "options": {
+            "browserTarget": "client:build",
+            "serverTarget": "client:server",
+            "route": "shell"
           }
         }
       }
