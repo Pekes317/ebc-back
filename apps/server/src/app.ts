@@ -10,9 +10,9 @@ import { credential, initializeApp } from 'firebase-admin';
 import { json, OptionsJson } from 'body-parser';
 import * as express from 'express';
 
-import { ApplicationModule } from './modules/app.module';
-import { AuthGuard } from './modules/common/auth.guard';
-import { appDir } from './modules/common/base-path';
+import { ApplicationModule } from './app/app.module';
+import { AuthGuard } from './app/common/auth.guard';
+import { appDir } from './app/common/base-path';
 
 const dist = appDir();
 const { AppServerModuleNgFactory, LAZY_MODULE_MAP } = require(`${dist}/public/main`);

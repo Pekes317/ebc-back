@@ -40,3 +40,4 @@ Thumbs.db
 ebc-admin.json
 cloudinary.json
 ormconfig.json
+.gitsecret/keys/random_seed

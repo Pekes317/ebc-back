@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/apps/client",
+            "outputPath": "dist/view",
             "index": "apps/client/src/index.html",
             "main": "apps/client/src/main.ts",
             "polyfills": "apps/client/src/polyfills.ts",
@@ -101,7 +101,7 @@
         "server": {
           "builder": "@angular-devkit/build-angular:server",
           "options": {
-            "outputPath": "dist/client-server",
+            "outputPath": "dist/public",
             "main": "apps/client/src/main.server.ts",
             "tsConfig": "apps/client/src/tsconfig.server.json"
           }
