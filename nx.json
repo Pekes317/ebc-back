@@ -1,0 +1,14 @@
+{
+  "npmScope": "ebc-back",
+  "projects": {
+    "client": {
+      "tags": []
+    },
+    "client-e2e": {
+      "tags": []
+    },
+    "server": {
+      "tags": []
+    }
+  }
+}

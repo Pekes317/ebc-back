@@ -1,23 +1,28 @@
 {
+  "compileOnSave": false,
   "compilerOptions": {
-    "module": "commonjs",
+    "sourceMap": true,
     "declaration": false,
-    "noImplicitAny": false,
-    "removeComments": true,
-    "noLib": false,
+    "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "target": "es5",
-    "sourceMap": true,
-    "allowJs": true,
-    "outDir": "./dist",
-    "lib": ["es2017", "dom"]
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "lib": [
+      "es2017",
+      "dom"
+    ],
+    "baseUrl": ".",
+    "paths": {
+      "@ebc-back/*": [
+        "libs/*"
+      ]
+    }
   },
-  "include": [
-    "src/server/**/*"
-  ],
   "exclude": [
     "node_modules",
-    "src/server/**/*.spec.ts"
+    "tmp"
   ]
 }
