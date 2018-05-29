@@ -33,12 +33,10 @@
           },
           "configurations": {
             "production": {
-              "fileReplacements": [
-                {
-                  "replace": "apps/client/src/environments/environment.ts",
-                  "with": "apps/client/src/environments/environment.prod.ts"
-                }
-              ],
+              "fileReplacements": [{
+                "replace": "apps/client/src/environments/environment.ts",
+                "with": "apps/client/src/environments/environment.prod.ts"
+              }],
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
@@ -129,6 +127,12 @@
           }
         }
       }
+    },
+    "server": {
+      "root": "apps/server/",
+      "sourceRoot": "apps/server/src",
+      "projectType": "application",
+      "prefix": "ebc-back"
     }
   },
   "cli": {
@@ -136,7 +140,7 @@
       "typescriptMismatch": false,
       "versionMismatch": false
     },
-    "defaultCollection": "./tools/schematics/collection.json"
+    "defaultCollection": "@nrwl/schematics"
   },
   "defaultProject": "client"
 }

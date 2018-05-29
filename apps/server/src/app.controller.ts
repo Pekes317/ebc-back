@@ -1,6 +1,6 @@
 import { Controller, Get, Next, Req, Res } from '@nestjs/common';
 
-import { NoAuth } from './common/auth.decorator';
+import { NoAuth } from './app/common/auth.decorator';
 import { resolve } from 'dns';
 
 @Controller('*')

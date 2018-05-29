@@ -1,5 +1,11 @@
 {
   "$schema": "../../node_modules/@angular-devkit/schematics/collection-schema.json",
-  "extends": [ "@schematics/angular", "@nrwl/schematics", "@nestjs/schematics" ],
-  "schematics": { }
+  "extends": [ "@nrwl/schematics" ],
+  "schematics": { 
+    "nest": {
+      "extends": "@nestjs/schematics",
+      "description": "Nest",
+      "factory": ""
+    }
+   }
 }
