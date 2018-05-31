@@ -10,7 +10,7 @@ import { credential, initializeApp } from 'firebase-admin';
 import { json, OptionsJson } from 'body-parser';
 import * as express from 'express';
 
-import { ApplicationModule } from './app/app.module';
+import { ApplicationModule } from './app.module';
 import { AuthGuard } from './app/common/auth.guard';
 import { appDir } from './app/common/base-path';
 
