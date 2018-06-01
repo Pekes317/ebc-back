@@ -8,6 +8,7 @@ import { AuthGuardService } from './services/auth-guard.service';
 import { BackandAuthService } from './services/backand-auth.service';
 import { BackandItemService } from './services/backand-item.service';
 import { PrivatePolicyComponent } from './private-policy/private-policy.component';
+import { RoleGuardService } from './services/role-guard.service';
 import { SvgGuardService } from './services/svg-guard.service';
 import { TitleResolveService } from './services/title-resolve.service';
 import { UniversalInterceptor } from './interceptors/universal-interceptor.service';
@@ -24,6 +25,7 @@ import { UniversalInterceptor } from './interceptors/universal-interceptor.servi
     AuthGuardService,
     BackandAuthService,
     BackandItemService,
+    RoleGuardService,
     SvgGuardService,
     TitleResolveService,
     {

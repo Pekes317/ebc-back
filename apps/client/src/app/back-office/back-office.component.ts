@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { BackandAuthService } from '../shared/backand-auth.service';
+import { BackandAuthService } from '../core/services/backand-auth.service';
 import { BackandUser } from '../shared/backand-types';
 
 @Component({

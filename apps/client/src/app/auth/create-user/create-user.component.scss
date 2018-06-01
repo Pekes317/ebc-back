@@ -1,0 +1,26 @@
+@import	'../../theme/app.mixin';
+
+.back {
+
+	.content {
+		padding: 1rem; 
+
+		@include crumb;
+
+		.login {
+			
+			.title {
+				color: mat-color($accent)
+			}
+
+			.fields {
+				display: flex;
+				flex-direction: column;
+
+				.sub-form {
+					@extend .fields
+				}
+			}
+		}
+	}
+}

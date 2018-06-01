@@ -8,11 +8,6 @@
       "sourceRoot": "apps/client/src",
       "projectType": "application",
       "prefix": "ebc-back",
-      "schematics": {
-        "@schematics/angular:component": {
-          "styleext": "scss"
-        }
-      },
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
@@ -143,6 +138,11 @@
       "sourceRoot": "apps/server/src",
       "projectType": "application",
       "prefix": "ebc-back"
+    }
+  },
+  "schematics": {
+    "@nrwl/schematics:component": {
+      "styleext": "scss"
     }
   },
   "cli": {
