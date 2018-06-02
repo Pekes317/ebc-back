@@ -1,6 +1,6 @@
 import { User } from './user.model';
 
-export interface SignupData extends User {
+export interface UserSignup extends User {
 	password: string;
 	emailVerified?: boolean;
 	disabled?: boolean;

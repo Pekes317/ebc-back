@@ -4,7 +4,9 @@ import { AngularFireAuth } from 'angularfire2/auth';
 
 import { BackandAuthService } from './backand-auth.service';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class AuthGuardService implements CanActivate {
   constructor(private backAuth: BackandAuthService, private fireAuth: AngularFireAuth, private router: Router) { }
 

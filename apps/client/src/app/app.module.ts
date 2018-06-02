@@ -20,13 +20,11 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BackOfficeModule } from './back-office/back-office.module';
 import { CoreModule } from './core/core.module';
-import { SvgComponent } from './svg/svg.component';
 import { environment } from '../environments/environment'; 
 import { FilesModule } from './files/files.module';
 import { FolderModule } from './folder/folder.module';
 import { fileManagerConfig } from './config/filemanager.config';
 import { firebase } from './config/firebase.config';
-import { HomeComponent } from './home/home.component';
 import { SharedModule } from './shared/shared.module';
 
 @NgModule({
@@ -54,9 +52,7 @@ import { SharedModule } from './shared/shared.module';
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production }),
   ],
   declarations: [
-    AppComponent,
-    HomeComponent,
-    SvgComponent
+    AppComponent
   ],
   bootstrap: [AppComponent]
 })

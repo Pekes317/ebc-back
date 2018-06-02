@@ -7,26 +7,31 @@ import { AuthInterceptorService } from './interceptors/auth-interceptor.service'
 import { AuthGuardService } from './services/auth-guard.service';
 import { BackandAuthService } from './services/backand-auth.service';
 import { BackandItemService } from './services/backand-item.service';
+import { IndexComponent } from './containers/index/index.component';
+import { ItemDetailComponent } from './containers/item-detail/item-detail.component';
 import { PrivatePolicyComponent } from './components/private-policy/private-policy.component';
 import { RoleGuardService } from './services/role-guard.service';
-import { SvgGuardService } from './services/svg-guard.service';
+import { SharedModule } from '../shared/shared.module';
 import { TitleResolveService } from './services/title-resolve.service';
 import { UniversalInterceptor } from './interceptors/universal-interceptor.service';
+
 
 @NgModule({
   imports: [
     CommonModule,
-    HttpClientModule
+    HttpClientModule,
+    SharedModule
   ],
   declarations: [
-    PrivatePolicyComponent
+    PrivatePolicyComponent,
+    IndexComponent,
+    ItemDetailComponent
   ],
   providers: [
     AuthGuardService,
     BackandAuthService,
     BackandItemService,
     RoleGuardService,
-    SvgGuardService,
     TitleResolveService,
     {
       provide: HTTP_INTERCEPTORS,

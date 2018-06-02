@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { AuthGuardService } from '../core/services/auth-guard.service';
 import { DashboardComponent } from './dashboard.component';
-import { UserHomeComponent } from './user-home/user-home.component';
+import { IndexComponent } from './containers/index/index.component';
 import { TitleResolveService } from '../core/services/title-resolve.service';
 
 const routes: Routes = [
@@ -16,7 +16,7 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        component: UserHomeComponent
+        component: IndexComponent
       }
     ]
   }

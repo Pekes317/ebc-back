@@ -2,7 +2,9 @@ import { Injectable } from '@angular/core';
 import { CanActivate } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class RoleGuardService implements CanActivate {
 
   constructor(private snack: MatSnackBar) { }

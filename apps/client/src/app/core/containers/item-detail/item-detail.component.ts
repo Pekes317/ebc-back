@@ -5,17 +5,17 @@ import { MatSnackBar } from '@angular/material';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Subscription } from 'rxjs';
 
-import { NavbarComponent } from '../shared/navbar/navbar.component';
-import { BackandItemService } from '../core/services/backand-item.service';
-import { BackandAuthService } from '../core/services/backand-auth.service';
-import { BackandItem, MediaContent } from '../shared/backand-types';
+import { BackandItemService } from '../../services/backand-item.service';
+import { BackandAuthService } from '../../services/backand-auth.service';
+import { BackandItem } from '../../models/backand.model';
+import { MediaContent } from '../../models/media-content.model';
 
 @Component({
-  selector: 'ebc-svg',
-  templateUrl: './svg.component.html',
-  styleUrls: ['./svg.component.scss']
+  selector: 'ebc-item-detail',
+  templateUrl: './item-detail.component.html',
+  styleUrls: ['./item-detail.component.scss']
 })
-export class SvgComponent implements OnInit {
+export class  ItemDetailComponent implements OnInit {
   auth: boolean = this.fireAuth.auth.currentUser ? true : false;
   ebcCard: BackandItem;
   ebcMedia: SafeHtml;

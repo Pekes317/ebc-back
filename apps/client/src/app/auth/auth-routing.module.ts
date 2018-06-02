@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { CreateUserComponent } from './create-user/create-user.component';
-import { LoginComponent } from './login/login.component';
-import { ResetComponent } from './reset/reset.component';
+import { CreateUserComponent } from './containers/create-user/create-user.component';
+import { LoginComponent } from './containers/login/login.component';
+import { ResetComponent } from './containers/reset/reset.component';
 import { TitleResolveService } from '../core/services/title-resolve.service';
 
 const routes: Routes = [
