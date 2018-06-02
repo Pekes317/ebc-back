@@ -5,11 +5,11 @@ import { MatSnackBar, MatSnackBarRef } from '@angular/material';
 import { AngularFireAuth } from 'angularfire2/auth';
 
 @Component({
-  selector: 'app-ebc-reset',
-  templateUrl: './ebc-reset.component.html',
-  styleUrls: ['./ebc-reset.component.scss']
+  selector: 'ebc-reset',
+  templateUrl: './reset.component.html',
+  styleUrls: ['./reset.component.scss']
 })
-export class EbcResetComponent implements OnInit {
+export class ResetComponent implements OnInit {
   newPassword: FormControl = new FormControl('', Validators.minLength(6));
   passwordConfirm: FormControl = new FormControl('', Validators.minLength(6));
   resetForm: FormGroup;

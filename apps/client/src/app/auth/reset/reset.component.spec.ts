@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { EbcResetComponent } from './ebc-reset.component';
+import { ResetComponent } from './reset.component';
 
 describe('EbcResetComponent', () => {
-  let component: EbcResetComponent;
-  let fixture: ComponentFixture<EbcResetComponent>;
+  let component: ResetComponent;
+  let fixture: ComponentFixture<ResetComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ EbcResetComponent ]
+      declarations: [ ResetComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(EbcResetComponent);
+    fixture = TestBed.createComponent(ResetComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

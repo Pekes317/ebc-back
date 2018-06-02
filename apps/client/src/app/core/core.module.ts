@@ -7,7 +7,7 @@ import { AuthInterceptorService } from './interceptors/auth-interceptor.service'
 import { AuthGuardService } from './services/auth-guard.service';
 import { BackandAuthService } from './services/backand-auth.service';
 import { BackandItemService } from './services/backand-item.service';
-import { PrivatePolicyComponent } from './private-policy/private-policy.component';
+import { PrivatePolicyComponent } from './components/private-policy/private-policy.component';
 import { RoleGuardService } from './services/role-guard.service';
 import { SvgGuardService } from './services/svg-guard.service';
 import { TitleResolveService } from './services/title-resolve.service';

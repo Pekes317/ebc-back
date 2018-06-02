@@ -7,7 +7,7 @@
       "root": "apps/client/",
       "sourceRoot": "apps/client/src",
       "projectType": "application",
-      "prefix": "ebc-back",
+      "prefix": "ebc",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",

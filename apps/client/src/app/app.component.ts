@@ -3,11 +3,11 @@ import { Router } from '@angular/router';
 import { MatDialog, MatDialogRef } from '@angular/material';
 import { AngularFireAuth } from 'angularfire2/auth';
 
-import { BackandAuthService } from './shared/backand-auth.service';
-import { PrivatePolicyComponent } from './private-policy/private-policy.component';
+import { BackandAuthService } from './core/services/backand-auth.service';
+import { PrivatePolicyComponent } from './core/private-policy/private-policy.component';
 
 @Component({
-  selector: 'app-root',
+  selector: 'ebc-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })

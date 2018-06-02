@@ -1,0 +1,26 @@
+@import '../../theme/app.mixin';
+.back {
+  
+	.content {
+    padding: 1rem;
+   
+	  @include crumb;
+		.text {
+			padding: .5rem 0;
+		}
+
+		.scroll {
+			box-sizing: border-box;
+			height: 70vh;
+			overflow: auto;
+			padding: .1rem .5rem 1rem;
+
+			.card {
+			
+				.disable {
+					color: mat-color($warn); 
+				}
+			}
+		}
+  }
+}

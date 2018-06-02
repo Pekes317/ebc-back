@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'ebc-back-user-home',
+  selector: 'ebc-user-home',
   templateUrl: './user-home.component.html',
   styleUrls: ['./user-home.component.scss']
 })

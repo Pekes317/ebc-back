@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {  } from '@angular/material';
 
 @Component({
-  selector: 'app-home',
+  selector: 'ebc-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })

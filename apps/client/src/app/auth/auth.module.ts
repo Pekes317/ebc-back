@@ -5,7 +5,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AuthRoutingModule } from './auth-routing.module';
 import { CreateUserComponent } from './create-user/create-user.component';
 import { LoginComponent } from './login/login.component';
-import { EbcResetComponent } from './ebc-reset/ebc-reset.component';
+import { ResetComponent } from './reset/reset.component';
 
 @NgModule({
   imports: [
@@ -15,7 +15,7 @@ import { EbcResetComponent } from './ebc-reset/ebc-reset.component';
   ],
   declarations: [
     CreateUserComponent,
-    EbcResetComponent,
+    ResetComponent,
     LoginComponent
   ]
 })

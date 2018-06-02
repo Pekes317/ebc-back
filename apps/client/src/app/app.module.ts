@@ -20,7 +20,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BackOfficeModule } from './back-office/back-office.module';
 import { CoreModule } from './core/core.module';
-import { EbcSvgComponent } from './ebc-svg/ebc-svg.component';
+import { SvgComponent } from './svg/svg.component';
 import { environment } from '../environments/environment'; 
 import { FilesModule } from './files/files.module';
 import { FolderModule } from './folder/folder.module';
@@ -56,7 +56,7 @@ import { SharedModule } from './shared/shared.module';
   declarations: [
     AppComponent,
     HomeComponent,
-    EbcSvgComponent
+    SvgComponent
   ],
   bootstrap: [AppComponent]
 })
