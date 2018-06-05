@@ -3,8 +3,9 @@ import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/fo
 import { MatSnackBar } from '@angular/material';
 import { Router } from '@angular/router';
 
-import { BackandAuthService } from '../shared/backand-auth.service';
-import { EmailValidator } from '../shared/custom-validators';
+import { BackandAuthService } from '../../../core/services/backand-auth.service';
+import { EmailValidator } from '../../../core/validators/email.validator';
+import { AreEqualValidator } from '../../../core/validators/are-equal.validator';
 
 @Component({
   selector: 'app-create-user',
@@ -26,7 +27,7 @@ export class CreateUserComponent implements OnInit {
     this.verifyPass = new FormGroup({
       password: this.password,
       passwordConfirm: this.passwordConfirm
-    }, this.areEqual);
+    }, AreEqualValidator.validate);
     this.createForm = new FormGroup({
       displayName: this.displayName,
       email: this.email,
@@ -40,17 +41,7 @@ export class CreateUserComponent implements OnInit {
       duration: 5000
     });
   }
-
-  areEqual(g: FormGroup) {
-    let equal = g.value;
-    const vals = Object.keys(equal).map(key => equal[key]);
-    if (vals[0] !== vals[1]) {
-      return { notEqual: true };
-    } else {
-      return null;
-    }
-  }
-
+  
   createUser(form: AbstractControl) {
     let user = form.value;
     user.password = form.value.verify.password;

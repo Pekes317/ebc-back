@@ -1,11 +1,10 @@
 <app-navbar>Reset Password</app-navbar>
 <div class="content">
-  <div class="crumb">
+  <ebc-crumb ebcTitle="Reset Password">
     <button mat-icon-button mat-ripple (click)="toHome()">
       <mat-icon>home</mat-icon>
     </button>
-    <span class="trail">| &ensp;Reset Password</span>
-  </div>
+  </ebc-crumb>
   <mat-card class="reset">
     <mat-card-title class="title">Reset Password</mat-card-title>
     <form [formGroup]="resetForm" (ngSubmit)="submitReset(resetForm)">

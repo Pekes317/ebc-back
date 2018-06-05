@@ -5,7 +5,7 @@ import { MatSnackBar } from '@angular/material';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Subscription } from 'rxjs';
 
-import { EmailValidator } from '../shared/custom-validators';
+import { EmailValidator } from '../../../core/validators/email.validator';
 
 @Component({
   selector: 'app-login',

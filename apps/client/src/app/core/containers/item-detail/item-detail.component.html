@@ -1,10 +1,11 @@
 <div class="back">
   <ebc-navbar>Card</ebc-navbar>
   <div class="content">
-    <div class="crumb">
-      <span class="trail text">&emsp;Card&ensp;</span>
-      <span class="trail text">|&ensp;{{ ebcCard?.name }}</span>
-    </div>
+    <ebc-crumb [ebcTitle]="{{ ebcCard?.name }}">
+      <button mat-icon-button mat-ripple disabled>
+        <mat-icon>get_app</mat-icon>
+      </button>
+    </ebc-crumb>
     <div class="scroll">
       <mat-card class="card">
         <div *ngIf="!ebcCard?.disable" mat-card-image [innerHTML]="ebcMedia"></div>

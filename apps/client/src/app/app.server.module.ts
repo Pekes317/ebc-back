@@ -6,7 +6,7 @@ import { ModuleMapLoaderModule } from '@nguniversal/module-map-ngfactory-loader'
 import { AppModule } from './app.module';
 import { AppComponent } from './app.component';
 import { Routes, RouterModule } from '@angular/router';
-import { AppShellComponent } from './app-shell/app-shell.component';
+import { AppShellComponent } from './core/app-shell/app-shell.component';
 
 const routes: Routes = [ { path: 'shell', component: AppShellComponent }];
 

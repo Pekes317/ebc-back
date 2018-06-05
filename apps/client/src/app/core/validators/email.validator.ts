@@ -11,5 +11,3 @@ export class EmailValidator implements Validator {
 		return isEmail ? { 'invalidEmail': true } : null;
 	}
 }
-
-export class CustomValidators { }

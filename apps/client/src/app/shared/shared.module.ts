@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { MaterialModule } from './components/material/material.module';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { CrumbComponent } from './components/crumb/crumb.component';
 
 @NgModule({
   imports: [
@@ -10,7 +11,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     MaterialModule,
   ],
   declarations: [
-    NavbarComponent
+    NavbarComponent,
+    CrumbComponent
   ],
   exports: [
     NavbarComponent

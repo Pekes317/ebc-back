@@ -4,6 +4,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { MatSnackBar, MatSnackBarRef } from '@angular/material';
 import { AngularFireAuth } from 'angularfire2/auth';
 
+import { EmailValidator } from '../../../core/validators/email.validator';
+import { AreEqualValidator } from '../../../core/validators/are-equal.validator';
+
 @Component({
   selector: 'ebc-reset',
   templateUrl: './reset.component.html',
@@ -22,21 +25,11 @@ export class ResetComponent implements OnInit {
     this.resetForm = new FormGroup({
       newPassword: this.newPassword,
       passwordConfirm: this.passwordConfirm
-    }, this.areEqual);
+    }, AreEqualValidator.validate);
     this.active.queryParams
       .subscribe(query => {
         this.resetToken = query['oobCode'];
       });
-  }
-
-  areEqual(g: FormGroup) {
-    let equal = g.value;
-    const vals = Object.keys(equal).map(key => equal[key]);
-    if (vals[0] !== vals[1]) {
-      return { notEqual: true };
-    } else {
-      return null;
-    }
   }
 
   compReset(good) {

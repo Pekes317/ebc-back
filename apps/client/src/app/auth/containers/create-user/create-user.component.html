@@ -1,12 +1,11 @@
 <div class="back">
   <app-navbar>Login</app-navbar>
   <div class="content">
-    <div class="crumb">
+    <ebc-crumb ebcTitle="SignUp">
       <button mat-icon-button mat-ripple (click)="toHome()">
         <mat-icon>home</mat-icon>
       </button>
-      <span class="trail">| &ensp;SignUp</span>
-    </div>
+    </ebc-crumb>
     <mat-card class="login">
       <mat-card-title class="title">SignUp</mat-card-title>
       <form [formGroup]="createForm" (ngSubmit)="createUser(createForm)">
