@@ -4,7 +4,7 @@ import { MatDialog, MatDialogRef } from '@angular/material';
 import { AngularFireAuth } from 'angularfire2/auth';
 
 import { BackandAuthService } from './core/services/backand-auth.service';
-import { PrivatePolicyComponent } from './core/private-policy/private-policy.component';
+import { PrivatePolicyComponent } from './core/components/private-policy/private-policy.component';
 
 @Component({
   selector: 'ebc-root',

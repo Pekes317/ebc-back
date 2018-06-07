@@ -1,0 +1,12 @@
+<ebc-navbar>Admin Portal</ebc-navbar>
+<ebc-drawer-layout>
+  <mat-card class="file-manager">
+    <div class="multi-toggle">
+      <button mat-raised-button color="primary" (click)="toggleMultiSelection()">
+        <mat-icon>{{this.fileManagerConfiguration.isMultiSelection ? 'check_box' : 'check_box_outline_blank'}}</mat-icon>
+        <span>Use multiselection</span>
+      </button>
+    </div>
+    <ri-filemanager class="ebc-filemanager">Loading...</ri-filemanager>
+  </mat-card>
+</ebc-drawer-layout>

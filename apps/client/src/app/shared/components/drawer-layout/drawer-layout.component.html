@@ -1,0 +1,29 @@
+<mat-sidenav-container class="back">
+  <mat-sidenav #menu class="menu">
+    <mat-toolbar color="accent" class="header">
+      <span>
+        {{ebcUser?.displayName}}
+      </span>
+      <span class="space-align"></span>
+      <div class="user-img">
+        <img [src]="ebcUser?.photoUrl" />
+      </div>
+    </mat-toolbar>
+    <div class="btns">
+      <a mat-button [routerLink]="['/']">
+        <mat-icon>home</mat-icon>
+      </a>
+      <ng-container *ngFor="let node of ebcNodes">
+          <a mat-button [routerLink]="[node.path]" (click)="menu.close()">{{node.name}}</a>
+      </ng-container>
+    </div>
+  </mat-sidenav>
+  <div class="office">
+    <ebc-crumb [ebcTitle]="currentPage">
+      <button mat-icon-button (click)="menu.open()">
+        <mat-icon>menu</mat-icon>
+      </button>
+    </ebc-crumb>
+    <ng-content></ng-content>
+  </div>
+</mat-sidenav-container>

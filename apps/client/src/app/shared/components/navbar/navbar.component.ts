@@ -2,7 +2,7 @@ import { Component, DoCheck, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AngularFireAuth  } from 'angularfire2/auth';
 
-import { BackandAuthService } from '../../core/services/backand-auth.service';
+import { BackandAuthService } from '../../../core/services/backand-auth.service';
 
 @Component({
   selector: 'ebc-navbar',
