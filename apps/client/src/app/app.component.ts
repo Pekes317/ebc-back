@@ -12,11 +12,14 @@ import { PrivatePolicyComponent } from './core/components/private-policy/private
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
+  copyright: number = 2016;
 
   constructor(private fireAuth: AngularFireAuth, private backAuth: BackandAuthService, private dialog: MatDialog) { }
 
   ngOnInit() {
+    let date = new Date();
     this.authCheck();
+    this.copyright = date.getFullYear();
   }
 
   authCheck() {
@@ -38,6 +41,6 @@ export class AppComponent implements OnInit {
   }
 
   showPolicy() {
-    let policy: MatDialogRef<PrivatePolicyComponent> = this.dialog.open(PrivatePolicyComponent);
+    this.dialog.open(PrivatePolicyComponent);
   }
 }

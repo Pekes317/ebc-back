@@ -33,6 +33,22 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatToolbarModule,
     MatTooltipModule
   ],
+  exports: [
+    MatButtonModule,
+    MatCardModule,
+    MatCheckboxModule,
+    MatDialogModule,
+    MatGridListModule,
+    MatIconModule,
+    MatInputModule,
+    MatListModule,
+    MatMenuModule,
+    MatSidenavModule,
+    MatSlideToggleModule,
+    MatSnackBarModule,
+    MatToolbarModule,
+    MatTooltipModule
+  ],
   declarations: []
 })
 export class MaterialModule { }

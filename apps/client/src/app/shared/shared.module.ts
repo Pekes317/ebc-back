@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 import { CrumbComponent } from './components/crumb/crumb.component';
 import { DrawerLayoutComponent } from './components/drawer-layout/drawer-layout.component';
@@ -10,6 +11,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
   imports: [
     CommonModule,
     MaterialModule,
+    RouterModule
   ],
   declarations: [
     NavbarComponent,
@@ -17,6 +19,9 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     DrawerLayoutComponent
   ],
   exports: [
+    CrumbComponent,
+    DrawerLayoutComponent,
+    MaterialModule,
     NavbarComponent
   ]
 })

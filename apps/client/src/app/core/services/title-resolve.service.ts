@@ -11,8 +11,8 @@ export class TitleResolveService implements Resolve<any> {
 	}
 
 	resolve(route: ActivatedRouteSnapshot) {
-		let t = route.data
-		this.title.setTitle(`EBC: App | ${t['title']}`);
-		return t;
+		let data = route.data
+		this.title.setTitle(`EBC: App | ${data.title}`);
+		return data;
 	}
 }

@@ -27,11 +27,11 @@ export class NavbarComponent implements DoCheck, OnInit {
   }
 
   toMain() {
-    let path:string = this.auth ? 'back-office' : 'login';
-    this.router.navigate([path]);
+    let path:Array<string> = this.auth ? ['dashboard'] : ['user','login'];
+    this.router.navigate(path);
   }
 
   toCreate() {
-    this.router.navigate(['signup']);
+    this.router.navigate(['user', 'signup']);
   }
 }
