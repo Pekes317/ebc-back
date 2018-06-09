@@ -4,12 +4,11 @@ import { Routes, RouterModule } from '@angular/router';
 import { CreateUserComponent } from './containers/create-user/create-user.component';
 import { LoginComponent } from './containers/login/login.component';
 import { ResetComponent } from './containers/reset/reset.component';
-import { TitleResolveService } from '../core/services/title-resolve.service';
 
 const routes: Routes = [
-  { path: 'login', component: LoginComponent, data: { title: 'Login' }, resolve: { title: TitleResolveService } },
-  { path: 'reset-pass', component: ResetComponent, data: { title: 'Reset Password' }, resolve: { title: TitleResolveService } },
-  { path: 'signup', component: CreateUserComponent, data: { title: 'SignUp' }, resolve: { title: TitleResolveService } }
+  { path: 'login', component: LoginComponent, data: { title: 'Login' } },
+  { path: 'reset-pass', component: ResetComponent, data: { title: 'Reset Password' } },
+  { path: 'signup', component: CreateUserComponent, data: { title: 'SignUp' } }
 ];
 
 @NgModule({

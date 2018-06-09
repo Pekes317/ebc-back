@@ -4,7 +4,7 @@ import { ServerModule } from '@angular/platform-server';
 import { ModuleMapLoaderModule } from '@nguniversal/module-map-ngfactory-loader';
 
 import { AppModule } from './app.module';
-import { AppComponent } from './app.component';
+import { AppComponent } from './core/containers/app/app.component';
 import { Routes, RouterModule } from '@angular/router';
 import { AppShellComponent } from './core/app-shell/app-shell.component';
 

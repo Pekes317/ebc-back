@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TranslateService } from '@ngx-translate/core';
 
+import { AppComponent } from './containers/app/app.component';
 import { AuthInterceptorService } from './interceptors/auth-interceptor.service';
 import { AuthGuardService } from './services/auth-guard.service';
 import { BackandAuthService } from './services/backand-auth.service';
@@ -12,7 +13,6 @@ import { ItemDetailComponent } from './containers/item-detail/item-detail.compon
 import { PrivatePolicyComponent } from './components/private-policy/private-policy.component';
 import { RoleGuardService } from './services/role-guard.service';
 import { SharedModule } from '../shared/shared.module';
-import { TitleResolveService } from './services/title-resolve.service';
 import { UniversalInterceptor } from './interceptors/universal-interceptor.service';
 
 
@@ -23,21 +23,10 @@ import { UniversalInterceptor } from './interceptors/universal-interceptor.servi
     SharedModule
   ],
   declarations: [
+    AppComponent,
     PrivatePolicyComponent,
     IndexComponent,
     ItemDetailComponent
-  ],
-  providers: [
-    AuthGuardService,
-    BackandAuthService,
-    BackandItemService,
-    RoleGuardService,
-    TitleResolveService,
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: AuthInterceptorService,
-      multi: true
-    }
   ],
   entryComponents: [
     PrivatePolicyComponent
@@ -51,6 +40,23 @@ export class CoreModule {
     }
     this.setTranslationForEN();
     this.translate.use('en');
+  }
+
+  static forRoot(): ModuleWithProviders {
+    return {
+      ngModule: CoreModule,
+      providers: [
+        AuthGuardService,
+        BackandAuthService,
+        BackandItemService,
+        RoleGuardService,
+        {
+          provide: HTTP_INTERCEPTORS,
+          useClass: AuthInterceptorService,
+          multi: true
+        }
+      ],
+    };
   }
 
   public static universalInterceptor = {
