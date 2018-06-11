@@ -12,4 +12,4 @@ import { FileManagerEffectsService, fileManagerReducer } from '@beezleeart/ngx-f
   ],
   declarations: []
 })
-export class FilesModule { }
+export class FilesStoreModule { }

@@ -13,7 +13,7 @@ import { SharedModule } from '../shared/shared.module';
     CommonModule,
     AuthRoutingModule,
     ReactiveFormsModule,
-    SharedModule
+    SharedModule,
   ],
   declarations: [
     CreateUserComponent,

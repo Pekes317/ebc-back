@@ -13,7 +13,6 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 
 import { AppComponent } from './core/containers/app/app.component';
-import { AppRoutingModule } from './app-routing.module';
 import { CoreModule } from './core/core.module';
 import { environment } from '../environments/environment'; 
 import { fileManagerConfig } from './config/filemanager.config';
@@ -25,7 +24,6 @@ import { SharedModule } from './shared/shared.module';
   imports: [
     AngularFireModule.initializeApp(firebase),
     AngularFireAuthModule,
-    AppRoutingModule,
     BrowserAnimationsModule,
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     ConfirmationPopoverModule.forRoot(),

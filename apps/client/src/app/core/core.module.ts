@@ -4,6 +4,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TranslateService } from '@ngx-translate/core';
 
 import { AppComponent } from './containers/app/app.component';
+import { AppRoutingModule } from '../app-routing.module';
 import { AuthInterceptorService } from './interceptors/auth-interceptor.service';
 import { AuthGuardService } from './services/auth-guard.service';
 import { BackandAuthService } from './services/backand-auth.service';
@@ -18,6 +19,7 @@ import { UniversalInterceptor } from './interceptors/universal-interceptor.servi
 
 @NgModule({
   imports: [
+    AppRoutingModule,
     CommonModule,
     HttpClientModule,
     SharedModule

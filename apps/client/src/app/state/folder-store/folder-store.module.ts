@@ -12,4 +12,4 @@ import { StoreModule } from '@ngrx/store';
   ],
   declarations: []
 })
-export class FolderModule { }
+export class FolderStoreModule { }

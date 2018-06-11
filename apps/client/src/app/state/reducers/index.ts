@@ -32,4 +32,3 @@ export function logger(reducer: ActionReducer<State>): ActionReducer<State> {
 export const metaReducers: MetaReducer<State>[] = !environment.production ? [logger, storeFreeze] : [];
 
 export const getRouterState = createFeatureSelector<fromRouter.RouterReducerState<RouterStateUrl>>('router');
-

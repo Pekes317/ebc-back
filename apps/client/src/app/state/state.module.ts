@@ -5,15 +5,21 @@ import { StoreModule } from '@ngrx/store';
 import { RouterStateSerializer, StoreRouterConnectingModule } from '@ngrx/router-store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
+import { AuthStoreModule } from './auth-store/auth-store.module';
 import { reducers, metaReducers } from './reducers';
 import { environment } from '../../environments/environment';
+import { FilesStoreModule } from './files-store/files-store.module';
+import { FolderStoreModule } from './folder-store/folder-store.module';
 import { RouterStateUtil } from './shared/router-state-util';
 import { TitleEffects } from '../state/effects/title.effects';
 
 @NgModule({
   imports: [
+    AuthStoreModule,
     CommonModule,
     EffectsModule.forRoot([TitleEffects]),
+    FilesStoreModule,
+    FolderStoreModule,
     StoreModule.forRoot(reducers, { metaReducers }),
     StoreRouterConnectingModule,
     !environment.production ? StoreDevtoolsModule.instrument() : []
