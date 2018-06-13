@@ -8,7 +8,7 @@ import { FileManagerEffectsService, fileManagerReducer } from '@beezleeart/ngx-f
   imports: [
     CommonModule,
     EffectsModule.forFeature([FileManagerEffectsService]),
-    StoreModule.forFeature('files', fileManagerReducer)
+    StoreModule.forFeature('filesStore', fileManagerReducer)
   ],
   declarations: []
 })

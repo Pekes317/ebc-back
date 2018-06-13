@@ -21,7 +21,7 @@ import { TitleEffects } from '../state/effects/title.effects';
     FilesStoreModule,
     FolderStoreModule,
     StoreModule.forRoot(reducers, { metaReducers }),
-    StoreRouterConnectingModule,
+    StoreRouterConnectingModule.forRoot({ stateKey: 'route' }),
     !environment.production ? StoreDevtoolsModule.instrument() : []
   ],
   declarations: []

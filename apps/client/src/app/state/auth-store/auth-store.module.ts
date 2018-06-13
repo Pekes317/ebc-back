@@ -1,9 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { StoreModule } from '@ngrx/store';
+
+import * as fromAuthStore from './reducers';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    StoreModule.forFeature('authStore', fromAuthStore.reducers, { metaReducers: fromAuthStore.metaReducers }),
   ],
   declarations: []
 })

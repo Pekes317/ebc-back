@@ -8,12 +8,13 @@ import { LoginComponent } from './containers/login/login.component';
 import { ResetComponent } from './containers/reset/reset.component';
 import { SharedModule } from '../shared/shared.module';
 
+
 @NgModule({
   imports: [
     CommonModule,
     AuthRoutingModule,
     ReactiveFormsModule,
-    SharedModule,
+    SharedModule
   ],
   declarations: [
     CreateUserComponent,
