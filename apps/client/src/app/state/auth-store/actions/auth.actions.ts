@@ -5,7 +5,7 @@ import { User } from '../../../core/models/user.model';
 import { UserState } from '../models/user-state.model';
 
 export enum AuthActionTypes {
-  LoadAuths = '[Auth] Load Auths',
+  LoadAuth = '[Auth] Load Auth',
   Login = '[Auth] Login',
   Logout = '[Auth] Logout',
   LoginSuccess = '[Auth] Login Success',
@@ -13,8 +13,8 @@ export enum AuthActionTypes {
   LoginRedirect = '[Auth] Login Redirect',
 }
 
-export class LoadAuths implements Action {
-  readonly type = AuthActionTypes.LoadAuths;
+export class LoadAuth implements Action {
+  readonly type = AuthActionTypes.LoadAuth;
 
   constructor(public payload: { user: User, userState: UserState }) {}
 }
@@ -31,16 +31,16 @@ export class Logout implements Action {
 
 export class LoginSuccess implements Action {
   readonly type = AuthActionTypes.LoginSuccess;
-
-  constructor(public payload: { user: User }) {}
 }
 
 export class LoginFailure implements Action {
   readonly type = AuthActionTypes.LoginFailure;
+
+  constructor(public payload: any) {}
 }
 
 export class LoginRedirect implements Action {
   readonly type = AuthActionTypes.LoginRedirect;
 }
 
-export type AuthActions = LoadAuths | Login | LoginSuccess | LoginFailure | LoginRedirect;
+export type AuthActions = LoadAuth | Login | LoginSuccess | LoginFailure | LoginRedirect | Logout;

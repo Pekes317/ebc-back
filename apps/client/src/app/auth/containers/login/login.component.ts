@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { MatSnackBar } from '@angular/material';
-import { AngularFireAuth } from 'angularfire2/auth';
-import { Subscription } from 'rxjs';
+import { Store } from '@ngrx/store';
 
 import { EmailValidator } from '../../../core/validators/email.validator';
+import { Login } from '../../../state/auth-store/actions/auth.actions';
+import * as formAuth from '../../../state/auth-store/reducers';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   password: FormControl = new FormControl('', Validators.required);
 
-  constructor(private firebase: AngularFireAuth, private router: Router, private snack: MatSnackBar) {
+  constructor(private router: Router, private store: Store<formAuth.State>) {
     this.loginForm = new FormGroup({
       username: this.email,
       password: this.password
@@ -26,39 +26,9 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() { }
 
-  alert(ebcAuth) {
-    let message;
-    let action;
-
-    if (ebcAuth) {
-      message = 'Login Successful';
-      action = 'Okay';
-    }
-    if (!ebcAuth) {
-      message = 'Login Failed';
-      action = 'Try Again';
-    }
-    this.snack.open(message, action, {
-      duration: 5000
-    })
-      .afterDismissed()
-      .subscribe(() => {
-        if (ebcAuth) {
-          this.router.navigate(['back-office']);
-        }
-      });
-  }
-
   logIn(form) {
     let creds = form.value
-    this.firebase.auth.signInWithEmailAndPassword(creds.username, creds.password)
-      .then(userRecord => {        
-        this.alert(true);
-      })
-      .catch(err => {
-        this.alert(false);
-        console.log(err);
-      });
+    this.store.dispatch(new Login(creds));
     this.loginForm.reset();
   }
 

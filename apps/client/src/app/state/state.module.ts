@@ -15,7 +15,7 @@ import { TitleEffects } from '../state/effects/title.effects';
 
 @NgModule({
   imports: [
-    AuthStoreModule,
+    AuthStoreModule.forRoot(),
     CommonModule,
     EffectsModule.forRoot([TitleEffects]),
     FilesStoreModule,

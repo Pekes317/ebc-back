@@ -1,29 +1,30 @@
-import { Component, DoCheck, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AngularFireAuth  } from 'angularfire2/auth';
+import { Store, select } from '@ngrx/store';
+import { Observable } from 'rxjs';
 
-import { BackandAuthService } from '../../../core/services/backand-auth.service';
+import { Logout } from '../../../state/auth-store/actions/auth.actions';
+import { UserState } from '../../../state/auth-store/models/user-state.model';
+import * as fromAuth from '../../../state/auth-store/reducers';
 
 @Component({
   selector: 'ebc-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss']
 })
-export class NavbarComponent implements DoCheck, OnInit {
-  auth: boolean = this.backAuth.authed;
+export class NavbarComponent implements OnInit {
+  auth: boolean = false;
 
-  constructor(private backAuth: BackandAuthService, private fireAuth: AngularFireAuth, private router: Router) { }
+  constructor(private store: Store<fromAuth.State>, private router: Router) { }
 
-  ngOnInit() { }
-
-  ngDoCheck() {
-    this.auth = this.backAuth.authed;
-  }
+  ngOnInit() {
+    let auth$: Observable<UserState> = this.store.pipe(select(fromAuth.getAuthStatus));
+      auth$.subscribe(
+      status => this.auth = status.loggedIn);
+   }
 
   toHome() {
-    this.fireAuth.auth.signOut()
-      .then(() => this.router.navigate(['']))
-      .catch(err => console.log(err));
+    this.store.dispatch(new Logout());
   }
 
   toMain() {
