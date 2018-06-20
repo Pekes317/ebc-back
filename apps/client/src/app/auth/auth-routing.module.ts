@@ -6,9 +6,9 @@ import { LoginComponent } from './containers/login/login.component';
 import { ResetComponent } from './containers/reset/reset.component';
 
 const routes: Routes = [
-  { path: 'login', component: LoginComponent, data: { title: 'Login' } },
-  { path: 'reset-pass', component: ResetComponent, data: { title: 'Reset Password' } },
-  { path: 'signup', component: CreateUserComponent, data: { title: 'SignUp' } }
+  { path: 'login', component: LoginComponent, data: { roles: ['all'], title: 'Login' } },
+  { path: 'reset-pass', component: ResetComponent, data: { roles: ['all'], title: 'Reset Password' } },
+  { path: 'signup', component: CreateUserComponent, data: { roles: ['all'], title: 'SignUp' } }
 ];
 
 @NgModule({

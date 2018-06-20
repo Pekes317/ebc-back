@@ -9,7 +9,7 @@ const routes: Routes = [
     path: '',
     component: IndexComponent,
     canActivate: [AuthGuardService],
-    data: { title: 'Admin Dashboard' }
+    data: { roles: ['member', 'admin'], title: 'Admin Dashboard' }
   }
 ];
 

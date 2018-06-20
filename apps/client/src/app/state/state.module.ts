@@ -11,13 +11,13 @@ import { environment } from '../../environments/environment';
 import { FilesStoreModule } from './files-store/files-store.module';
 import { FolderStoreModule } from './folder-store/folder-store.module';
 import { RouterStateUtil } from './shared/router-state-util';
-import { TitleEffects } from '../state/effects/title.effects';
+import { RouteEffects } from '../state/effects/route.effects';
 
 @NgModule({
   imports: [
     AuthStoreModule.forRoot(),
     CommonModule,
-    EffectsModule.forRoot([TitleEffects]),
+    EffectsModule.forRoot([RouteEffects]),
     FilesStoreModule,
     FolderStoreModule,
     StoreModule.forRoot(reducers, { metaReducers }),

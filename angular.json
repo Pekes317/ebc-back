@@ -24,7 +24,9 @@
             "styles": [
               "apps/client/src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "apps/client/src/scripts.ts"
+            ]
           },
           "configurations": {
             "production": {
@@ -74,7 +76,9 @@
             "styles": [
               "apps/client/src/styles.scss"
             ],
-            "scripts": [],
+            "scripts": [
+              "apps/client/src/scripts.ts"
+            ],
             "assets": [
               "apps/client/src/favicon.ico",
               "apps/client/src/assets"
@@ -141,6 +145,9 @@
     }
   },
   "schematics": {
+    "@nrwl/schematics:application": {
+      "styleext": "scss"
+    },
     "@nrwl/schematics:component": {
       "styleext": "scss"
     }

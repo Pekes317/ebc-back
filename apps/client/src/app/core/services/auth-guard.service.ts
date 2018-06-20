@@ -1,25 +1,32 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, Router, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
-import { AngularFireAuth } from 'angularfire2/auth';
+import { CanActivate } from '@angular/router';
+import { Store, select } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { map, take } from 'rxjs/operators';
 
-import { BackandAuthService } from './backand-auth.service';
+import * as fromAuth from '../../state/auth-store/reducers';
+import { LoginRedirect } from '../../state/auth-store/actions/auth.actions';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthGuardService implements CanActivate {
-  constructor(private backAuth: BackandAuthService, private fireAuth: AngularFireAuth, private router: Router) { }
 
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    let storedToken = this.fireAuth.auth.currentUser;
-    
-    // Store the attempted URL for redirecting
-    this.backAuth.redirectUrl = state.url;
-    
-    if (storedToken) { return true; }
+  constructor(private store: Store<fromAuth.State>) { }
 
-    // Navigate to the login page
-    this.router.navigate(['/login']);
-    return false;
+  canActivate(): Observable<boolean> {
+    return this.store.pipe(
+      select(fromAuth.getAuthStatus),
+      map(authed => {
+        console.log('guard');
+        if (!authed.loggedIn) {
+          this.store.dispatch(new LoginRedirect());
+          return false;
+        }
+
+        return true;
+      }),
+      take(1)
+    );
   }
 }

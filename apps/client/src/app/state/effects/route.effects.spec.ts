@@ -2,21 +2,21 @@ import { TestBed, inject } from '@angular/core/testing';
 import { provideMockActions } from '@ngrx/effects/testing';
 import { Observable } from 'rxjs';
 
-import { TitleEffects } from './title.effects';
+import { RouteEffects } from './route.effects';
 
-describe('TitleService', () => {
+describe('RouteService', () => {
   let actions$: Observable<any>;
-  let effects: TitleEffects;
+  let effects: RouteEffects;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [
-        TitleEffects,
+        RouteEffects,
         provideMockActions(() => actions$)
       ]
     });
 
-    effects = TestBed.get(TitleEffects);
+    effects = TestBed.get(RouteEffects);
   });
 
   it('should be created', () => {

@@ -5,10 +5,10 @@ import { IndexComponent } from './core/containers/index/index.component';
 import { ItemDetailComponent } from './core/containers/item-detail/item-detail.component';
 
 const routes: Routes = [
-	{ path: '', component: IndexComponent, data: { title: 'Electonic Business Card' } },
+	{ path: '', component: IndexComponent, data: { roles: ['all'], title: 'Electonic Business Card' } },
 	{ path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardModule' },
 	{ path: 'user',  loadChildren: './auth/auth.module#AuthModule' },
-	{ path: 'card/:id', component: ItemDetailComponent, data: { title: 'Card' } },
+	{ path: 'card/:id', component: ItemDetailComponent, data: { roles: ['all'], title: 'Card' } },
 	{ path: '**', pathMatch: 'full', redirectTo: '' }
 ];
 

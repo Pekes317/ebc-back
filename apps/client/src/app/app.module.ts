@@ -8,6 +8,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { TranslateModule } from '@ngx-translate/core';
 import { FileManagerModule, FileManagerApiService, FileManagerBackendApiService } from '@beezleeart/ngx-filemanager';
 import { TreeModule } from '@beezleeart/ngx-tree';
+import { NxModule } from '@nrwl/nx';
 import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
@@ -30,9 +31,10 @@ import { SharedModule } from './shared/shared.module';
     CoreModule.forRoot(),
     FileManagerModule.forRoot(fileManagerConfig, { provide: FileManagerApiService, useClass: FileManagerBackendApiService }),
     FormsModule,
-    ReactiveFormsModule,
+    NxModule.forRoot(),
     HttpClientModule,
     HttpModule,
+    ReactiveFormsModule,
     SharedModule,
     StateModule.forRoot(),
     TreeModule.forRoot(),
