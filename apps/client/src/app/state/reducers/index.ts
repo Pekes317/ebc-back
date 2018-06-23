@@ -10,16 +10,13 @@ import * as fromRouter from '@ngrx/router-store';
 
 import { environment } from '../../../environments/environment';
 import { RouterState } from '../shared/router-state-util';
-import * as formRouteGuard from './route-guard.reducer';
 
 export interface State {
   route: fromRouter.RouterReducerState<RouterState>;
-  guard: formRouteGuard.State;
 }
 
 export const reducers: ActionReducerMap<State> = {
-  route:  fromRouter.routerReducer,
-  guard: formRouteGuard.reducer
+  route:  fromRouter.routerReducer
 };
 
 // console.log all actions

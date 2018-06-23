@@ -12,12 +12,10 @@ export class RouteEffects {
 
   constructor(private actions$: Actions, private titleService: Title) { }
 
-  @Effect()
+  @Effect({ dispatch: false })
   updateTitle$ = this.actions$
     .ofType(ROUTER_NAVIGATION)
     .do((action: RouterNavigationAction<RouterState>) => {
-      console.log(action.payload);
-      new LoadRoute({ routeRoles: action.payload.routerState.data.roles });
       this.titleService.setTitle(`EBC: App | ${action.payload.routerState.data.title}`);
     });
 }
