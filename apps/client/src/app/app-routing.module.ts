@@ -6,6 +6,7 @@ import { ItemDetailComponent } from './core/containers/item-detail/item-detail.c
 
 const routes: Routes = [
 	{ path: '', component: IndexComponent, data: { roles: ['all'], title: 'Electonic Business Card' } },
+	{ path: 'admin', loadChildren: './admin/admin.module#AdminModule' },
 	{ path: 'dashboard', loadChildren: './dashboard/dashboard.module#DashboardModule' },
 	{ path: 'user',  loadChildren: './auth/auth.module#AuthModule' },
 	{ path: 'card/:id', component: ItemDetailComponent, data: { roles: ['all'], title: 'Card' } },

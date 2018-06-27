@@ -14,7 +14,7 @@
         <mat-icon>home</mat-icon>
       </a>
       <ng-container *ngFor="let node of ebcNodes">
-          <a mat-button [routerLink]="[node.path]" (click)="menu.close()">{{node.name}}</a>
+          <a mat-button *ngIf="node.roles.includes(ebcRole)" [routerLink]="[node.path]" (click)="menu.close()">{{node.name}}</a>
       </ng-container>
     </div>
   </mat-sidenav>

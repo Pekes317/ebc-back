@@ -2,12 +2,12 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { AuthGuardService } from '../core/services/auth-guard.service';
-import { IndexComponent } from './containers/index/index.component';
+import { AdminIndexComponent } from './containers/admin-index/admin-index.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: IndexComponent,
+    component: AdminIndexComponent,
     canActivate: [AuthGuardService],
     data: { roles: ['member', 'admin'], title: 'Admin Dashboard' }
   }

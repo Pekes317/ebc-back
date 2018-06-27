@@ -12,11 +12,11 @@ import { environment } from '../../../environments/environment';
 import { RouterState } from '../shared/router-state-util';
 
 export interface State {
-  route: fromRouter.RouterReducerState<RouterState>;
+  router: fromRouter.RouterReducerState<RouterState>;
 }
 
 export const reducers: ActionReducerMap<State> = {
-  route:  fromRouter.routerReducer
+  router:  fromRouter.routerReducer
 };
 
 // console.log all actions
@@ -35,5 +35,5 @@ export const getRouter = createFeatureSelector<fromRouter.RouterReducerState<Rou
 
 export const getRouterState = createSelector(
   getRouter,
-  (routeState: fromRouter.RouterReducerState<RouterState>) => routeState
+  (routeState: fromRouter.RouterReducerState<RouterState>) => routeState.state
 );
