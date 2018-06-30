@@ -7,7 +7,7 @@ export const dashNav: Array<DrawerNav> = [
 		roles: ['user', 'member', 'admin']
 	},
 	{
-		name: 'Admin Area',
+		name: 'Admin Dashboard',
 		path: '/admin',
 		roles: ['member', 'admin']
 	}
