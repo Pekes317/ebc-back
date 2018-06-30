@@ -10,6 +10,7 @@ import { reducers, metaReducers } from './reducers';
 import { environment } from '../../environments/environment';
 import { FilesStoreModule } from './files-store/files-store.module';
 import { FolderStoreModule } from './folder-store/folder-store.module';
+import { ItemStoreModule } from './item-store/item-store.module';
 import { RouterStateUtil } from './shared/router-state-util';
 import { RouteEffects } from '../state/effects/route.effects';
 
@@ -20,6 +21,7 @@ import { RouteEffects } from '../state/effects/route.effects';
     EffectsModule.forRoot([RouteEffects]),
     FilesStoreModule,
     FolderStoreModule,
+    ItemStoreModule.forRoot(),
     StoreModule.forRoot(reducers, { metaReducers }),
     StoreRouterConnectingModule.forRoot({ stateKey: 'route' }),
     !environment.production ? StoreDevtoolsModule.instrument() : []

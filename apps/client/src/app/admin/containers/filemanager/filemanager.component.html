@@ -1,6 +1,7 @@
-<ebc-navbar>Admin Portal</ebc-navbar>
-<ebc-drawer-layout>
+<ebc-navbar>Filemanager</ebc-navbar>
+<ebc-drawer-layout currentPage="Filemanager" [ebcNodes]="nav">
   <mat-card class="file-manager">
+    <mat-card-title>Filemanager</mat-card-title>
     <div class="multi-toggle">
       <button mat-raised-button color="primary" (click)="toggleMultiSelection()">
         <mat-icon>{{this.fileManagerConfiguration.isMultiSelection ? 'check_box' : 'check_box_outline_blank'}}</mat-icon>

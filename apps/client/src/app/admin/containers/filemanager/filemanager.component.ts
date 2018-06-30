@@ -1,12 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { FileManagerConfiguration, FileManagerDispatcherService } from '@beezleeart/ngx-filemanager';
 
+import { adminNav } from '../../admin-nav';
+ 
 @Component({
   selector: 'ebc-filemanager',
   templateUrl: './filemanager.component.html',
   styleUrls: ['./filemanager.component.scss']
 })
 export class FilemanagerComponent implements OnInit {
+  nav = adminNav;
 
   constructor(public fileManagerConfiguration: FileManagerConfiguration,
     private fileManagerDispatcher: FileManagerDispatcherService) { }

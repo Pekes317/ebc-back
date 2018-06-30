@@ -36,12 +36,12 @@ import { UniversalInterceptor } from './interceptors/universal-interceptor.servi
 })
 export class CoreModule {
   public constructor(@Optional() @SkipSelf() parentModule: CoreModule, private translate: TranslateService) {
+    this.setTranslationForEN();
+    this.translate.use('en');
     if (parentModule) {
       throw new Error(
         'CoreModule is already loaded. Import it in the AppModule only');
     }
-    this.setTranslationForEN();
-    this.translate.use('en');
   }
 
   static forRoot(): ModuleWithProviders {

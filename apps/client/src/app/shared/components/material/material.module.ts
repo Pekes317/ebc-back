@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -12,6 +11,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
@@ -30,6 +30,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatSidenavModule,
     MatSlideToggleModule,
     MatSnackBarModule,
+    MatTableModule,
     MatToolbarModule,
     MatTooltipModule
   ],

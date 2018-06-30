@@ -10,7 +10,7 @@ const routes: Routes = [
     path: '',
     component: DashboardIndexComponent,
     canActivate: [AuthGuardService],
-    data: { roles: ['user', 'member', 'admin'], title: 'My Dashboard' }
+    data: { roles: ['user', 'member', 'owner', 'admin'], title: 'My Dashboard' }
   }
 ];
 

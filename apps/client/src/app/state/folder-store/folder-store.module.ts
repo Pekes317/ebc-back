@@ -8,7 +8,7 @@ import { StoreModule } from '@ngrx/store';
   imports: [
     CommonModule,
     EffectsModule.forFeature([TreeEffectsService]),
-    StoreModule.forFeature('folderStore', treeReducer),
+    StoreModule.forFeature('trees', treeReducer),
   ],
   declarations: []
 })
