@@ -3,12 +3,12 @@ import { CommonModule } from '@angular/common';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 
-import * as fromItemStore from './reducers';
+import { reducers, metaReducers } from './reducers';
 
 @NgModule({
   imports: [
     CommonModule,
-    StoreModule.forFeature('itemStore', fromItemStore.reducers, { metaReducers: fromItemStore.metaReducers })
+    StoreModule.forFeature('itemStore', reducers, { metaReducers: metaReducers })
   ],
   declarations: []
 })

@@ -1,4 +1,4 @@
-import { Component } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { readFileSync } from 'fs';
 import * as cloudinary from 'cloudinary';
 import { appDir } from '../common/base-path';
@@ -6,7 +6,7 @@ import { appDir } from '../common/base-path';
 const ebcCloud = require('./cloudinary.json');
 const basePath: string = `${appDir()}/views/`;
 
-@Component()
+@Injectable()
 export class ImgUploadService {
 
 	constructor() { }

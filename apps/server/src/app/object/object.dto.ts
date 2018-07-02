@@ -13,6 +13,10 @@ export class GetObjDto {
 	readonly id?: string;
 }
 
+export class RelationDto {
+  readonly extend: boolean;
+}
+
 export class ItemDto {
 	readonly name: string;
 	readonly desc: string;

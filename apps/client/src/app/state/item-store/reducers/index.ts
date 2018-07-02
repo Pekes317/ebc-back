@@ -5,21 +5,22 @@ import {
   createSelector,
   MetaReducer
 } from '@ngrx/store';
-import { environment } from '../../../../environments/environment';
 
-import * as fromItem from './item.reducer';
+import { environment } from '../../../../environments/environment';
 import * as fromRoot from '../../reducers';
+import * as fromSample from './sample.reducer';
 
 export interface ItemState {
-  items: fromItem.State
+  // samples: fromSample.State
 }
 
 export interface State extends fromRoot.State {
-  itemStore: ItemState
+  itemStore: ItemState;
 }
 
+
 export const reducers: ActionReducerMap<ItemState> = {
-  items: fromItem.reducer
+  // samples: fromSample.reducer
 };
 
 

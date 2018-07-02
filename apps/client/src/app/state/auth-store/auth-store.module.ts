@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 
-import * as fromAuthStore from './reducers';
+import { reducers, metaReducers } from './reducers';
 import { AuthEffects } from './effects/auth.effects';
 import { AuthService } from './services/auth.service';
 
@@ -11,7 +11,7 @@ import { AuthService } from './services/auth.service';
   imports: [
     CommonModule,
     EffectsModule.forFeature([AuthEffects]),
-    StoreModule.forFeature('authStore', fromAuthStore.reducers, { metaReducers: fromAuthStore.metaReducers }),
+    StoreModule.forFeature('authStore', reducers, { metaReducers: metaReducers }),
   ],
   declarations: []
 })

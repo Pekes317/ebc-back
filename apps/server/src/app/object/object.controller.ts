@@ -1,7 +1,7 @@
-import { Body, Controller, Delete, Get, HttpStatus, Post, Param, Put, Res, UseInterceptors } from '@nestjs/common';
+import { Body, Controller, Delete, Get, HttpStatus, Post, Param, Put, Query, Res, UseInterceptors } from '@nestjs/common';
 import { DbService } from '../db/db.service';
 
-import { GetObjDto, NewItemDto } from './object.dto';
+import { GetObjDto, NewItemDto, RelationDto } from './object.dto';
 import { SlackInterceptor } from '../common/slack.interecptor';
 
 @Controller('api/obj')
@@ -38,9 +38,9 @@ export class ObjectController {
     }
 
     @Get(':list')
-    getItems(@Res() res: any, @Param() obj: GetObjDto) {
+    getItems(@Res() res: any, @Param() obj: GetObjDto, @Query() relation: RelationDto) {
         this.dbService.setTable(obj.list)
-            .then(service => this.dbService.getAll(service)
+            .then(service => this.dbService.getAll(service, relation.extend)
                 .then(dto => res.status(HttpStatus.OK).send(dto))
                 .catch(err => res.status(HttpStatus.NOT_FOUND).send(err)))
             .catch(err => res.status(HttpStatus.BAD_REQUEST).send(err));

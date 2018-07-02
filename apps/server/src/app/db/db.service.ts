@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { Repository, EntityMetadata } from 'typeorm';
 
 import { Collected } from './db.collected.entity';
 import { Equipment } from './db.equipment.entity';
@@ -44,8 +44,10 @@ export class DbService {
         return await callTbl.delete(id);
     }
 
-    async getAll(callTbl: Repository<any>): Promise<any> {
-        return await callTbl.find();
+    async getAll(callTbl: Repository<any>, relate?: boolean): Promise<any> {
+        let relateCols = this.getRelations(callTbl.metadata);
+        let call = relate ?  callTbl.find({ relations: relateCols }) : callTbl.find();
+        return await call;
     }
 
     async getOne(callTbl: Repository<any>, id): Promise<any> {
@@ -54,5 +56,11 @@ export class DbService {
 
     async updateOne(callTbl: Repository<any>, id, partial): Promise<any> {
         return await callTbl.update(id, partial);
+    }
+
+    private getRelations(metadata: EntityMetadata): Array<string> {
+        let relations: Array<string> = [];
+        metadata.relations.forEach(relation => relations.push(relation.propertyName));
+        return relations;
     }
 }
