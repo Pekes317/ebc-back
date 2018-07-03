@@ -8,6 +8,7 @@ import { reducers, metaReducers } from './reducers';
 @NgModule({
   imports: [
     CommonModule,
+    EffectsModule.forFeature([]),
     StoreModule.forFeature('itemStore', reducers, { metaReducers: metaReducers })
   ],
   declarations: []

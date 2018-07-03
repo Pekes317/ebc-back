@@ -1,5 +1,5 @@
 export interface Sample {
-  id: string;
+  id: number;
   name: string;
 	desc: string;
 	media: string;
