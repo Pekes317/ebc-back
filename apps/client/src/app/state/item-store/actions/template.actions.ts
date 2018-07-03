@@ -60,13 +60,13 @@ export class UpdateTemplates implements Action {
 export class DeleteTemplate implements Action {
   readonly type = TemplateActionTypes.DeleteTemplate;
 
-  constructor(public payload: { id: string }) {}
+  constructor(public payload: { id: number }) {}
 }
 
 export class DeleteTemplates implements Action {
   readonly type = TemplateActionTypes.DeleteTemplates;
 
-  constructor(public payload: { ids: string[] }) {}
+  constructor(public payload: { ids: number[] }) {}
 }
 
 export class ClearTemplates implements Action {

@@ -60,13 +60,13 @@ export class UpdateItems implements Action {
 export class DeleteItem implements Action {
   readonly type = ItemActionTypes.DeleteItem;
 
-  constructor(public payload: { id: string }) {}
+  constructor(public payload: { id: number }) {}
 }
 
 export class DeleteItems implements Action {
   readonly type = ItemActionTypes.DeleteItems;
 
-  constructor(public payload: { ids: string[] }) {}
+  constructor(public payload: { ids: number[] }) {}
 }
 
 export class ClearItems implements Action {
@@ -84,3 +84,4 @@ export type ItemActions =
  | DeleteItem
  | DeleteItems
  | ClearItems;
+ 

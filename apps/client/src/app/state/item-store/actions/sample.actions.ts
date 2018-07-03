@@ -60,13 +60,13 @@ export class UpdateSamples implements Action {
 export class DeleteSample implements Action {
   readonly type = SampleActionTypes.DeleteSample;
 
-  constructor(public payload: { id: string }) {}
+  constructor(public payload: { id: number }) {}
 }
 
 export class DeleteSamples implements Action {
   readonly type = SampleActionTypes.DeleteSamples;
 
-  constructor(public payload: { ids: string[] }) {}
+  constructor(public payload: { ids: number[] }) {}
 }
 
 export class ClearSamples implements Action {
