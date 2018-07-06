@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -22,8 +22,10 @@ export class BackandItemService {
     });
   }
 
-  public getList(list) {
-    let call = this.http.get(`./api/obj/${list}`);
+  public getList(list, expand?: boolean) {
+    let params = new HttpParams().set('extend', String(expand));
+    let opts = expand ? { params: params } : {};
+    let call = this.http.get(`./api/obj/${list}`, opts);
     return call;
   }
 
@@ -43,7 +45,7 @@ export class BackandItemService {
   public setList(current) {
     this.currentList = current;
   }
-  
+
   public updateItem(list, id, data) {
     let call = this.http.put(`./api/obj/${list}/${id}`, data);
     return call;

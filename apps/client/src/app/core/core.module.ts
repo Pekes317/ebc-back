@@ -1,7 +1,6 @@
 import { ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { TranslateService } from '@ngx-translate/core';
 
 import { AppComponent } from './containers/app/app.component';
 import { AppRoutingModule } from '../app-routing.module';
@@ -35,9 +34,7 @@ import { UniversalInterceptor } from './interceptors/universal-interceptor.servi
   ]
 })
 export class CoreModule {
-  public constructor(@Optional() @SkipSelf() parentModule: CoreModule, private translate: TranslateService) {
-    this.setTranslationForEN();
-    this.translate.use('en');
+  public constructor(@Optional() @SkipSelf() parentModule: CoreModule) {
     if (parentModule) {
       throw new Error(
         'CoreModule is already loaded. Import it in the AppModule only');
@@ -65,24 +62,5 @@ export class CoreModule {
     provide: HTTP_INTERCEPTORS,
     useClass: UniversalInterceptor,
     multi: true
-  }
-
-  private setTranslationForEN(): void {
-    this.translate.setTranslation('en', {
-      RI_TREE_LBL_ADD_NODE: 'Add data',
-      RI_TREE_LBL_EDIT_NODE: 'Edit data',
-      RI_TREE_LBL_REMOVE_NODE: 'Delete data',
-      RI_TREE_LBL_DROP_ZONE: 'Drop here to move data to root level',
-      RI_FM_BTN_LANDSCAPE: 'Landscape',
-      RI_FM_BTN_PORTRAIT: 'Portrait',
-      RI_FM_BTN_SQUARE: 'Square',
-      RI_FM_BTN_SAVE: 'Save',
-      RI_FM_LBL_CHOOSE_SELECTION: 'Choose selection',
-      RI_FM_LBL_DELETE_SELECTION: 'Delete selection',
-      RI_FM_LBL_INVERSE_SELECTION: 'Inverse selection',
-      RI_FM_LBL_SEARCH_FOR: 'Search for...',
-      RI_FM_LBL_SELECT_ALL: 'Select all',
-      RI_FM_LBL_UNSELECT_ALL: 'Unselect all',
-    });
   }
 }
