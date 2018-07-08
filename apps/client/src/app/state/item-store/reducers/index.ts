@@ -10,6 +10,7 @@ import * as fromItems from './item.reducer';
 import * as fromRoot from '../../reducers';
 import * as fromSample from './sample.reducer';
 import * as fromTemplate from './template.reducer';
+import * as selectors from './item-store.selectors';
 
 export interface ItemState {
   items: fromItems.State;
@@ -29,19 +30,9 @@ export const reducers: ActionReducerMap<any> = {
 
 export const metaReducers: MetaReducer<State>[] = !environment.production ? [] : [];
 
-export const selectItemState = createFeatureSelector<ItemState>('itemStore');
-
-export const selectItems = createSelector(
-  selectItemState,
-  (state: ItemState) => state.items 
-);
-
-export const selectSamples = createSelector(
-  selectItemState,
-  (state: ItemState) => state.samples 
-);
-
-export const selectTemplates = createSelector(
-  selectItemState,
-  (state: ItemState) => state.templates
-);
+export const { 
+  selectItemStore,
+  selectItems,
+  selectSamples,
+  selectTemplates 
+} = selectors;

@@ -1,6 +1,8 @@
 import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
+
 import { Item } from '../models/item.model';
 import { ItemActions, ItemActionTypes } from '../actions/item.actions';
+import { selectItems } from './item-store.selectors';
 
 export interface State extends EntityState<Item> {
   // additional entities state properties
@@ -68,4 +70,4 @@ export const {
   selectEntities,
   selectAll,
   selectTotal,
-} = adapter.getSelectors();
+} = adapter.getSelectors(selectItems);

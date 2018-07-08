@@ -12,6 +12,7 @@ import { IndexComponent } from './containers/index/index.component';
 import { ItemDetailComponent } from './containers/item-detail/item-detail.component';
 import { PrivatePolicyComponent } from './components/private-policy/private-policy.component';
 import { RoleGuardService } from './services/role-guard.service';
+import { SelectorService } from './services/selector.service';
 import { SharedModule } from '../shared/shared.module';
 import { UniversalInterceptor } from './interceptors/universal-interceptor.service';
 
@@ -49,6 +50,7 @@ export class CoreModule {
         BackandAuthService,
         BackandItemService,
         RoleGuardService,
+        SelectorService,
         {
           provide: HTTP_INTERCEPTORS,
           useClass: AuthInterceptorService,

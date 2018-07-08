@@ -1,0 +1,26 @@
+@import '../../../../theme/app.mixin';
+
+.list {
+	width: 100%;
+	
+	.width-scroll {
+		min-width: 700px;
+		overflow-x: auto;
+	}
+
+	mat-cell, mat-header-cell {
+		padding: .25rem .5rem;
+	}
+
+	.check-fix {
+		padding-left: 1.5rem;
+	}
+	
+  .long-fix {
+		display: inline-block;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		width: 90%;
+  }
+}

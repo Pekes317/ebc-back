@@ -7,10 +7,11 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { AdminIndexComponent } from './containers/admin-index/admin-index.component';
 import { AdminRoutingModule } from './admin-routing.module';
 import { FilemanagerComponent } from './containers/filemanager/filemanager.component';
-import { fileManagerConfig } from '../config/filemanager.config';
 import { ItemDetailComponent } from './components/item-detail/item-detail.component';
 import { ListComponent } from './containers/list/list.component';
 import { SharedModule } from '../shared/shared.module';
+import { TitleBarComponent } from './components/title-bar/title-bar.component';
+import { TableComponent } from './components/table/table.component';
 
 @NgModule({
   imports: [
@@ -22,7 +23,7 @@ import { SharedModule } from '../shared/shared.module';
     SharedModule,
     TranslateModule.forChild()
   ],
-  declarations: [AdminIndexComponent, ItemDetailComponent, FilemanagerComponent, ListComponent],
+  declarations: [AdminIndexComponent, ItemDetailComponent, FilemanagerComponent, ListComponent, TableComponent, TitleBarComponent],
   entryComponents: [ItemDetailComponent]
 })
 export class AdminModule {
@@ -49,4 +50,4 @@ export class AdminModule {
       RI_FM_LBL_UNSELECT_ALL: 'Unselect all',
     });
   }
- }
+}

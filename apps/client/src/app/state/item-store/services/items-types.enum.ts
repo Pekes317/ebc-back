@@ -7,3 +7,5 @@ export enum ItemsTypes {
 	samples = 'samples',
 	templates = 'templates'
 }
+
+export type ModalTypes = Item | Sample | Template;

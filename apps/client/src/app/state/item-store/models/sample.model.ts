@@ -6,4 +6,5 @@ export interface Sample {
 	pic: string;
 	flyer: boolean;
 	ready: boolean;
+	disable: boolean;
 }

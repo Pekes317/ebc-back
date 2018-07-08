@@ -1,0 +1,11 @@
+@import '../../../../theme/app.mixin';
+
+.top {
+	display: flex;
+	justify-content: space-between;
+	padding: 1.45rem;
+
+	.title {
+		text-transform: capitalize;
+	}
+}

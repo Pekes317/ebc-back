@@ -1,0 +1,99 @@
+<mat-table class="list" [dataSource]="pageData">
+
+  <!-- Checkbox Column -->
+  <ng-container matColumnDef="select">
+    <mat-header-cell *matHeaderCellDef>
+      <div class="check-fix">
+        <mat-checkbox></mat-checkbox>
+      </div>
+    </mat-header-cell>
+    <mat-cell *matCellDef="let row">
+      <div class="check-fix">
+        <mat-checkbox></mat-checkbox>
+      </div>
+    </mat-cell>
+  </ng-container>
+
+  <!-- Edit Button Column -->
+  <ng-container matColumnDef="edit">
+    <mat-header-cell *matHeaderCellDef>
+      <button mat-icon-button disabled>
+        <mat-icon>edit</mat-icon>
+      </button>
+    </mat-header-cell>
+    <mat-cell *matCellDef="let row">
+      <button mat-icon-button>
+        <mat-icon>edit</mat-icon>
+      </button>
+    </mat-cell>
+  </ng-container>
+
+  <!-- ID Column -->
+  <ng-container matColumnDef="id">
+    <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
+    <mat-cell *matCellDef="let row"> {{row.id}} </mat-cell>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="name">
+    <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+    <mat-cell *matCellDef="let row"> {{row.name}} </mat-cell>
+  </ng-container>
+
+  <!-- Description Column -->
+  <ng-container matColumnDef="desc">
+    <mat-header-cell *matHeaderCellDef> Description </mat-header-cell>
+    <mat-cell *matCellDef="let row"> {{row.desc}} </mat-cell>
+  </ng-container>
+
+   <!-- Data Column -->
+   <ng-container matColumnDef="data">
+      <mat-header-cell *matHeaderCellDef> Data </mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <div class="long-fix"> {{row.data}} </div>
+      </mat-cell>
+    </ng-container>
+
+  <!-- Media/SVG Column -->
+  <ng-container matColumnDef="media">
+    <mat-header-cell *matHeaderCellDef> Media </mat-header-cell>
+    <mat-cell *matCellDef="let row">
+      <div class="long-fix"> {{row.media}} </div>
+    </mat-cell>
+  </ng-container>
+
+
+  <!-- Image Column -->
+  <ng-container matColumnDef="pic">
+    <mat-header-cell *matHeaderCellDef> Image </mat-header-cell>
+    <mat-cell *matCellDef="let row">
+      <div class="long-fix"> {{row.pic}} </div>
+    </mat-cell>
+  </ng-container>
+
+  <!-- Fyler/Card Flag Column -->
+  <ng-container matColumnDef="flyer">
+    <mat-header-cell *matHeaderCellDef> Flyer </mat-header-cell>
+    <mat-cell *matCellDef="let row"> {{row.flyer}} </mat-cell>
+  </ng-container>
+
+
+  <!-- Ready Flag Column -->
+  <ng-container matColumnDef="ready">
+    <mat-header-cell *matHeaderCellDef> Ready </mat-header-cell>
+    <mat-cell *matCellDef="let row"> {{row.ready}} </mat-cell>
+  </ng-container>
+
+   <!-- Disable Flag Column -->
+   <ng-container matColumnDef="disable">
+      <mat-header-cell *matHeaderCellDef> Disabled </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.disable}} </mat-cell>
+    </ng-container>
+
+  <!-- Rows -->
+  <mat-header-row class="width-scroll" *matHeaderRowDef="ebcCols; sticky: true;"></mat-header-row>
+  <mat-row class="width-scroll" *matRowDef="let row; columns: ebcCols;"></mat-row>
+
+</mat-table>
+
+<mat-paginator showFirstLastButtons [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
