@@ -5,6 +5,15 @@
 	justify-content: space-between;
 	padding: 1.45rem;
 
+	&.select {
+		background-color: mat-color($primary, 100, .5);
+	}
+
+	.count-text {
+		font-size: 1rem;
+		padding-top: .5rem;
+	}
+
 	.title {
 		text-transform: capitalize;
 	}

@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { MatDialogRef } from '@angular/material';
+import { Component, Inject, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
-import { BackandItemService } from '../../../core/services/backand-item.service';
-import { BackandItem } from '../../../core/models/backand.model';
+import { ItemDialogModel } from './item-data.type';
 
 @Component({
   selector: 'ebc-item-detail',
@@ -10,59 +10,50 @@ import { BackandItem } from '../../../core/models/backand.model';
   styleUrls: ['./item-detail.component.scss']
 })
 export class ItemDetailComponent implements OnInit {
-  ebcPiece: BackandItem = {
-    id: NaN,
-    name: '',
-    desc: '',
-    media: '',
-    pic: '',
-    data: '',
-    flyer: false,
-    ready: false,
-    disable: false,
-    user: '',
-    clients: ''
-  };
-  edit: boolean;
-  toast: boolean;
-  itemId: number;
-  table: string;
+  ebcItem: FormGroup = new FormGroup({
+    id: new FormControl({ value: '', disabled: true }),
+    name: new FormControl(''),
+    desc: new FormControl(''),
+    media: new FormControl(''),
+    pic: new FormControl(''),
+    data: new FormControl(''),
+    flyer: new FormControl(false),
+    ready: new FormControl(false),
+    disable: new FormControl(false)
+  });
 
-  constructor(private backand: BackandItemService, private dialog: MatDialogRef<ItemDetailComponent>) { }
+  edit: boolean;
+  extra: boolean;
+
+  constructor(@Inject(MAT_DIALOG_DATA) public data: ItemDialogModel, private dialog: MatDialogRef<ItemDetailComponent>) { }
 
   ngOnInit() {
-
+    this.edit = this.data.edit ? this.data.edit : false;
+    this.extra = (this.data.type === 'items') ? true : false;
+    if (this.data.ebcItem) {
+      this.ebcItem.setValue( {
+        id: this.data.ebcItem.id,
+        name: this.data.ebcItem.name,
+        desc: this.data.ebcItem.desc,
+        media: this.data.ebcItem.media,
+        pic: this.data.ebcItem.pic,
+        data: this.data.ebcItem['data'] ? this.data.ebcItem['data'] : '',
+        flyer: this.data.ebcItem.flyer,
+        ready: this.data.ebcItem.ready,
+        disable: this.data.ebcItem.disable
+      });
+    }
   }
 
   cancel() {
-    this.dialog.close();
+    this.dialog.close({ toast: false });
   }
 
-  ebcNew(data: Object) {
-    this.backand.addItem(this.table, data)
-      .subscribe(item => {
-        console.log(item);
-        this.cancel();
-      })
-  }
-
-  ebcUpdate(data: Object) {
-    this.backand.updateItem(this.table, this.itemId, data)
-      .subscribe(update => {
-        console.log(update);
-        this.cancel();
-      });
-  }
-
-  ebcSub() {
-    let data = this.ebcPiece;
-    this.toast = true;
-
-    if (this.edit) {
-      this.ebcUpdate(data);
-    } else if (!this.edit) {
-      delete data['id']
-      this.ebcNew(data);
-    }
+  submit() {
+    this.dialog.close({
+      data: this.ebcItem.value,
+      id: this.data.ebcItem ? this.data.ebcItem.id : NaN.toExponential,
+      toast: true
+    });
   }
 }

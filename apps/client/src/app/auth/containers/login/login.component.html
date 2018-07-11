@@ -12,9 +12,11 @@
         <mat-card-content class="fields">
           <mat-form-field>
             <input matInput class="field" type="email" placeholder="Your UserName/Email" formControlName="username">
+            <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
           </mat-form-field>
           <mat-form-field>
             <input matInput class="field" type="password" placeholder="Your Password" formControlName="password">
+            <mat-error *ngIf="password.invalid">You must enter a value</mat-error>
           </mat-form-field>
         </mat-card-content>
         <button mat-raised-button mat-ripple color="primary" type="submit" [disabled]="loginForm.invalid">Login</button>

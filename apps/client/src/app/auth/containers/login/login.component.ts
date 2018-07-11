@@ -35,4 +35,9 @@ export class LoginComponent implements OnInit {
   toHome() {
     this.router.navigate(['']);
   }
+
+  getErrorMessage() {
+    return this.email.hasError('required') ? 'You must enter a value' :
+      this.email.hasError('invalidEmail') ? 'Not a valid email' : '';
+  }
 }

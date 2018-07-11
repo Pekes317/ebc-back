@@ -1,38 +1,45 @@
 <div class="dialog">
-    <h2 class="title"><span *ngIf="edit">Update</span><span *ngIf="!edit">Add New</span> Item</h2>
+  <h2 class="title">
+    <span *ngIf="edit">Update</span>
+    <span *ngIf="!edit">Add New</span> Item</h2>
+  <form [formGroup]="ebcItem" (ngSubmit)="submit()">
     <div class="form">
       <mat-form-field>
-        <input matInput placeholder="Name" [(ngModel)]="ebcPiece.name">
-      </mat-form-field>
-      <mat-form-field>
-        <input matInput placeholder="SVG" [(ngModel)]="ebcPiece.media">
-      </mat-form-field>
-      <mat-form-field>
-        <input matInput placeholder="Image" [(ngModel)]="ebcPiece.pic">
-      </mat-form-field>
-      <mat-form-field>
-        <input matInput placeholder="User" [(ngModel)]="ebcPiece.user">
-      </mat-form-field>
-      <mat-form-field>
-        <input matInput placeholder="clients" [(ngModel)]="ebcPiece.clients">
+        <input matInput placeholder="ID (Generated Value)" formControlName="id">
       </mat-form-field>
     </div>
     <div class="form">
       <mat-form-field>
-        <textarea matInput placeholder="Description" [(ngModel)]="ebcPiece.desc"></textarea>
+        <input matInput placeholder="Name" formControlName="name">
       </mat-form-field>
       <mat-form-field>
-        <textarea matInput placeholder="Extra Data" [(ngModel)]="ebcPiece.data"></textarea>
+        <input matInput placeholder="SVG" formControlName="media">
+      </mat-form-field>
+    </div>
+    <div class="form">
+      <mat-form-field>
+        <input matInput placeholder="Image" formControlName="pic">
+      </mat-form-field>
+      <mat-form-field>
+        <textarea matInput placeholder="Description" formControlName="desc"></textarea>
+      </mat-form-field>
+    </div>
+    <div class="form" *ngIf="extra">
+      <!-- <mat-form-field>
+        <input matInput placeholder="User" formControlName="user">
+      </mat-form-field> -->
+      <mat-form-field>
+        <textarea matInput placeholder="Extra Data" formControlName="data"></textarea>
       </mat-form-field>
     </div>
     <div class="toggles">
-      <mat-slide-toggle color="primary" [(ngModel)]="ebcPiece.flyer">Flyer</mat-slide-toggle>
-      <mat-slide-toggle color="primary" [(ngModel)]="ebcPiece.ready">Ready</mat-slide-toggle>
-      <mat-slide-toggle color="primary" [(ngModel)]="ebcPiece.disable">Disable</mat-slide-toggle>
+      <mat-slide-toggle color="primary" formControlName="flyer">Flyer</mat-slide-toggle>
+      <mat-slide-toggle color="primary" formControlName="ready">Ready</mat-slide-toggle>
+      <mat-slide-toggle color="primary" formControlName="disable">Disable</mat-slide-toggle>
     </div>
     <div class="toggles">
-      <button mat-raised-button mat-ripple color="warn" type="button" (click)="cancel()">Cancel</button>
-      <button mat-raised-button mat-ripple color="primary" type="submit" (click)="ebcSub()">Submit</button>
+      <button mat-raised-button color="warn" type="button" (click)="cancel()">Cancel</button>
+      <button mat-raised-button color="primary" type="submit">Submit</button>
     </div>
-  </div>
-  
+  </form>
+</div>

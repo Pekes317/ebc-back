@@ -1,6 +1,7 @@
 @import '../../../../theme/app.mixin';
 
 .dialog {
+	min-width: 50vw;
 	
 	.form{
 		display: flex;
