@@ -31,7 +31,7 @@ export class ItemDetailComponent implements OnInit {
     this.edit = this.data.edit ? this.data.edit : false;
     this.extra = (this.data.type === 'items') ? true : false;
     if (this.data.ebcItem) {
-      this.ebcItem.setValue( {
+      this.ebcItem.setValue({
         id: this.data.ebcItem.id,
         name: this.data.ebcItem.name,
         desc: this.data.ebcItem.desc,
@@ -51,9 +51,19 @@ export class ItemDetailComponent implements OnInit {
 
   submit() {
     this.dialog.close({
-      data: this.ebcItem.value,
-      id: this.data.ebcItem ? this.data.ebcItem.id : NaN.toExponential,
+      data: this.createData(),
       toast: true
     });
+  }
+
+  createData() {
+    let item = this.ebcItem.value
+    if (this.data.ebcItem) {
+      item.id = this.data.ebcItem.id;
+    }
+    if (!this.extra) {
+      delete item.data;
+    }
+    return item;
   }
 }

@@ -44,14 +44,15 @@ export class AuthEffects {
   @Effect({ dispatch: false })
   loginRedirect$ = this.actions$.pipe(
     ofType<LoginRedirect>(AuthActionTypes.LoginRedirect),
-    tap(() => this.router.navigate(['/user/login']))
+    map(action => action.payload),
+    tap(route => this.router.navigate([route]))
   );
 
-  @Effect({ dispatch: false })
+  @Effect()
   logout$ = this.actions$.pipe(
     ofType<Logout>(AuthActionTypes.Logout),
-    tap(() => this.authService.logout()
-      .then(() => this.router.navigate(['/']))
+    map(() => this.authService.logout()
+      .then(() => new LoginRedirect('/'))
       .catch(err => new LoginFailure(err)))
   )
 

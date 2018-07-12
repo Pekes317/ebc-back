@@ -1,32 +1,40 @@
 import { Injectable } from '@angular/core';
-import { Store } from '@ngrx/store'
 
 import { ItemsTypes } from './items-types.enum';
-import { LoadItems } from '../actions/item.actions';
-import { LoadSamples } from '../actions/sample.actions';
-import { LoadTemplates } from '../actions/template.actions';
-import { ItemState } from '../reducers';
+import { LoadItems, UpdateItem } from '../actions/item.actions';
+import { LoadSamples, UpdateSample } from '../actions/sample.actions';
+import { LoadTemplates, UpdateTemplate } from '../actions/template.actions';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AdminDataService {
 
-  constructor(private store: Store<ItemState>) { }
+  constructor() { }
 
   loadItems(collection: string, payload) {
     switch (collection) {
       case ItemsTypes.items:
-        this.store.dispatch(new LoadItems({ items: payload }));
-        break;
+        return (new LoadItems({ items: payload }));
       case ItemsTypes.samples:
-        this.store.dispatch(new LoadSamples({ samples: payload }));
-        break;
+        return (new LoadSamples({ samples: payload }));
       case ItemsTypes.templates:
-        this.store.dispatch(new LoadTemplates({ templates: payload }))
-        break;
+        return (new LoadTemplates({ templates: payload }));
       default:
-        return false;
+        return (new LoadItems({ items: payload }));
+    }
+  }
+
+  updateItem(collection: string, payload) {
+    switch (collection) {
+      case ItemsTypes.items:
+        return (new UpdateItem({ item: payload }));
+      case ItemsTypes.samples:
+        return (new UpdateSample({ sample: payload }));
+      case ItemsTypes.templates:
+       return (new UpdateTemplate({ template: payload }));
+      default:
+        return (new UpdateItem({ item: payload }));
     }
   }
 }

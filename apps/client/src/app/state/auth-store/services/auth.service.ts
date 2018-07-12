@@ -5,7 +5,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { of } from 'rxjs';
 
 import { Authenticate } from '../models/authenticate.model';
-import { LoadAuth } from '../actions/auth.actions';
+import { LoadAuth, Logout } from '../actions/auth.actions';
 import { User } from '../../../core/models/user.model';
 import { UserState } from '../models/user-state.model';
 import * as fromAuth from '../reducers';
@@ -36,7 +36,7 @@ export class AuthService {
   }
 
   public authCheck() {
-    this.fireAuth.idTokenResult.subscribe(
+    return this.fireAuth.idTokenResult.subscribe(
       results => {
         if (results) {
           let user = results.claims;
@@ -54,6 +54,7 @@ export class AuthService {
           return of(results);
         }
 
+        this.store.dispatch(new Logout());
         return of(false);
       }
     )
