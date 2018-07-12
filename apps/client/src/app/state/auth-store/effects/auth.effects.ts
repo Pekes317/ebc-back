@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Actions, Effect, ofType } from '@ngrx/effects';
 import { defer, Observable, of } from 'rxjs';
-import { exhaustMap, map, tap } from 'rxjs/operators';
+import { exhaustMap, map, mergeMap, tap } from 'rxjs/operators';
 
 import { AuthActionTypes, Login, LoginSuccess, LoginFailure, Logout, LoginRedirect } from '../actions/auth.actions';
 import { AuthService } from '../services/auth.service';
@@ -51,7 +51,8 @@ export class AuthEffects {
   @Effect()
   logout$ = this.actions$.pipe(
     ofType<Logout>(AuthActionTypes.Logout),
-    map(() => this.authService.logout()
+    map(action => action),
+    mergeMap(() => this.authService.logout()
       .then(() => new LoginRedirect('/'))
       .catch(err => new LoginFailure(err)))
   )
