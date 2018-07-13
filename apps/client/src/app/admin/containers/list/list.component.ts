@@ -36,13 +36,15 @@ export class ListComponent implements OnDestroy, OnInit {
     });
   }
 
+  ngDoCheck() {}
+
   ngOnDestroy() {
     this.params.unsubscribe();
   }
 
   addRemove(del: boolean) {
     if (del) {
-      this.store.dispatch(new DeleteAdminObjs({ collection: this.title, id: this.selectedRows }));
+      this.store.dispatch(new DeleteAdminObjs({ collection: this.title, ids: this.selectedRows }));
     } else {
       this.detailDialog(del);
     }

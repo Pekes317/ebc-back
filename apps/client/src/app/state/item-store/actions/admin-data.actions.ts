@@ -66,7 +66,7 @@ export class DeleteAdminObj implements Action {
 export class DeleteAdminObjs implements Action {
   readonly type = AdminDataActionTypes.DeleteAdminObjs;
 
-  constructor(public payload: { collection: string, id: Array<number> }) { }
+  constructor(public payload: { collection: string, ids: Array<number> }) { }
 }
 
 export class ClearAdminObjs implements Action {

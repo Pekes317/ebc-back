@@ -40,7 +40,7 @@ export function reducer(
     }
 
     case TemplateActionTypes.UpdateTemplates: {
-      return adapter.updateMany(action.payload.templates, state);
+      return adapter.updateMany(action.payload.templates, { ...state });
     }
 
     case TemplateActionTypes.DeleteTemplate: {

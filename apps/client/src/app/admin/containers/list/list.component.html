@@ -1,7 +1,7 @@
 <ebc-navbar class="fix-case">{{title}}</ebc-navbar>
 <ebc-drawer-layout [currentPage]="title" [ebcNodes]="nav">
   <mat-card class="main">
-    <ebc-title-bar [counter]="selectedRows.length" (itemAction)="addRemove($event);">{{title}}</ebc-title-bar>
+    <ebc-title-bar [counter]="selectedRows?.length" (itemAction)="addRemove($event);">{{title}}</ebc-title-bar>
     <div class="list">
       <ebc-table [ebcData]="listData$ | async" [ebcCols]="tableCol" (isSelected)="selected($event);" (edit)="editItem($event);"></ebc-table>
     </div>

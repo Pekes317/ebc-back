@@ -20,7 +20,7 @@ export class TitleBarComponent implements OnInit {
 
   ngOnInit() { }
 
-  selectState() {
+  async selectState() {
     this.isChecked = (this.currentCount > 0) ? true : false;
   }
 

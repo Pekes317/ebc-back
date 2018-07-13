@@ -43,7 +43,7 @@ export class SlackInterceptor implements NestInterceptor {
       console.log('Error: ', err);
     }
     else {
-      console.log('Message sent');
+      console.log('Message sent', res);
     }
   }
 }

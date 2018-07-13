@@ -14,7 +14,7 @@ export class BackandItemService {
     return call;
   }
 
-  public deleteItem(list, itemArray) {
+  public deleteItem(list, itemArray: Array<number>) {
     itemArray.forEach(item => {
       this.http.delete(`./api/obj/${list}/${item}`)
         .subscribe(result => console.log(result),
