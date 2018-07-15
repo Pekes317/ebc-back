@@ -12,6 +12,11 @@ export const adminNav: Array<DrawerNav> = [
 		roles: ['member', 'owner', 'admin']
 	},
 	{
+		name: 'User Manager',
+		path: '/admin/users',
+		roles: ['owner', 'admin']
+	},
+	{
 		name: 'Items',
 		path: '/admin/items',
 		roles: ['member', 'owner', 'admin']

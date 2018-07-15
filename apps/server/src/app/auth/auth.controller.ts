@@ -1,4 +1,4 @@
-import { Body, Controller, Get, HttpStatus, Post, Res, Req } from '@nestjs/common';
+import { Body, Controller, Get, HttpStatus, Post, Query, Res, Req } from '@nestjs/common';
 import { auth } from 'firebase-admin';
 
 import { UserDto } from './auth.dto';
@@ -14,6 +14,13 @@ export class AuthController {
     createUser(@Res() res: any, @Body() newUser: UserDto) {
         this.userService.createNewUser(newUser)
             .then(user => res.status(HttpStatus.OK).send(user))
+            .catch(err => res.status(HttpStatus.BAD_REQUEST).send(err));
+    }
+    
+    @Get('users')
+    getUsers(@Res() res: any, @Query('next') next: string) {
+        this.userService.getUsers(next)
+            .then(users => res.status(HttpStatus.OK).send(users))
             .catch(err => res.status(HttpStatus.BAD_REQUEST).send(err));
     }
 

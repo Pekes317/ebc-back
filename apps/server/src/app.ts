@@ -2,8 +2,7 @@ import 'zone.js/dist/zone-node';
 import 'reflect-metadata';
 global['XMLHttpRequest'] = require('xmlhttprequest').XMLHttpRequest;
 
-import { NestFactory, NestApplication, Reflector } from '@nestjs/core';
-import { INestApplication } from '@nestjs/common/interfaces/nest-application.interface';
+import { NestFactory, Reflector } from '@nestjs/core';
 import { ngExpressEngine } from '@nguniversal/express-engine';
 import { provideModuleMap } from '@nguniversal/module-map-ngfactory-loader';
 import { credential, initializeApp } from 'firebase-admin';

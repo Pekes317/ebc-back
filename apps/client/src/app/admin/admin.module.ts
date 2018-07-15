@@ -12,6 +12,7 @@ import { ListComponent } from './containers/list/list.component';
 import { SharedModule } from '../shared/shared.module';
 import { TitleBarComponent } from './components/title-bar/title-bar.component';
 import { TableComponent } from './components/table/table.component';
+import { UserListComponent } from './containers/user-list/user-list.component';
 
 @NgModule({
   imports: [
@@ -23,7 +24,7 @@ import { TableComponent } from './components/table/table.component';
     SharedModule,
     TranslateModule.forChild()
   ],
-  declarations: [AdminIndexComponent, ItemDetailComponent, FilemanagerComponent, ListComponent, TableComponent, TitleBarComponent],
+  declarations: [AdminIndexComponent, ItemDetailComponent, FilemanagerComponent, ListComponent, TableComponent, TitleBarComponent, UserListComponent],
   entryComponents: [ItemDetailComponent]
 })
 export class AdminModule {

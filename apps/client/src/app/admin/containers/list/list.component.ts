@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { MatDialog, MatDialogRef, MatSnackBar } from '@angular/material';
 import { ActivatedRoute } from "@angular/router";
 import { Store, select } from '@ngrx/store';
@@ -13,6 +13,7 @@ import { SelectorService } from '../../../core/services/selector.service';
 import * as fromAdmin from '../../../state/item-store/reducers';
 
 @Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'ebc-list',
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss']

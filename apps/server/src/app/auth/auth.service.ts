@@ -21,6 +21,11 @@ export class AuthService {
             });
     }
 
+    async getUsers(next?: string) {
+        const fbList = await auth().listUsers(1000, next);
+        return fbList;
+    }
+
     syncUsers(user) {
         const newUser = this.dbConnect.users.create({
             fbUser: user.uid,
