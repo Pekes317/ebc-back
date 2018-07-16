@@ -22,7 +22,7 @@ export class AuthService {
     }
 
     async getUsers(next?: string) {
-        const fbList = await auth().listUsers(1000, next);
+        const fbList: auth.ListUsersResult = await auth().listUsers(1000, next);
         return fbList;
     }
 

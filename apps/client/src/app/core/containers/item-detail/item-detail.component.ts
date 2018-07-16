@@ -5,8 +5,7 @@ import { MatSnackBar } from '@angular/material';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Subscription } from 'rxjs';
 
-import { BackandItemService } from '../../services/backand-item.service';
-import { BackandAuthService } from '../../services/backand-auth.service';
+import { ItemService } from '../../services/item.service';
 import { BackandItem } from '../../models/backand.model';
 import { MediaContent } from '../../models/media-content.model';
 
@@ -21,7 +20,7 @@ export class  ItemDetailComponent implements OnInit {
   ebcMedia: SafeHtml;
   navSafe: boolean;
 
-  constructor(private backand: BackandItemService, private route: ActivatedRoute, private fireAuth: AngularFireAuth,
+  constructor(private backand: ItemService, private route: ActivatedRoute, private fireAuth: AngularFireAuth,
    private meta: Meta, private router: Router, private sanitizer: DomSanitizer, private snack: MatSnackBar) { }
 
   ngOnInit() {

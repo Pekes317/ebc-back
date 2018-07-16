@@ -13,27 +13,27 @@ export const adminNav: Array<DrawerNav> = [
 	},
 	{
 		name: 'User Manager',
-		path: '/admin/users',
+		path: '/admin/u/users',
 		roles: ['owner', 'admin']
 	},
 	{
 		name: 'Items',
-		path: '/admin/items',
+		path: '/admin/i/items',
 		roles: ['member', 'owner', 'admin']
 	},
 	{
 		name: 'Samples',
-		path: '/admin/samples',
+		path: '/admin/i/samples',
 		roles: ['member', 'owner', 'admin']
 	},	
 	{
 		name: 'Templates',
-		path: '/admin/templates',
+		path: '/admin/i/templates',
 		roles: ['member', 'owner', 'admin']
 	},
 	{
 		name: 'Filemanger',
-		path: '/admin/file',
+		path: '/admin/f/file',
 		roles: ['member', 'owner', 'admin']
 	}
 ]

@@ -12,7 +12,8 @@ import { FilesStoreModule } from './files-store/files-store.module';
 import { FolderStoreModule } from './folder-store/folder-store.module';
 import { ItemStoreModule } from './item-store/item-store.module';
 import { RouterStateUtil } from './shared/router-state-util';
-import { RouteEffects } from '../state/effects/route.effects';
+import { RouteEffects } from './effects/route.effects';
+import { UserStoreModule } from './user-store/user-store.module';
 
 @NgModule({
   imports: [
@@ -24,6 +25,7 @@ import { RouteEffects } from '../state/effects/route.effects';
     ItemStoreModule.forRoot(),
     StoreModule.forRoot(reducers, { metaReducers }),
     StoreRouterConnectingModule.forRoot({ stateKey: 'route' }),
+    UserStoreModule,
     !environment.production ? StoreDevtoolsModule.instrument() : []
   ],
   declarations: []

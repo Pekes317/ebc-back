@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 
-import { ItemsTypes } from '../../state/item-store//services/items-types.enum';
+import { ItemsTypes } from '../../state/item-store/services/items-types.enum';
 import * as fromItems from '../../state/item-store/reducers/item.reducer';
 import * as fromSamples from '../../state/item-store/reducers/sample.reducer';
 import * as fromTemplates from '../../state/item-store/reducers/template.reducer';

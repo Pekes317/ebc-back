@@ -14,15 +14,15 @@ const routes: Routes = [
     data: { roles: ['member', 'owner', 'admin'], title: 'Admin Dashboard' }
   },
   {
-    path: ':collect', component: ListComponent, canActivate: [AuthGuardService, RoleGuardService],
+    path: 'i/:collect', component: ListComponent, canActivate: [AuthGuardService, RoleGuardService],
     data: { roles: ['member', 'owner', 'admin'], title: 'Admin Items' }
   },  
   {
-    path: 'file', component: FilemanagerComponent, canActivate: [AuthGuardService, RoleGuardService],
+    path: 'f/file', component: FilemanagerComponent, canActivate: [AuthGuardService, RoleGuardService],
     data: { roles: ['member', 'owner', 'admin'], title: 'Filemanager' }
   },
   {
-    path: 'users', component: UserListComponent, canActivate: [AuthGuardService, RoleGuardService],
+    path: 'u/users', component: UserListComponent, canActivate: [AuthGuardService, RoleGuardService],
     data: { roles: ['owner', 'admin'], title: 'User Manager' }
   }
 ];

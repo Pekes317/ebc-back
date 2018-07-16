@@ -3,7 +3,7 @@ import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/fo
 import { MatSnackBar } from '@angular/material';
 import { Router } from '@angular/router';
 
-import { BackandAuthService } from '../../../core/services/backand-auth.service';
+import { AuthService } from '../../../core/services/auth.service';
 import { EmailValidator } from '../../../core/validators/email.validator';
 import { AreEqualValidator } from '../../../core/validators/are-equal.validator';
 
@@ -21,7 +21,7 @@ export class CreateUserComponent implements OnInit {
   photoUrl: FormControl = new FormControl('');
   verifyPass: FormGroup;
 
-  constructor(private auth: BackandAuthService, private router: Router, private snack: MatSnackBar) { }
+  constructor(private auth: AuthService, private router: Router, private snack: MatSnackBar) { }
 
   ngOnInit() {
     this.verifyPass = new FormGroup({
@@ -41,7 +41,7 @@ export class CreateUserComponent implements OnInit {
       duration: 5000
     });
   }
-  
+
   createUser(form: AbstractControl) {
     let user = form.value;
     user.password = form.value.verify.password;

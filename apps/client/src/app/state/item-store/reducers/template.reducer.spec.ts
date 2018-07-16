@@ -1,4 +1,4 @@
-import { reducer, initialState } from '../reducers/template.reducer';
+import { reducer, initialState } from './template.reducer';
 
 describe('Template Reducer', () => {
   describe('unknown action', () => {

@@ -4,7 +4,7 @@ import { DataPersistence } from '@nrwl/nx';
 import { exhaustMap, map, mergeMap } from 'rxjs/operators';
 
 import { AdminDataService } from '../services/admin-data.service';
-import { BackandItemService } from '../../../core/services/backand-item.service';
+import { ItemService } from '../../../core/services/item.service';
 import { AddAdminObj, AdminDataActionTypes, LoadAdminObjs, UpdateAdminObj, DeleteAdminObjs } from '../actions/admin-data.actions';
 @Injectable()
 export class AdminDataEffects {
@@ -49,7 +49,7 @@ export class AdminDataEffects {
     })
   );
 
-  constructor(private actions$: Actions, private adminData: AdminDataService, private backend: BackandItemService) { }
+  constructor(private actions$: Actions, private adminData: AdminDataService, private backend: ItemService) { }
 
   private async servDel(collection, ids) {
     await this.backend.deleteItem(collection, ids);
