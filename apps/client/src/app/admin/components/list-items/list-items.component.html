@@ -1,0 +1,12 @@
+<div class="master-list">
+  <mat-nav-list>
+    <div class="list-header">
+      <mat-toolbar>User Name</mat-toolbar>
+      <mat-divider [inset]="true"></mat-divider>
+    </div>
+    <ng-container *ngFor="let user of users, index as i">
+      <mat-list-item class="user-item" (click)="editUser(user);">{{i+paginator.pageSize*paginator.pageIndex+1}}. {{user.displayName}}</mat-list-item>
+    </ng-container>
+  </mat-nav-list>
+  <mat-paginator showFirstLastButtons [length]="fullList.length" [pageSizeOptions]="[5, 10, 25, 100]" ></mat-paginator>
+</div>

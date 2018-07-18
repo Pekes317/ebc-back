@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpClient, HttpParams } from '@angular/common/http';
 
 import { User } from '../models/user.model';
 import { UserSignup } from '../models/user-signup.model';
@@ -11,16 +10,23 @@ import { UserSignup } from '../models/user-signup.model';
 export class AuthService {
   authed: boolean = false;
   authUser: User;
+  baseUrl: string = 'https://ebc.beezleeart.com';
   redirectUrl: string;
   token: string = '';
   userId: number;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
+
+  public getUsers(next?: string) {
+    const nextParam = new HttpParams().set('next', next);
+    let call = next ? this.http.get('/api/auth/users', { params: nextParam }) : this.http.get('/api/auth/users');
+    return call;
+  }
 
   public signUp(userData: UserSignup) {
     userData.emailVerified = true;
     userData.disabled = false;
-    userData.photoUrl = 'https://ebc.beezleeart.com/assets/img/user.svg';
+    userData.photoUrl = `${this.baseUrl}/assets/img/user.svg`;
     let call = this.http.post('./api/auth/signup', userData);
     return call;
   }

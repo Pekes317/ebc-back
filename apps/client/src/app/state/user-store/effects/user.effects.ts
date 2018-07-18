@@ -1,18 +1,23 @@
 import { Injectable } from '@angular/core';
 import { Actions, Effect, ofType } from '@ngrx/effects';
-import { map } from 'rxjs/operators';
+import { auth } from 'firebase-admin';
+import { map, exhaustMap } from 'rxjs/operators';
 
-import { UserActionTypes, GetUsers } from '../actions/user.actions';
-import { } from '../../../core/services/auth.service'
+import { GetUsers, UserActionTypes, LoadUsers } from '../actions/user.actions';
+import { AuthService } from '../../../core/services/auth.service';
 
 @Injectable()
 export class UserEffects {
-
   @Effect()
   getUsers$ = this.actions$.pipe(
     ofType<GetUsers>(UserActionTypes.GetUsers),
-    map(action => action.type)
-  )
+    map(action => action.type),
+    exhaustMap(() => {
+      return this.auth.getUsers().pipe(
+        map((userList: auth.ListUsersResult) => new LoadUsers({ users: userList.users, next: userList.pageToken  }))
+      )
+    })
+  );
 
-  constructor(private actions$: Actions) {}
+  constructor(private actions$: Actions, private auth: AuthService) {}
 }

@@ -1,6 +1,11 @@
 <ebc-navbar>User Manager</ebc-navbar>
 <ebc-drawer-layout currentPage="User Manager" [ebcNodes]="nav">
-  <mat-card>
-    <mat-card-title>User Manager</mat-card-title>
+  <mat-card class="content">
+    <div class="heading">
+      <mat-card-title>User Manager</mat-card-title>
+    </div>
+    <div class="list">
+      <ebc-list-items [registered]="listUsers$ | async"></ebc-list-items>
+    </div>
   </mat-card>
 </ebc-drawer-layout>

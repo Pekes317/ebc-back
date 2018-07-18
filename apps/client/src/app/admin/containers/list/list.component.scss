@@ -1,14 +1,5 @@
 @import '../../../../theme/app.mixin';
 
 .main {
-  max-height: 67vh;
-  padding-top: 0;
-  padding-left: 0;
-  padding-right: 0;
-  overflow: hidden;
-  
-  .list {
-    max-height: 56vh;
-    overflow: auto;
-  }
+ @include main;
 }

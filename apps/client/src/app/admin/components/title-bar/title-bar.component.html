@@ -4,10 +4,12 @@
   </span>
   <span class="count-text" *ngIf="isChecked">{{ currentCount }} {{ currentCount | i18nPlural: pluralMap }} selected</span>
   <span>
-    <button *ngIf="!isChecked" mat-icon-button (click)="openAction(false)">
-      <mat-icon>add</mat-icon>
-    </button>
-    <button *ngIf="isChecked" mat-icon-button (click)="openAction(true)">
+    <ng-template #add>
+      <button mat-icon-button (click)="openAction(false)">
+        <mat-icon>add</mat-icon>
+      </button>
+    </ng-template>
+    <button *ngIf="isChecked, else add" mat-icon-button (click)="openAction(true)">
       <mat-icon>deleted</mat-icon>
     </button>
   </span>

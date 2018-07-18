@@ -1,0 +1,9 @@
+@import '../../../../theme/app.mixin';
+
+.heading {
+	padding: 1.45rem;
+}
+
+.content {
+ @include main;
+}
