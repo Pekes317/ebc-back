@@ -1,12 +1,26 @@
 <div class="master-list">
-  <mat-nav-list>
-    <div class="list-header">
-      <mat-toolbar>User Name</mat-toolbar>
-      <mat-divider [inset]="true"></mat-divider>
-    </div>
+  <mat-accordion>
     <ng-container *ngFor="let user of users, index as i">
-      <mat-list-item class="user-item" (click)="editUser(user);">{{i+paginator.pageSize*paginator.pageIndex+1}}. {{user.displayName}}</mat-list-item>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title class="user-item">{{i+paginator.pageSize*paginator.pageIndex+1}}. {{user.displayName}}</mat-panel-title>
+          <mat-panel-description>{{user.email}}</mat-panel-description>
+        </mat-expansion-panel-header>
+        <div class="desc">
+          <div>
+            <strong>Current Role:</strong> {{user.customClaims?.role}}
+          </div>
+          <mat-form-field>
+            <mat-select placeholder="Permission Role" (selectionChange)="setRole($event);">
+              <mat-option *ngFor="let role of roles" [value]="role">
+                {{role}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <button mat-raised-button color="primary" (click)="editUser(user);">Change Role</button>
+        </div>
+      </mat-expansion-panel>
     </ng-container>
-  </mat-nav-list>
-  <mat-paginator showFirstLastButtons [length]="fullList.length" [pageSizeOptions]="[5, 10, 25, 100]" ></mat-paginator>
+  </mat-accordion>
+  <mat-paginator class="mat-elevation-z2" showFirstLastButtons [length]="fullList.length" [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
 </div>

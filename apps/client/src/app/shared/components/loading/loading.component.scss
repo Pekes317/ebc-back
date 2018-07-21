@@ -1,0 +1,14 @@
+@import '../../../../theme/app.mixin';
+
+.loading {
+	align-content: center;
+	background: transparentize(mat-color($mat-gray, 900), .75);
+	bottom: 0;
+	display: flex;
+	justify-content: center;
+	left: 0;
+	padding: 1.75rem;
+	position: absolute;
+	right: 0;
+	top: 0;
+}

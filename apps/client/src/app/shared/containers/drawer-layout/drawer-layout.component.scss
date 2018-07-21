@@ -1,7 +1,7 @@
 @import '../../../../theme/app.mixin';
 
 .back {
-	min-height: 100vh;
+  min-height: 100vh;
 	
   .menu {
 		min-width: 25vw;
@@ -37,6 +37,7 @@
 	
   .office {
     padding: 1rem;
+    position: relative;
     @include crumb;
   }
 }

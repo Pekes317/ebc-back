@@ -25,7 +25,16 @@ import { ListItemsComponent } from './components/list-items/list-items.component
     SharedModule,
     TranslateModule.forChild()
   ],
-  declarations: [AdminIndexComponent, ItemDetailComponent, FilemanagerComponent, ListComponent, TableComponent, TitleBarComponent, UserListComponent, ListItemsComponent],
+  declarations: [
+    AdminIndexComponent,
+    ItemDetailComponent,
+    FilemanagerComponent,
+    ListComponent,
+    TableComponent,
+    TitleBarComponent,
+    UserListComponent,
+    ListItemsComponent
+  ],
   entryComponents: [ItemDetailComponent]
 })
 export class AdminModule {

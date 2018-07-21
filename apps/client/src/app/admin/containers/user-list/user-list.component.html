@@ -1,11 +1,14 @@
 <ebc-navbar>User Manager</ebc-navbar>
 <ebc-drawer-layout currentPage="User Manager" [ebcNodes]="nav">
-  <mat-card class="content">
-    <div class="heading">
+  <div class="content">
+    <mat-card>
       <mat-card-title>User Manager</mat-card-title>
-    </div>
-    <div class="list">
-      <ebc-list-items [registered]="listUsers$ | async"></ebc-list-items>
-    </div>
-  </mat-card>
+      <ng-template #loading>
+        <ebc-loading></ebc-loading>
+      </ng-template>
+    </mat-card>
+    <ng-container *ngIf="loaded$ | async as load; else loading">
+      <ebc-list-items [registered]="listUsers$ | async" (getNext)="nextGroup($event);"></ebc-list-items>
+    </ng-container>
+  </div>
 </ebc-drawer-layout>

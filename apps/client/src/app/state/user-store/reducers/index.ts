@@ -30,6 +30,11 @@ export const getUsers = createSelector(
   (state: UserState) => state.register.users
 );
 
+export const getLoad = createSelector(
+  userStore,
+  (state: UserState) => state.register.loaded
+);
+
 export const getNext = createSelector(
   userStore,
   (state: UserState) => state.register.next

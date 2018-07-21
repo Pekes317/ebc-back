@@ -6,6 +6,7 @@ import { CrumbComponent } from './components/crumb/crumb.component';
 import { DrawerLayoutComponent } from './containers/drawer-layout/drawer-layout.component';
 import { MaterialModule } from './components/material/material.module';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { LoadingComponent } from './components/loading/loading.component';
 
 @NgModule({
   imports: [
@@ -16,11 +17,13 @@ import { NavbarComponent } from './components/navbar/navbar.component';
   declarations: [
     NavbarComponent,
     CrumbComponent,
-    DrawerLayoutComponent
+    DrawerLayoutComponent,
+    LoadingComponent
   ],
   exports: [
     CrumbComponent,
     DrawerLayoutComponent,
+    LoadingComponent,
     MaterialModule,
     NavbarComponent
   ]

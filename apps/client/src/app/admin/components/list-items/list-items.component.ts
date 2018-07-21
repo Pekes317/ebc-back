@@ -1,4 +1,11 @@
-import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  ViewChild
+} from '@angular/core';
 import { MatPaginator } from '@angular/material';
 import { auth } from 'firebase-admin';
 
@@ -8,19 +15,17 @@ import { auth } from 'firebase-admin';
   styleUrls: ['./list-items.component.scss']
 })
 export class ListItemsComponent implements OnInit {
+  @ViewChild(MatPaginator) paginator: MatPaginator;
   @Input()
   set registered(value: Array<auth.UserRecord>) {
     this.fullList = value;
-    this.pageList(this.paginator.pageSize);
+    this.pageList(5);
   }
-  @Input()
-  set getNext(flag: boolean) {
-    this.next = flag;
-  }
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-
-  next: boolean = false;
+  @Output() getNext: EventEmitter<boolean> = new EventEmitter();
+  
   fullList: Array<auth.UserRecord> = [];
+  newRole: string = '';
+  roles: Array<string> = ['Admin', 'Owner', 'Member', 'User'];
   users: Array<auth.UserRecord> = [];
 
   constructor() {}
@@ -30,15 +35,26 @@ export class ListItemsComponent implements OnInit {
       let start = page.pageIndex * page.pageSize;
       let next = start + page.pageSize;
       this.pageList(next, start);
+      if (!this.paginator.hasNextPage()) {
+        this.getNext.next(true);
+      }
     });
   }
 
   editUser(user) {
-    console.log(user);
+    let updateRole = {
+      uid: user.uid,
+      role: this.newRole
+    };
+    console.log(updateRole);
   }
 
   pageList(end: number, begin: number = 0) {
     let list = this.fullList;
     this.users = list.slice(begin, end);
+  }
+
+  setRole(role) {
+    this.newRole = role.value;
   }
 }
