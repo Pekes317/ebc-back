@@ -13,7 +13,7 @@ import { SharedModule } from '../shared/shared.module';
 import { TitleBarComponent } from './components/title-bar/title-bar.component';
 import { TableComponent } from './components/table/table.component';
 import { UserListComponent } from './containers/user-list/user-list.component';
-import { ListItemsComponent } from './components/list-items/list-items.component';
+import { UserItemsComponent } from './components/user-items/user-items.component';
 
 @NgModule({
   imports: [
@@ -33,7 +33,7 @@ import { ListItemsComponent } from './components/list-items/list-items.component
     TableComponent,
     TitleBarComponent,
     UserListComponent,
-    ListItemsComponent
+    UserItemsComponent
   ],
   entryComponents: [ItemDetailComponent]
 })

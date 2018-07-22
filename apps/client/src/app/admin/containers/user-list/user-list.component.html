@@ -8,7 +8,7 @@
       </ng-template>
     </mat-card>
     <ng-container *ngIf="loaded$ | async as load; else loading">
-      <ebc-list-items [registered]="listUsers$ | async" (getNext)="nextGroup($event);"></ebc-list-items>
+      <ebc-user-items [registered]="listUsers$ | async" (getNext)="nextGroup($event);" (newRole)="updateRole($event);"></ebc-user-items>
     </ng-container>
   </div>
 </ebc-drawer-layout>

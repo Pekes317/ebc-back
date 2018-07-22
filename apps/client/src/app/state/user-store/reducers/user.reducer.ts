@@ -1,4 +1,3 @@
-import { Action } from '@ngrx/store';
 import { auth } from 'firebase-admin';
 
 import { UserActionTypes, UsersActions } from '../actions/user.actions';
@@ -17,6 +16,15 @@ export const initialState: State = {
 
 export function reducer(state = initialState, action: UsersActions): State {
   switch (action.type) {
+    case UserActionTypes.ClearUsers:
+      return initialState;
+
+    case UserActionTypes.ErrorUsers:
+      return {
+        ...state,
+        loaded: true
+      };
+
     case UserActionTypes.GetUsers:
       return {
         ...state,
@@ -35,6 +43,24 @@ export function reducer(state = initialState, action: UsersActions): State {
       return {
         ...state,
         loaded: false
+      };
+
+    case UserActionTypes.UpdateUser:
+      return {
+        ...state,
+        loaded: false
+      };
+
+    case UserActionTypes.UpsertUser:
+      return {
+        ...state,
+        loaded: true,
+        users: [
+          ...state.users.map(
+            user =>
+              user.uid === action.payload.user.uid ? action.payload.user : user
+          )
+        ]
       };
 
     default:

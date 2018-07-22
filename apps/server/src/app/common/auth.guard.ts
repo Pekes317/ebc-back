@@ -12,7 +12,7 @@ export class AuthGuard implements CanActivate {
 		const req = context.switchToHttp().getRequest();
 		const handler = context.getHandler();
 		const exposed = this.reflector.get<boolean>('exposed', handler);
-		const role = this.reflector.get<string>('role', handler);
+		const roles = this.reflector.get<Array<string>>('roles', handler);
 		if (exposed) {
 			return true;
 		}
@@ -20,7 +20,7 @@ export class AuthGuard implements CanActivate {
 			return auth().verifyIdToken(req.token)
 			.then(decode => {
 				req.uid = decode.uid;
-				return this.checkRole(decode.role, role);
+				return this.checkRole(decode.role, roles);
 			})
 		  .catch(err => {
 				throw new HttpException(err, HttpStatus.UNAUTHORIZED);
@@ -29,7 +29,10 @@ export class AuthGuard implements CanActivate {
 		return false;
 	}
 
-	checkRole(user, role) {
-		return true;
+	checkRole(user, roles: Array<string>) {
+		if (roles.includes(user)) {
+			return true;
+		}
+		throw new HttpException({ error: 'Access denied, insufficient rights.', res: `Sorry, don't have permissions to access this resource.`}, HttpStatus.FORBIDDEN);
 	}
 }

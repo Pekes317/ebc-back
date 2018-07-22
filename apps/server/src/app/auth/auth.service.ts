@@ -7,9 +7,15 @@ import { DbService } from '../db/db.service';
 @Injectable()
 export class AuthService {
     constructor(private readonly dbConnect: DbService) { }
-
+   
     addUserRole(uid: string, role: string = 'user') {
-        auth().setCustomUserClaims(uid, { role: role });
+        return auth().setCustomUserClaims(uid, { role: role });
+    }
+
+    async changeRoles(uid: string, role: string) {
+        await this.addUserRole(uid, role);
+        const user = auth().getUser(uid);
+        return user;
     }
 
     async createNewUser(newUser: UserDto): Promise<any> {

@@ -2,7 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 
 import { adminNav } from '../../admin-nav';
-import { GetUsers, NextUsers } from '../../../state/user-store/actions/user.actions';
+import {
+  GetUsers,
+  NextUsers,
+  ClearUsers,
+  UpdateUser
+} from '../../../state/user-store/actions/user.actions';
 import * as fromUsers from '../../../state/user-store/reducers';
 
 @Component({
@@ -25,6 +30,10 @@ export class UserListComponent implements OnInit {
     this.hasNext();
   }
 
+  ngOnDestroy() {
+    this.store.dispatch(new ClearUsers());
+  }
+
   hasNext() {
     this.store.pipe(select(fromUsers.getNext)).subscribe(token => {
       this.nextToken = token;
@@ -32,9 +41,13 @@ export class UserListComponent implements OnInit {
   }
 
   nextGroup(end) {
-    let isNext = (this.nextToken === '') ? false : true;
+    let isNext = this.nextToken === '' ? false : true;
     if (isNext && end) {
       this.store.dispatch(new NextUsers(this.nextToken));
     }
+  }
+
+  updateRole(secRole) {
+    this.store.dispatch(new UpdateUser(secRole));
   }
 }

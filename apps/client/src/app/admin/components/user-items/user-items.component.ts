@@ -10,11 +10,11 @@ import { MatPaginator } from '@angular/material';
 import { auth } from 'firebase-admin';
 
 @Component({
-  selector: 'ebc-list-items',
-  templateUrl: './list-items.component.html',
-  styleUrls: ['./list-items.component.scss']
+  selector: 'ebc-user-items',
+  templateUrl: './user-items.component.html',
+  styleUrls: ['./user-items.component.scss']
 })
-export class ListItemsComponent implements OnInit {
+export class UserItemsComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @Input()
   set registered(value: Array<auth.UserRecord>) {
@@ -22,10 +22,11 @@ export class ListItemsComponent implements OnInit {
     this.pageList(5);
   }
   @Output() getNext: EventEmitter<boolean> = new EventEmitter();
+  @Output() newRole: EventEmitter<{ uid: string, role: string }> = new EventEmitter();
   
   fullList: Array<auth.UserRecord> = [];
-  newRole: string = '';
-  roles: Array<string> = ['Admin', 'Owner', 'Member', 'User'];
+  roles: Array<string> = [ 'admin', 'owner', 'member', 'user'];
+  setUserRole: string = '';
   users: Array<auth.UserRecord> = [];
 
   constructor() {}
@@ -41,12 +42,13 @@ export class ListItemsComponent implements OnInit {
     });
   }
 
-  editUser(user) {
+  editUser(user: auth.UserRecord) {
+    let role = (this.setUserRole === '') ? user.customClaims['role'] : this.setUserRole;
     let updateRole = {
       uid: user.uid,
-      role: this.newRole
+      role: role
     };
-    console.log(updateRole);
+    this.newRole.next(updateRole);
   }
 
   pageList(end: number, begin: number = 0) {
@@ -55,6 +57,6 @@ export class ListItemsComponent implements OnInit {
   }
 
   setRole(role) {
-    this.newRole = role.value;
+    this.setUserRole = role.value;
   }
 }

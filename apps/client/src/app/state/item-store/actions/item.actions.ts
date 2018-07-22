@@ -74,14 +74,13 @@ export class ClearItems implements Action {
 }
 
 export type ItemActions =
- LoadItems
- | AddItem
- | UpsertItem
- | AddItems
- | UpsertItems
- | UpdateItem
- | UpdateItems
- | DeleteItem
- | DeleteItems
- | ClearItems;
- 
+  | LoadItems
+  | AddItem
+  | UpsertItem
+  | AddItems
+  | UpsertItems
+  | UpdateItem
+  | UpdateItems
+  | DeleteItem
+  | DeleteItems
+  | ClearItems;

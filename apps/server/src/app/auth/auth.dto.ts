@@ -6,3 +6,8 @@ export class UserDto {
 	readonly password: string;
 	readonly photoUrl: string;
 }
+
+export class RoleDto {
+	readonly uid: string;
+	readonly role: string;
+}

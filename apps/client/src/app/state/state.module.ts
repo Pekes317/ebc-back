@@ -25,7 +25,7 @@ import { UserStoreModule } from './user-store/user-store.module';
     ItemStoreModule.forRoot(),
     StoreModule.forRoot(reducers, { metaReducers }),
     StoreRouterConnectingModule.forRoot({ stateKey: 'route' }),
-    UserStoreModule,
+    UserStoreModule.forRoot(),
     !environment.production ? StoreDevtoolsModule.instrument() : []
   ],
   declarations: []

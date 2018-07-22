@@ -3,6 +3,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 
 import { User } from '../models/user.model';
 import { UserSignup } from '../models/user-signup.model';
+import { UserRole } from '../../state/user-store/models/user-role.model';
 
 @Injectable({
   providedIn: 'root'
@@ -27,7 +28,12 @@ export class AuthService {
     userData.emailVerified = true;
     userData.disabled = false;
     userData.photoUrl = `${this.baseUrl}/assets/img/user.svg`;
-    let call = this.http.post('./api/auth/signup', userData);
+    let call = this.http.post('/api/auth/signup', userData);
+    return call;
+  }
+
+  public updateRole(userRole: UserRole) {
+    let call = this.http.post('/api/auth/role', userRole);
     return call;
   }
 }

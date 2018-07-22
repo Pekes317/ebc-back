@@ -2,6 +2,8 @@ import { Body, Controller, Delete, Get, HttpStatus, Post, Param, Put, Query, Res
 import { DbService } from '../db/db.service';
 
 import { GetObjDto, NewItemDto, RelationDto } from './object.dto';
+import { Roles } from '../common/roles/roles.decorator';
+import { RoleTypes } from '../common/roles/role-types.enum';
 import { SlackInterceptor } from '../common/slack.interecptor';
 
 @Controller('api/obj')
@@ -9,6 +11,7 @@ export class ObjectController {
     constructor(private readonly dbService: DbService) { }
 
     @UseInterceptors(SlackInterceptor)
+    @Roles(RoleTypes.admin, RoleTypes.owner, RoleTypes.member, RoleTypes.user)
     @Post(':list')
     createItem(@Res() res: any, @Param() obj: GetObjDto, @Body() newItem: NewItemDto) {
         this.dbService.setTable(obj.list)
@@ -19,6 +22,7 @@ export class ObjectController {
     }
 
     @UseInterceptors(SlackInterceptor)
+    @Roles(RoleTypes.admin, RoleTypes.owner, RoleTypes.member, RoleTypes.user)
     @Delete(':list/:id')
     deleteItem(@Res() res: any, @Param() obj: GetObjDto) {
         this.dbService.setTable(obj.list)
@@ -29,6 +33,7 @@ export class ObjectController {
     }
 
     @Get(':list/:id')
+    @Roles(RoleTypes.admin, RoleTypes.owner, RoleTypes.member, RoleTypes.user)
     getItem(@Res() res: any, @Param() obj: GetObjDto) {
         this.dbService.setTable(obj.list)
             .then(service => this.dbService.getOne(service, obj.id)
@@ -38,6 +43,7 @@ export class ObjectController {
     }
 
     @Get(':list')
+    @Roles(RoleTypes.admin, RoleTypes.owner, RoleTypes.member)
     getItems(@Res() res: any, @Param() obj: GetObjDto, @Query() relation: RelationDto) {
         this.dbService.setTable(obj.list)
             .then(service => this.dbService.getAll(service, relation.extend)
@@ -47,6 +53,7 @@ export class ObjectController {
     }
 
     @UseInterceptors(SlackInterceptor)
+    @Roles(RoleTypes.admin, RoleTypes.owner, RoleTypes.member, RoleTypes.user)
     @Put(':list/:id')
     updateItem(@Res() res: any, @Param() obj: GetObjDto, @Body() newItem: NewItemDto) {
         this.dbService.setTable(obj.list)

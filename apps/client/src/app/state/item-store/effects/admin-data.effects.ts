@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Actions, Effect, ofType } from '@ngrx/effects';
-import { DataPersistence } from '@nrwl/nx';
 import { exhaustMap, map, mergeMap } from 'rxjs/operators';
 
 import { AdminDataService } from '../services/admin-data.service';

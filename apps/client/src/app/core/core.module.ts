@@ -4,6 +4,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppComponent } from './containers/app/app.component';
 import { AppRoutingModule } from '../app-routing.module';
+import { AlertService } from './services/alert.service';
 import { AuthInterceptorService } from './interceptors/auth-interceptor.service';
 import { AuthGuardService } from './services/auth-guard.service';
 import { AuthService } from './services/auth.service';
@@ -46,6 +47,7 @@ export class CoreModule {
     return {
       ngModule: CoreModule,
       providers: [
+        AlertService,
         AuthGuardService,
         AuthService,
         ItemService,
