@@ -3,12 +3,10 @@
   <div class="content">
     <mat-card>
       <mat-card-title>User Manager</mat-card-title>
-      <ng-template #loading>
-        <ebc-loading></ebc-loading>
-      </ng-template>
     </mat-card>
-    <ng-container *ngIf="loaded$ | async as load; else loading">
-      <ebc-user-items [registered]="listUsers$ | async" (getNext)="nextGroup($event);" (newRole)="updateRole($event);"></ebc-user-items>
-    </ng-container>
+    <ebc-user-items [registered]="listUsers$ | async" (getNext)="nextGroup($event);" (newRole)="updateRole($event);"></ebc-user-items>
   </div>
+  <ng-container *ngIf="loading$ | async as loading">
+    <ebc-loading></ebc-loading>
+  </ng-container>
 </ebc-drawer-layout>

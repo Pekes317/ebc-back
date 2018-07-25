@@ -32,7 +32,7 @@ export const getUsers = createSelector(
 
 export const getLoad = createSelector(
   userStore,
-  (state: UserState) => state.register.loaded
+  (state: UserState) => state.register.loading
 );
 
 export const getNext = createSelector(

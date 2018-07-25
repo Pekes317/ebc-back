@@ -5,14 +5,11 @@ import { ModalTypes } from '../services/items-types.enum';
 export enum AdminDataActionTypes {
   LoadAdminObjs = '[AdminData] Load AdminObjs',
   AddAdminObj = '[AdminData] Add AdminObj',
-  UpsertAdminObj = '[AdminData] Upsert AdminObj',
-  AddAdminObjs = '[AdminData] Add AdminObjs',
-  UpsertAdminObjs = '[AdminData] Upsert AdminObjs',
+  ErrorAdminObj = '[AdminData] Error Admin Obj',
   UpdateAdminObj = '[AdminData] Update AdminObj',
-  UpdateAdminObjs = '[AdminData] Update AdminObjs',
-  DeleteAdminObj = '[AdminData] Delete AdminObj',
   DeleteAdminObjs = '[AdminData] Delete AdminObjs',
-  ClearAdminObjs = '[AdminData] Clear AdminObjs'
+  ClearAdminObjs = '[AdminData] Clear AdminObjs',
+  FinishAdminObj = '[AdminData] Finish AdminObj'
 }
 
 export class LoadAdminObjs implements Action {
@@ -27,40 +24,18 @@ export class AddAdminObj implements Action {
   constructor(public payload: { collection: string, data: ModalTypes }) { }
 }
 
-export class UpsertAdminObj implements Action {
-  readonly type = AdminDataActionTypes.UpsertAdminObj;
-
-  constructor(public payload: { collection: string, data: ModalTypes }) { }
+export class ErrorAdminObj implements Action {
+  readonly type = AdminDataActionTypes.ErrorAdminObj;
 }
 
-export class AddAdminObjs implements Action {
-  readonly type = AdminDataActionTypes.AddAdminObjs;
-
-  constructor(public payload: { collection: string, data: Array<ModalTypes> }) { }
-}
-
-export class UpsertAdminObjs implements Action {
-  readonly type = AdminDataActionTypes.UpsertAdminObjs;
-
-  constructor(public payload: { collection: string, data: Array<ModalTypes> }) { }
+export class FinishAdminObj implements Action {
+  readonly type = AdminDataActionTypes.FinishAdminObj;
 }
 
 export class UpdateAdminObj implements Action {
   readonly type = AdminDataActionTypes.UpdateAdminObj;
 
   constructor(public payload: { collection: string, data: ModalTypes }) { }
-}
-
-export class UpdateAdminObjs implements Action {
-  readonly type = AdminDataActionTypes.UpdateAdminObjs;
-
-  constructor(public payload: { collection: string, data: Array<ModalTypes> }) { }
-}
-
-export class DeleteAdminObj implements Action {
-  readonly type = AdminDataActionTypes.DeleteAdminObj;
-
-  constructor(public payload: { collection: string, id: number }) { }
 }
 
 export class DeleteAdminObjs implements Action {
@@ -77,11 +52,8 @@ export class ClearAdminObjs implements Action {
 export type AdminDataActions =
   LoadAdminObjs
   | AddAdminObj
-  | UpsertAdminObj
-  | AddAdminObjs
-  | UpsertAdminObjs
+  | ErrorAdminObj
+  | FinishAdminObj
   | UpdateAdminObj
-  | UpdateAdminObjs
-  | DeleteAdminObj
   | DeleteAdminObjs
   | ClearAdminObjs; 

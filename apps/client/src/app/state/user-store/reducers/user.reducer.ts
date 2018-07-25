@@ -3,13 +3,13 @@ import { auth } from 'firebase-admin';
 import { UserActionTypes, UsersActions } from '../actions/user.actions';
 
 export interface State {
-  loaded: boolean;
+  loading: boolean;
   next: string;
   users: Array<auth.UserRecord>;
 }
 
 export const initialState: State = {
-  loaded: true,
+  loading: false,
   next: '',
   users: []
 };
@@ -22,19 +22,19 @@ export function reducer(state = initialState, action: UsersActions): State {
     case UserActionTypes.ErrorUsers:
       return {
         ...state,
-        loaded: true
+        loading: false
       };
 
     case UserActionTypes.GetUsers:
       return {
         ...state,
-        loaded: false
+        loading: true
       };
 
     case UserActionTypes.LoadUsers:
       return {
         ...state,
-        loaded: true,
+        loading: false,
         next: action.payload.next,
         users: [...state.users, ...action.payload.users]
       };
@@ -42,19 +42,19 @@ export function reducer(state = initialState, action: UsersActions): State {
     case UserActionTypes.NextUsers:
       return {
         ...state,
-        loaded: false
+        loading: true
       };
 
     case UserActionTypes.UpdateUser:
       return {
         ...state,
-        loaded: false
+        loading: true
       };
 
     case UserActionTypes.UpsertUser:
       return {
         ...state,
-        loaded: true,
+        loading: false,
         users: [
           ...state.users.map(
             user =>

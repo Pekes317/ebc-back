@@ -6,4 +6,7 @@
       <ebc-table [ebcData]="listData$ | async" [ebcCols]="tableCol" (isSelected)="selected($event);" (edit)="editItem($event);"></ebc-table>
     </div>
   </mat-card>
+  <ng-container *ngIf="loading$ | async as loading">
+    <ebc-loading></ebc-loading>
+  </ng-container>
 </ebc-drawer-layout>

@@ -19,7 +19,7 @@ export class UserItemsComponent implements OnInit {
   @Input()
   set registered(value: Array<auth.UserRecord>) {
     this.fullList = value;
-    this.pageList(5);
+    this.pageList(this.paginator.pageSize);
   }
   @Output() getNext: EventEmitter<boolean> = new EventEmitter();
   @Output() newRole: EventEmitter<{ uid: string, role: string }> = new EventEmitter();

@@ -20,6 +20,7 @@ import * as fromAdmin from '../../../state/item-store/reducers';
 })
 export class ListComponent implements OnDestroy, OnInit {
   listData$: Observable<any>;
+  loading$: Observable<boolean>;
   nav = adminNav;
   params: Subscription;
   selectedRows: Array<number> = [];
@@ -30,6 +31,7 @@ export class ListComponent implements OnDestroy, OnInit {
     private snack: MatSnackBar, private store: Store<fromAdmin.ItemState>) { }
 
   ngOnInit() {
+    this.loading$ = this.store.pipe(select(fromAdmin.getLoading));
     this.params = this.route.params.subscribe(table => {
       this.title = table.collect;
       this.store.dispatch(new LoadAdminObjs(table.collect));

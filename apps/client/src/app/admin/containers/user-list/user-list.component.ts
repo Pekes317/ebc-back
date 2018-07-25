@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store, select } from '@ngrx/store';
+import { auth } from 'firebase-admin';
+import { Observable } from 'rxjs';
 
 import { adminNav } from '../../admin-nav';
 import {
@@ -16,8 +18,8 @@ import * as fromUsers from '../../../state/user-store/reducers';
   styleUrls: ['./user-list.component.scss']
 })
 export class UserListComponent implements OnInit {
-  loaded$;
-  listUsers$;
+  loading$: Observable<boolean>;
+  listUsers$: Observable<Array<auth.UserRecord>>;
   nav = adminNav;
   nextToken: string = '';
 
@@ -26,7 +28,7 @@ export class UserListComponent implements OnInit {
   ngOnInit() {
     this.store.dispatch(new GetUsers());
     this.listUsers$ = this.store.pipe(select(fromUsers.getUsers));
-    this.loaded$ = this.store.pipe(select(fromUsers.getLoad));
+    this.loading$ = this.store.pipe(select(fromUsers.getLoad));
     this.hasNext();
   }
 

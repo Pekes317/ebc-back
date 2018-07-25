@@ -6,12 +6,12 @@ export const selectItemStore = createFeatureSelector<ItemState>('itemStore');
 
 export const selectItems = createSelector(
   selectItemStore,
-  (state: ItemState) => state.items 
+  (state: ItemState) => state.items
 );
 
 export const selectSamples = createSelector(
   selectItemStore,
-  (state: ItemState) => state.samples 
+  (state: ItemState) => state.samples
 );
 
 export const selectTemplates = createSelector(

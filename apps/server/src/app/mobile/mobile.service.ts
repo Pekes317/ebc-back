@@ -23,13 +23,13 @@ export class MobileService {
 		return await this.db.sample.find({ flyer: flyer });
 	}
 
-	async registerDevice(user, device): Promise<any> {
+	async registerDevice(user, token): Promise<any> {
 		const newDevice = this.db.equip.create();
 		return await this.db.users.find({ fbUser: user })
 			.then(users => {
 				let user = users[0];
-				this.db.equip.merge(newDevice, device, { owner: user })
-				return this.db.items.save(newDevice);
+				this.db.equip.merge(newDevice, { device: token }, { owner: user })
+				return this.db.equip.save(newDevice);
 			})
 	}
 
