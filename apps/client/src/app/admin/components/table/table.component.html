@@ -91,6 +91,17 @@
     <mat-cell *matCellDef="let row"> {{row.disable}} </mat-cell>
   </ng-container>
 
+  <!-- User/ Column -->
+  <ng-container matColumnDef="user">
+    <mat-header-cell *matHeaderCellDef> User/Notify </mat-header-cell>
+    <mat-cell *matCellDef="let row">
+      <button mat-button (click)="notifyUser(row)">
+        <mat-icon>notifications</mat-icon>
+        {{row.user.id}}
+      </button>
+    </mat-cell>
+  </ng-container>
+
   <!-- Rows -->
   <mat-header-row class="width-scroll" *matHeaderRowDef="ebcCols; sticky: true;"></mat-header-row>
   <mat-row class="width-scroll" *matRowDef="let row; columns: ebcCols;"></mat-row>

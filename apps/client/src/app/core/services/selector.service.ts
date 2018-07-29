@@ -17,7 +17,7 @@ export class SelectorService {
   displayColumns(dataType: ItemsTypes) {
     switch (dataType) {
       case ItemsTypes.items:
-        let itemsCols = this.baseColumns.concat(['data']);
+        let itemsCols = this.baseColumns.concat(['data', 'user']);
         return itemsCols;
       case ItemsTypes.samples:
         return this.baseColumns;

@@ -51,8 +51,9 @@ export class AdminDataEffects {
     ofType<LoadAdminObjs>(AdminDataActionTypes.LoadAdminObjs),
     map(action => action.payload),
     mergeMap(type => {
+      let user = (type === 'items');
       return this.backend
-        .getList(type)
+        .getList(type, user)
         .pipe(
           switchMap((data: Array<any>) => [
             this.adminData.loadItems(type, data),

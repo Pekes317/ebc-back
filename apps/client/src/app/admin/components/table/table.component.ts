@@ -1,8 +1,9 @@
 import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { SelectionModel } from '@angular/cdk/collections';
-import { MatPaginator, MatTableDataSource } from '@angular/material';
+import { MatDialog, MatPaginator, MatTableDataSource } from '@angular/material';
 
 import { ModalTypes } from '../../../state/item-store/services/items-types.enum';
+import { NotifyComponent } from '../notify/notify.component';
 
 @Component({
   selector: 'ebc-table',
@@ -23,13 +24,12 @@ export class TableComponent implements OnInit {
   pageData: MatTableDataSource<ModalTypes> = new MatTableDataSource<ModalTypes>([]);
   selection: SelectionModel<number> = new SelectionModel<number>(true, []);
 
-  constructor() { }
+  constructor(private dialog: MatDialog) { }
 
   ngOnInit() {
     this.pageData.paginator = this.paginator;
     this.selected();
   }
-
 
   isAllSelected() {
     const numSelected = this.selection.selected.length;
@@ -45,6 +45,10 @@ export class TableComponent implements OnInit {
     this.isAllSelected() ?
       this.selection.clear() :
       this.pageData.data.forEach(row => this.selection.select(row.id));
+  }
+
+  notifyUser(row) {
+    this.dialog.open(NotifyComponent, { data: row });
   }
 
   selected() {

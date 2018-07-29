@@ -1,0 +1,26 @@
+@import '../../../../theme/app.mixin';
+
+.dialog {
+  min-width: 35vw;
+
+  .title {
+    color: mat-color($accent);
+    margin-top: 0;
+  }
+
+  .form-sec {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
+  .btn-row {
+    padding-top: .75rem;
+  }
+
+  .no-alert {
+    color: mat-color($warn);
+    font-size: .75rem;
+    padding-top: 1.25rem;
+  }
+}

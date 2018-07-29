@@ -5,7 +5,6 @@ import { HttpClient, HttpParams } from '@angular/common/http';
   providedIn: 'root'
 })
 export class ItemService {
-  currentList: string;
 
   constructor(private http: HttpClient) { }
 
@@ -40,10 +39,6 @@ export class ItemService {
       params: { url: media }
     });
     return call;
-  }
-
-  public setList(current) {
-    this.currentList = current;
   }
 
   public updateItem(list, id, data) {

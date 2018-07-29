@@ -14,6 +14,7 @@ import { TitleBarComponent } from './components/title-bar/title-bar.component';
 import { TableComponent } from './components/table/table.component';
 import { UserListComponent } from './containers/user-list/user-list.component';
 import { UserItemsComponent } from './components/user-items/user-items.component';
+import { NotifyComponent } from './components/notify/notify.component';
 
 @NgModule({
   imports: [
@@ -33,9 +34,10 @@ import { UserItemsComponent } from './components/user-items/user-items.component
     TableComponent,
     TitleBarComponent,
     UserListComponent,
-    UserItemsComponent
+    UserItemsComponent,
+    NotifyComponent
   ],
-  entryComponents: [ItemDetailComponent]
+  entryComponents: [ItemDetailComponent, NotifyComponent]
 })
 export class AdminModule {
   public constructor(private translate: TranslateService) {
