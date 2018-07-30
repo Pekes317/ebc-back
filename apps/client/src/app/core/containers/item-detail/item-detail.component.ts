@@ -56,15 +56,7 @@ export class  ItemDetailComponent implements OnInit {
     return itemID;
   }
 
-  toLogin() {
-    this.router.navigate(['login']);
-  }
-
-  navAlert() {
-    this.snack.open('Access Denied', 'to Login', { duration: 3000 })
-      .afterDismissed()
-      .subscribe(() => {
-        this.toLogin();
-      });
+  toHome() {
+    this.router.navigate(['']);
   }
 }

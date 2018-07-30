@@ -11,13 +11,14 @@ import { Response } from 'express';
 
 import { AdminService } from './admin.service';
 import { MessageDto } from './message.dto';
-import { NoAuth } from '../common/auth.decorator';
+import { RoleTypes } from '../common/roles/role-types.enum';
+import { Roles } from '../common/roles/roles.decorator';
 
 @Controller('api/admin')
 export class AdminController {
   constructor(private readonly adminService: AdminService) {}
 
-  @NoAuth(true)
+  @Roles(RoleTypes.admin, RoleTypes.owner, RoleTypes.member)
   @Post('devices')
   messageDevices(@Res() res: Response, @Body() fcm: MessageDto) {
     this.adminService
@@ -26,7 +27,7 @@ export class AdminController {
       .catch(err => res.status(HttpStatus.BAD_REQUEST).send(err));
   }
 
-  @NoAuth(true)
+  @Roles(RoleTypes.admin, RoleTypes.owner, RoleTypes.member)
   @Get('devices/:id')
   userDevices(@Res() res: Response, @Param('id') id: number) {
     this.adminService

@@ -2,7 +2,7 @@
   <ebc-navbar>Card</ebc-navbar>
   <div class="content">
     <ebc-crumb [ebcTitle]="ebcCard?.name">
-      <button mat-icon-button mat-ripple disabled>
+      <button mat-icon-button mat-ripple (click)="toHome();">
         <mat-icon>get_app</mat-icon>
       </button>
     </ebc-crumb>

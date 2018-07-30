@@ -14,12 +14,13 @@ import {
 
 import { FileService } from './file.service';
 import { Roles } from '../common/roles/roles.decorator';
+import { RoleTypes } from '../common/roles/role-types.enum';
 
 @Controller('api/manager')
 export class FilesController {
   constructor(private fileService: FileService) {}
 	
-	@Roles('admin', 'owner', 'member')
+	@Roles(RoleTypes.admin, RoleTypes.owner, RoleTypes.member)
   @Post('file')
   addFiles(
     @Res() res: any,
@@ -40,7 +41,7 @@ export class FilesController {
     });
   }
 	
-	@Roles('admin', 'owner', 'member')
+	@Roles(RoleTypes.admin, RoleTypes.owner, RoleTypes.member)
   @Delete('file')
   deleteFiles(@Res() res: any, @Query() dir: any) {
     let fileIds = dir.id.split('|') || null;

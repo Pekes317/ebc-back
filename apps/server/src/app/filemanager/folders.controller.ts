@@ -1,12 +1,15 @@
 import { Body, Controller, Delete, Get, HttpStatus, Post, Put, Query, Req, Res } from '@nestjs/common';
 
 import { FolderService } from './folder.service';
+import { Roles } from '../common/roles/roles.decorator';
+import { RoleTypes } from '../common/roles/role-types.enum';
 
 @Controller('api/manager')
 export class FoldersController {
 
 	constructor(private folderService: FolderService) { }
-
+	
+	@Roles(RoleTypes.admin, RoleTypes.owner, RoleTypes.member)
 	@Post('folder')
 	addFolders(@Res() res: any, @Body() body: any) {
 		let dir = this.folderService.addDir(body);
@@ -18,7 +21,8 @@ export class FoldersController {
 			res.status(HttpStatus.CREATED).send(dir);
 		}
 	}
-
+	
+	@Roles(RoleTypes.admin, RoleTypes.owner, RoleTypes.member)
 	@Delete('folder')
 	deleteFolders(@Res() res: any, @Query() dir: any) {
 		let nodeId = dir.nodeId || '';
@@ -29,14 +33,16 @@ export class FoldersController {
 			res.status(HttpStatus.CONFLICT).send({ error: 'Directory exists' });
 		}	
 	}
-
+	
+	@Roles(RoleTypes.admin, RoleTypes.owner, RoleTypes.member)
 	@Get('folder')
 	getFolders(@Res() res: any, @Query() dir: any) {
 		let subNode = dir.nodeId || '';
 		let paths = this.folderService.getItems(subNode, false);
 		res.status(HttpStatus.OK).send(paths);
 	}
-
+	
+	@Roles(RoleTypes.admin, RoleTypes.owner, RoleTypes.member)
 	@Put('folder/move')
 	moveFolder(@Res() res: any, @Body() data: any) {
 		let moved = this.folderService.moveDir(data);
@@ -47,7 +53,8 @@ export class FoldersController {
 			res.status(HttpStatus.OK).send(moved);
 		}
 	}
-
+	
+	@Roles(RoleTypes.admin, RoleTypes.owner, RoleTypes.member)
 	@Put('folder')
 	updateFolder(@Res() res: any, @Body() node: any) {
 		let update = this.folderService.updateDir(node);

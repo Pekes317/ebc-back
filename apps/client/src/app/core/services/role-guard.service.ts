@@ -22,7 +22,7 @@ export class RoleGuardService implements CanActivate {
       map(authed => {
         this.checkRoles();
         let roles = this.routeData.roles;
-        if (roles.includes(authed.role)) {
+        if (roles.includes(authed.role) || roles.includes('all')) {
           return true;
         }
 

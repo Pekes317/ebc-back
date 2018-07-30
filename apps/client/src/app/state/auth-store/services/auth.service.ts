@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material';
-import { Store } from '@ngrx/store';
+import { Store, select } from '@ngrx/store';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { of } from 'rxjs';
 
@@ -9,6 +9,7 @@ import { LoadAuth, Logout } from '../actions/auth.actions';
 import { User } from '../../../core/models/user.model';
 import { UserState } from '../models/user-state.model';
 import * as fromAuth from '../reducers';
+import { take } from '../../../../../../../node_modules/rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,11 @@ import * as fromAuth from '../reducers';
 export class AuthService {
   authStatus: boolean = false;
 
-  constructor(private fireAuth: AngularFireAuth, private snack: MatSnackBar, private store: Store<fromAuth.State>) { }
+  constructor(
+    private fireAuth: AngularFireAuth,
+    private snack: MatSnackBar,
+    private store: Store<fromAuth.State>
+  ) {}
 
   public alert(ebcAuth) {
     let message;
@@ -36,28 +41,25 @@ export class AuthService {
   }
 
   public authCheck() {
-    return this.fireAuth.idTokenResult.subscribe(
-      results => {
-        if (results) {
-          let user = results.claims;
-          let current: User = {
-            email: user.email,
-            displayName: user.name,
-            photoUrl: user.picture
-          };
-          let status: UserState = {
-            loggedIn: true,
-            role: user.role,
-            token: results.token
-          }
-          this.store.dispatch(new LoadAuth({ user: current, userState: status }));
-          return of(results);
-        }
-
-        this.store.dispatch(new Logout());
-        return of(false);
+    return this.fireAuth.idTokenResult.subscribe(results => {
+      if (results) {
+        let user = results.claims;
+        let current: User = {
+          email: user.email,
+          displayName: user.name,
+          photoUrl: user.picture
+        };
+        let status: UserState = {
+          loggedIn: true,
+          role: user.role,
+          token: results.token
+        };
+        this.store.dispatch(new LoadAuth({ user: current, userState: status }));
+        return of(results);
       }
-    )
+      this.isLogout()
+      return of(false);
+    });
   }
 
   public login({ username, password }: Authenticate) {
@@ -66,5 +68,18 @@ export class AuthService {
 
   public logout() {
     return this.fireAuth.auth.signOut();
+  }
+
+  private isLogout() {
+    this.store
+      .pipe(
+        select(fromAuth.getAuthStatus),
+        take(1)
+      )
+      .subscribe(status => {
+        if (status.loggedIn) {
+          this.store.dispatch(new Logout());
+        }
+      });
   }
 }
