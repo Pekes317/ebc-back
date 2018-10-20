@@ -11,11 +11,13 @@ import {
   Req,
   Res
 } from '@nestjs/common';
+import { Response } from 'express';
 
-import { FileService } from './file.service';
 import { NoAuth } from '../common/auth.decorator';
 import { Roles } from '../common/roles/roles.decorator';
 import { RoleTypes } from '../common/roles/role-types.enum';
+import { FileService } from './file.service';
+import { ExtRequest } from '../models/ext-req.model';
 
 @Controller('api/manager')
 export class FilesController {
@@ -25,8 +27,8 @@ export class FilesController {
 	// @Roles(RoleTypes.admin, RoleTypes.owner, RoleTypes.member)
   @Post('file')
   addFiles(
-    @Res() res: any,
-    @Req() req: any,
+    @Res() res: Response,
+    @Req() req: ExtRequest,
     @Headers('folderId') folderId: any
   ) {
     let newFile = this.fileService.saveFile(folderId, req);
@@ -45,7 +47,7 @@ export class FilesController {
 	
 	@Roles(RoleTypes.admin, RoleTypes.owner, RoleTypes.member)
   @Delete('file')
-  deleteFiles(@Res() res: any, @Query() dir: any) {
+  deleteFiles(@Res() res: Response, @Query() dir: any) {
     let fileIds = dir.id.split('|') || null;
     let del = this.fileService.delFile(fileIds);
     if (del) {
@@ -59,7 +61,7 @@ export class FilesController {
 	
 	@Roles(RoleTypes.admin, RoleTypes.owner, RoleTypes.member)
   @Get('file')
-  getFiles(@Res() res: any, @Query() dir: any) {
+  getFiles(@Res() res: Response, @Query() dir: any) {
     let subDir = dir.dirId || '';
     let files = this.fileService.getItems(subDir, true);
     res.status(HttpStatus.OK).send(files);
@@ -67,7 +69,7 @@ export class FilesController {
 	
 	@Roles(RoleTypes.admin, RoleTypes.owner, RoleTypes.member)
   @Put('file')
-  updateFile(@Res() res: any, @Body() data: any) {
+  updateFile(@Res() res: Response, @Body() data: any) {
     let oldFile = {
       fileId: data.id || null,
       bounds: data.bounds || null,

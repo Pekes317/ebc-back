@@ -9,10 +9,11 @@ import {
   Query,
   Res
 } from '@nestjs/common';
+import { Response } from 'express';
 
-import { FolderService } from './folder.service';
 import { Roles } from '../common/roles/roles.decorator';
 import { RoleTypes } from '../common/roles/role-types.enum';
+import { FolderService } from './folder.service';
 
 @Controller('api/manager')
 export class FoldersController {
@@ -20,7 +21,7 @@ export class FoldersController {
 
   @Roles(RoleTypes.admin, RoleTypes.owner, RoleTypes.member)
   @Post('folder')
-  addFolders(@Res() res: any, @Body() body: any) {
+  addFolders(@Res() res: Response, @Body() body: any) {
     let dir = this.folderService.addDir(body);
     if (dir.notAdded) {
       res
@@ -35,7 +36,7 @@ export class FoldersController {
 
   @Roles(RoleTypes.admin, RoleTypes.owner, RoleTypes.member)
   @Delete('folder')
-  deleteFolders(@Res() res: any, @Query() dir: any) {
+  deleteFolders(@Res() res: Response, @Query() dir: any) {
     let nodeId = dir.nodeId || '';
     let success = this.folderService.deleteDir(nodeId);
     if (success) {
@@ -47,7 +48,7 @@ export class FoldersController {
 
   @Roles(RoleTypes.admin, RoleTypes.owner, RoleTypes.member)
   @Get('folder')
-  getFolders(@Res() res: any, @Query() dir: any) {
+  getFolders(@Res() res: Response, @Query() dir: any) {
     let subNode = dir.nodeId || '';
     let paths = this.folderService.getItems(subNode, false);
     res.status(HttpStatus.OK).send(paths);
@@ -55,7 +56,7 @@ export class FoldersController {
 
   @Roles(RoleTypes.admin, RoleTypes.owner, RoleTypes.member)
   @Put('folder/move')
-  moveFolder(@Res() res: any, @Body() data: any) {
+  moveFolder(@Res() res: Response, @Body() data: any) {
     let moved = this.folderService.moveDir(data);
 
     if (moved.noMove) {
@@ -67,7 +68,7 @@ export class FoldersController {
 
   @Roles(RoleTypes.admin, RoleTypes.owner, RoleTypes.member)
   @Put('folder')
-  updateFolder(@Res() res: any, @Body() node: any) {
+  updateFolder(@Res() res: Response, @Body() node: any) {
     let update = this.folderService.updateDir(node);
 
     if (update.exist) {

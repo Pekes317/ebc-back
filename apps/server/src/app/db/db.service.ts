@@ -12,55 +12,61 @@ import { Collect, Equip, Item, Sample, Temp, User } from './db.route.types';
 
 @Injectable()
 export class DbService {
-    constructor(@InjectRepository(Collected) public readonly collect: Repository<Collected>,
-        @InjectRepository(Equipment) public readonly equip: Repository<Equipment>,
-        @InjectRepository(Items) public readonly items: Repository<Items>,
-        @InjectRepository(Samples) public readonly sample: Repository<Samples>,
-        @InjectRepository(Templates) public readonly temp: Repository<Templates>,
-        @InjectRepository(Users) public readonly users: Repository<Users>) { }
+  constructor(
+    @InjectRepository(Collected) public readonly collect: Repository<Collected>,
+    @InjectRepository(Equipment) public readonly equip: Repository<Equipment>,
+    @InjectRepository(Items) public readonly items: Repository<Items>,
+    @InjectRepository(Samples) public readonly sample: Repository<Samples>,
+    @InjectRepository(Templates) public readonly temp: Repository<Templates>,
+    @InjectRepository(Users) public readonly users: Repository<Users>
+  ) {}
 
-    async setTable(dbTable) {
-        switch (dbTable) {
-            case Collect:
-                return await this.collect;
-            case Equip:
-                return await this.equip;
-            case Item:
-                return await this.items;
-            case Sample:
-                return await this.sample;
-            case Temp:
-                return await this.temp;
-            case User:
-                return await this.users;
-        }
+  async setTable(dbTable) {
+    switch (dbTable) {
+      case Collect:
+        return await this.collect;
+      case Equip:
+        return await this.equip;
+      case Item:
+        return await this.items;
+      case Sample:
+        return await this.sample;
+      case Temp:
+        return await this.temp;
+      case User:
+        return await this.users;
     }
+  }
 
-    async createOne(callTbl: Repository<any>, newItem): Promise<any> {
-        return callTbl.save(newItem);
-    }
+  async createOne(callTbl: Repository<any>, newItem): Promise<any> {
+    return callTbl.save(newItem);
+  }
 
-    async deleteOne(callTbl: Repository<any>, id): Promise<any> {
-        return await callTbl.delete(id);
-    }
+  async deleteOne(callTbl: Repository<any>, id): Promise<any> {
+    return await callTbl.delete(id);
+  }
 
-    async getAll(callTbl: Repository<any>, relate?: boolean): Promise<any> {
-        let relateCols = this.getRelations(callTbl.metadata);
-        let call = relate ?  callTbl.find({ relations: relateCols }) : callTbl.find();
-        return await call;
-    }
+  async getAll(callTbl: Repository<any>, relate?: boolean): Promise<any> {
+    let relateCols = this.getRelations(callTbl.metadata);
+    let call = relate
+      ? callTbl.find({ relations: relateCols })
+      : callTbl.find();
+    return await call;
+  }
 
-    async getOne(callTbl: Repository<any>, id): Promise<any> {
-        return await callTbl.findByIds(id);
-    }
+  async getOne(callTbl: Repository<any>, id): Promise<any> {
+    return await callTbl.findByIds(id);
+  }
 
-    async updateOne(callTbl: Repository<any>, id, partial): Promise<any> {
-        return await callTbl.update(id, partial);
-    }
+  async updateOne(callTbl: Repository<any>, id, partial): Promise<any> {
+    return await callTbl.update(id, partial);
+  }
 
-    private getRelations(metadata: EntityMetadata): Array<string> {
-        let relations: Array<string> = [];
-        metadata.relations.forEach(relation => relations.push(relation.propertyName));
-        return relations;
-    }
+  private getRelations(metadata: EntityMetadata): Array<string> {
+    let relations: Array<string> = [];
+    metadata.relations.forEach(relation =>
+      relations.push(relation.propertyName)
+    );
+    return relations;
+  }
 }

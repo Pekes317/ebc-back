@@ -9,25 +9,12 @@ import { Samples } from './db.samples.entity';
 import { Templates } from './db.templates.entity';
 import { Users } from './db.users.entity';
 
-const dbEntities = [
-	Collected,
-	Equipment,
-	Items,
-	Samples,
-	Templates,
-	Users
-];
+const dbEntities = [Collected, Equipment, Items, Samples, Templates, Users];
 
 @Global()
 @Module({
-	imports: [
-		TypeOrmModule.forFeature(dbEntities)
-	],
-	providers: [
-		DbService
-	],
-	exports: [
-		DbService
-	]
+  imports: [TypeOrmModule.forFeature(dbEntities)],
+  providers: [DbService],
+  exports: [DbService]
 })
-export class DbModule { }
+export class DbModule {}
