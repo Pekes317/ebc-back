@@ -1,17 +1,17 @@
 import { Test } from '@nestjs/testing';
 import { TestingModule } from '@nestjs/testing/testing-module';
-import { MobileService } from './mobile.service';
 import { expect } from 'chai';
+
+import { MobileService } from './mobile.service';
 
 describe('DbService', () => {
   let module: TestingModule;
   beforeEach(() => {
     return Test.createTestingModule({
-      components: [
-        MobileService
-      ]
-    }).compile()
-      .then(compiledModule => module = compiledModule);
+      components: [MobileService]
+    })
+      .compile()
+      .then(compiledModule => (module = compiledModule));
   });
 
   let service: MobileService;

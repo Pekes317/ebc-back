@@ -15,7 +15,7 @@ import { ItemDto } from '../object/object.dto';
 import { MobileService } from './mobile.service';
 import { NoAuth } from '../common/auth.decorator';
 import { Roles } from '../common/roles/roles.decorator';
-import { RoleTypes }  from '../common/roles/role-types.enum';
+import { RoleTypes } from '../common/roles/role-types.enum';
 import { SlackInterceptor } from '../common/slack.interecptor';
 
 @Controller('api/mobile')
@@ -33,7 +33,7 @@ export class MobileController {
   }
 
   @UseInterceptors(SlackInterceptor)
-	@Roles(RoleTypes.admin, RoleTypes.owner, RoleTypes.member, RoleTypes.user)
+  @Roles(RoleTypes.admin, RoleTypes.owner, RoleTypes.member, RoleTypes.user)
   @Post('create')
   addUserItem(@Req() req: any, @Res() res: any, @Body() data: ItemDto) {
     let user = req.uid;
@@ -43,7 +43,7 @@ export class MobileController {
       .catch(err => res.status(HttpStatus.REQUEST_TIMEOUT).send(err));
   }
 
-	@Roles(RoleTypes.admin, RoleTypes.owner, RoleTypes.member, RoleTypes.user)
+  @Roles(RoleTypes.admin, RoleTypes.owner, RoleTypes.member, RoleTypes.user)
   @Get(':type')
   getUsersItems(@Req() req: any, @Res() res: any, @Param() param: TypeDto) {
     let user = req.uid;
@@ -53,7 +53,7 @@ export class MobileController {
       .catch(err => res.status(HttpStatus.REQUEST_TIMEOUT).send(err));
   }
 
-	@Roles(RoleTypes.admin, RoleTypes.owner, RoleTypes.member, RoleTypes.user)
+  @Roles(RoleTypes.admin, RoleTypes.owner, RoleTypes.member, RoleTypes.user)
   @Get('sample/:type')
   getSampleItems(@Res() res: any, @Param() param: TypeDto) {
     this.mobile
@@ -71,7 +71,7 @@ export class MobileController {
       .catch(err => res.status(HttpStatus.REQUEST_TIMEOUT).send(err));
   }
 
-	@Roles(RoleTypes.admin, RoleTypes.owner, RoleTypes.member, RoleTypes.user)
+  @Roles(RoleTypes.admin, RoleTypes.owner, RoleTypes.member, RoleTypes.user)
   @Get('temp/:type')
   getTempItems(@Res() res: any, @Param() param: TypeDto) {
     this.mobile

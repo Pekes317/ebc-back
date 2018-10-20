@@ -1,8 +1,9 @@
 import { ExecutionContext, Injectable, NestInterceptor } from '@nestjs/common';
-import { Observable } from 'rxjs/Observable';
-import { auth } from 'firebase-admin';
 import { IncomingWebhook, IncomingWebhookDefaultArguments } from '@slack/client';
+import { Observable } from 'rxjs';
+import { auth } from 'firebase-admin';
 import 'rxjs/add/operator/do';
+import { ExtRequest } from '../models/ext-req.model';
 
 @Injectable()
 export class SlackInterceptor implements NestInterceptor {
@@ -11,12 +12,12 @@ export class SlackInterceptor implements NestInterceptor {
   slack = new IncomingWebhook(this.botUrl, this.args);
 
   intercept(context: ExecutionContext, stream$: Observable<any>): Observable<any> {
-    const req = context.switchToHttp().getRequest();
+    const req: ExtRequest = context.switchToHttp().getRequest();
     return stream$.do(
       () => {
         auth().getUser(req.uid)
           .then(user => {
-            let slackMessage = `${this.createMessage(req.route, req.body, req.params)}\nIt was completed by ${user.displayName}.`
+            const slackMessage = `${this.createMessage(req.route, req.body, req.params)}\nIt was completed by ${user.displayName}.`
             this.slack.send(slackMessage, this.slackCallback)
           })
           .catch(err => console.log(err))
@@ -24,7 +25,7 @@ export class SlackInterceptor implements NestInterceptor {
   }
 
   createMessage(route, body, params) {
-    let methods = route.methods;
+    const methods = route.methods;
     let message = '';
     if (methods.put) {
       message = `Item #${params.id} has been Updated.`;

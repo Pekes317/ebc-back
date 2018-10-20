@@ -1,111 +1,110 @@
 import { Injectable } from '@nestjs/common';
-import { readdirSync, renameSync, statSync, unlinkSync } from 'fs';
+import { renameSync, unlinkSync } from 'fs';
 import { join } from 'path';
-import { lookup } from 'mime-types';
 import { IncomingForm } from 'formidable';
 import { crop } from 'easyimage';
-import * as sizeOf from 'image-size';
 
-import { Dimensions, Directory, File, FileUpdate } from './filemanager.types';
+import { FileUpdate } from './filemanager.types';
 import { FileFolderService } from './file-folder.class';
 
 @Injectable()
 export class FileService extends FileFolderService {
+  fileExist: boolean = false;
+  newPath: string = '';
 
-	fileExist: boolean = false;
-	newPath: string = '';
+  constructor() {
+    super();
+  }
 
-	constructor() {
-		super();
-	}
+  public delFile(files: Array<string>) {
+    let allFilesDeleted = true;
 
-	public delFile(files: Array<string>) {
-		let allFilesDeleted = true;
+    files.forEach(fileId => {
+      if (this.isFile(fileId)) {
+        unlinkSync(join(this.basePath, fileId));
+      } else {
+        allFilesDeleted = false;
+      }
+    });
 
-		files.forEach(fileId => {
-			if (this.isFile(fileId)) {
-				unlinkSync(join(this.basePath, fileId));
-			} else {
-				allFilesDeleted = false;
-			}
-		});
+    return allFilesDeleted;
+  }
 
-		return allFilesDeleted;
-	}
+  public fileSaved(fileRtn) {
+    return fileRtn;
+  }
 
-	public fileSaved(fileRtn) {
-		return fileRtn;
-	}
+  public saveFile(folderId, req) {
+    let fileExist: boolean = false;
+    let form = new IncomingForm();
+    let newPath = '';
 
-	public saveFile(folderId, req) {
-		let fileExist: boolean = false;
-		let form = new IncomingForm();
-		let newPath = '';
+    form.multiples = true;
+    form.uploadDir = this.basePath;
 
-		form.multiples = true;
-		form.uploadDir = this.basePath;
+    form.on('file', (field, file) => {
+      this.newPath = this.checkFile(file, folderId);
+    });
 
-		form.on('file', (field, file) => {
-			this.newPath = this.checkFile(file, folderId);
-		});
+    form.on('error', err => {
+      console.log(`An error has occured: \n ${err}`);
+    });
 
-		form.on('error', err => {
-			console.log(`An error has occured: \n ${err}`);
-		});
+    form.parse(req);
 
-		form.parse(req);
+    return form;
+  }
 
-		return form;
-	}
+  public updateFile(oldFile: FileUpdate) {
+    // Move file
+    if (oldFile.folderId !== null && oldFile.files !== null) {
+      oldFile.files.forEach(file => {
+        const fileName = file.split('/').pop();
+        renameSync(
+          this.basePath + file,
+          `${this.basePath + oldFile.folderId}/${fileName}`
+        );
+      });
 
-	public updateFile(oldFile: FileUpdate) {
+      return this.getItems(oldFile.folderId, true);
+    }
 
-		// Move file
-		if (oldFile.folderId !== null && oldFile.files !== null) {
-			oldFile.files.forEach(file => {
-				const fileName = file.split('/').pop();
-				renameSync(this.basePath + file, `${this.basePath + oldFile.folderId}/${fileName}`);
-			});
+    // crop file
+    if (this.isFile(oldFile.folderId)) {
+      if (oldFile.bounds) {
+        let src = join(this.basePath, oldFile.fileId);
+        crop({
+          src: src,
+          dst: src,
+          cropWidth: oldFile.bounds.width,
+          cropHeight: oldFile.bounds.height,
+          y: oldFile.bounds.y,
+          x: oldFile.bounds.x,
+          gravity: 'NorthWest'
+        });
+        return this.prepareFile(oldFile.fileId);
+      }
+    }
+    return false;
+  }
 
-			return this.getItems(oldFile.folderId, true);
-		}
+  private checkFile(file, folder) {
+    let path = '';
+    file.name = file.name.replace(/[^A-Za-z0-9\-\._]/g, '');
 
-		// crop file
-		if (this.isFile(oldFile.folderId)) {
-			if (oldFile.bounds) {
-				let src = join(this.basePath, oldFile.fileId);
-				crop({
-					src: src,
-					dst: src,
-					cropWidth: oldFile.bounds.width,
-					cropHeight: oldFile.bounds.height,
-					y: oldFile.bounds.y,
-					x: oldFile.bounds.x,
-					gravity: 'NorthWest'
-				});
-				return this.prepareFile(oldFile.fileId);
-			}
-		}
-		return false;
-	}
+    if (folder) {
+      path = join(folder, file.name);
+    } else {
+      path = file.name;
+    }
 
-	private checkFile(file, folder) {
-		let path = ''
-		file.name = file.name.replace(/[^A-Za-z0-9\-\._]/g, '');
+    if (this.isFile(path)) {
+      this.fileExist = true;
+      unlinkSync(file.path);
+    } else {
+      renameSync(file.path, this.basePath + path);
 
-		if (folder) {
-			path = join(folder, file.name);
-		} else {
-			path = file.name;
-		}
-
-		if (this.isFile(path)) {
-			this.fileExist = true;
-			unlinkSync(file.path);
-		} else {
-			renameSync(file.path, this.basePath + path);
-
-			return path;
-		}
-	}
+      return path;
+    }
+  }
 }

@@ -3,8 +3,6 @@ import { Module } from '@nestjs/common';
 import { ObjectController } from './object.controller';
 
 @Module({
-	controllers: [
-		ObjectController
-	]
+  controllers: [ObjectController]
 })
-export class ObjectModule { }
+export class ObjectModule {}

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material';
 import { Store, select } from '@ngrx/store';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { take } from 'rxjs/operators';
 import { of } from 'rxjs';
 
 import { Authenticate } from '../models/authenticate.model';
@@ -9,7 +10,6 @@ import { LoadAuth, Logout } from '../actions/auth.actions';
 import { User } from '../../../core/models/user.model';
 import { UserState } from '../models/user-state.model';
 import * as fromAuth from '../reducers';
-import { take } from '../../../../../../../node_modules/rxjs/operators';
 
 @Injectable({
   providedIn: 'root'

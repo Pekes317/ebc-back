@@ -1,8 +1,8 @@
-import { ModuleWithProviders, NgModule } from '@angular/core';
+import { ModuleWithProviders, NgModule, DoCheck } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { BrowserModule, Title } from '@angular/platform-browser';
+import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { TranslateModule } from '@ngx-translate/core';
@@ -11,7 +11,7 @@ import { TreeModule } from '@beezleeart/ngx-tree';
 import { NxModule } from '@nrwl/nx';
 import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
 import { AngularFireModule } from 'angularfire2';
-import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AngularFireAuthModule, AngularFireAuth } from 'angularfire2/auth';
 
 import { AppComponent } from './core/containers/app/app.component';
 import { CoreModule } from './core/core.module';
@@ -43,7 +43,15 @@ import { SharedModule } from './shared/shared.module';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {
+export class AppModule implements DoCheck {
+   
+  constructor(private fireAuth: AngularFireAuth) { }
+
+  ngDoCheck() {
+    let token = this.fireAuth.auth.currentUser ? this.fireAuth.auth.currentUser['qa'] : undefined;
+    fileManagerConfig.authToken = token;
+  }
+
   public static forServer(): ModuleWithProviders {
     return {
       ngModule: AppModule,

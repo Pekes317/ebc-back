@@ -4,22 +4,24 @@ import { NoAuth } from './app/common/auth.decorator';
 
 @Controller('*')
 export class AppController {
-    constructor() { }
+  constructor() {}
 
-    @NoAuth(true)
-    @Get()
-    root(@Req() req: any, @Res() res: any, @Next() next: any) {
-        if (!req.originalUrl.startsWith('/api')) {
-            res.render('index', {
-                req,
-                res,
-                providers: [{
-                    provide: 'serverUrl',
-                    useValue: `${req.protocol}://${req.get('host')}`
-                }]
-            });
-        } else {
-            next()
-        }
+  @NoAuth(true)
+  @Get()
+  root(@Req() req: any, @Res() res: any, @Next() next: any) {
+    if (!req.originalUrl.startsWith('/api')) {
+      res.render('index', {
+        req,
+        res,
+        providers: [
+          {
+            provide: 'serverUrl',
+            useValue: `${req.protocol}://${req.get('host')}`
+          }
+        ]
+      });
+    } else {
+      next();
     }
+  }
 }

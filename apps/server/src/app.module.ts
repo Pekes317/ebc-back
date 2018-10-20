@@ -12,26 +12,28 @@ import { ImgUploadModule } from './app/img-upload/img-upload.module';
 import { ObjectModule } from './app/object/object.module';
 import { MobileModule } from './app/mobile/mobile.module';
 
-
 @Module({
-	imports: [
-		AdminModule,
-		AuthModule,
-		DbModule,
-		FileManagerModule,
-		ImgUploadModule,
-		MobileModule,
-		ObjectModule,
-		TypeOrmModule.forRoot()
-	],
-	controllers: [
-		AppController
-	]
+  imports: [
+    AdminModule,
+    AuthModule,
+    DbModule,
+    FileManagerModule,
+    ImgUploadModule,
+    MobileModule,
+    ObjectModule,
+    TypeOrmModule.forRoot()
+  ],
+  controllers: [AppController]
 })
 export class ApplicationModule implements NestModule {
-	configure(consumer: MiddlewareConsumer) {
-		CorsMiddleware.configure({ origin: '*', methods: 'GET,HEAD,OPTIONS,PUT,PATCH,POST,DELETE', preflightContinue: true, optionsSuccessStatus: 200 });
-		consumer.apply(CorsMiddleware).forRoutes('/api/*');
-		consumer.apply(ExpressBearerTokenMiddleware).forRoutes('*');
-	}
+  configure(consumer: MiddlewareConsumer) {
+    CorsMiddleware.configure({
+      origin: '*',
+      methods: 'GET,HEAD,OPTIONS,PUT,PATCH,POST,DELETE',
+      preflightContinue: true,
+      optionsSuccessStatus: 200
+    });
+    consumer.apply(CorsMiddleware).forRoutes('/api/*');
+    consumer.apply(ExpressBearerTokenMiddleware).forRoutes('*');
+  }
 }

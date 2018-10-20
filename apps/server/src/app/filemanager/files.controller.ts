@@ -13,14 +13,16 @@ import {
 } from '@nestjs/common';
 
 import { FileService } from './file.service';
+import { NoAuth } from '../common/auth.decorator';
 import { Roles } from '../common/roles/roles.decorator';
 import { RoleTypes } from '../common/roles/role-types.enum';
 
 @Controller('api/manager')
 export class FilesController {
   constructor(private fileService: FileService) {}
-	
-	@Roles(RoleTypes.admin, RoleTypes.owner, RoleTypes.member)
+  
+  @NoAuth(true)
+	// @Roles(RoleTypes.admin, RoleTypes.owner, RoleTypes.member)
   @Post('file')
   addFiles(
     @Res() res: any,
@@ -55,7 +57,7 @@ export class FilesController {
     }
   }
 	
-	@Roles('admin', 'owner', 'member')
+	@Roles(RoleTypes.admin, RoleTypes.owner, RoleTypes.member)
   @Get('file')
   getFiles(@Res() res: any, @Query() dir: any) {
     let subDir = dir.dirId || '';
@@ -63,7 +65,7 @@ export class FilesController {
     res.status(HttpStatus.OK).send(files);
 	}
 	
-	@Roles('admin', 'owner', 'member')
+	@Roles(RoleTypes.admin, RoleTypes.owner, RoleTypes.member)
   @Put('file')
   updateFile(@Res() res: any, @Body() data: any) {
     let oldFile = {

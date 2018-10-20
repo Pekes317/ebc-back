@@ -8,25 +8,28 @@ const basePath: string = `${appDir()}/views/`;
 
 @Injectable()
 export class ImgUploadService {
+  constructor() {}
 
-	constructor() { }
+  async addSign(upload: any) {
+    let newImg = {};
+    cloudinary.config(ebcCloud);
+    await cloudinary.v2.uploader.upload(
+      upload.img,
+      upload.opts,
+      (err, cloud) => {
+        newImg = cloud;
+        if (err) {
+          newImg = err;
+        }
+      }
+    );
 
-	async addSign(upload: any) {
-		let newImg = {};
-		cloudinary.config(ebcCloud);
-		await cloudinary.v2.uploader.upload(upload.img, upload.opts, (err, cloud) => {
-			newImg = cloud;
-			if (err) {
-				newImg = err;
-			}
-		});
+    return newImg;
+  }
 
-		return newImg;
-	}
-
-	async getFileContents(url: string) {
-		let filePath = url.substr(url.indexOf('assets'));
-		let contents = await readFileSync(basePath + filePath);
-		return String(contents);
-	}
+  async getFileContents(url: string) {
+    let filePath = url.substr(url.indexOf('assets'));
+    let contents = await readFileSync(basePath + filePath);
+    return String(contents);
+  }
 }

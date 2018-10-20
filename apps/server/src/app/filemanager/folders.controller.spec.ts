@@ -1,7 +1,8 @@
 import { Test } from '@nestjs/testing';
 import { TestingModule } from '@nestjs/testing/testing-module';
-import { FoldersController } from './folders.controller';
 import { expect } from 'chai';
+
+import { FoldersController } from './folders.controller';
 
 describe('ClientRoutesController', () => {
   let module: TestingModule;
