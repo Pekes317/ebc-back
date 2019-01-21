@@ -7,7 +7,7 @@ import {
   Param,
   Res,
   Req,
-  UseInterceptors
+  UseInterceptors,
 } from '@nestjs/common';
 import { Response } from 'express';
 
@@ -26,7 +26,11 @@ export class MobileController {
 
   @Roles(RoleTypes.admin, RoleTypes.owner, RoleTypes.member, RoleTypes.user)
   @Post('register')
-  addUserDevice(@Req() req: ExtRequest, @Res() res: Response, @Body() device: DeviceDto) {
+  addUserDevice(
+    @Req() req: ExtRequest,
+    @Res() res: Response,
+    @Body() device: DeviceDto,
+  ) {
     this.mobile
       .registerDevice(req.uid, device.token)
       .then(mobile => res.status(HttpStatus.CREATED).send(mobile))
@@ -36,7 +40,11 @@ export class MobileController {
   @UseInterceptors(SlackInterceptor)
   @Roles(RoleTypes.admin, RoleTypes.owner, RoleTypes.member, RoleTypes.user)
   @Post('create')
-  addUserItem(@Req() req: ExtRequest, @Res() res: Response, @Body() data: ItemDto) {
+  addUserItem(
+    @Req() req: ExtRequest,
+    @Res() res: Response,
+    @Body() data: ItemDto,
+  ) {
     this.mobile
       .createItem(req.uid, data)
       .then(item => res.status(HttpStatus.CREATED).send(item))
@@ -45,7 +53,11 @@ export class MobileController {
   @UseInterceptors(SlackInterceptor)
   @Roles(RoleTypes.admin, RoleTypes.owner, RoleTypes.member, RoleTypes.user)
   @Post('create/img')
-  addItemImg(@Req() req: ExtRequest, @Res() res: Response, @Body() data: ItemImgDto) {
+  addItemImg(
+    @Req() req: ExtRequest,
+    @Res() res: Response,
+    @Body() data: ItemImgDto,
+  ) {
     this.mobile
       .createItem(req.uid, data)
       .then(item => res.status(HttpStatus.CREATED).send(item))
@@ -54,7 +66,11 @@ export class MobileController {
 
   @Roles(RoleTypes.admin, RoleTypes.owner, RoleTypes.member, RoleTypes.user)
   @Get(':type')
-  getUsersItems(@Req() req: ExtRequest, @Res() res: Response, @Param() param: TypeDto) {
+  getUsersItems(
+    @Req() req: ExtRequest,
+    @Res() res: Response,
+    @Param() param: TypeDto,
+  ) {
     this.mobile
       .usersItems(req.uid, param.type)
       .then(items => res.status(HttpStatus.OK).send(items))

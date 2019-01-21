@@ -8,11 +8,10 @@ describe('AppController', () => {
   let module: TestingModule;
   beforeEach(() => {
     return Test.createTestingModule({
-      controllers: [
-        AppController
-      ]
-    }).compile()
-      .then(compiledModule => module = compiledModule);
+      controllers: [AppController],
+    })
+      .compile()
+      .then(compiledModule => (module = compiledModule));
   });
 
   let controller: AppController;
